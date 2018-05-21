@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg"
+              android:orientation="vertical"
+              tools:context="com.yuanin.aimifinance.activity.ResultActivity">
+
+    <include
+        android:id="@+id/includeTop"
+        layout="@layout/top_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/normal_height"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ivIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/result_success"/>
+
+            <TextView
+                android:id="@+id/tvTips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/big_margin"
+                android:layout_marginRight="@dimen/big_margin"
+                android:layout_marginTop="@dimen/margin_twelve2"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/normal_text"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_eight"
+            android:background="@color/bg"/>
+
+
+        <LinearLayout
+            android:id="@+id/llBuy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/normal_height"
+                android:background="@color/white"
+                android:baselineAligned="false"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/btnView"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/normal_height"
+                        android:background="@drawable/selector_gray_click"
+                        android:text="@string/see_my_money"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/big_text"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="@dimen/line"
+                    android:layout_height="match_parent"
+                    android:background="@color/bg"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/btnBuy"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/normal_height"
+                        android:background="@drawable/selector_gray_click"
+                        android:text="@string/continue_buy"
+                        android:textColor="@color/theme_color"
+                        android:textSize="@dimen/big_text"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_eight"
+                android:background="@color/bg"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/llPay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnRun"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/normal_height"
+                    android:background="@drawable/selector_gray_click"
+                    android:gravity="center"
+                    android:text="@string/back_mine"
+                    android:textColor="@color/theme_color"
+                    android:textSize="@dimen/normal_text"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

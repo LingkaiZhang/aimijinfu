@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="#E9E9E9"
+              android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme_color"
+        android:paddingLeft="@dimen/small_margin">
+
+
+        <LinearLayout
+            android:id="@+id/llConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:padding="@dimen/small_margin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_entrust_add_click"
+                android:gravity="center"
+                android:text="@string/confirm"
+                android:textColor="@color/white"
+                android:textSize="@dimen/normal_text"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/llConfirm"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/big_text"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.yuanin.aimifinance.view.WheelView
+            android:id="@+id/wheelOne"
+            android:layout_width="@dimen/weight"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <com.yuanin.aimifinance.view.WheelView
+            android:id="@+id/wheelTwo"
+            android:layout_width="@dimen/weight"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <com.yuanin.aimifinance.view.WheelView
+            android:id="@+id/wheelThree"
+            android:layout_width="@dimen/weight"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,94 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/rlMain"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+    <include
+        android:id="@+id/includeTop"
+        layout="@layout/white_top_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/includeTop"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/small_margin"
+        android:paddingRight="@dimen/small_margin">
+
+
+        <com.yuanin.aimifinance.view.ClearEditText
+            android:id="@+id/etPhone"
+            style="@style/phoneEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_twelve2"
+            android:background="@mipmap/login_edittext_bg"
+            android:drawableLeft="@mipmap/login_phone"
+            android:drawablePadding="@dimen/margin_eight"
+            android:gravity="center_vertical"
+            android:hint="@string/input_phone"
+            android:paddingLeft="@dimen/margin_eight"
+            android:paddingRight="@dimen/margin_eight"
+            android:textColor="@color/text_black"
+            android:textColorHint="@color/text_light_gray"
+            android:textSize="@dimen/normal_text"/>
+
+        <com.yuanin.aimifinance.view.PasswordEditText
+            android:id="@+id/etPwd"
+            style="@style/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_margin"
+            android:background="@mipmap/login_edittext_bg"
+            android:drawableLeft="@mipmap/login_password"
+            android:drawablePadding="@dimen/margin_eight"
+            android:gravity="center_vertical"
+            android:hint="@string/input_login_password"
+            android:paddingLeft="@dimen/margin_eight"
+            android:paddingRight="@dimen/margin_eight"
+            android:textColor="@color/text_black"
+            android:textColorHint="@color/text_light_gray"
+            android:textSize="@dimen/normal_text"/>
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/big_margin"
+            android:background="@mipmap/login_button_enable"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            android:textSize="@dimen/normal_text"/>
+
+
+        <TextView
+            android:id="@+id/tvForgetPwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/small_margin"
+            android:padding="@dimen/small_margin"
+            android:text="@string/login_problem"
+            android:textColor="@drawable/selector_login_rigister_click"
+            android:textSize="@dimen/normal_text"/>
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/btnRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/small_margin"
+        android:padding="@dimen/small_margin"
+        android:text="@string/login_register"
+        android:textColor="@drawable/selector_login_rigister_click"
+        android:textSize="@dimen/normal_text"/>
+</RelativeLayout>

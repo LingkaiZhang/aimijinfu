@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:id="@+id/rlMain"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="@mipmap/view_bank_card_bg1"
+              android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/llImg"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="@dimen/small_margin"
+        android:layout_marginTop="@dimen/margin_twelve2"
+        android:background="@mipmap/circle_white">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/imageIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/margin_eight"
+            app:actualImageScaleType="fitCenter"
+            app:fadeDuration="300"
+            app:placeholderImage="@mipmap/image_loading"
+            app:placeholderImageScaleType="fitCenter"
+            app:roundAsCircle="true"/>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_twelve2"
+        android:layout_marginRight="@dimen/small_margin"
+        android:layout_marginTop="@dimen/margin_twelve2"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvBankName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/normal_text"/>
+
+            <TextView
+                android:id="@+id/tvBankCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_eight"
+                android:textColor="@color/white"
+                android:textSize="@dimen/normal_text"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_eight"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="预留手机"
+                android:textColor="@color/white"
+                android:textSize="@dimen/normal_text"/>
+
+            <TextView
+                android:id="@+id/tvPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_eight"
+                android:textColor="@color/white"
+                android:textSize="@dimen/normal_text"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_twelve2"
+            android:layout_marginTop="@dimen/margin_eight"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/btnUnbinding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_bank_unbind_click"
+                android:gravity="center"
+                android:padding="@dimen/margin_four"
+                android:text="解绑银行卡"
+                android:textColor="@color/white"
+                android:textSize="@dimen/small_text"/>
+
+            <TextView
+                android:id="@+id/btnModify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/small_margin"
+                android:background="@drawable/selector_bank_unbind_click"
+                android:gravity="center"
+                android:padding="@dimen/margin_four"
+                android:text="修改手机号"
+                android:textColor="@color/white"
+                android:textSize="@dimen/small_text"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
+

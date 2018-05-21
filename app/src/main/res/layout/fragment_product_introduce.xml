@@ -1,0 +1,201 @@
+<com.yuanin.aimifinance.view.ObservableScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                                                  xmlns:tools="http://schemas.android.com/tools"
+                                                  android:id="@+id/innerscrollview"
+                                                  android:layout_width="match_parent"
+                                                  android:layout_height="match_parent"
+                                                  android:background="@color/bg"
+                                                  android:scrollbars="none"
+                                                  tools:context="com.yuanin.aimifinance.fragment.ProductIntroduceFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_twelve2"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginRight="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/product_safe"
+                android:drawablePadding="@dimen/margin_eight"
+                android:gravity="center_vertical"
+                android:text="保障方式"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/normal_text"/>
+
+            <View
+                android:layout_width="@dimen/line_one_dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/small_margin"
+                android:background="@mipmap/index_line"/>
+
+            <TextView
+                android:id="@+id/tvGuarantee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/small_margin"
+                android:drawablePadding="@dimen/margin_eight"
+                android:gravity="center_vertical"
+                android:textColor="@color/theme_color"
+                android:textSize="@dimen/normal_text"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvGuaranteeCon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginRight="@dimen/small_margin"
+            android:lineSpacingExtra="@dimen/margin_four"
+            android:textColor="@color/text_light_gray"
+            android:textSize="@dimen/small_text"
+            android:visibility="gone"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_one_dp"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:background="@color/bg"
+            android:visibility="gone"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_twelve2"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginRight="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/product_type"
+                android:drawablePadding="@dimen/margin_eight"
+                android:gravity="center_vertical"
+                android:text="项目类型"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/normal_text"/>
+
+            <View
+                android:layout_width="@dimen/line_one_dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/small_margin"
+                android:background="@mipmap/index_line"/>
+
+            <TextView
+                android:id="@+id/tvDebtstype"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/small_margin"
+                android:drawablePadding="@dimen/margin_eight"
+                android:gravity="center_vertical"
+                android:textColor="@color/theme_color"
+                android:textSize="@dimen/normal_text"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvDebtstypeCon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginRight="@dimen/small_margin"
+            android:lineSpacingExtra="@dimen/margin_four"
+            android:textColor="@color/text_light_gray"
+            android:textSize="@dimen/small_text"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_one_dp"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:background="@color/bg"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_twelve2"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginRight="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/product_repay"
+                android:drawablePadding="@dimen/margin_eight"
+                android:gravity="center_vertical"
+                android:text="还款方式"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/normal_text"/>
+
+            <View
+                android:layout_width="@dimen/line_one_dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/small_margin"
+                android:background="@mipmap/index_line"/>
+
+            <TextView
+                android:id="@+id/tvRepay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/small_margin"
+                android:drawablePadding="@dimen/margin_eight"
+                android:gravity="center_vertical"
+                android:textColor="@color/theme_color"
+                android:textSize="@dimen/normal_text"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvRepayCon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginRight="@dimen/small_margin"
+            android:lineSpacingExtra="@dimen/margin_four"
+            android:textColor="@color/text_light_gray"
+            android:textSize="@dimen/small_text"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_one_dp"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:background="@color/bg"/>
+
+    </LinearLayout>
+
+    <com.yuanin.aimifinance.view.ObservableWebView
+        android:id="@+id/wvHref"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    </LinearLayout>
+</com.yuanin.aimifinance.view.ObservableScrollView>
+
+

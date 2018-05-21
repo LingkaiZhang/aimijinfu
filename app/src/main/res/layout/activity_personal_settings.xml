@@ -1,0 +1,447 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/llMain"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg"
+              android:orientation="vertical"
+              tools:context="com.yuanin.aimifinance.activity.PersonalSettingsActivity">
+
+    <include
+        android:id="@+id/includeTop"
+        layout="@layout/top_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/normal_height"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/normal_height"
+            android:scrollbars="none">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/llLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/normal_height"
+                        android:layout_marginLeft="@dimen/small_margin"
+                        android:gravity="center"
+                        android:text="@string/personal_info"
+                        android:textColor="@color/text_light_gray"
+                        android:textSize="@dimen/normal_text"/>
+
+
+                    <RelativeLayout
+                        android:id="@+id/rlPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/normal_height"
+                        android:background="@drawable/selector_gray_click">
+
+                        <ImageView
+                            android:id="@+id/ivPhone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/small_margin"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/setting_phone"/>
+
+                        <TextView
+                            android:id="@+id/tvPhoneTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/normal_height"
+                            android:layout_marginLeft="@dimen/margin_eight"
+                            android:layout_toRightOf="@id/ivPhone"
+                            android:gravity="center_vertical"
+                            android:text="@string/personal_lock_phone"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/normal_text"/>
+
+
+                        <TextView
+                            android:id="@+id/tvPhone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/margin_eight"
+                            android:layout_marginRight="@dimen/small_margin"
+                            android:layout_toRightOf="@id/tvPhoneTitle"
+                            android:drawablePadding="@dimen/margin_eight"
+                            android:drawableRight="@mipmap/mine_right_arrow"
+                            android:gravity="right"
+                            android:singleLine="true"
+                            android:textColor="@color/text_light_gray"
+                            android:textSize="@dimen/normal_text"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/line"
+                            android:layout_alignLeft="@id/tvPhoneTitle"
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/bg"/>
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/rlRealNameCertification"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/normal_height"
+                        android:background="@drawable/selector_gray_click">
+
+                        <ImageView
+                            android:id="@+id/ivRealNameCertification"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/small_margin"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/setting_certification"/>
+
+                        <TextView
+                            android:id="@+id/tvRealNameCertificationTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/normal_height"
+                            android:layout_marginLeft="@dimen/margin_eight"
+                            android:layout_toRightOf="@id/ivRealNameCertification"
+                            android:gravity="center_vertical"
+                            android:text="@string/personal_certification"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/normal_text"/>
+
+                        <TextView
+                            android:id="@+id/tvRealNameCertification"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/small_margin"
+                            android:drawablePadding="@dimen/margin_eight"
+                            android:drawableRight="@mipmap/mine_right_arrow"
+                            android:text="@string/personal_now_certification"
+                            android:textColor="@color/text_light_gray"
+                            android:textSize="@dimen/normal_text"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/line"
+                            android:layout_alignLeft="@id/tvRealNameCertificationTitle"
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/bg"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rlBankCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/normal_height"
+
+                        android:background="@drawable/selector_gray_click">
+
+                        <ImageView
+                            android:id="@+id/ivBankCard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/small_margin"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/setting_bank_card"/>
+
+                        <TextView
+                            android:id="@+id/tvBankCardTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/normal_height"
+                            android:layout_marginLeft="@dimen/margin_eight"
+                            android:layout_toRightOf="@id/ivBankCard"
+                            android:gravity="center_vertical"
+                            android:text="@string/personal_bank_card"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/normal_text"/>
+
+                        <TextView
+                            android:id="@+id/tvBankCard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/small_margin"
+                            android:drawablePadding="@dimen/margin_eight"
+                            android:drawableRight="@mipmap/mine_right_arrow"
+                            android:textColor="@color/text_light_gray"
+                            android:textSize="@dimen/normal_text"/>
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/normal_height"
+                    android:layout_marginLeft="@dimen/small_margin"
+                    android:gravity="center"
+                    android:text="密码管理"
+                    android:textColor="@color/text_light_gray"
+                    android:textSize="@dimen/normal_text"/>
+
+                <RelativeLayout
+                    android:id="@+id/rlLoginPwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/normal_height"
+                    android:background="@drawable/selector_gray_click">
+
+                    <ImageView
+                        android:id="@+id/ivLoginPwd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/small_margin"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/setting_password"/>
+
+                    <TextView
+                        android:id="@+id/tvLoginPwdTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/normal_height"
+                        android:layout_marginLeft="@dimen/margin_eight"
+                        android:layout_toRightOf="@id/ivLoginPwd"
+                        android:gravity="center_vertical"
+                        android:text="@string/personal_login_pwd"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/normal_text"/>
+
+                    <TextView
+                        android:id="@+id/tvLoginPwd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/small_margin"
+                        android:drawablePadding="@dimen/margin_eight"
+                        android:drawableRight="@mipmap/mine_right_arrow"
+                        android:text="@string/password_manager_modify"
+                        android:textColor="@color/text_light_gray"
+                        android:textSize="@dimen/normal_text"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlExchangePwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/normal_height"
+                    android:background="@drawable/selector_gray_click">
+
+                    <ImageView
+                        android:id="@+id/ivExchangePwd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/small_margin"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/personal_exchange_pwd"/>
+
+                    <TextView
+                        android:id="@+id/tvExchangePwdTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/normal_height"
+                        android:layout_marginLeft="@dimen/margin_eight"
+                        android:layout_toRightOf="@id/ivExchangePwd"
+                        android:gravity="center_vertical"
+                        android:text="@string/personal_exchange_pwd"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/normal_text"/>
+
+
+                    <TextView
+                        android:id="@+id/tvExchangePwd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/small_margin"
+                        android:drawablePadding="@dimen/margin_eight"
+                        android:drawableRight="@mipmap/mine_right_arrow"
+                        android:textColor="@color/text_light_gray"
+                        android:textSize="@dimen/normal_text"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/line"
+                        android:layout_alignLeft="@id/tvExchangePwdTitle"
+                        android:background="@color/bg"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlFingerPwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/normal_height"
+                    android:background="@drawable/selector_gray_click">
+
+                    <ImageView
+                        android:id="@+id/ivFingerPwd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/small_margin"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/finger_lock"/>
+
+                    <TextView
+                        android:id="@+id/tvFingerPwdTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/normal_height"
+                        android:layout_marginLeft="@dimen/margin_eight"
+                        android:layout_toRightOf="@id/ivFingerPwd"
+                        android:gravity="center_vertical"
+                        android:text="@string/personal_open_finger_pwd"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/normal_text"/>
+
+                    <ToggleButton
+                        android:id="@+id/toggleBtnFingerPwd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/small_margin"
+                        android:background="@drawable/selector_toggle_button"
+                        android:textOff=""
+                        android:textOn=""/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/line"
+                        android:layout_alignLeft="@id/tvFingerPwdTitle"
+                        android:background="@color/bg"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlGesturePwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/normal_height"
+                    android:background="@drawable/selector_gray_click">
+
+                    <ImageView
+                        android:id="@+id/ivGesturePwd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/small_margin"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/open_gesture"/>
+
+                    <TextView
+                        android:id="@+id/tvGesturePwdTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/normal_height"
+                        android:layout_marginLeft="@dimen/margin_eight"
+                        android:layout_toRightOf="@id/ivGesturePwd"
+                        android:gravity="center_vertical"
+                        android:text="@string/personal_open_gesture_pwd"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/normal_text"/>
+
+                    <ToggleButton
+                        android:id="@+id/toggleBtnPwd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/small_margin"
+                        android:background="@drawable/selector_toggle_button"
+                        android:textOff=""
+                        android:textOn=""/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/line"
+                        android:layout_alignLeft="@id/tvGesturePwdTitle"
+                        android:background="@color/bg"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlModifyGesturePwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/normal_height"
+                    android:layout_marginBottom="@dimen/normal_height"
+                    android:background="@drawable/selector_gray_click">
+
+                    <ImageView
+                        android:id="@+id/ivModifyGesturePwd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/small_margin"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/modify_gesture"/>
+
+                    <TextView
+                        android:id="@+id/tvModifyGesturePwdTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/normal_height"
+                        android:layout_marginLeft="@dimen/margin_eight"
+                        android:layout_toRightOf="@id/ivModifyGesturePwd"
+                        android:gravity="center_vertical"
+                        android:text="@string/personal_modify_gesture_pwd"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/normal_text"/>
+
+                    <TextView
+                        android:id="@+id/tvModifyGesturePwd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/small_margin"
+                        android:drawablePadding="@dimen/margin_eight"
+                        android:drawableRight="@mipmap/mine_right_arrow"
+                        android:gravity="center_vertical"
+                        android:text="@string/password_manager_modify"
+                        android:textColor="@color/text_light_gray"
+                        android:textSize="@dimen/normal_text"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/line"
+                        android:layout_alignLeft="@id/tvModifyGesturePwdTitle"
+                        android:background="@color/bg"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/llBottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/normal_height"
+            android:layout_gravity="bottom"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvExitLogin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/selector_gray_click"
+                android:gravity="center"
+                android:text="@string/personal_exit_login"
+                android:textColor="@color/theme_color"
+                android:textSize="@dimen/normal_text"/>
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

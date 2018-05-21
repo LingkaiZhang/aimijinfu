@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg"
+              android:orientation="vertical"
+              tools:context=".activity.WebViewActivity">
+
+
+    <include
+        android:id="@+id/includeTop"
+        layout="@layout/top_title_with_right_text"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/normal_height"/>
+
+    <FrameLayout
+        android:id="@+id/mainFL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--<WebView-->
+            <!--android:id="@+id/wvHref"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"/>-->
+
+
+        <Button
+            android:id="@+id/btnBottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/normal_height"
+            android:layout_gravity="bottom"
+            android:background="@drawable/selector_theme_button"
+            android:text="@string/invite_friend"
+            android:textColor="@color/white"
+            android:textSize="@dimen/big_text"
+            android:visibility="gone"/>
+
+    </FrameLayout>
+
+    <include
+        android:id="@+id/viewRemind"
+        layout="@layout/include_remind"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <include
+        android:id="@+id/viewLoading"
+        layout="@layout/include_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

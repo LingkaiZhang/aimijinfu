@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_ask_phone"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.yuanin.aimifinance.activity.GetVerifyCodeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/includeTop"
+            layout="@layout/white_top_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <com.yuanin.aimifinance.view.ClearEditText
+            android:id="@+id/etPhone"
+            style="@style/phoneEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginRight="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:background="@mipmap/login_edittext_bg"
+            android:drawableLeft="@mipmap/login_phone"
+            android:drawablePadding="@dimen/margin_eight"
+            android:gravity="center_vertical"
+            android:hint="@string/input_phone_please"
+            android:paddingLeft="@dimen/margin_eight"
+            android:paddingRight="@dimen/margin_eight"
+            android:textColor="@color/text_black"
+            android:textColorHint="@color/text_light_gray"
+            android:textSize="@dimen/normal_text"/>
+
+        <Button
+            android:id="@+id/btnConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/big_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginRight="@dimen/small_margin"
+            android:layout_marginTop="@dimen/big_margin"
+            android:background="@mipmap/login_button_enable"
+            android:text="@string/next"
+            android:textColor="@color/white"
+            android:textSize="@dimen/normal_text"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <!--<TextView
+            android:id="@+id/tvTip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="注册即表示您接受"
+            android:textColor="@color/text_light_gray"
+            android:textSize="@dimen/small_text"/>-->
+
+        <LinearLayout
+            android:id="@+id/llPegistration_protocol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <CheckBox
+                android:id="@+id/cbChoose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/selector_checkbox"
+                android:checked="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_four"
+                android:text="@string/buy_regular_i_agree"
+                android:textColor="@color/text_gray"
+                android:textSize="@dimen/small_text"/>
+
+            <TextView
+                android:id="@+id/tvProtocol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/margin_twelve2"
+                android:paddingTop="@dimen/margin_twelve2"
+                android:text="@string/register_middle"
+                android:textColor="@drawable/selector_login_rigister_click"
+                android:textSize="@dimen/small_text"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

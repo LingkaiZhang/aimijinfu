@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg"
+              android:orientation="vertical"
+              tools:context="com.yuanin.aimifinance.activity.AccountBalanceActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="244dp"
+        android:background="@color/theme_color">
+
+        <include
+            android:id="@+id/includeTop"
+            layout="@layout/top_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/normal_height"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/margin_twelve2">
+
+            <TextView
+                android:id="@+id/tvBalance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zero_zero_zero"
+                android:textColor="@color/white"
+                android:textSize="36sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_twelve2"
+                android:text="@string/balance"
+                android:textColor="@color/white"
+                android:textSize="@dimen/small_text"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:id="@+id/svMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="@dimen/weight"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvWithdrawing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="@string/zero_zero_zero"
+                        android:textColor="@color/theme_color"
+                        android:textSize="@dimen/normal_text"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_four"
+                        android:gravity="center_vertical"
+                        android:text="提现中(元)"
+                        android:textColor="@color/text_light_gray"
+                        android:textSize="@dimen/small_text"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="@dimen/line_one_dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/bg"/>
+
+
+                <LinearLayout
+                    android:layout_width="@dimen/weight"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvIceBalance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="@string/zero_zero_zero"
+                        android:textColor="@color/theme_color"
+                        android:textSize="@dimen/normal_text"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_four"
+                        android:gravity="center_vertical"
+                        android:text="冻结中(元)"
+                        android:textColor="@color/text_light_gray"
+                        android:textSize="@dimen/small_text"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_one_dp"
+                android:background="@color/bg"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="@dimen/weight"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvPayTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="@string/zero_zero_zero"
+                        android:textColor="@color/theme_color"
+                        android:textSize="@dimen/normal_text"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_four"
+                        android:gravity="center_vertical"
+                        android:text="@string/amount_balance_pay"
+                        android:textColor="@color/text_light_gray"
+                        android:textSize="@dimen/small_text"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="@dimen/line_one_dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/bg"/>
+
+
+                <LinearLayout
+                    android:layout_width="@dimen/weight"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvWithdrawTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="@string/zero_zero_zero"
+                        android:textColor="@color/theme_color"
+                        android:textSize="@dimen/normal_text"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_four"
+                        android:gravity="center_vertical"
+                        android:text="@string/amount_balance_total_withdraw"
+                        android:textColor="@color/text_light_gray"
+                        android:textSize="@dimen/small_text"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

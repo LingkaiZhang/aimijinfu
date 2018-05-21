@@ -1,0 +1,95 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="moneyEditText">
+        <item name="android:inputType">numberDecimal</item>
+        <item name="android:maxLength">12</item>
+        <item name="android:digits">1234567890.</item>
+    </style>
+
+    <style name="numberEditText">
+        <item name="android:inputType">number</item>
+        <item name="android:digits">1234567890</item>
+    </style>
+
+    <style name="phoneEditText">
+        <item name="android:inputType">number</item>
+        <item name="android:maxLength">11</item>
+        <item name="android:digits">1234567890</item>
+    </style>
+
+    <style name="passwordEditText">
+        <item name="android:inputType">textPassword</item>
+        <item name="android:maxLength">16</item>
+    </style>
+
+    <style name="registerPasswordEditText">
+        <item name="android:inputType">textPassword</item>
+        <item name="android:maxLength">16</item>
+        <item name="android:digits">@string/password_limit</item>
+    </style>
+
+    <style name="PopupWindowLeftAnimation">
+        <item name="android:windowEnterAnimation">@anim/pop_left_show_anim</item>
+        <item name="android:windowExitAnimation">@anim/pop_left_hidden_anim</item>
+    </style>
+
+    <style name="PopupWindowRightAnimation">
+        <item name="android:windowEnterAnimation">@anim/pop_right_show_anim</item>
+        <item name="android:windowExitAnimation">@anim/pop_right_hidden_anim</item>
+    </style>
+
+    <style name="PopupWindowCenterAnimation">
+        <item name="android:windowEnterAnimation">@anim/pop_center_show_anim</item>
+        <item name="android:windowExitAnimation">@anim/pop_center_hidden_anim</item>
+    </style>
+
+    <!-- 自定义loading dialog -->
+    <style name="loading_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="BottomDialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="@android:windowEnterAnimation">@anim/dialog_enter</item>
+        <item name="@android:windowExitAnimation">@anim/dialog_exit</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="mProgress_circle">
+        <item name="android:indeterminateDrawable">@anim/mine_loading_progress_bar</item>
+        <item name="android:minWidth">20dp</item>
+        <item name="android:minHeight">20dp</item>
+        <item name="android:maxWidth">20dp</item>
+        <item name="android:maxHeight">20dp</item>
+    </style>
+
+    <style name="SignPopupWindowAnimation">
+        <item name="android:windowEnterAnimation">@anim/pop_sign_show_anim</item>
+        <item name="android:windowExitAnimation">@anim/pop_sign_hidden_anim</item>
+    </style>
+
+    <declare-styleable name="SlideDetailsLayout">
+        <!-- float value for indicate the moment of switch panel-->
+        <attr name="percent" format="float"/>
+        <!-- how long the animation keep-->
+        <attr name="duration" format="integer"/>
+        <!-- default panel to show after init-->
+        <attr name="default_panel" format="enum">
+            <enum name="front" value="0"/>
+            <enum name="behind" value="1"/>
+        </attr>
+    </declare-styleable>
+
+</resources>

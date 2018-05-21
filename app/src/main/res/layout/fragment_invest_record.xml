@@ -1,0 +1,73 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg"
+              android:gravity="center_horizontal"
+              android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/small_margin"
+        android:paddingRight="@dimen/small_margin"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/invest_account"
+            android:textColor="@color/text_light_gray"
+            android:textSize="@dimen/small_text"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/invest_money"
+            android:textColor="@color/text_light_gray"
+            android:textSize="@dimen/small_text"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/invest_date"
+            android:textColor="@color/text_light_gray"
+            android:textSize="@dimen/small_text"/>
+    </LinearLayout>
+
+    <com.yuanin.aimifinance.view.XListView
+        android:id="@+id/innerscrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@color/bg"
+        android:dividerHeight="@dimen/line"
+        android:listSelector="@color/transparent"
+        android:paddingLeft="@dimen/small_margin"
+        android:scrollbars="none"
+        android:visibility="gone"/>
+
+    <include
+        android:id="@+id/viewRemind"
+        layout="@layout/include_remind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"/>
+
+    <include
+        android:id="@+id/viewLoading"
+        layout="@layout/include_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"/>
+
+</LinearLayout>

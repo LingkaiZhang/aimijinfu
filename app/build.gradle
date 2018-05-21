@@ -1,0 +1,87 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion '27.0.3'
+
+    defaultConfig {
+        applicationId "com.yuanin.aimifinance"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 515
+        versionName "5.1.5"
+
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a', 'x86', "x86_64", "mips", "mips64","arm64"
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+    }
+
+    allprojects {
+        repositories {
+            maven { url "https://jitpack.io" }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+        }
+
+        debug {
+            minifyEnabled false
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+
+        }
+    }
+    sourceSets {
+        main {
+            res.srcDirs = ['src/main/res', 'src/main/res/anim']
+            java.srcDirs = ['src/main/java']
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api files('libs/eventbus.jar')
+    api files('libs/MobCommons-2016.0707.1708.jar')
+    api files('libs/MobTools-2016.0707.1708.jar')
+    api files('libs/ShareSDK-Core-2.7.4.jar')
+    api files('libs/ShareSDK-QQ-2.7.4.jar')
+    api files('libs/ShareSDK-QZone-2.7.4.jar')
+    api files('libs/ShareSDK-Wechat-2.7.4.jar')
+    api files('libs/ShareSDK-Wechat-Core-2.7.4.jar')
+    api files('libs/ShareSDK-Wechat-Moments-2.7.4.jar')
+    api project(':PushSDK')
+    //noinspection GradleCompatible
+    api 'com.android.support:support-v4:26.1.0'
+    api 'com.ToxicBakery.viewpager.transforms:view-pager-transforms:1.2.32'
+    api 'com.facebook.fresco:fresco:0.9.0'
+    api 'org.xutils:xutils:3.3.32'
+    api 'com.bigkoo:pickerview:2.0.8'
+    api 'com.google.code.gson:gson:2.7'
+    api 'com.android.support:appcompat-v7:26.1.0'
+    api 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.2.5'
+    api 'com.umeng.analytics:analytics:latest.integration'
+    api 'com.android.support:recyclerview-v7:26.1.0'
+    api 'com.mylhyl:acp:1.1.7'
+    api 'com.just.agentweb:agentweb:1.2.1'
+    api 'com.android.support.constraint:constraint-layout:1.0.1'
+    api 'com.github.barteksc:android-pdf-viewer:2.8.2'
+    api 'com.lzy.net:okhttputils:1.6.5'
+}

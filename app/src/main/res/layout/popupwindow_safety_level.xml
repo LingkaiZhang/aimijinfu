@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/popMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/icon_transparent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/redMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:padding="@dimen/small_margin"
+            android:background="@color/white"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                >
+
+                <TextView
+                    android:paddingTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="安全等级"
+                    android:textSize="22sp"
+                    android:textColor="@color/black"
+                    />
+
+                <TextView
+                    android:layout_marginTop="16dp"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:text="  安全等级直接反应借款人的信用等级，每一级为半颗星，最高评级5颗星。星级越高，借款人的信用相对较好。市场有风险，出借需谨慎！当借款人出现违约情形时，出借人将会遭受本息损失。"/>
+
+            </LinearLayout>
+
+
+
+        </FrameLayout>
+
+        <ImageButton
+            android:id="@+id/ivClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/big_margin"
+            android:background="@mipmap/pop_redpacket_close"/>
+    </LinearLayout>
+</LinearLayout>

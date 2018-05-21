@@ -1,0 +1,537 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg"
+              android:orientation="vertical"
+              tools:context="com.yuanin.aimifinance.activity.TotalMoneyActivity">
+
+    <include
+        android:id="@+id/includeTop"
+        layout="@layout/top_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/normal_height"/>
+
+    <ScrollView
+        android:id="@+id/svMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/small_margin"
+                android:background="@color/bg"/>
+
+            <LinearLayout
+                android:id="@+id/llRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_gray_click"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/margin_twelve2"
+                android:paddingTop="@dimen/margin_twelve2">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/small_margin"
+                    android:layout_marginRight="@dimen/small_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/total_regular"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/normal_text"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:src="@mipmap/mine_right_arrow"/>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line"
+                    android:layout_marginTop="@dimen/margin_eight"
+                    android:background="@color/bg"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/margin_eight"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/margin_eight">
+
+                    <LinearLayout
+                        android:layout_width="@dimen/weight"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvRegularAlreadyEarn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/zero"
+                            android:textColor="@color/theme_color"
+                            android:textSize="@dimen/normal_text"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_four"
+                            android:text="@string/total_already"
+                            android:textColor="@color/text_light_gray"
+                            android:textSize="@dimen/small_text"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="@dimen/weight"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/tvRegularInvest"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/zero"
+                            android:textColor="@color/theme_color"
+                            android:textSize="@dimen/normal_text"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_four"
+                            android:text="@string/total_invest"
+                            android:textColor="@color/text_light_gray"
+                            android:textSize="@dimen/small_text"/>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="@dimen/weight"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvRegularWaitEarn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/zero"
+                            android:textColor="@color/theme_color"
+                            android:textSize="@dimen/normal_text"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_four"
+                            android:text="@string/total_wait"
+                            android:textColor="@color/text_light_gray"
+                            android:textSize="@dimen/small_text"/>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_eight"
+                android:background="@color/bg"/>
+
+
+            <LinearLayout
+                android:id="@+id/llLittleItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_gray_click"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/margin_twelve2"
+                android:paddingTop="@dimen/margin_twelve2">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/small_margin"
+                    android:layout_marginRight="@dimen/small_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/total_little_item"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/normal_text"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:src="@mipmap/mine_right_arrow"/>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line"
+                    android:layout_marginTop="@dimen/margin_eight"
+                    android:background="@color/bg"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/margin_eight"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/margin_eight">
+
+                    <LinearLayout
+                        android:layout_width="@dimen/weight"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvLittleItemAlreadyEarn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/zero"
+                            android:textColor="@color/theme_color"
+                            android:textSize="@dimen/normal_text"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_four"
+                            android:text="@string/total_already"
+                            android:textColor="@color/text_light_gray"
+                            android:textSize="@dimen/small_text"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="@dimen/weight"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/tvLittleItemInvest"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/zero"
+                            android:textColor="@color/theme_color"
+                            android:textSize="@dimen/normal_text"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_four"
+                            android:text="@string/total_invest"
+                            android:textColor="@color/text_light_gray"
+                            android:textSize="@dimen/small_text"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="@dimen/weight"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvLittleItemWaitEarn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/zero"
+                            android:textColor="@color/theme_color"
+                            android:textSize="@dimen/normal_text"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_four"
+                            android:text="@string/total_wait"
+                            android:textColor="@color/text_light_gray"
+                            android:textSize="@dimen/small_text"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_eight"
+                android:background="@color/bg"/>
+
+
+            <LinearLayout
+                android:id="@+id/llBonus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/margin_twelve2"
+                android:paddingTop="@dimen/margin_twelve2">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/small_margin"
+                    android:text="奖励金额"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/normal_text"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line"
+                    android:layout_marginTop="@dimen/margin_eight"
+                    android:background="@color/bg"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/margin_eight"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/margin_eight">
+
+                    <LinearLayout
+                        android:layout_width="@dimen/weight"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/tvAlreadyBonus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/zero"
+                            android:textColor="@color/theme_color"
+                            android:textSize="@dimen/normal_text"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_four"
+                            android:text="已收奖励(元)"
+                            android:textColor="@color/text_light_gray"
+                            android:textSize="@dimen/small_text"/>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="@dimen/weight"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvBonus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/zero"
+                            android:textColor="@color/theme_color"
+                            android:textSize="@dimen/normal_text"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_four"
+                            android:text="奖励金额(元)"
+                            android:textColor="@color/text_light_gray"
+                            android:textSize="@dimen/small_text"/>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="@dimen/weight"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvWaitBonus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/zero"
+                            android:textColor="@color/theme_color"
+                            android:textSize="@dimen/normal_text"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_four"
+                            android:text="待收奖励(元)"
+                            android:textColor="@color/text_light_gray"
+                            android:textSize="@dimen/small_text"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_eight"
+                android:background="@color/bg"/>
+
+
+            <LinearLayout
+                android:id="@+id/llBalance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/margin_twelve2"
+                android:paddingTop="@dimen/margin_twelve2">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/small_margin"
+                    android:text="@string/total_balance"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/normal_text"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line"
+                    android:layout_marginTop="@dimen/margin_eight"
+                    android:background="@color/bg"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/margin_eight"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/margin_eight">
+
+                    <LinearLayout
+                        android:layout_width="@dimen/weight"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvIceBalance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/zero"
+                            android:textColor="@color/theme_color"
+                            android:textSize="@dimen/normal_text"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_four"
+                            android:text="冻结中(元)"
+                            android:textColor="@color/text_light_gray"
+                            android:textSize="@dimen/small_text"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="@dimen/weight"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/tvBalance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/zero"
+                            android:textColor="@color/theme_color"
+                            android:textSize="@dimen/normal_text"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_four"
+                            android:text="@string/balance"
+                            android:textColor="@color/text_light_gray"
+                            android:textSize="@dimen/small_text"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="@dimen/weight"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvCrash"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/zero"
+                            android:textColor="@color/theme_color"
+                            android:textSize="@dimen/normal_text"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_four"
+                            android:text="提现中(元)"
+                            android:textColor="@color/text_light_gray"
+                            android:textSize="@dimen/small_text"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <include
+        android:id="@+id/viewRemind"
+        layout="@layout/include_remind"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <include
+        android:id="@+id/viewLoading"
+        layout="@layout/include_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

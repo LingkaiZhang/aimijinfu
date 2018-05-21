@@ -1,0 +1,203 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg"
+              android:orientation="vertical"
+              tools:context="com.yuanin.aimifinance.activity.OpenAccountActivity">
+
+    <include
+        android:id="@+id/includeTop"
+        layout="@layout/top_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/normal_height"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_twelve2"
+                android:background="@color/white"
+                android:lineSpacingExtra="@dimen/margin_eight"
+                android:padding="@dimen/small_margin"
+                android:text="请确认您的姓名和证件信息真实有效，开通存管账户之后无法修改"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/normal_text"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_eight"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/normal_height"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/small_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="真实姓名　"
+                        android:textColor="@color/text_gray"
+                        android:textSize="@dimen/normal_text"/>
+
+                    <EditText
+                        android:id="@+id/etName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:hint="请输入真实姓名"
+                        android:paddingLeft="@dimen/small_margin"
+                        android:textColor="@color/text_black"
+                        android:textColorHint="@color/text_light_gray"
+                        android:textSize="@dimen/normal_text"/>
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line"
+                    android:layout_marginLeft="@dimen/small_margin"
+                    android:background="@color/bg"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/normal_height"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/small_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="身份证号　"
+                        android:textColor="@color/text_gray"
+                        android:textSize="@dimen/normal_text"/>
+
+                    <EditText
+                        android:id="@+id/etIdCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:digits="1234567890Xx"
+                        android:gravity="center_vertical"
+                        android:hint="请输入身份证号"
+                        android:maxLength="18"
+                        android:paddingLeft="@dimen/small_margin"
+                        android:textColor="@color/text_black"
+                        android:textColorHint="@color/text_light_gray"
+                        android:textSize="@dimen/normal_text"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_eight"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/normal_height"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/small_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="银行卡号　"
+                        android:textColor="@color/text_gray"
+                        android:textSize="@dimen/normal_text"/>
+
+                    <EditText
+                        android:id="@+id/etBankcard"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:hint="请输入银行卡号"
+                        android:inputType="number"
+                        android:maxLength="21"
+                        android:paddingLeft="@dimen/small_margin"
+                        android:textColor="@color/text_black"
+                        android:textColorHint="@color/text_light_gray"
+                        android:textSize="@dimen/normal_text"/>
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line"
+                    android:layout_marginLeft="@dimen/small_margin"
+                    android:background="@color/bg"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/normal_height"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/small_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="预留手机号"
+                        android:textColor="@color/text_gray"
+                        android:textSize="@dimen/normal_text"/>
+
+                    <EditText
+                        android:id="@+id/etPhone"
+                        style="@style/phoneEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:hint="请输入银行预留手机号"
+                        android:paddingLeft="@dimen/small_margin"
+                        android:textColor="@color/text_black"
+                        android:textColorHint="@color/text_light_gray"
+                        android:textSize="@dimen/normal_text"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/big_margin"
+                android:layout_marginLeft="@dimen/small_margin"
+                android:layout_marginRight="@dimen/small_margin"
+                android:layout_marginTop="@dimen/big_margin"
+                android:background="@drawable/selector_theme_corner_button"
+                android:text="@string/confirm"
+                android:textColor="@color/white"
+                android:textSize="@dimen/normal_text"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/hk_open_account_bottom"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mcxtzhang.swipemenulib.SwipeMenuLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    app:ios="false"
+    app:leftSwipe="true"
+    app:swipeEnable="true">
+
+
+    <LinearLayout
+        android:id="@+id/llMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_gray_click"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/margin_eight">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/margin_eight">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="自动出借"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/normal_text"/>
+
+            <ToggleButton
+                android:id="@+id/toggleBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/small_margin"
+                android:background="@drawable/selector_toggle_button"
+                android:textOff=""
+                android:textOn=""/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line"
+            android:layout_marginTop="@dimen/margin_eight"
+            android:background="@color/bg"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/margin_four"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="@dimen/weight"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_four"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/auto_time"
+                        android:textColor="@color/text_gray"
+                        android:textSize="@dimen/small_text"/>
+
+                    <TextView
+                        android:id="@+id/tvTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_eight"
+                        android:text="1个月~12个月"
+                        android:textColor="@color/text_gray"
+                        android:textSize="@dimen/small_text"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_four"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/auto_type"
+                        android:textColor="@color/text_gray"
+                        android:textSize="@dimen/small_text"/>
+
+                    <TextView
+                        android:id="@+id/tvType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_eight"
+                        android:text="单笔出借固定金额"
+                        android:textColor="@color/text_gray"
+                        android:textSize="@dimen/small_text"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="@dimen/weight"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/big_margin"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_four"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/auto_rate"
+                        android:textColor="@color/text_gray"
+                        android:textSize="@dimen/small_text"/>
+
+                    <TextView
+                        android:id="@+id/tvRate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_eight"
+                        android:text="9%~13%"
+                        android:textColor="@color/theme_color"
+                        android:textSize="@dimen/small_text"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llMoney"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_four"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/auto_money"
+                        android:textColor="@color/text_gray"
+                        android:textSize="@dimen/small_text"/>
+
+                    <TextView
+                        android:id="@+id/tvMoney"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_eight"
+                        android:text="10000元"
+                        android:textColor="@color/theme_color"
+                        android:textSize="@dimen/small_text"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/margin_four"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="　　红包:"
+                android:textColor="@color/text_gray"
+                android:textSize="@dimen/small_text"/>
+
+            <TextView
+                android:id="@+id/tvRedPacket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_eight"
+                android:text="不使用"
+                android:textColor="@color/text_gray"
+                android:textSize="@dimen/small_text"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/selector_graycancel_line_click"
+        android:text="删除"
+        android:textColor="@color/white"
+        android:textSize="@dimen/normal_text"/>
+</com.mcxtzhang.swipemenulib.SwipeMenuLayout>

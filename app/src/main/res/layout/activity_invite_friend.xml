@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@id/llMain"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical"
+              tools:context="com.yuanin.aimifinance.activity.InviteFriendActivity">
+
+    <include
+        android:id="@+id/includeTop"
+        layout="@layout/top_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/normal_height"/>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.yuanin.aimifinance.view.StickyNavLayout
+            android:id="@+id/snMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="40dp"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/topview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/ivTop"
+                    android:layout_width="match_parent"
+                    android:layout_height="326dp"
+                    android:layout_gravity="center_horizontal"
+                    app:actualImageScaleType="fitCenter"
+                    app:fadeDuration="300"
+                    app:placeholderImage="@mipmap/image_loading"
+                    app:placeholderImageScaleType="fitCenter"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line"
+                android:background="@color/bg"/>
+
+            <TextView
+                android:id="@+id/mIndicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/margin_twelve2"
+                android:text="@string/my_invite_friend"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/small_text"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line"
+                android:background="@color/bg"/>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vpProductDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/white"
+                android:flipInterval="30"
+                android:persistentDrawingCache="animation"/>
+
+        </com.yuanin.aimifinance.view.StickyNavLayout>
+
+
+        <Button
+            android:id="@+id/btnInvite"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/normal_height"
+            android:layout_gravity="bottom"
+            android:background="@drawable/selector_theme_button"
+            android:text="@string/invite_friend"
+            android:textColor="@color/white"
+            android:textSize="@dimen/normal_text"/>
+    </FrameLayout>
+</LinearLayout>

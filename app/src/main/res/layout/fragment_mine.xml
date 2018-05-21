@@ -1,0 +1,609 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/llMain"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@color/bg"
+              tools:context="com.yuanin.aimifinance.fragment.MineFragment">
+
+    <RelativeLayout
+        android:id="@+id/rlLogin"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@color/theme_color">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@mipmap/mine_top_bg">
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <RelativeLayout
+                        android:id="@+id/rlEarnMoney"
+                        android:layout_width="@dimen/weight"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/selector_mine_middle_click">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvEarnMoney"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/zero_zero_zero"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/normal_text"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/earn_money"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/small_text"/>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/mine_white_line"/>
+
+                    <RelativeLayout
+                        android:id="@+id/rlBalance"
+                        android:layout_width="@dimen/weight"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/selector_mine_middle_click">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvBalance"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/zero_zero_zero"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/normal_text"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/balance"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/small_text"/>
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </FrameLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_four"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:id="@+id/tvTotalMoney"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/zero_zero_zero"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/white"
+                    android:textSize="40sp"/>
+
+                <ImageView
+                    android:id="@+id/isShowBalance"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/tvTotalMoney"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/show_total_money" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tvTotalMoneyTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_eight"
+                android:drawablePadding="@dimen/margin_four"
+                android:text="@string/mine_total_money"
+                android:textColor="@drawable/selector_text_mine_total_click"
+                android:textSize="14sp"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlNoLogin"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/theme_color"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@mipmap/mine_top_bg"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_mine_login_register"
+                android:gravity="center"
+                android:text="@string/mine_register"
+                android:textColor="@color/white"
+                android:textSize="@dimen/normal_text"/>
+
+            <TextView
+                android:id="@+id/tvLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_margin"
+                android:background="@drawable/selector_mine_login_register"
+                android:gravity="center"
+                android:text="@string/mine_login"
+                android:textColor="@color/white"
+                android:textSize="@dimen/normal_text"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/white"
+        android:baselineAligned="false"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/btnPay"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_gray_click"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/mine_pay"
+                android:drawablePadding="@dimen/margin_eight"
+                android:gravity="center"
+                android:text="@string/pay"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/big_text"/>
+        </LinearLayout>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/mine_gray_line"/>
+
+
+        <LinearLayout
+            android:id="@+id/btnWithdraw"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_gray_click"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/mine_withdraw"
+                android:drawablePadding="@dimen/margin_eight"
+                android:gravity="center"
+                android:text="@string/withdraw"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/big_text"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tvRemind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fcf08a"
+        android:paddingBottom="@dimen/margin_eight"
+        android:paddingLeft="@dimen/small_margin"
+        android:paddingTop="@dimen/margin_eight"
+        android:text="您的出借账号资料还未完善，立即去完善。"
+        android:textColor="@color/theme_color"
+        android:textSize="@dimen/small_text"
+        android:visibility="gone"/>
+
+    <View
+        android:id="@+id/viewSpace"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_six"
+        android:background="@color/bg"/>
+
+    <RelativeLayout
+        android:id="@+id/rlRegular"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/normal_height"
+        android:background="@drawable/selector_gray_click"
+        android:paddingLeft="@dimen/small_margin"
+        android:paddingRight="@dimen/small_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/mine_regular"
+            android:drawablePadding="@dimen/margin_eight"
+            android:gravity="center"
+            android:text="@string/mine_regular"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/normal_text"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvRegularMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="立即出借"
+                android:textColor="@color/text_light_gray"
+                android:textSize="@dimen/small_text"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_eight"
+                android:src="@mipmap/mine_right_arrow"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_one_dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/bg"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rlLittleItem"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/normal_height"
+        android:background="@drawable/selector_gray_click"
+        android:paddingLeft="@dimen/small_margin"
+        android:paddingRight="@dimen/small_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/mine_little_item"
+            android:drawablePadding="@dimen/margin_eight"
+            android:gravity="center"
+            android:text="@string/mine_little_item"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/normal_text"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvLittleItemMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/small_margin"
+                android:text="立即出借"
+                android:textColor="@color/text_light_gray"
+                android:textSize="@dimen/small_text"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_eight"
+                android:src="@mipmap/mine_right_arrow"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlRedPackets"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/normal_height"
+        android:layout_marginTop="@dimen/margin_six"
+        android:background="@drawable/selector_gray_click"
+        android:paddingLeft="@dimen/small_margin"
+        android:paddingRight="@dimen/small_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/mine_redpacket"
+            android:drawablePadding="@dimen/margin_eight"
+            android:gravity="center"
+            android:text="@string/mine_my_redpackets"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/normal_text"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvRedTip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/text_light_gray"
+                android:textSize="@dimen/small_text"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_eight"
+                android:src="@mipmap/mine_right_arrow"/>
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_one_dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/bg"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlFundsWater"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/normal_height"
+        android:background="@drawable/selector_gray_click"
+        android:paddingLeft="@dimen/small_margin"
+        android:paddingRight="@dimen/small_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/mine_funds_water"
+            android:drawablePadding="@dimen/margin_eight"
+            android:gravity="center"
+            android:text="@string/mine_money_water"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/normal_text"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/mine_right_arrow"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_one_dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/bg"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlQuestionnaire"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/normal_height"
+        android:background="@drawable/selector_gray_click"
+        android:paddingLeft="@dimen/small_margin"
+        android:paddingRight="@dimen/small_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/mine_question_naire"
+            android:drawablePadding="@dimen/margin_eight"
+            android:gravity="center"
+            android:text="@string/mine_questionnaire"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/normal_text"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/mine_right_arrow"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_one_dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/bg"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/llEntrust"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/normal_height"
+        android:background="@drawable/selector_gray_click"
+        android:paddingLeft="@dimen/small_margin"
+        android:paddingRight="@dimen/small_margin"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/mine_time"
+            android:drawablePadding="@dimen/margin_eight"
+            android:gravity="center"
+            android:text="@string/mine_auto_to_buy"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/normal_text"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/mine_right_arrow"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_one_dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/bg"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rlInviteFriend"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/normal_height"
+        android:background="@drawable/selector_gray_click"
+        android:paddingLeft="@dimen/small_margin"
+        android:paddingRight="@dimen/small_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/mine_invite"
+            android:drawablePadding="@dimen/margin_eight"
+            android:gravity="center"
+            android:text="@string/mine_invite_friend"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/normal_text"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/mine_right_arrow"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_one_dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/bg"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlMyBorrow"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/normal_height"
+        android:background="@drawable/selector_gray_click"
+        android:paddingLeft="@dimen/small_margin"
+        android:paddingRight="@dimen/small_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/my_borrow"
+            android:drawablePadding="@dimen/margin_eight"
+            android:gravity="center"
+            android:text="我要借款"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/normal_text"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/mine_right_arrow"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_one_dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/bg"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/llAboutWe"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/normal_height"
+        android:layout_marginBottom="@dimen/small_margin"
+        android:background="@drawable/selector_gray_click"
+        android:paddingLeft="@dimen/small_margin"
+        android:paddingRight="@dimen/small_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/mine_about"
+            android:drawablePadding="@dimen/margin_eight"
+            android:gravity="center"
+            android:text="@string/mine_about_aimi"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/normal_text"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/mine_right_arrow"/>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg"
+              android:orientation="vertical"
+              tools:context="com.yuanin.aimifinance.activity.FeedbackActivity">
+
+    <include
+        android:id="@+id/includeTop"
+        layout="@layout/top_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/normal_height"/>
+
+
+    <EditText
+        android:id="@+id/etContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_margin"
+        android:background="@color/white"
+        android:gravity="top"
+        android:hint="@string/feedback_remind"
+        android:lines="8"
+        android:padding="@dimen/small_margin"
+        android:textColor="@color/text_black"
+        android:textColorHint="@color/text_light_gray"
+        android:textSize="@dimen/normal_text"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/small_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/feedback_tips"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/small_text"/>
+
+
+        <TextView
+            android:id="@+id/tvCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/small_margin"
+            android:text="@string/er_bai_text"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/small_text"/>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/big_margin"
+        android:layout_marginLeft="@dimen/small_margin"
+        android:layout_marginRight="@dimen/small_margin"
+        android:layout_marginTop="@dimen/big_margin"
+        android:background="@drawable/selector_theme_corner_button"
+        android:text="@string/feedback_submit"
+        android:textColor="@color/white"
+        android:textSize="@dimen/normal_text"/>
+</LinearLayout>

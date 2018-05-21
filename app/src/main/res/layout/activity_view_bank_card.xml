@@ -1,0 +1,86 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg"
+              android:orientation="vertical"
+              tools:context="com.yuanin.aimifinance.activity.ViewBankCardActivity">
+
+    <include
+        android:id="@+id/includeTop"
+        layout="@layout/top_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/normal_height"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tvHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/small_margin"
+            android:drawableLeft="@mipmap/auto_wenhao"
+            android:drawablePadding="@dimen/margin_four"
+            android:paddingBottom="@dimen/margin_twelve2"
+            android:paddingTop="@dimen/margin_twelve2"
+            android:text="@string/view_bank_help"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/small_text"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:id="@+id/rlAddBankCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/small_margin"
+        android:layout_marginRight="@dimen/small_margin"
+        android:background="@drawable/selector_bank_card_add"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawablePadding="@dimen/small_margin"
+            android:drawableTop="@mipmap/bank_card_add"
+            android:text="@string/view_bank_binding"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/normal_text"/>
+
+    </RelativeLayout>
+
+
+    <com.yuanin.aimifinance.view.MyListView
+        android:layout_marginTop="10dp"
+        android:id="@+id/lvBankCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/small_margin"
+        android:layout_marginRight="@dimen/small_margin"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@null"
+        android:dividerHeight="@dimen/margin_eight"
+        android:listSelector="@color/transparent"
+        android:scrollbars="none"
+        android:visibility="gone"/>
+
+
+    <include
+        android:id="@+id/viewRemind"
+        layout="@layout/include_remind"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <include
+        android:id="@+id/viewLoading"
+        layout="@layout/include_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

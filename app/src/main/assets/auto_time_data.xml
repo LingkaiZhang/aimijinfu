@@ -1,0 +1,107 @@
+<root>
+
+ <one name="不限">
+	<two name="不限">
+      
+    </two>
+	<two name="1">
+      
+    </two>
+    <two name="3">
+      
+    </two>
+	<two name="6">
+      
+    </two>
+	<two name="12">
+      
+    </two>
+	<two name="18">
+      
+    </two>
+	<two name="24">
+      
+    </two>
+  </one>
+ <one name="1">
+	<two name="1">
+      
+    </two>
+    <two name="3">
+      
+    </two>
+	<two name="6">
+      
+    </two>
+	<two name="12">
+      
+    </two>
+	<two name="18">
+      
+    </two>
+	<two name="24">
+      
+    </two>
+  </one>
+
+  <one name="3">
+    <two name="3">
+      
+    </two>
+	<two name="6">
+      
+    </two>
+	<two name="12">
+      
+    </two>
+	<two name="18">
+      
+    </two>
+	<two name="24">
+      
+    </two>
+  </one>
+
+   <one name="6">
+	<two name="6">
+      
+    </two>
+	<two name="12">
+      
+    </two>
+	<two name="18">
+      
+    </two>
+	<two name="24">
+      
+    </two>
+  </one>
+
+   <one name="12">
+	<two name="12">
+      
+    </two>
+	<two name="18">
+      
+    </two>
+	<two name="24">
+      
+    </two>
+  </one>
+  <one name="18">
+
+	<two name="18">
+      
+    </two>
+	<two name="24">
+      
+    </two>
+  </one>
+
+  <one name="24">
+	<two name="24">
+      
+    </two>
+  </one>
+  
+</root>

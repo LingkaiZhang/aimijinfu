@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_auto_invest"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical"
+    tools:context="com.yuanin.aimifinance.activity.AddAutoInvestActivity">
+
+    <include
+        android:id="@+id/includeTop"
+        layout="@layout/top_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/normal_height"/>
+
+
+    <FrameLayout
+        android:id="@+id/flMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/normal_height"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_eight"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/tvTips"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingBottom="@dimen/margin_twelve2"
+                    android:paddingLeft="@dimen/small_margin"
+                    android:paddingRight="@dimen/small_margin"
+                    android:paddingTop="@dimen/margin_twelve2"
+                    android:text="设置投资条件，充值或回款2小时后的资金，系统将进行自动投资"
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/small_text"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_eight"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/normal_height"
+                        >
+
+                        <TextView
+                            android:id="@+id/tvNameTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/small_margin"
+                            android:text="方案名称"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/normal_text"/>
+
+                        <EditText
+                            android:id="@+id/etName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/normal_height"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/small_margin"
+                            android:layout_marginRight="@dimen/small_margin"
+                            android:layout_toRightOf="@id/tvNameTitle"
+                            android:background="@null"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:gravity="right|center"
+                            android:maxLength="10"
+                            android:singleLine="true"
+                            android:text="我的自动投资方案"
+                            android:textColor="@color/text_black"
+                            android:textColorHint="@color/text_light_gray"
+                            android:textSize="@dimen/normal_text"/>
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/line"
+                        android:layout_marginLeft="@dimen/small_margin"
+                        android:background="@color/bg"/>
+
+                    <RelativeLayout
+                        android:id="@+id/rlRate"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/normal_height"
+                        android:background="@drawable/selector_gray_click">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/small_margin"
+                            android:text="@string/Expected_annualized_rate_of_return"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/normal_text"/>
+
+                        <TextView
+                            android:id="@+id/tvRate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/small_margin"
+                            android:text="不限"
+                            android:textColor="@color/theme_color"
+                            android:textSize="@dimen/normal_text"/>
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/line"
+                        android:layout_marginLeft="@dimen/small_margin"
+                        android:background="@color/bg"/>
+
+                    <RelativeLayout
+                        android:id="@+id/rlTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/normal_height"
+                        android:background="@drawable/selector_gray_click">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/small_margin"
+                            android:text="期限"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/normal_text"/>
+
+                        <TextView
+                            android:id="@+id/tvTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/small_margin"
+                            android:text="不限"
+                            android:textColor="@color/theme_color"
+                            android:textSize="@dimen/normal_text"/>
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/margin_eight"
+                        android:background="@color/bg"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/normal_height"
+                        android:layout_marginLeft="@dimen/small_margin"
+                        android:gravity="center_vertical"
+                        android:text="出借金额"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/normal_text"/>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/line"
+                        android:layout_marginLeft="@dimen/small_margin"
+                        android:background="@color/bg"/>
+
+                    <RelativeLayout
+                        android:id="@+id/rlAll"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/normal_height">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/small_margin"
+                            android:text="账户余额全部出借"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/normal_text"/>
+
+
+                        <CheckBox
+                            android:id="@+id/cbAll"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/small_margin"
+                            android:button="@drawable/selector_auto_checkbox"
+                            android:checked="true"
+                            android:clickable="false"/>
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/line"
+                        android:layout_marginLeft="@dimen/small_margin"
+                        android:background="@color/bg"/>
+
+                    <RelativeLayout
+                        android:id="@+id/rlSingle"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/normal_height">
+
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/small_margin"
+                            android:text="固定单笔投资金额"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/normal_text"/>
+
+                        <CheckBox
+                            android:id="@+id/cbSingle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBaseline="@+id/textView"
+                            android:layout_alignBottom="@+id/textView"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginRight="15dp"
+                            android:button="@drawable/selector_auto_checkbox"
+                            android:checked="false"
+                            android:clickable="false"/>
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/rlSingleNum"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/normal_height"
+                        android:visibility="gone">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/line"
+                            android:layout_marginLeft="@dimen/small_margin"
+                            android:background="@color/bg"/>
+
+                        <TextView
+                            android:id="@+id/tvSingleTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/small_margin"
+                            android:text="单笔投资金额(元)"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/normal_text"/>
+
+                        <EditText
+                            android:id="@+id/etMoney"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/normal_height"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/small_margin"
+                            android:layout_marginRight="@dimen/small_margin"
+                            android:layout_toRightOf="@id/tvSingleTitle"
+                            android:background="@null"
+                            android:gravity="right|center"
+                            android:hint="最小委托金额1000元"
+                            android:inputType="number"
+                            android:maxLength="7"
+                            android:singleLine="true"
+                            android:textColor="@color/text_black"
+                            android:textColorHint="@color/text_light_gray"
+                            android:textSize="@dimen/normal_text"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/normal_height">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/line"
+                            android:layout_marginLeft="@dimen/small_margin"
+                            android:background="@color/bg"/>
+
+                        <TextView
+                            android:id="@+id/tvUseRedPacket"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/small_margin"
+                            android:drawablePadding="@dimen/margin_four"
+                            android:drawableRight="@mipmap/auto_wenhao"
+                            android:gravity="center_vertical"
+                            android:text="使用红包"
+                            android:textColor="@drawable/selector_text_black_white_click"
+                            android:textSize="@dimen/normal_text"/>
+
+
+                        <ToggleButton
+                            android:id="@+id/toggleUse"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/small_margin"
+                            android:background="@drawable/selector_toggle_button"
+                            android:checked="true"
+                            android:textOff=""
+                            android:textOn=""/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/small_margin"
+                    android:layout_marginRight="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/margin_four">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/entrust_year_agree"
+                        android:textColor="@color/text_gray"
+                        android:textSize="@dimen/small_text"/>
+
+                    <TextView
+                        android:id="@+id/tvProtocol1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/margin_twelve2"
+                        android:paddingTop="@dimen/margin_twelve2"
+                        android:text="@string/auto_xieyi1"
+                        android:textColor="@drawable/selector_login_rigister_click"
+                        android:textSize="@dimen/small_text"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/entrust_and"
+                        android:textColor="@color/text_gray"
+                        android:textSize="@dimen/small_text"/>
+
+                    <TextView
+                        android:id="@+id/tvProtocol2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/margin_twelve2"
+                        android:paddingTop="@dimen/margin_twelve2"
+                        android:text="@string/auto_xieyi2"
+                        android:textColor="@drawable/selector_login_rigister_click"
+                        android:textSize="@dimen/small_text"/>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/btnConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/normal_height"
+            android:layout_gravity="bottom"
+            android:background="@drawable/selector_theme_button"
+            android:text="@string/save_entrust"
+            android:textColor="@color/white"
+            android:textSize="@dimen/big_text"/>
+    </FrameLayout>
+
+
+</LinearLayout>

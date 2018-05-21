@@ -1,0 +1,96 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg"
+              android:orientation="vertical"
+    >
+
+    <include
+        android:id="@+id/includeTop"
+        layout="@layout/top_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/normal_height"/>
+
+    <FrameLayout
+        android:id="@+id/flMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <com.yuanin.aimifinance.view.XListView
+            android:id="@+id/lvProduct"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="@color/transparent"
+            android:divider="@null"
+            android:listSelector="@color/transparent"
+            android:scrollbars="none"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line"
+                android:background="@color/bg"/>
+
+            <TextView
+                android:id="@+id/tvRegular"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_forty_four"
+                android:background="@color/white"
+                android:drawableLeft="@mipmap/finance_regular"
+                android:drawablePadding="@dimen/margin_six"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/small_margin"
+                android:text="@string/product_regular"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/big_text"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/tvLittle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_forty_four"
+                android:background="@color/white"
+                android:drawableLeft="@mipmap/finance_good"
+                android:drawablePadding="@dimen/margin_six"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/small_margin"
+                android:text="@string/product_good"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/big_text"
+                android:visibility="gone"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_one_dp"
+                android:background="@color/bg"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivToTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|bottom"
+            android:layout_margin="@dimen/small_margin"
+            android:src="@mipmap/finance_to_top"
+            android:visibility="gone"/>
+    </FrameLayout>
+
+
+    <include
+        android:id="@+id/viewRemind"
+        layout="@layout/include_remind"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <include
+        android:id="@+id/viewLoading"
+        layout="@layout/include_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

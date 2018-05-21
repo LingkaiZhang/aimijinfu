@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/llRoot"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg"
+              android:orientation="vertical"
+              tools:context="com.yuanin.aimifinance.fragment.MineFragment">
+
+    <RelativeLayout
+        android:id="@+id/rlMine"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/theme_color">
+
+        <ImageView
+            android:id="@+id/ivMine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingLeft="@dimen/small_margin"
+            android:paddingRight="@dimen/small_margin"
+            android:src="@drawable/selector_mine_me"/>
+
+        <ProgressBar
+            android:id="@+id/pbLoading"
+            style="@style/mProgress_circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/small_margin"
+            android:indeterminateDuration="1200"
+            android:visibility="visible"/>
+    </RelativeLayout>
+
+    <com.yuanin.aimifinance.view.XMineScrollView
+        android:id="@+id/refresh_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg"
+        android:fillViewport="true"
+        android:scrollbars="none"/>
+</LinearLayout>

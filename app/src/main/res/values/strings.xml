@@ -1,0 +1,462 @@
+<resources>
+    <string name="app_name">爱米金服</string>
+
+    <string name="title_activity_find_password">FindPasswordActivity</string>
+    <string name="title_activity_certification">CertificationActivity</string>
+    <string name="title_activity_home_page">HomePageActivity</string>
+    <string name="index">首页</string>
+    <string name="finance">产品</string>
+    <string name="mine">我的</string>
+
+    <string name="certification">1.实名认证</string>
+    <string name="set_pwd_and_shouquan">2.交易密码及授权</string>
+    <string name="binding_bank_card">3.绑定银行卡</string>
+    <string name="confirm">确定</string>
+    <string name="submit">提交</string>
+    <string name="next">下一步</string>
+    <string name="setting_now">立即去设置</string>
+    <!--<string name="go_sina_set">去新浪验证</string>-->
+    <string name="input_name">真实姓名</string>
+    <string name="input_id_card">身份证号码</string>
+    <string name="star">*</string>
+    <string name="register_remind">请务必使用真实的身份信息。</string>
+    <string name="input_phone">手机号</string>
+    <string name="input_phone_please">请输入手机号</string>
+    <string name="get_code">获取验证码</string>
+    <string name="input_code">手机验证码</string>
+    <string name="input_login_password">登录密码</string>
+    <string name="input_right_login_password">6~16位数字、字母组合</string>
+    <string name="login">登录</string>
+    <string name="login_problem">登录遇到问题?</string>
+    <string name="register_middle">《爱米金服服务协议》</string>
+    <string name="balance">可用余额(元)</string>
+    <string name="earn_money">累计收益(元)</string>
+    <string name="pay">充值</string>
+    <string name="withdraw">提现</string>
+    <string name="red_packets_money">现金红包</string>
+    <string name="zero">0</string>
+    <string name="zero_zero_zero">0.00</string>
+    <string name="add_zero_zero_zero">+0.00</string>
+
+    <string name="AddBankcard">绑定银行卡</string>
+    <string name="Certification">实名认证</string>
+    <string name="SetSinaPwd">设置交易密码及绑定</string>
+    <string name="FindPassword">找回密码</string>
+    <string name="Register">注册</string>
+    <string name="set_login_pwd">设置登录密码</string>
+    <string name="PersonalSettings">个人设置</string>
+    <string name="double_click">再按一次将退出爱米金服</string>
+    <string name="more_help_center">帮助中心</string>
+    <string name="more_contact_server">联系客服</string>
+    <string name="more_buy_protocol">出借协议</string>
+    <string name="index_data_report">平台数据</string>
+    <string name="more_entrust_protocol">委托协议</string>
+    <string name="more_register_protocol">爱米金服服务协议</string>
+    <string name="more_safe">信息披露</string>
+    <string name="finance_product_detail">项目详情</string>
+    <string name="finance_product">安全审核</string>
+    <string name="finance_product_plan">还款计划</string>
+    <string name="more_rule">邀请列表</string>
+    <string name="more_add_bank">绑卡须知</string>
+    <string name="login_register">注　册</string>
+
+    <!--加载头部-->
+    <string name="loading">加载中...</string>
+    <!--股神计划-->
+    <string name="title_activity_personal_settings">PersonalSettingsActivity</string>
+
+    <!--个人信息设置-->
+    <string name="personal_lock_phone">注册手机</string>
+    <string name="personal_certification">实名认证</string>
+    <string name="personal_bank_card">我的银行卡</string>
+    <string name="personal_authorization">代扣授权</string>
+    <string name="personal_exchange_pwd">交易密码</string>
+    <string name="personal_login_pwd">登录密码</string>
+    <string name="personal_open_gesture_pwd">开启手势密码</string>
+    <string name="personal_modify_gesture_pwd">修改手势密码</string>
+    <string name="personal_open_finger_pwd">开启指纹解锁</string>
+    <string name="personal_exit_login">退出当前账户</string>
+    <string name="personal_now_certification">未认证</string>
+    <string name="title_activity_add_up_earnings">AddUpEarningsActivity</string>
+
+    <!--累计收益-->
+    <string name="AddUpEarnings">累计收益</string>
+    <string name="add_up_earnings_time">交易时间</string>
+    <string name="add_up_earnings_seven_day">7天以内</string>
+    <string name="add_up_earnings_one_month">一个月以内</string>
+    <string name="add_up_earnings_three_month">三个月以内</string>
+    <string name="add_up_earnings_six_month">六个月以内</string>
+    <string name="add_up_earnings_one_year">一年以内</string>
+    <string name="add_up_earnings_one_year_more">一年以外</string>
+    <string name="add_up_earnings_all_2">全部</string>
+    <string name="title_activity_total_money">TotalMoneyActivity</string>
+
+    <!--账户总资产-->
+    <string name="TotalMoney">账户总资产</string>
+    <string name="total_money_balance">可用余额:</string>
+    <string name="title_activity_pay_input_money">PayInputMoneyActivity</string>
+
+    <!--充值-->
+    <string name="Pay">充值</string>
+    <string name="pay_now">立即充值</string>
+    <string name="pay_input_money_title">充值金额</string>
+    <string name="pay_input_money">请输入充值金额</string>
+    <string name="pay_single_limit">单笔限额:</string>
+    <string name="pay_day_limit">单日限额:</string>
+    <!--<string name="pay_sina_money">新浪存钱罐</string>-->
+    <string name="pay_balance">账户余额:</string>
+    <string name="title_activity_withdraw">WithdrawActivity</string>
+
+    <!--提现-->
+    <string name="Withdraw">提现</string>
+    <string name="withdraw_now">立即提现</string>
+    <string name="withdraw_input_money_title">提现金额</string>
+    <string name="withdraw_money_input">请输入提现金额</string>
+    <string name="withdraw_fee">手续费(元)：</string>
+    <string name="withdraw_get_money">实到金额(元)：</string>
+    <string name="rmb">元</string>
+    <string name="rmb_mark">￥</string>
+    <string name="percent_mark">%</string>
+    <string name="a_month">个月</string>
+    <string name="title_activity_funds_water">FundsWaterActivity</string>
+    <string name="withdraw_input_more_zero">请输入大于0的提现金额</string>
+    <string name="withdraw_no_balance">您的余额不足</string>
+    <string name="withdraw_get_money_not_zero">实到金额不大于0，无法提现</string>
+    <string name="withdraw_limit">单次取现不可超过5万</string>
+    <string name="withdraw_counts_tip1">本月还有</string>
+    <string name="withdraw_counts_tip2">次免费提现机会</string>
+    <string name="withdraw_counts_tip3">1.用户每月有3次免费提现机会。提现超过3次，每次提现手续费2元/笔。</string>
+    <string name="withdraw_counts_tip4">2.提现单笔限额5w  单日限额50w。</string>
+    <string name="withdraw_counts_tip5">3.提现到账时间：每日15:00前提现T+1到账，15:00后提现T+2到账。</string>
+
+
+    <!--资金流水-->
+    <string name="FundsWater">交易流水</string>
+    <string name="funds_water_status">交易状态</string>
+    <string name="title_activity_red_packets">RedPacketsActivity</string>
+    <string name="funds_water_all">全部</string>
+    <string name="funds_water_finish">交易成功</string>
+    <string name="funds_water_no_finish">交易失败</string>
+    <string name="funds_water_chuli">处理中</string>
+    <!--红包-->
+    <string name="RedPackets">红包</string>
+    <string name="red_packets_min_money">最小出借金额:</string>
+    <string name="red_packets_to">至</string>
+    <string name="red_packets_try_tips">体验金产生的利息可用于出借或提现</string>
+
+    <!--修改交易密码-->
+    <string name="modify_exchange_password_input_new">新密码</string>
+    <string name="modify_exchange_password_input_new_again">确认新密码</string>
+
+    <!--重置交易密码-->
+    <string name="reset_exchange_password_real_name">真实姓名:</string>
+    <string name="reset_exchange_password_input_real_name">真实姓名</string>
+    <string name="reset_exchange_password_id_card">身份证号:</string>
+    <string name="reset_exchange_password_input_id_card">身份证号</string>
+
+    <string name="input_new_phone">新的手机号码</string>
+    <!--添加银行卡-->
+    <string name="title_activity_modify_binding_phone">ModifyBindingPhoneActivity</string>
+
+    <!--添加银行卡-->
+    <string name="ModifyBindingPhone">修改绑定手机</string>
+    <string name="title_activity_modify_login_password">ModifyLoginPasswordActivity</string>
+
+    <!--修改登录密码-->
+    <string name="ModifyLoginPassword">修改登录密码</string>
+    <string name="modify_login_password_input_original">原登录密码</string>
+    <string name="title_activity_view_realname_info">ViewRealnameInfoActivity</string>
+
+    <!--查看实名信息-->
+    <string name="ViewRealnameInfo">查看实名信息</string>
+    <string name="title_activity_my_regular">MyInvestActivity</string>
+
+    <!--我的米定期-->
+    <string name="my_regular_invest_money">出借金额(元)</string>
+    <string name="my_regular_earn">到期收益(元)</string>
+    <string name="my_regular_end_date">到期时间:</string>
+    <string name="my_regular_leave">剩余:</string>
+    <string name="title_activity_about_our">AboutOurActivity</string>
+
+    <!--关于我们-->
+    <string name="AboutOur">关于爱米</string>
+    <string name="about_our_website_title">官方网站</string>
+    <string name="about_our_wechat_title">微信公众号</string>
+    <string name="about_our_mail_title">客服邮箱</string>
+    <string name="about_our_version">当前版本</string>
+    <string name="about_our_copyright_title">版权所有：</string>
+    <string name="about_our_address_title">地址：</string>
+    <string name="title_activity_buy_regular">BuyRegularActivity</string>
+
+    <!--购买定期-->
+    <string name="buy_regular_rate">约定年化借款利率</string>
+    <string name="buy_regular_share">出借金额</string>
+    <string name="buy_regular_input_right_share">请输入正确的出借金额</string>
+    <string name="buy_regular_input__share_too_big">出借金额不能大于剩余金额</string>
+    <string name="buy_regular_input__share_max">出借金额不能大于最大出借金额</string>
+    <!--<string name="buy_regular_input__authority">新浪代扣额度不足，请修改授权额度</string>-->
+    <string name="buy_regular_input__share_min">出借金额不能小于最小出借金额</string>
+    <string name="buy_regular_finish_certification">请先完成实名信息验证</string>
+    <!--<string name="buy_regular_finish_authority">请先完成新浪交易授权</string>-->
+    <string name="buy_regular_balance_not">您的余额不足，请先充值</string>
+    <string name="buy_regular_detail">商品详情</string>
+    <string name="buy_regular_time2">项目期限</string>
+    <string name="buy_regular_choose">请选择红包</string>
+    <string name="buy_regular_earn2">预计收益(元)</string>
+    <string name="buy_regular_pay_money">应付金额(元)</string>
+    <string name="buy_regular_balance2">可用余额(元)</string>
+    <string name="buy_regular_i_agree">我同意</string>
+    <string name="buy_regular_xieyi">《爱米金服出借服务协议》</string>
+    <string name="buy_regular_confirm_pay">确认并支付</string>
+    <string name="buy_regular_agree">请阅读《出借风险提示及禁止性行为说明书》且同意后再出借</string>
+    <string name="buy_regular_use_redpacket">多投点吧，您还不能使用这个红包</string>
+    <string name="buy_regular_leave_money2">剩余金额</string>
+
+
+    <!-- Gesture code starting -->
+    <string name="setup_gesture_code">设置手势密码</string>
+    <string name="forget_gesture_code">忘记手势密码</string>
+    <string name="use_other_account_login">用其他账号登录</string>
+    <string name="set_gesture_pattern">请绘制手势密码，至少连接四个点</string>
+    <string name="set_gesture_pattern_reason">绘制密码时，谨防他人偷看</string>
+    <string name="reset_gesture_code">请再次绘制手势密码</string>
+    <string name="title_activity_gesture_edit">GesturePasswordEditActivity</string>
+    <string name="title_activity_gesture_verify">GesturePasswordVerifyActivity</string>
+    <string name="at_least_four_point">请至少连接四个点</string>
+    <string name="not_same">与上一次绘制不一致，请重新绘制</string>
+    <string name="setup_success">设置成功</string>
+    <string name="setup_anew">点击重新绘制</string>
+    <string name="pwd_right">密码正确</string>
+    <string name="pwd_wrong">密码错误</string>
+    <string name="unlock">请绘制解锁密码</string>
+    <string name="unlock_old">请绘制原解锁密码</string>
+    <string name="wrong_five">您已经输入错误5次，请重新登录!</string>
+    <string name="title_activity_modify_gesture_password">GesturePasswordModifyActivity</string>
+    <string name="ModifyGesturePassword">修改手势密码</string>
+
+    <string name="connect_server_fail">连接服务器失败</string>
+    <string name="connect_no_more">没有更多了呢</string>
+    <string name="connect_request_fail">请求失败了呢</string>
+    <!--登录-->
+    <string name="login_input_right_phone">请输入正确的11位电话号码</string>
+    <string name="login_input_right_pwd">请输入正确的6&#8211;16位的登录密码</string>
+
+    <string name="input_feedback">请输入反馈内容</string>
+
+    <!--注册-->
+    <string name="register_input_right_phone">请输入正确的6位验证码</string>
+
+    <!--找回密码-->
+    <string name="find_input_pwd_not_same">两次密码输入不一致</string>
+
+    <!--实名认证-->
+    <string name="certification_input_name">请输入您的真实姓名</string>
+    <string name="certification_input_id_card">请输入正确的15或18位身份证号</string>
+
+    <!--修改登录密码-->
+    <string name="modify_login_input_right_pwd_old">请输入正确的6&#8211;16位的原登录密码</string>
+    <string name="modify_login_input_right_pwd_new">请输入正确的6&#8211;16位的新登录密码</string>
+    <!--个人设置中心-->
+    <string name="personal_finish_certification">请先完成实名认证</string>
+    <string name="personal_already_certification">已认证</string>
+    <string name="title_activity_introduce">IntroduceActivity</string>
+    <string name="setting_safe">信息披露</string>
+    <string name="setting_help">帮助中心</string>
+    <string name="setting_yijian">意见反馈</string>
+
+    <!--热点资讯-->
+    <string name="hot_info_detail">资讯详情</string>
+
+    <string name="no_content">好像啥都没有......</string>
+    <string name="click_refresh">点击刷新</string>
+
+    <string name="view_bank_card">我的银行卡</string>
+    <string name="quick_pay_card">快捷支付银行卡</string>
+    <string name="unbinding">解绑</string>
+    <string name="manager">管理</string>
+    <string name="title_activity_href">HrefActivity</string>
+    <string name="title_activity_finance_product_detail">FinanceProductDetailActivity</string>
+
+    <!--我的-->
+    <string name="mine_total_money">账户总资产(元)</string>
+    <string name="mine_login">登录</string>
+    <string name="mine_register">注册</string>
+    <string name="mine_regular">定期资产</string>
+    <string name="mine_little_item">优选资产</string>
+    <string name="mine_my_redpackets">我的红包</string>
+    <string name="mine_money_water">交易流水</string>
+    <string name="mine_auto_to_buy">自动出借</string>
+    <string name="mine_invite_friend">邀请好友</string>
+    <string name="mine_about_aimi">关于爱米</string>
+
+    <!--首页-->
+    <string name="index_tips">资金交易过程将由资金存管银行提供安全保障</string>
+
+    <!--商品详情-->
+    <string name="product_buy_now">立即出借</string>
+    <string name="product_history">往期项目</string>
+    <string name="password_manager_modify">修改</string>
+
+    <string name="feedback">意见反馈</string>
+    <string name="feedback_submit">提交</string>
+    <string name="feedback_tips">还可输入</string>
+    <string name="feedback_remind">请输入您的宝贵意见O(∩_∩)O~</string>
+    <string name="er_bai_text">200字</string>
+
+    <string name="history_item">往期项目</string>
+
+    <!--账户总资产-->
+    <string name="total_regular">爱米定期</string>
+    <string name="total_little_item">爱米优选</string>
+    <string name="total_invest">待收本金(元)</string>
+    <string name="total_already">已收利息(元)</string>
+    <string name="total_wait">待收利息(元)</string>
+    <string name="total_balance">账户余额</string>
+
+    <!--账户余额-->
+    <string name="amount_balance_pay">累计充值(元)</string>
+    <string name="amount_balance_total_withdraw">累计提现(元)</string>
+
+    <!--红包-->
+    <string name="try_money">体验金</string>
+    <string name="choose_redpackets">选择红包</string>
+
+    <string name="earn_wait">待收利息(元)</string>
+    <string name="earn_already">已收利息(元)</string>
+
+    <string name="invite_friend">邀请好友</string>
+    <string name="my_invite_friend">我邀请的人</string>
+
+    <string name="share_red_packet">分享红包</string>
+
+    <string name="jinxing_ing">进行中</string>
+    <string name="collecting">募集中</string>
+    <string name="liubiao">已流标</string>
+    <string name="yi_huankuan">已还款</string>
+
+    <string name="see_my_money">我的资产</string>
+    <string name="continue_buy">继续出借</string>
+    <string name="back_mine">返回个人中心</string>
+
+    <string name="your_real_name">您的实名信息如下</string>
+
+    <string name="addup_earns">收益金额:</string>
+
+    <string name="project_total_money">项目金额</string>
+    <string name="person">人</string>
+    <string name="invest_person">出借人数</string>
+
+    <string name="use_now">立即使用</string>
+
+    <string name="invest_account">出借账号</string>
+    <string name="invest_money">出借金额(元)</string>
+    <string name="invest_date">出借时间</string>
+
+    <!--公告-->
+    <string name="title_notice">公告</string>
+    <string name="notice_detail">公告内容</string>
+
+    <string name="product">产品</string>
+    <string name="product_regular">爱米定期</string>
+    <string name="product_good">爱米优选</string>
+
+    <string name="password_limit">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+
+
+    <!--委托投资-->
+    <string name="save_entrust">保存并委托</string>
+    <string name="modify_entrust">修改并委托</string>
+    <string name="entrust_year_agree">委托即同意</string>
+    <string name="entrust_and">和</string>
+
+    <!--自动投资-->
+    <string name="auto_invest">自动出借</string>
+    <string name="auto_add">新增自动出借</string>
+    <string name="auto_time">项目期限:</string>
+    <string name="auto_type">出借方式:</string>
+    <string name="auto_rate">约定年化借款利率:</string>
+    <string name="auto_money">出借金额:</string>
+    <string name="auto_xieyi1">《自动出借规则》</string>
+    <string name="auto_xieyi2">《爱米金服出借服务协议》</string>
+
+    <!--订单详情-->
+    <string name="Order_Form">订单详情</string>
+
+
+    <!--账户余额-->
+    <string name="account_balance">账户余额</string>
+
+
+    <string name="project_detail">项目详情</string>
+    <string name="order_detail">订单详情</string>
+    <string name="close">关闭</string>
+    <string name="personal_info">个人信息</string>
+    <!--<string name="personal_account">新浪账户</string>-->
+
+
+    <string name="order_invest_money">出借本金</string>
+    <string name="order_rate">约定年化借款利率</string>
+    <string name="order_earn_money">预期总收益</string>
+    <string name="order_time">项目周期</string>
+    <string name="order_type">还款方式</string>
+    <string name="order_invest_time">出借时间</string>
+    <string name="order_invest_time_bottom">为用户实际出借日期</string>
+    <string name="order_earn_time">起息时间</string>
+    <string name="order_earn_time_bottom">满标次日起息并显示收益</string>
+    <string name="order_end_time">到期时间</string>
+    <string name="order_end_time_bottom">还款时间为每天14点或18点</string>
+    <string name="order_no_finish_money">未结本金(元)</string>
+    <string name="order_no_finish_earn">未结收益(元)</string>
+    <string name="order_finish_money">已结本金(元)</string>
+    <string name="order_finish_earn">已结收益(元)</string>
+
+
+    <string name="view_bank_help">绑定银行卡说明</string>
+    <string name="view_bank_binding">绑定银行卡</string>
+
+
+    <string name="love_tips">温馨提示：</string>
+    <string name="set_exchange_pwd_tip1">前往资金存管银行页面，完成以下操作。</string>
+    <string name="set_exchange_pwd_tip2">1.设置交易密码。</string>
+    <string name="set_exchange_pwd_tip3">2.账户交易授权。</string>
+    <string name="set_exchange_pwd_tip4">请耐心等待，不要中途中断设置交易密码及授权操作。</string>
+
+
+    <!-- 下载dialog -->
+    <string name="dialog_new_version">最新版本:</string>
+    <string name="dialog_new_version_size">新版本大小:</string>
+    <string name="dialog_new_version_content">更新内容</string>
+
+    <string name="day">天</string>
+
+    <!--购买成功-->
+    <string name="BuySuccess">出借成功</string>
+    <string name="buy_success">恭喜您出借成功</string>
+    <string name="buy_success_product_name"> 产品名称:</string>
+    <string name="buy_success_order_money">订单金额:</string>
+    <string name="buy_success_type">还款方式:</string>
+    <string name="buy_success_red_packet">平台奖励:</string>
+    <string name="buy_success_tips1">出借成功</string>
+    <string name="buy_success_tips2">预计3日内满标</string>
+    <string name="buy_success_tips3">满标次日显示收益</string>
+    <string name="buy_success_tips4">如您对本次交易有疑问</string>
+    <string name="buy_success_tips5">请联系客服</string>
+
+    <string name="connect_fail">请求失败了，请再试一次</string>
+    <string name="network_fail">o(╯□╰)o网络异常，请检查网络设置</string>
+
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">松开刷新</string>
+    <string name="xlistview_header_hint_loading">正在加载</string>
+    <string name="xlistview_footer_hint_finish">加载完成</string>
+    <string name="Expected_annualized_rate_of_return">约定年化借款利率</string>
+    <string name="mine_questionnaire">调查问卷</string>
+    <string name="viewer_ontract">借款合同</string>
+    <string name="model_loan_contract">借款合同(范本)</string>
+    <string name="Loan_risk_statement">《出借风险提示及禁止性行为说明书》</string>
+    <string name="I_want_borrow">我要借款</string>
+    <string name="loan_risk_instruction">出借风险提示说明书</string>
+    <string name="Immediately_lend">立即出借</string>
+    <string name="interestRatesLogo">米宝加息</string>
+
+</resources>

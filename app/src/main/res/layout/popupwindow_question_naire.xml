@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/popMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/icon_transparent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/redMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/pop_question_naire_bg2">
+
+
+            <Button
+                android:id="@+id/btnGo"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="130dp"
+                android:layout_marginBottom="@dimen/small_margin"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:textSize="@dimen/normal_text"
+
+                />
+            <!-- <Button
+                 android:id="@+id/btnGo"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="bottom|center_horizontal"
+                 android:layout_marginBottom="@dimen/small_margin"
+                 android:gravity="center"
+                 android:background="@drawable/selector_hk_register_btn"
+                 android:text="立即参与"
+                 android:textColor="@color/white"
+                 android:textSize="@dimen/normal_text"/>-->
+
+        </FrameLayout>
+
+        <ImageButton
+            android:id="@+id/ivClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/big_margin"
+            android:background="@mipmap/pop_redpacket_close"/>
+    </LinearLayout>
+</LinearLayout>

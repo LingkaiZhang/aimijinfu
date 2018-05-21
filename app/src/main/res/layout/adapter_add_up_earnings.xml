@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical"
+              android:padding="@dimen/small_margin">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/small_text"/>
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_eight"
+            android:layout_toLeftOf="@id/tvStatus"
+            android:singleLine="true"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/normal_text"/>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_twelve2"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="@dimen/weight"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.5"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/addup_earns"
+                android:textColor="@color/text_light_gray"
+                android:textSize="@dimen/small_text"/>
+
+            <TextView
+                android:id="@+id/tvMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_eight"
+                android:textColor="@color/theme_color"
+                android:textSize="@dimen/small_text"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="@dimen/weight"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:textColor="@color/text_light_gray"
+            android:textSize="@dimen/small_text"/>
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="@dimen/weight"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="right"
+            android:textColor="@color/text_light_gray"
+            android:textSize="@dimen/small_text"/>
+
+    </LinearLayout>
+</LinearLayout>
