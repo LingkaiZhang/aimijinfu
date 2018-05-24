@@ -90,7 +90,7 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_finance_product, container, false);
         x.view().inject(this, view);
-        initTopBar("产品", toptitleView, false);
+        initTopBar("项目", toptitleView, false);
         //透明状态栏
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 //            RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) tv_title.getLayoutParams();

@@ -241,8 +241,8 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
     //初始化是否登录
     private void initIsLogin() {
         if (StaticMembers.IS_NEED_LOGIN) {
-            rlNoLogin.setVisibility(View.VISIBLE);
-            llLogin.setVisibility(View.GONE);
+            rlNoLogin.setVisibility(View.GONE);
+            llLogin.setVisibility(View.VISIBLE);
         } else {
             rlNoLogin.setVisibility(View.GONE);
             llLogin.setVisibility(View.VISIBLE);

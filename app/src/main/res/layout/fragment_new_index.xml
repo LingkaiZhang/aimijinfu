@@ -63,7 +63,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/line_one_dp"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:layout_marginBottom="@dimen/margin_six"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -128,7 +129,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/selector_gray_click"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    >
 
                     <ImageView
                         android:layout_width="44dp"
@@ -194,7 +196,8 @@
             android:layout_marginTop="@dimen/line_one_dp"
             android:background="@drawable/selector_gray_click"
             android:paddingLeft="@dimen/small_margin"
-            android:paddingRight="@dimen/small_margin">
+            android:paddingRight="@dimen/small_margin"
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -241,9 +244,51 @@
         </RelativeLayout>
 
         <LinearLayout
+            android:id="@+id/ll_new_guidelines"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/line_one_dp"
+            android:orientation="vertical"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="新手指引"
+                android:textSize="18sp"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/text_black"/>
+
+            <ImageView
+                android:id="@+id/iv_new_guidelines"
+                android:layout_width="300dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/bg"/>
+
+            <Button
+                android:id="@+id/btn_login_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="登陆/注册"
+                android:background="@drawable/selector_index_loginregister_button"
+                android:textColor="@color/white"
+                android:textSize="@dimen/normal_text"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginBottom="@dimen/small_margin"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:layout_gravity="center_horizontal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_six"
             android:background="@color/white"
             android:gravity="center_horizontal"
             android:orientation="vertical">
@@ -447,9 +492,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="*温馨提示: 市场有风险, 出借需谨慎"
+            android:text="@string/remindword"
             android:textSize="14sp"
-            android:textColor="#ddbc96"/>
+            android:textColor="@color/remindyellow"/>
 
     </LinearLayout>
 </LinearLayout>

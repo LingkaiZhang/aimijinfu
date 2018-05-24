@@ -1,48 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/llItem"
-              android:layout_width="match_parent"
-              android:layout_height="90dp"
-              android:background="@drawable/selector_gray_click"
-              android:orientation="vertical">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/llItem"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:background="@drawable/selector_gray_click"
+    android:orientation="vertical">
 
 
     <View
         android:id="@+id/topLL"
         android:layout_width="match_parent"
         android:layout_height="@dimen/line_one_dp"
-        android:background="@color/bg"/>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:background="@color/bg"
+        app:layout_constraintTop_toTopOf="parent"/>
+
 
         <TextView
-        android:id="@id/tvName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/small_margin"
-        android:layout_marginTop="@dimen/margin_six"
-        android:layout_marginBottom="2dp"
-        android:singleLine="true"
-        android:text="爱米定期"
-        android:textColor="@color/text_light_gray"
-        android:textSize="@dimen/small_text"/>
+            android:id="@id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/margin_six"
+            android:layout_marginBottom="2dp"
+            android:singleLine="true"
+            android:text="爱米定期"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/normal_text"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@id/topLL"/>
 
         <TextView
-        android:layout_marginLeft="5dp"
-        android:id="@+id/interestRatesLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/interestRatesLogo"
-        android:textColor="@color/theme_color"
-        android:textSize="10sp"
-        android:layout_marginTop="@dimen/margin_five"
-        android:background="@drawable/textview_border_interest_rates"
-        android:visibility="gone"/>
+            android:layout_marginLeft="5dp"
+            android:id="@+id/interestRatesLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/interestRatesLogo"
+            android:textColor="@color/theme_color"
+            android:textSize="10sp"
+            android:layout_marginTop="@dimen/margin_five"
+            android:background="@drawable/textview_border_interest_rates"
+            app:layout_constraintTop_toTopOf="@id/topLL"
+            app:layout_constraintLeft_toRightOf="@+id/tvName"
+            android:visibility="gone"/>
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/interestFirstThenCost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="先息后本"
+            android:textSize="10sp"
+            android:layout_marginTop="@dimen/margin_six"
+            android:textColor="@color/theme_color"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/textview_border_interest_first_then_cost"
+            app:layout_constraintTop_toTopOf="@id/topLL"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/equalityCorpusAndInterest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="等额本息"
+            android:textSize="10sp"
+            android:layout_marginTop="@dimen/margin_six"
+            android:textColor="@color/login_register_blue"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/textview_border_equality_corpus_and_interest"
+            app:layout_constraintTop_toTopOf="@id/topLL"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:visibility="gone"/>
+
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,13 +86,14 @@
         android:orientation="horizontal"
         android:paddingBottom="@dimen/margin_eight"
         android:paddingLeft="@dimen/small_margin"
-        android:paddingRight="@dimen/small_margin">
+        android:paddingRight="@dimen/small_margin"
+        app:layout_constraintBottom_toBottomOf="parent">
 
 
         <LinearLayout
             android:layout_width="@dimen/weight"
             android:layout_height="wrap_content"
-            android:layout_weight="1.1"
+            android:layout_weight="1"
             android:orientation="vertical">
 
 
@@ -171,4 +206,4 @@
 
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

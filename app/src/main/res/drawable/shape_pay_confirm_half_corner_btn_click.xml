@@ -4,6 +4,18 @@
     <!-- 填充 -->
     <solid android:color="@color/red_btn_select" />
 
-    <corners android:bottomRightRadius="8dp" />
+    <!-- 边框颜色 宽度 -->
+    <!--<stroke android:width="2dp" android:color="@color/white"/>-->
 
+    <corners
+        android:bottomLeftRadius="8dp"
+        android:bottomRightRadius="8dp"
+        android:topLeftRadius="8dp"
+        android:topRightRadius="8dp"
+        />
+
+    <padding
+        android:top="10dp"
+        android:bottom="10dp"
+        />
 </shape>

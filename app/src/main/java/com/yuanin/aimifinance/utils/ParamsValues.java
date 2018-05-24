@@ -14,6 +14,7 @@ public class ParamsValues {
     //key
     public final static String KEY = "5bbf31b975954ffb90a19e69ef274c0f";
     //正式环境
+
     public final static String NET_URL = "https://shapi.aimilicai.com/";
     //key
     public final static String VERSION_CODE = "6.0.0";

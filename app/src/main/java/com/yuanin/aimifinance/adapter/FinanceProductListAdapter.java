@@ -112,6 +112,10 @@ public class FinanceProductListAdapter extends BaseAdapter {
                         .findViewById(R.id.interestRates);
                 mainViewHolder.interestRatesLogo = (TextView) convertView
                         .findViewById(R.id.interestRatesLogo);
+                mainViewHolder.interestFirstThenCost = (TextView) convertView
+                        .findViewById(R.id.interestFirstThenCost);
+                mainViewHolder.equalityCorpusAndInterest = (TextView) convertView
+                        .findViewById(R.id.equalityCorpusAndInterest);
 
                 convertView.setTag(mainViewHolder);
             } else {
@@ -124,7 +128,16 @@ public class FinanceProductListAdapter extends BaseAdapter {
             mainViewHolder.tvLeaveMoney.setText("剩余" + entity.getAmount() + "元");
             mainViewHolder.btnStatus.setText(entity.getStatusname());
 
+            //TODO  显示还款方式代码
+            if (entity.getRepay_method().contains("先息后本")) {
+                mainViewHolder.equalityCorpusAndInterest.setVisibility(View.GONE);
+                mainViewHolder.interestFirstThenCost.setVisibility(View.VISIBLE);
+            } else if (entity.getRepay_method().contains("等额本息")) {
+                mainViewHolder.interestFirstThenCost.setVisibility(View.GONE);
+                mainViewHolder.equalityCorpusAndInterest.setVisibility(View.VISIBLE);
+            }
 
+            //TODO  加息功能代码
             if (entity.getOrgannual() == null || entity.getExtannual() == null) {
                 mainViewHolder.tvRate.setText(AppUtils.formatDouble("#.0", Double.valueOf(entity.getAnnual())));
                 mainViewHolder.interestRates.setVisibility(View.GONE);
@@ -199,5 +212,8 @@ public class FinanceProductListAdapter extends BaseAdapter {
 
         TextView interestRatesLogo;
         TextView interestRates;
+
+        TextView interestFirstThenCost;
+        TextView equalityCorpusAndInterest;
     }
 }

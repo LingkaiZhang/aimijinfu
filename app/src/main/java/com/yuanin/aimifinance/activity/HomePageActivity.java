@@ -197,7 +197,7 @@ public class HomePageActivity extends BaseFragmentActivity {
                 mViewPager.setCurrentItem(0, false);
                 ViewPagerUtils.changeTextViewStyle_Main(HomePageActivity.this, 0, textViews);
                 break;
-            //理财
+            //项目
             case R.id.tvFinance:
                 currentIndex = 1;
                 mViewPager.setCurrentItem(1, false);

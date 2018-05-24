@@ -5,7 +5,7 @@
     <string name="title_activity_certification">CertificationActivity</string>
     <string name="title_activity_home_page">HomePageActivity</string>
     <string name="index">首页</string>
-    <string name="finance">产品</string>
+    <string name="finance">项目</string>
     <string name="mine">我的</string>
 
     <string name="certification">1.实名认证</string>
@@ -356,7 +356,7 @@
     <string name="title_notice">公告</string>
     <string name="notice_detail">公告内容</string>
 
-    <string name="product">产品</string>
+    <string name="product">项目</string>
     <string name="product_regular">爱米定期</string>
     <string name="product_good">爱米优选</string>
 

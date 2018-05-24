@@ -58,6 +58,19 @@ public class IndexProductListAdapter extends GeneralAdapter<IndexProductEntity> 
         });
         TextView btnStatus = holder.getView(R.id.btnStatus);
         holder.setTextForTextView(R.id.btnStatus, data.getStatusname());
+
+        //TODO   显示还款方式
+        TextView equalityCorpusAndInterest = holder.getView(R.id.equalityCorpusAndInterest);
+        TextView interestFirstThenCost = holder.getView(R.id.interestFirstThenCost);
+        if (data.getRepay_method().contains("先息后本")) {
+            interestFirstThenCost.setVisibility(View.VISIBLE);
+            equalityCorpusAndInterest.setVisibility(View.GONE);
+        }else if (data.getRepay_method().contains("等额本息")) {
+            interestFirstThenCost.setVisibility(View.GONE);
+            equalityCorpusAndInterest.setVisibility(View.VISIBLE);
+        }
+
+        //TODO   首页产品列表加息显示
         TextView interestRates = holder.getView(R.id.interestRates);
         TextView interestRatesLogo = holder.getView(R.id.interestRatesLogo);
 
