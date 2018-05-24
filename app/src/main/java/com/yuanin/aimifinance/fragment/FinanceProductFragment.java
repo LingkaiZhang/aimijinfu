@@ -243,7 +243,7 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
                                 if (mList == null) {
                                     StaticMembers.aCache.put(ParamsKeys.PRODUCT_ENTITY, entity);
                                     mList = entity.getData();
-                                    setTitleData();
+                                //    setTitleData();
                                     mAdp = new FinanceProductListAdapter(getActivity(), mList);
                                     lvProduct.setAdapter(mAdp);
                                 } else {

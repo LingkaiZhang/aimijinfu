@@ -108,6 +108,12 @@ public class BuyRegularActivity extends BaseActivity {
     private TextView tvNoNet;
     @ViewInject(R.id.llMain)
     private LinearLayout llMain;
+    @ViewInject(R.id.tvTimeNew)
+    private TextView tvTimeNew;
+    @ViewInject(R.id.tvSingle)
+    private TextView tvSingle;
+    @ViewInject(R.id.tvLeaveMoneyNew)
+    private TextView tvLeaveMoneyNew;
 
     @ViewInject(R.id.interestRates)
     private TextView interestRates;
@@ -229,6 +235,9 @@ public class BuyRegularActivity extends BaseActivity {
         StaticMembers.BANK_CARD_STATUS = buyProductEntity.getIs_bind_bankcard();
  //       tvRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(buyProductEntity.getAnnual())));
         tvTime.setText(buyProductEntity.getTerm());
+        tvTimeNew.setText(buyProductEntity.getTerm());
+        tvSingle.setText(buyProductEntity.getEachamount());
+        tvLeaveMoneyNew.setText(String.valueOf(buyProductEntity.getAmount()));
         tvUnit.setText(buyProductEntity.getUnit());
         tvLeaveMoney.setText(String.valueOf(buyProductEntity.getAmount()));
         tvBalance.setText(String.valueOf(buyProductEntity.getBalance()));

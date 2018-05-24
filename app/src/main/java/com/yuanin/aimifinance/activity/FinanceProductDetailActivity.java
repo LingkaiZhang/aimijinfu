@@ -129,6 +129,7 @@ public class FinanceProductDetailActivity extends BaseFragmentActivity implement
     private TextView tvStartDate;
     @ViewInject(R.id.tvManDate)
     private TextView tvManDate;
+
     @ViewInject(R.id.tvQixiDate)
     private TextView tvQixiDate;
     @ViewInject(R.id.tvEndDate)
@@ -148,6 +149,10 @@ public class FinanceProductDetailActivity extends BaseFragmentActivity implement
     private RatingBar ratingStart;
     @ViewInject(R.id.tvRecruitmentPeriod)
     private TextView tvRecruitmentPeriod;
+    @ViewInject(R.id.tv_product_name)
+    private TextView tvProductName;
+    @ViewInject(R.id.tv_product_type)
+    private TextView tvProductType;
 
 
     private List<TextView> textViews;
@@ -395,7 +400,7 @@ public class FinanceProductDetailActivity extends BaseFragmentActivity implement
         tvTotalMoney.setText(productDetailEntity.getAmount());
  //       tvRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(productDetailEntity.getAnnual())));
         tvTime.setText(productDetailEntity.getTerm());
-        tvUnit.setText("项目期限(" + productDetailEntity.getUnit() + ")");
+        tvUnit.setText("期限(" + productDetailEntity.getUnit() + ")");
         tvLeaveMoney.setText(productDetailEntity.getBuyamount());
         if (productDetailEntity.getIsbuy() == 1) {
             tvBuy.setBackgroundResource(R.drawable.selector_theme_button);
@@ -420,6 +425,8 @@ public class FinanceProductDetailActivity extends BaseFragmentActivity implement
         tvSingle.setText(productDetailEntity.getEachamount());
         tvRepay.setText(productDetailEntity.getRepay_method());
         tvCompany.setText(productDetailEntity.getGuaranteecompany());
+        tvProductName.setText(productDetailEntity.getProject_name().trim());
+        tvProductType.setText(productDetailEntity.getDebtstype());
 
         if (productDetailEntity.getOrgannual() == null || productDetailEntity.getExtannual() == null) {
             tvRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(productDetailEntity.getAnnual())));

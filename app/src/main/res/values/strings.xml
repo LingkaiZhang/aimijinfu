@@ -458,5 +458,6 @@
     <string name="loan_risk_instruction">出借风险提示说明书</string>
     <string name="Immediately_lend">立即出借</string>
     <string name="interestRatesLogo">米宝加息</string>
+    <string name="remindword">市场有风险, 出借需谨慎</string>
 
 </resources>

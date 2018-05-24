@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg"
+    tools:context=".activity.RegisterOne">
+
+    <include
+        android:id="@+id/includeTop"
+        layout="@layout/top_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/normal_height"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="@dimen/small_margin"
+        android:layout_marginRight="@dimen/small_margin">
+
+        <EditText
+            android:id="@+id/ed_image_code"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/login_edittext_bg"
+            android:drawableLeft="@mipmap/login_phone"
+            android:drawablePadding="@dimen/margin_eight"
+            android:gravity="center_vertical"
+            android:hint="请输入验证码"
+            android:paddingLeft="@dimen/margin_eight"
+            android:paddingRight="@dimen/margin_eight"
+            android:textColor="@color/text_black"
+            android:textColorHint="@color/text_light_gray"
+            android:textSize="@dimen/normal_text"/>
+
+        <ImageView
+            android:id="@+id/image_code"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="46dp"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/big_margin"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/small_margin"
+        android:layout_marginRight="@dimen/small_margin"
+        android:background="@mipmap/login_edittext_bg">
+
+        <EditText
+            android:id="@+id/ed_sms_code"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:drawableLeft="@mipmap/login_phone"
+            android:drawablePadding="@dimen/margin_eight"
+            android:layout_gravity="center_vertical"
+            android:hint="请输入短信验证码"
+            android:paddingLeft="@dimen/margin_eight"
+            android:paddingRight="@dimen/margin_eight"
+            android:textColor="@color/text_black"
+            android:textColorHint="@color/text_light_gray"
+            android:textSize="@dimen/normal_text"/>
+
+        <com.yuanin.aimifinance.view.CountDownTextView
+            android:id="@+id/countDownTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重新发送(60)"
+            android:textSize="14sp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="15dp"
+            android:layout_gravity="center_vertical"
+            android:background="@null"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/small_margin"
+        android:layout_marginRight="@dimen/small_margin"
+        android:layout_marginTop="@dimen/big_margin"
+        android:background="@mipmap/login_button_enable"
+        android:text="@string/next"
+        android:textColor="@color/white"
+        android:textSize="@dimen/normal_text"/>
+
+</LinearLayout>

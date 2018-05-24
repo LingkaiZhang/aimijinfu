@@ -7,10 +7,10 @@
     <color name="gray_cancel">#ccc</color>
     <color name="my_invest_blue">#51c0f9</color>
     <color name="select_gray">#eee</color>
-    <color name="theme_color">#ff4d50</color>
+    <color name="theme_color">#ff0036</color>
     <color name="theme_color_fade">#fe839c</color>
     <!--<color name="title_bg">#f9f9f9</color>-->
-    <color name="title_bg">#ff4d50</color>
+    <color name="title_bg">#ff0036</color>
     <color name="input_text">#999</color>
     <color name="transparent">#00000000</color>
     <color name="withdraw_green">#00b396</color>

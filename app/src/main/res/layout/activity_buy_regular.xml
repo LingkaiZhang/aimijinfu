@@ -36,7 +36,8 @@
                     android:layout_height="235dp"
                     android:background="#ffebeb"
                     android:gravity="center_horizontal|bottom"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:id="@+id/llLeft"
@@ -162,6 +163,105 @@
                             android:gravity="center_horizontal"
                             android:text="@string/buy_regular_leave_money2"
                             android:textColor="@color/text_light_gray"
+                            android:textSize="@dimen/small_text"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="50dp"
+                    android:paddingTop="50dp"
+                    android:baselineAligned="false"
+                    android:background="@color/theme_color"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="@dimen/weight"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvTimeNew"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/normal_text"/>
+
+
+                        <TextView
+                            android:id="@+id/tvUnitNew"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_four"
+                            android:text="期限(月)"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/small_text"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="@dimen/line_one_dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="@dimen/margin_eight"
+                        android:layout_marginTop="@dimen/margin_eight"
+                        android:background="@color/white"/>
+
+                    <LinearLayout
+                        android:layout_width="@dimen/weight"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/tvSingle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/normal_text"/>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_four"
+                            android:text="起借金额(元)"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/small_text"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="@dimen/line_one_dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="@dimen/margin_eight"
+                        android:layout_marginTop="@dimen/margin_eight"
+                        android:background="@color/white"/>
+
+                    <LinearLayout
+                        android:layout_width="@dimen/weight"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/tvLeaveMoneyNew"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/normal_text"/>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_four"
+                            android:text="剩余金额(元)"
+                            android:textColor="@color/white"
                             android:textSize="@dimen/small_text"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -424,7 +524,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="我已阅读"
+                            android:text="我已同意"
                             android:textColor="@color/text_gray"
                             android:textSize="@dimen/small_text"/>
 
@@ -435,7 +535,7 @@
                             android:paddingBottom="@dimen/margin_twelve2"
                             android:paddingTop="@dimen/margin_twelve2"
                             android:text="@string/Loan_risk_statement"
-                            android:textColor="@drawable/selector_login_rigister_click"
+                            android:textColor="@color/theme_color"
                             android:textSize="@dimen/small_text"/>
                     </LinearLayout>
 
@@ -451,9 +551,9 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="*温馨提示: 市场有风险, 出借需谨慎"
+                            android:text="@string/remindword"
                             android:textSize="14sp"
-                            android:textColor="#ddbc96"/>
+                            android:textColor="@color/remindyellow"/>
 
                     </LinearLayout>
 

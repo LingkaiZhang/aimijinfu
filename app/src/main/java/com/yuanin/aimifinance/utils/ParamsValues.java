@@ -14,11 +14,11 @@ public class ParamsValues {
     //key
     public final static String KEY = "5bbf31b975954ffb90a19e69ef274c0f";
     //正式环境
-    //public final static String NET_URL = "https://shapi.aimilicai.com/";
+    public final static String NET_URL = "https://shapi.aimilicai.com/";
     //key
-    public final static String VERSION_CODE = "5.1.5";
+    public final static String VERSION_CODE = "6.0.0";
     //测试
-    public final static String NET_URL = "http://csapi.yuanin.com/";
+//    public final static String NET_URL = "http://csapi.yuanin.com/";
     public final static String TEL = "400-666-2082";
     /**
      * 网络请求模块参数
