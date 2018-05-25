@@ -318,12 +318,13 @@ public class WithdrawActivity extends BaseActivity {
                 etMoney.setSelection(s.length());
             }
         }
-        if (s.toString().trim().substring(0,1).equals(".")) {
-            s = "0" + s;
-            etMoney.setText(s);
-            etMoney.setSelection(2);
+        if(s.length() > 0){
+            if (s.toString().trim().substring(0,1).equals(".")) {
+                s = "0" + s;
+                etMoney.setText(s);
+                etMoney.setSelection(2);
+            }
         }
-
         if (s.toString().startsWith("0")
                 && s.toString().trim().length() > 1) {
             if (!s.toString().substring(1, 2).equals(".")) {

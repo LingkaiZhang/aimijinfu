@@ -110,7 +110,6 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
     private boolean hasLoadedOnce = false;
     private boolean hadShowPop = false;
     private boolean hadShowPop2 = false;
-    HomePageActivity activity;
     private View popViewQuestion;
 
     @Override

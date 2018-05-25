@@ -36,33 +36,33 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/small_margin"
-                        android:layout_marginTop="@dimen/small_margin"
-                        android:text="账户余额(元)"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/big_text"/>
-
-                    <TextView
                         android:id="@+id/tvBalance"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/small_margin"
                         android:layout_marginTop="@dimen/small_margin"
-                        android:gravity="right"
+                        android:gravity="center"
                         android:text="0.00"
                         android:textColor="@color/white"
                         android:textSize="40sp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="可用余额(元)"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/normal_text"/>
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:alpha="0.15"
                     android:background="@color/white"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                 </LinearLayout>
 
@@ -73,7 +73,8 @@
                     android:layout_marginLeft="@dimen/small_margin"
                     android:gravity="center_vertical"
                     android:text="为保证资金安全，充值资金只能原卡提现"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:visibility="gone"/>
             </RelativeLayout>
 
 
@@ -192,7 +193,8 @@
                 <EditText
                     android:id="@+id/etMoney"
                     style="@style/moneyEditText"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/margin_twelve2"
                     android:background="@null"
@@ -200,6 +202,13 @@
                     android:gravity="center_vertical"
                     android:textColor="@color/text_black"
                     android:textColorHint="@color/text_light_gray"
+                    android:textSize="@dimen/normal_text"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="元"
+                    android:textColor="@color/theme_color"
                     android:textSize="@dimen/normal_text"/>
 
             </LinearLayout>
@@ -228,12 +237,20 @@
 
                 <TextView
                     android:id="@+id/tvAfterMoney"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/margin_twelve2"
                     android:gravity="center_vertical"
                     android:text="0.00"
                     android:textColor="@color/text_black"
+                    android:textSize="@dimen/normal_text"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="元"
+                    android:textColor="@color/theme_color"
                     android:textSize="@dimen/normal_text"/>
 
             </LinearLayout>

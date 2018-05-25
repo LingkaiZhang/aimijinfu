@@ -109,7 +109,7 @@
 
     <!--提现-->
     <string name="Withdraw">提现</string>
-    <string name="withdraw_now">立即提现</string>
+    <string name="withdraw_now">申请提现</string>
     <string name="withdraw_input_money_title">提现金额</string>
     <string name="withdraw_money_input">请输入提现金额</string>
     <string name="withdraw_fee">手续费(元)：</string>
@@ -405,10 +405,10 @@
     <string name="order_earn_time_bottom">满标次日起息并显示收益</string>
     <string name="order_end_time">到期时间</string>
     <string name="order_end_time_bottom">还款时间为每天14点或18点</string>
-    <string name="order_no_finish_money">未结本金(元)</string>
-    <string name="order_no_finish_earn">未结收益(元)</string>
-    <string name="order_finish_money">已结本金(元)</string>
-    <string name="order_finish_earn">已结收益(元)</string>
+    <string name="order_no_finish_money">未结本金</string>
+    <string name="order_no_finish_earn">未结收益</string>
+    <string name="order_finish_money">已结本金</string>
+    <string name="order_finish_earn">已结收益</string>
 
 
     <string name="view_bank_help">绑定银行卡说明</string>

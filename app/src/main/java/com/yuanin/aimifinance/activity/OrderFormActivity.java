@@ -242,18 +242,18 @@ public class OrderFormActivity extends BaseActivity {
                 break;
         }
         tvName.setText(orderFormEntity.getProject_name());
-        tvMoney.setText(orderFormEntity.getAmount());
+        tvMoney.setText(orderFormEntity.getAmount() + "元");
         tvRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(orderFormEntity.getAnnual_new())) + "%");
-        tvEarn.setText(String.valueOf(orderFormEntity.getInterest_total()));
+        tvEarn.setText(String.valueOf(orderFormEntity.getInterest_total()) + "元");
         tvTime.setText(orderFormEntity.getTerm());
         tvType.setText(orderFormEntity.getRepay_method());
         tvInvestTime.setText(orderFormEntity.getInvestdate());
         tvEarnTime.setText(orderFormEntity.getInterestdate());
         tvEndTime.setText(orderFormEntity.getExpire_time());
-        tvNoFinishMoney.setText(String.valueOf(orderFormEntity.getCapital_wait()));
-        tvNoFinishEarn.setText(String.valueOf(orderFormEntity.getInterest_wait()));
-        tvFinishMoney.setText(String.valueOf(orderFormEntity.getCapital_yes()));
-        tvFinishEarn.setText(String.valueOf(orderFormEntity.getInterest_yes()));
+        tvNoFinishMoney.setText(String.valueOf(orderFormEntity.getCapital_wait()) + "元");
+        tvNoFinishEarn.setText(String.valueOf(orderFormEntity.getInterest_wait()) + "元");
+        tvFinishMoney.setText(String.valueOf(orderFormEntity.getCapital_yes()) + "元");
+        tvFinishEarn.setText(String.valueOf(orderFormEntity.getInterest_yes()) + "元");
         if (orderFormEntity.getIs_red() == 1) {
             imgRedPackets.setVisibility(View.VISIBLE);
             imgLogo.setVisibility(View.VISIBLE);

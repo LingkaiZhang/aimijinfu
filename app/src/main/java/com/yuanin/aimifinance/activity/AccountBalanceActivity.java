@@ -1,8 +1,15 @@
 package com.yuanin.aimifinance.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.google.gson.reflect.TypeToken;
@@ -15,6 +22,7 @@ import com.yuanin.aimifinance.utils.AppUtils;
 import com.yuanin.aimifinance.utils.NetUtils;
 import com.yuanin.aimifinance.utils.ParamsKeys;
 import com.yuanin.aimifinance.utils.ParamsValues;
+import com.yuanin.aimifinance.utils.StaticMembers;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,23 +45,62 @@ public class AccountBalanceActivity extends BaseActivity {
     private TextView tvPayTotal;
     @ViewInject(R.id.tvWithdrawTotal)
     private TextView tvWithdrawTotal;
+    @ViewInject(R.id.btn_recharge)
+    private Button btnRecharge;
+    @ViewInject(R.id.btn_withdraw)
+    private Button btnWithdraw;
+    @ViewInject(R.id.llMain)
+    private LinearLayout llMain;
 
     private Context context = AccountBalanceActivity.this;
+    private View popView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_balance);
         x.view().inject(this);
-        initTopBar("账户余额", toptitleView, true);
+        initTopBar("可用余额", toptitleView, true);
+        popView = getLayoutInflater().inflate(R.layout.popupwindow_hk_register,null);
         requestData();
     }
 
-    @Event(value = {R.id.btnRefresh})
+
+    @Event(value = {R.id.btnRefresh, R.id.btn_withdraw, R.id.btn_recharge, R.id.tvPayTotal, R.id.tvWithdrawTotal})
     private void loginClicked(View v) {
         switch (v.getId()) {
             case R.id.btnRefresh:
                 requestData();
+                break;
+            case R.id.tvPayTotal:
+
+                break;
+            case R.id.tvWithdrawTotal:
+
+                break;
+            case R.id.btn_recharge:
+                if (StaticMembers.HK_STATUS == 1) {
+                    if (StaticMembers.BANK_CARD_STATUS == 0) {
+                        startActivity(new Intent(context, AddBankCardActivity.class));
+                    } else {
+                        startActivity(new Intent(context, PayInputMoneyActivity.class));
+                    }
+                } else {
+                    PopupWindow mPop = AppUtils.createHKPop(popView, context);
+                    mPop.showAtLocation(llMain, Gravity.CENTER, 0, 0);
+                }
+                break;
+            case R.id.btn_withdraw:
+                if (StaticMembers.HK_STATUS == 1) {
+                    if (StaticMembers.BANK_CARD_STATUS == 0) {
+                        startActivity(new Intent(context, AddBankCardActivity.class));
+                    } else {
+                        startActivity(new Intent(context, WithdrawActivity.class));
+                    }
+                } else {
+                    PopupWindow mPop = AppUtils.createHKPop(popView, context);
+                    mPop.showAtLocation(llMain, Gravity.CENTER, 0, 0);
+                }
                 break;
         }
     }

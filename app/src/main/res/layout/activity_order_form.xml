@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/white"
-              android:orientation="vertical"
-              tools:context="com.yuanin.aimifinance.activity.OrderFormActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="com.yuanin.aimifinance.activity.OrderFormActivity">
 
     <include
         android:id="@+id/includeTop"
@@ -105,14 +105,30 @@
                         android:textColor="@color/text_black"
                         android:textSize="@dimen/normal_text"/>
 
-                    <TextView
-                        android:id="@+id/tvRate"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:textColor="@color/theme_color"
-                        android:textSize="@dimen/normal_text"/>
+                        android:layout_alignParentRight="true">
+
+                        <TextView
+                            android:id="@+id/tvRate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/theme_color"
+                            android:textSize="@dimen/normal_text"
+                            android:text="10.00%"/>
+
+                        <TextView
+                            android:id="@+id/interestRates"
+                            android:layout_marginLeft="4dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/theme_color"
+                            android:textSize="@dimen/normal_text"
+                            android:text="+0.50%"/>
+
+                    </LinearLayout>
 
                 </RelativeLayout>
 
@@ -354,198 +370,211 @@
                     android:layout_height="@dimen/margin_six"
                     android:background="@color/bg"/>
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingBottom="@dimen/small_margin"
-                    android:paddingTop="@dimen/small_margin">
+                    android:layout_height="@dimen/normal_height"
+                    android:paddingLeft="@dimen/small_margin"
+                    android:paddingRight="@dimen/small_margin">
 
-                    <LinearLayout
-                        android:layout_width="@dimen/weight"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:layout_centerVertical="true"
+                        android:text="@string/order_no_finish_money"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/normal_text"/>
 
-                        <TextView
-                            android:id="@+id/tvNoFinishMoney"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/zero_zero_zero"
-                            android:textColor="@color/theme_color"
-                            android:textSize="@dimen/normal_text"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_four"
-                            android:text="@string/order_no_finish_money"
-                            android:textColor="@color/text_light_gray"
-                            android:textSize="@dimen/small_text"/>
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="@dimen/line"
-                        android:layout_height="match_parent"
-                        android:background="@color/bg"
-                        android:paddingBottom="@dimen/small_margin"
-                        android:paddingTop="@dimen/small_margin"/>
-
-                    <LinearLayout
-                        android:layout_width="@dimen/weight"
+                    <TextView
+                        android:id="@+id/tvNoFinishMoney"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/theme_color"
+                        android:textSize="@dimen/normal_text"/>
 
-                        <TextView
-                            android:id="@+id/tvNoFinishEarn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/zero_zero_zero"
-                            android:textColor="@color/theme_color"
-                            android:textSize="@dimen/normal_text"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_four"
-                            android:text="@string/order_no_finish_earn"
-                            android:textColor="@color/text_light_gray"
-                            android:textSize="@dimen/small_text"/>
-
-                    </LinearLayout>
-                </LinearLayout>
+                </RelativeLayout>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/line"
+                    android:layout_height="@dimen/line_one_dp"
                     android:background="@color/bg"/>
 
-                <LinearLayout
-                    android:id="@+id/llBottom"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingBottom="@dimen/small_margin"
-                    android:paddingTop="@dimen/small_margin">
+                    android:layout_height="@dimen/normal_height"
+                    android:paddingLeft="@dimen/small_margin"
+                    android:paddingRight="@dimen/small_margin">
 
-                    <LinearLayout
-                        android:layout_width="@dimen/weight"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:layout_centerVertical="true"
+                        android:text="@string/order_finish_money"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/normal_text"/>
 
-                        <TextView
-                            android:id="@+id/tvFinishMoney"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/zero_zero_zero"
-                            android:textColor="@color/theme_color"
-                            android:textSize="@dimen/normal_text"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_four"
-                            android:text="@string/order_finish_money"
-                            android:textColor="@color/text_light_gray"
-                            android:textSize="@dimen/small_text"/>
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="@dimen/line"
-                        android:layout_height="match_parent"
-                        android:background="@color/bg"
-                        android:paddingBottom="@dimen/small_margin"
-                        android:paddingTop="@dimen/small_margin"/>
-
-                    <LinearLayout
-                        android:layout_width="@dimen/weight"
+                    <TextView
+                        android:id="@+id/tvFinishMoney"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/theme_color"
+                        android:textSize="@dimen/normal_text"/>
 
-                        <TextView
-                            android:id="@+id/tvFinishEarn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/zero_zero_zero"
-                            android:textColor="@color/theme_color"
-                            android:textSize="@dimen/normal_text"/>
+                </RelativeLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_four"
-                            android:text="@string/order_finish_earn"
-                            android:textColor="@color/text_light_gray"
-                            android:textSize="@dimen/small_text"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_one_dp"
+                    android:background="@color/bg"/>
 
-                    </LinearLayout>
-                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/normal_height"
+                    android:paddingLeft="@dimen/small_margin"
+                    android:paddingRight="@dimen/small_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/order_no_finish_earn"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/normal_text"/>
+
+                    <TextView
+                        android:id="@+id/tvNoFinishEarn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/theme_color"
+                        android:textSize="@dimen/normal_text"/>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_one_dp"
+                    android:background="@color/bg"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/normal_height"
+                    android:paddingLeft="@dimen/small_margin"
+                    android:paddingRight="@dimen/small_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/order_finish_earn"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/normal_text"/>
+
+                    <TextView
+                        android:id="@+id/tvFinishEarn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/theme_color"
+                        android:textSize="@dimen/normal_text"/>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_one_dp"
+                    android:background="@color/bg"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/normal_height"
+                    android:paddingLeft="@dimen/small_margin"
+                    android:paddingRight="@dimen/small_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="待收奖励"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/normal_text"/>
+
+                    <TextView
+                        android:id="@+id/tvNoAward"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="0"
+                        android:textColor="@color/theme_color"
+                        android:textSize="@dimen/normal_text"/>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_one_dp"
+                    android:background="@color/bg"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/normal_height"
+                    android:paddingLeft="@dimen/small_margin"
+                    android:paddingRight="@dimen/small_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="已收奖励"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/normal_text"/>
+
+                    <TextView
+                        android:id="@+id/tvFinishAward"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="0"
+                        android:textColor="@color/theme_color"
+                        android:textSize="@dimen/normal_text"/>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_six"
+                    android:background="@color/bg"/>
 
                 <RelativeLayout
                     android:id="@+id/mine_contract_mode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/bg"
-                    android:visibility="gone">
-
-                    <LinearLayout
-                        android:id="@+id/mine_contract"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="20dp">
-
-                        <View
-                            android:layout_width="100dp"
-                            android:layout_height="2dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_gravity="center_vertical"
-                            android:background="#aaaaaa"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="我的出借合同"
-                            android:textSize="20sp"
-                            android:textColor="#666666"/>
-
-                        <View
-                            android:layout_width="100dp"
-                            android:layout_height="2dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_gravity="center_vertical"
-                            android:background="#aaaaaa"/>
-
-
-                    </LinearLayout>
+                    android:background="@color/white">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/mine_contract"
                         android:gravity="center_horizontal">
                         <Button
                             android:id="@+id/viewer_contract"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="点击查看"
-                            android:textColor="#ffbb8d"
-                            android:textSize="20sp"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp"
-                            android:paddingRight="30dp"
-                            android:paddingLeft="30dp"
+                            android:text="查看出借合同"
+                            android:textColor="@color/theme_color"
+                            android:textSize="@dimen/big_text"
+                            android:layout_marginTop="30dp"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:paddingRight="50dp"
+                            android:paddingLeft="50dp"
                             android:layout_marginBottom="30dp"
                             android:background="@drawable/selector_contract_button_click"
                             style="@style/Widget.AppCompat.Button"/>
@@ -553,7 +582,6 @@
                     </LinearLayout>
 
                 </RelativeLayout>
-
 
                 <ImageView
                     android:id="@+id/imgLogo"

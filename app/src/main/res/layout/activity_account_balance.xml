@@ -4,13 +4,14 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@color/bg"
+                android:id="@+id/llMain"
               android:orientation="vertical"
               tools:context="com.yuanin.aimifinance.activity.AccountBalanceActivity">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="244dp"
+        android:layout_height="208dp"
         android:background="@color/theme_color">
 
         <include
@@ -33,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/zero_zero_zero"
                 android:textColor="@color/white"
-                android:textSize="36sp"/>
+                android:textSize="40sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -41,7 +42,7 @@
                 android:layout_marginTop="@dimen/margin_twelve2"
                 android:text="@string/balance"
                 android:textColor="@color/white"
-                android:textSize="@dimen/small_text"/>
+                android:textSize="@dimen/normal_text"/>
         </LinearLayout>
 
     </RelativeLayout>
@@ -51,19 +52,21 @@
         android:id="@+id/svMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@color/bg"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="@dimen/weight"
@@ -105,7 +108,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/tvIceBalance"
+                        android:id="@+id/tvIceBalance1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
@@ -131,8 +134,39 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="70dp"
                 android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="@dimen/weight"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvIceBalance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="@string/zero_zero_zero"
+                        android:textColor="@color/theme_color"
+                        android:textSize="@dimen/normal_text"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_four"
+                        android:gravity="center_vertical"
+                        android:text="冻结中(元)"
+                        android:textColor="@color/text_light_gray"
+                        android:textSize="@dimen/small_text"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="@dimen/line_one_dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/bg"/>
 
                 <LinearLayout
                     android:layout_width="@dimen/weight"
@@ -192,6 +226,45 @@
                         android:textSize="@dimen/small_text"/>
                 </LinearLayout>
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_one_dp"
+                android:background="@color/bg"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:paddingTop="30dp">
+
+                <Button
+                    android:id="@+id/btn_recharge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="提现"
+                    android:textColor="@color/theme_color"
+                    android:textSize="@dimen/normal_text"
+                    android:background="@drawable/selector_dialog_cancel_button_click"
+                    android:paddingLeft="@dimen/account_balance_button"
+                    android:paddingRight="@dimen/account_balance_button"/>
+
+                <Button
+                    android:id="@+id/btn_withdraw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="充值"
+                    android:layout_marginLeft="70dp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/normal_text"
+                    android:background="@drawable/selector_dialog_confirm_button_click"
+                    android:paddingLeft="@dimen/account_balance_button"
+                    android:paddingRight="@dimen/account_balance_button"/>
+
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
