@@ -84,7 +84,7 @@ public class IndexProductListAdapter extends GeneralAdapter<IndexProductEntity> 
                 interestRates.setText("+" + String.format("%.1f", Double.valueOf(data.getExtannual())).toString() + "%");
                 holder.setTextForTextView(R.id.tvRate, AppUtils.formatDouble("#.0", Double.valueOf(data.getOrgannual())));
                 interestRates.setVisibility(View.VISIBLE);
-                interestRatesLogo.setVisibility(View.VISIBLE);
+                interestRatesLogo.setVisibility(View.GONE);
             } else {
                 holder.setTextForTextView(R.id.tvRate, AppUtils.formatDouble("#.0", Double.valueOf(data.getAnnual())));
                 interestRates.setVisibility(View.GONE);

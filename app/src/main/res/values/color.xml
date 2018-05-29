@@ -39,4 +39,5 @@
     <color name="withdraw_all">#f98d01</color>
     <color name="withdraw_all_click">#f8af50</color>
     <color name="prepayment">#ff8903</color>
+    <color name="trade_success">#6deb7c</color>
 </resources>

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mylhyl.acp.Acp;
@@ -30,6 +31,7 @@ public class BaseActivity extends Activity {
     private TextView titleTextView;
     private Animation animation;
     private GeneralDialog dialog;
+    private ImageView imgviewBack;
 
 
     @Override
@@ -65,6 +67,18 @@ public class BaseActivity extends Activity {
         topBarInfo.setLeftBtnListener(lis);
         TopBarUtil.setTopBarInfo(view, topBarInfo);
     }
+
+    protected void initTopBar3(String name, View view, boolean hasBack) {
+        TopBarInfo topBarInfo = new TopBarInfo();
+        topBarInfo.setTxtStr(name);
+        titleTextView = (TextView) view.findViewById(R.id.tv_title);
+        topBarInfo.setLeftPicId(R.drawable.selector_left_delect_back);
+        if (hasBack) {
+            topBarInfo.setLeftBtnListener(new TopBarUtil().new AlwaysUseListener(this));
+        }
+        TopBarUtil.setTopBarInfo(view, topBarInfo);
+    }
+
 
     /**
      * 给TopBar赋值

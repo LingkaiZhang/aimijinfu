@@ -54,15 +54,6 @@
             android:gravity="center"
             android:orientation="vertical">
 
-
-            <TextView
-                android:id="@+id/tvInvestMoney"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/zero_zero_zero"
-                android:textColor="@color/theme_color"
-                android:textSize="@dimen/normal_text"/>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -72,6 +63,15 @@
                 android:textSize="@dimen/small_text"/>
 
 
+            <TextView
+                android:id="@+id/tvInvestMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zero_zero_zero"
+                android:textColor="@color/theme_color"
+                android:textSize="@dimen/normal_text" />
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -80,6 +80,14 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_four"
+                android:text="@string/my_regular_earn"
+                android:textColor="@color/text_light_gray"
+                android:textSize="@dimen/small_text"/>
 
             <TextView
                 android:id="@+id/tvEarn"
@@ -89,13 +97,7 @@
                 android:textColor="@color/theme_color"
                 android:textSize="@dimen/normal_text"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_four"
-                android:text="@string/my_regular_earn"
-                android:textColor="@color/text_light_gray"
-                android:textSize="@dimen/small_text"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -106,19 +108,21 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvStartDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/text_black"
-                android:textSize="@dimen/normal_text"/>
-
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_four"
                 android:text="出借时间"
                 android:textColor="@color/text_light_gray"
                 android:textSize="@dimen/small_text"/>
+
+            <TextView
+                android:id="@+id/tvStartDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/normal_text"/>
+
+
 
         </LinearLayout>
     </LinearLayout>

@@ -64,7 +64,7 @@ public class MyInvestActivity extends BaseFragmentActivity {
     private ImageView cursor;
 
     public static int type = 0;
-    private final String[] titles = {"爱米定期", "爱米优选"};
+    private final String[] titles = {"我的资产", "爱米优选"};
     private View popTitleView;
     private PopupWindow titlePop;
     private PopDownRecycleViewAdapter mTitleAdp;
@@ -90,10 +90,11 @@ public class MyInvestActivity extends BaseFragmentActivity {
         if (textViews == null) {
             textViews = new ArrayList<TextView>();
         }
-        textViews.add(tvDoing);
         textViews.add(tvCollecting);
-        textViews.add(tvFail);
+        textViews.add(tvDoing);
         textViews.add(tvFinish);
+        textViews.add(tvFail);
+
         InitImageView();
         initViewPager();
         type = getIntent().getIntExtra("type", 0);
@@ -109,30 +110,30 @@ public class MyInvestActivity extends BaseFragmentActivity {
     private void onViewClicked(View v) {
         switch (v.getId()) {
             case R.id.tvDoing:
-                fragmentPosition = 0;
-                mViewPager.setCurrentItem(fragmentPosition, false);
-                ViewPagerUtils.changeTextViewStyle_FINANCE(this, 0, textViews);
-                break;
-            case R.id.tvCollecting:
                 fragmentPosition = 1;
                 mViewPager.setCurrentItem(fragmentPosition, false);
                 ViewPagerUtils.changeTextViewStyle_FINANCE(this, 1, textViews);
                 break;
-            case R.id.tvFail:
-                fragmentPosition = 2;
+            case R.id.tvCollecting:
+                fragmentPosition = 0;
                 mViewPager.setCurrentItem(fragmentPosition, false);
-                ViewPagerUtils.changeTextViewStyle_FINANCE(this, 2, textViews);
+                ViewPagerUtils.changeTextViewStyle_FINANCE(this, 0, textViews);
                 break;
-            case R.id.tvFinish:
+            case R.id.tvFail:
                 fragmentPosition = 3;
                 mViewPager.setCurrentItem(fragmentPosition, false);
                 ViewPagerUtils.changeTextViewStyle_FINANCE(this, 3, textViews);
+                break;
+            case R.id.tvFinish:
+                fragmentPosition = 2;
+                mViewPager.setCurrentItem(fragmentPosition, false);
+                ViewPagerUtils.changeTextViewStyle_FINANCE(this, 2, textViews);
                 break;
             case R.id.imgview_back:
                 this.finish();
                 break;
             case R.id.llTitle:
-                showTypePop();
+            //    showTypePop();
                 break;
         }
     }
@@ -172,10 +173,11 @@ public class MyInvestActivity extends BaseFragmentActivity {
         List<TabIndicatorEntity> list = ViewPagerUtils.getTabIndicator(4);
         // 3个fragment界面封装
         fragmentList = new ArrayList<Fragment>();
-        fragmentList.add(new MyInvestDoingFragment());
         fragmentList.add(new MyInvestCollectFragment());
-        fragmentList.add(new MyInvestFailFragment());
+        fragmentList.add(new MyInvestDoingFragment());
         fragmentList.add(new MyInvestFinishFragment());
+        fragmentList.add(new MyInvestFailFragment());
+
         // 设置ViewPager适配器
         ViewPagerFragmentAdapter viewPagerFragmentAdapter = new ViewPagerFragmentAdapter(getSupportFragmentManager(), list, fragmentList);
         mViewPager.setAdapter(viewPagerFragmentAdapter);

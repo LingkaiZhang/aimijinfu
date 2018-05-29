@@ -81,13 +81,13 @@
 
     <!--累计收益-->
     <string name="AddUpEarnings">累计收益</string>
-    <string name="add_up_earnings_time">交易时间</string>
-    <string name="add_up_earnings_seven_day">7天以内</string>
-    <string name="add_up_earnings_one_month">一个月以内</string>
-    <string name="add_up_earnings_three_month">三个月以内</string>
-    <string name="add_up_earnings_six_month">六个月以内</string>
-    <string name="add_up_earnings_one_year">一年以内</string>
-    <string name="add_up_earnings_one_year_more">一年以外</string>
+    <string name="add_up_earnings_time">时间</string>
+    <string name="add_up_earnings_seven_day">最近一周</string>
+    <string name="add_up_earnings_one_month">1个月</string>
+    <string name="add_up_earnings_three_month">3个月</string>
+    <string name="add_up_earnings_six_month">6个月</string>
+    <string name="add_up_earnings_one_year">12个月</string>
+    <string name="add_up_earnings_one_year_more">12个月以上</string>
     <string name="add_up_earnings_all_2">全部</string>
     <string name="title_activity_total_money">TotalMoneyActivity</string>
 
@@ -132,7 +132,7 @@
 
     <!--资金流水-->
     <string name="FundsWater">交易流水</string>
-    <string name="funds_water_status">交易状态</string>
+    <string name="funds_water_status">状态</string>
     <string name="title_activity_red_packets">RedPacketsActivity</string>
     <string name="funds_water_all">全部</string>
     <string name="funds_water_finish">交易成功</string>
@@ -171,8 +171,8 @@
     <string name="ViewRealnameInfo">查看实名信息</string>
     <string name="title_activity_my_regular">MyInvestActivity</string>
 
-    <!--我的米定期-->
-    <string name="my_regular_invest_money">出借金额(元)</string>
+    <!--我的爱米定期-->
+    <string name="my_regular_invest_money">出借本金(元)</string>
     <string name="my_regular_earn">到期收益(元)</string>
     <string name="my_regular_end_date">到期时间:</string>
     <string name="my_regular_leave">剩余:</string>
@@ -321,15 +321,15 @@
     <string name="try_money">体验金</string>
     <string name="choose_redpackets">选择红包</string>
 
-    <string name="earn_wait">待收利息(元)</string>
-    <string name="earn_already">已收利息(元)</string>
+    <string name="earn_wait">待收收益(元)</string>
+    <string name="earn_already">已收收益(元)</string>
 
     <string name="invite_friend">邀请好友</string>
     <string name="my_invite_friend">我邀请的人</string>
 
     <string name="share_red_packet">分享红包</string>
 
-    <string name="jinxing_ing">进行中</string>
+    <string name="jinxing_ing">还款中</string>
     <string name="collecting">募集中</string>
     <string name="liubiao">已流标</string>
     <string name="yi_huankuan">已还款</string>

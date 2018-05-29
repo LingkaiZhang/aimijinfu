@@ -34,7 +34,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/earn_wait"
                 android:textColor="@color/text_black"
-                android:textSize="@dimen/normal_text"/>
+                android:textSize="@dimen/normal_text"
+                />
 
             <TextView
                 android:id="@+id/tvWaitEarn"
@@ -47,6 +48,11 @@
 
         </LinearLayout>
 
+        <View
+            android:layout_width="1dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:background="@color/bg"/>
 
         <LinearLayout
             android:id="@+id/llAlreadyEarn"

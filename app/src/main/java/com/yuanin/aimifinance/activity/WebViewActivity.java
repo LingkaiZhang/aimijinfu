@@ -152,6 +152,10 @@ public class WebViewActivity extends BaseActivity {
                 initTopBarWithRightText(getResources().getString(R.string.model_loan_contract), toptitleView, null, "");
                 url = ParamsValues.NET_URL + "html/generic/web/viewer.html?file=pdf/MI20180313005N.pdf";
                 setUrl(url, new FrameLayout.LayoutParams(-1, -1));
+            } else if (type.equals(ParamsValues.BANK_DEPOSITORY)) {
+                initTopBarWithRightText("银行存管", toptitleView, null, "");
+                url = ParamsValues.NET_URL + "html/banner_lanmao_online.html";
+                setUrl(url,new FrameLayout.LayoutParams(-1, -1));
             }
         }
     }

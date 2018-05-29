@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activity.BuySuccessNewActivity">
+
+    <include
+        android:id="@+id/includeTop"
+        layout="@layout/top_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/normal_height"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:src="@mipmap/loan_success"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/includeTop" />
+
+    <Button
+        android:id="@+id/btn_check_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_dialog_cancel_button_click"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:text="查看订单"
+        android:textColor="@color/theme_color"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="250dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btn_continue_loan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_dialog_confirm_button_click"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:text="继续出借"
+        android:textColor="@color/white"
+        tools:layout_editor_absoluteY="250dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="25dp"
+        tools:ignore="MissingConstraints" />
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/bannerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/banner_new"
+        android:layout_marginTop="50dp"
+        android:scaleType="fitXY"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_gravity="center_vertical"
+        app:actualImageScaleType="fitXY"
+        app:fadeDuration="300"
+        app:placeholderImage="@mipmap/image_loading"
+        app:placeholderImageScaleType="fitCenter"
+        app:layout_constraintTop_toBottomOf="@+id/btn_continue_loan"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+
+</android.support.constraint.ConstraintLayout>

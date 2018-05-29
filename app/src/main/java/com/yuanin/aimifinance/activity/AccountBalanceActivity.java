@@ -66,17 +66,21 @@ public class AccountBalanceActivity extends BaseActivity {
     }
 
 
-    @Event(value = {R.id.btnRefresh, R.id.btn_withdraw, R.id.btn_recharge, R.id.tvPayTotal, R.id.tvWithdrawTotal})
+    @Event(value = {R.id.btnRefresh, R.id.btn_withdraw, R.id.btn_recharge, R.id.llPayTotal, R.id.llWithdrawTotal})
     private void loginClicked(View v) {
         switch (v.getId()) {
             case R.id.btnRefresh:
                 requestData();
                 break;
-            case R.id.tvPayTotal:
-
+            case R.id.llPayTotal:
+                Intent intent = new Intent(this, FundsWaterActivity.class);
+                intent.putExtra("currentFundType",1);
+                startActivity(intent);
                 break;
-            case R.id.tvWithdrawTotal:
-
+            case R.id.llWithdrawTotal:
+                Intent intent1 = new Intent(this, FundsWaterActivity.class);
+                intent1.putExtra("currentFundType",2);
+                startActivity(intent1);
                 break;
             case R.id.btn_recharge:
                 if (StaticMembers.HK_STATUS == 1) {

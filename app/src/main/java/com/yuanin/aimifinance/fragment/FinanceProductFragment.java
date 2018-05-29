@@ -102,7 +102,7 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
         lvProduct.setPullLoadEnable(true);
         lvProduct.setXListViewListener(this);
         EventBus.getDefault().register(this);
-        lvProduct.setOnScrollListener(new AbsListView.OnScrollListener() {
+        /*lvProduct.setOnScrollListener(new AbsListView.OnScrollListener() {
 
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
@@ -127,7 +127,7 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
                     ivToTop.setVisibility(View.GONE);
                 }
             }
-        });
+        });*/
         return view;
     }
 
@@ -277,7 +277,7 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
                             if (entity != null) {
                                 if (mList == null) {
                                     mList = entity.getData();
-                                    setTitleData();
+                                   // setTitleData();
                                     mAdp = new FinanceProductListAdapter(getActivity(), mList);
                                     lvProduct.setAdapter(mAdp);
                                     flMain.setVisibility(View.VISIBLE);
@@ -305,7 +305,7 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
                         if (entity != null) {
                             if (mList == null) {
                                 mList = entity.getData();
-                                setTitleData();
+                            //    setTitleData();
                                 mAdp = new FinanceProductListAdapter(getActivity(), mList);
                                 lvProduct.setAdapter(mAdp);
                                 flMain.setVisibility(View.VISIBLE);

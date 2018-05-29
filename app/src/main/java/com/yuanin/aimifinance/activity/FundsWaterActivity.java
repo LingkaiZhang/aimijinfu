@@ -1,7 +1,7 @@
 package com.yuanin.aimifinance.activity;
 
 import android.content.Context;
-import android.graphics.Rect;
+import android.content.Intent;
 import android.graphics.drawable.Animatable;
 import android.os.Build;
 import android.os.Bundle;
@@ -54,6 +54,8 @@ public class FundsWaterActivity extends BaseListActivity {
     private LinearLayout llMain;
     @ViewInject(R.id.tvTime)
     private TextView tvTime;
+    @ViewInject(R.id.tvType)
+    private TextView tvType;
     @ViewInject(R.id.tvStatus)
     private TextView tvStatus;
     @ViewInject(R.id.lvFundsWater)
@@ -68,6 +70,8 @@ public class FundsWaterActivity extends BaseListActivity {
     private View viewLoading;
     @ViewInject(R.id.ivTimeArrow)
     private ImageView ivTimeArrow;
+    @ViewInject(R.id.ivTypeArrow)
+    private ImageView ivTypeArrow;
     @ViewInject(R.id.ivStatusArrow)
     private ImageView ivStatusArrow;
     @ViewInject(R.id.imageLoading)
@@ -76,18 +80,19 @@ public class FundsWaterActivity extends BaseListActivity {
     private TextView tvNoNet;
 
 
-    private RecyclerView lvTime, lvStatus;
+    private RecyclerView lvType,lvTime, lvStatus;
     // 页码
     private int PageIndex = 1;
     private List<FundsWaterMapEntity> mMapList;
     private List<FundsWaterEntity> mList;
     private ExchangeWaterListAdapter mAdp;
-    private List<String> mTimePopList, mStatusPopList;
-    private PopDownRecycleViewAdapter mTimeAdp, mStatusAdp;
-    private PopupWindow timePop, statusPop;
-    private View popTimeView, popStatusView;
+    private List<String> mTypePopList, mTimePopList, mStatusPopList;
+    private PopDownRecycleViewAdapter mTypeAdp, mTimeAdp, mStatusAdp;
+    private PopupWindow typePop,timePop, statusPop;
+    private View popTypeView, popTimeView, popStatusView;
     private int currentTimeType = 0;
     private int currentFundType = 0;
+    private int getCurrentTradeType = 0;
     private int currentStatus = 0;
     private boolean isNeedLoadBar = true;
     private Animation downAnimation;
@@ -100,6 +105,7 @@ public class FundsWaterActivity extends BaseListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_funds_water);
+        popTypeView = getLayoutInflater().inflate(R.layout.popupwindow_down_list_select, null);
         popTimeView = getLayoutInflater().inflate(R.layout.popupwindow_down_list_select, null);
         popStatusView = getLayoutInflater().inflate(R.layout.popupwindow_down_list_select, null);
         initRecycleView();
@@ -116,15 +122,32 @@ public class FundsWaterActivity extends BaseListActivity {
         upAnimation.setFillAfter(true);
         super.setListViewFunction(lvFundsWater, true, true);
         lvFundsWater.setXListViewListener(this);
+        initTypePopData();
         initTimePopData();
         initStatusPopData();
         initListener();
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            currentStatus = intent.getIntExtra("currentStatus", 0);
+            currentFundType = intent.getIntExtra("currentFundType", 0);
+            if (currentFundType != 0) {
+                tvType.setText(mTypePopList.get(currentFundType));
+            }
+            if (currentStatus != 0) {
+                tvStatus.setText(mStatusPopList.get(currentStatus));
+            }
+        }
+
         requestDatas();
     }
 
     private void initRecycleView() {
+        lvType = (RecyclerView) popTypeView.findViewById(R.id.lvDownList);
         lvTime = (RecyclerView) popTimeView.findViewById(R.id.lvDownList);
         lvStatus = (RecyclerView) popStatusView.findViewById(R.id.lvDownList);
+        lvType.setLayoutManager(new GridLayoutManager(this,3));
+        lvType.setItemAnimator(new DefaultItemAnimator());
         lvTime.setLayoutManager(new GridLayoutManager(this, 3));
         lvTime.setItemAnimator(new DefaultItemAnimator());
         lvStatus.setLayoutManager(new GridLayoutManager(this, 3));
@@ -196,6 +219,7 @@ public class FundsWaterActivity extends BaseListActivity {
                         ReturnResultEntity<FundsWaterMapEntity> entity = (ReturnResultEntity<FundsWaterMapEntity>) object;
                         if (entity.isSuccess(context)) {
                             if (entity.isNotNull()) {
+                                //count记录总条数
                                 int count = 0;
                                 for (int i = 0; i < entity.getData().size(); i++) {
                                     count += entity.getData().get(i).getList().size();
@@ -284,6 +308,35 @@ public class FundsWaterActivity extends BaseListActivity {
     }
 
     private void initListener() {
+
+        mTypeAdp.setOnItemClickListener(new PopDownRecycleViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                if (mTypeAdp != null) {
+                    mTypeAdp.setCurrentSelect(position);
+                    mTypeAdp.notifyDataSetChanged();
+                }
+                String typeStr = String.valueOf(mTypePopList.get(position));
+                if (position == 0) {
+                    tvType.setText("类型");
+                } else {
+                    tvType.setText(typeStr);
+                }
+                if (typePop != null && typePop.isShowing()) {
+                    typePop.dismiss();
+                }
+                clearData();
+                currentFundType = position;
+                PageIndex = 1;
+                requestDatas();
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+
+            }
+        });
+
         mTimeAdp.setOnItemClickListener(new PopDownRecycleViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -354,6 +407,24 @@ public class FundsWaterActivity extends BaseListActivity {
             mAdp = null;
         }
     }
+    //初始化类型pop
+    private void initTypePopData(){
+        if (mTypePopList == null){
+            mTypePopList = new ArrayList<String>();
+            mTypePopList.add("全部");
+            mTypePopList.add("充值");
+            mTypePopList.add("提现");
+            mTypePopList.add("出借本金");
+            mTypePopList.add("收益");
+            mTypePopList.add("回收本金");
+            mTypePopList.add("手续费");
+            mTypePopList.add("平台奖励");
+            mTypePopList.add("其他");
+            mTypeAdp = new PopDownRecycleViewAdapter(mTypePopList, this);
+            mTypeAdp.setCurrentSelect(0);
+            lvType.setAdapter(mTypeAdp);
+        }
+    }
 
     //初始化交易状态pop
     private void initStatusPopData() {
@@ -387,9 +458,13 @@ public class FundsWaterActivity extends BaseListActivity {
     }
 
 
-    @Event(value = {R.id.rlTime, R.id.rlStatus, R.id.btnRefresh})
+    @Event(value = {R.id.rlType,R.id.rlTime, R.id.rlStatus, R.id.btnRefresh})
     private void onViewClicked(View v) {
         switch (v.getId()) {
+            //类型
+            case R.id.rlType:
+                showTypePop();
+                break;
             //时间
             case R.id.rlTime:
                 showTimePop();
@@ -408,16 +483,52 @@ public class FundsWaterActivity extends BaseListActivity {
         }
     }
 
+    private void showTypePop(){
+        if (typePop == null) {
+            typePop = AppUtils.createPop(popTypeView, R.style.PopupWindowLeftAnimation);
+            if (Build.VERSION.SDK_INT >= 24) {
+                int top = llTop.getHeight() + toptitleView.getHeight() + StaticMembers.STATUS_HEIGHT;
+                typePop.showAtLocation(llMain, Gravity.NO_GRAVITY, 0 , top);
+            } else {
+                typePop.showAsDropDown(llTop);
+            }
+        } else {
+            if (typePop.isShowing()) {
+                typePop.dismiss();
+            } else {
+                if (Build.VERSION.SDK_INT >= 24) {
+                    int top = llTop.getHeight() + toptitleView.getHeight() + StaticMembers.STATUS_HEIGHT;
+                    typePop.showAtLocation(llMain, Gravity.NO_GRAVITY, 0 , top);
+                } else {
+                    typePop.showAsDropDown(llTop);
+                }
+            }
+        }
+        if (timePop != null && timePop.isShowing()) {
+            timePop.dismiss();
+        }
+        if (statusPop != null && statusPop.isShowing()) {
+            statusPop.dismiss();
+        }
+
+        if (typePop.isShowing()) {
+            ivTypeArrow.startAnimation(downAnimation);
+        }
+        typePop.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                ivTypeArrow.startAnimation(upAnimation);
+            }
+        });
+    }
+
 
     private void showStatusPop() {
         if (statusPop == null) {
-            statusPop = AppUtils.createPop(popStatusView, R.style.PopupWindowRightAnimation);
+            statusPop = AppUtils.createPop(popStatusView, R.style.PopupWindowCenterAnimation);
             if (Build.VERSION.SDK_INT >= 24) {
-                Rect visibleFrame  = new Rect();
-                llTop.getGlobalVisibleRect(visibleFrame);
-                int height = llTop.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom;
-                statusPop.setHeight(height);
-                statusPop.showAsDropDown(llTop);
+                int top = llTop.getHeight() + toptitleView.getHeight() + StaticMembers.STATUS_HEIGHT;
+                statusPop.showAtLocation(llMain, Gravity.NO_GRAVITY, 0, top);
             } else {
                 statusPop.showAsDropDown(llTop);
             }
@@ -426,15 +537,15 @@ public class FundsWaterActivity extends BaseListActivity {
                 statusPop.dismiss();
             } else {
                 if (Build.VERSION.SDK_INT >= 24) {
-                    Rect visibleFrame  = new Rect();
-                    llTop.getGlobalVisibleRect(visibleFrame);
-                    int height = llTop.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom;
-                    statusPop.setHeight(height);
-                    statusPop.showAsDropDown(llTop);
+                    int top = llTop.getHeight() + toptitleView.getHeight() + StaticMembers.STATUS_HEIGHT;
+                    statusPop.showAtLocation(llMain, Gravity.NO_GRAVITY, 0, top);
                 } else {
                     statusPop.showAsDropDown(llTop);
                 }
             }
+        }
+        if (typePop != null && typePop.isShowing()) {
+            typePop.dismiss();
         }
         if (timePop != null && timePop.isShowing()) {
             timePop.dismiss();
@@ -454,13 +565,10 @@ public class FundsWaterActivity extends BaseListActivity {
 
     private void showTimePop() {
         if (timePop == null) {
-            timePop = AppUtils.createPop(popTimeView, R.style.PopupWindowLeftAnimation);
+            timePop = AppUtils.createPop(popTimeView, R.style.PopupWindowRightAnimation);
             if (Build.VERSION.SDK_INT >= 24) {
-                Rect visibleFrame  = new Rect();
-                llTop.getGlobalVisibleRect(visibleFrame);
-                int height = llTop.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom;
-                timePop.setHeight(height);
-                timePop.showAsDropDown(llTop);
+                int top = llTop.getHeight() + toptitleView.getHeight() + StaticMembers.STATUS_HEIGHT;
+                timePop.showAtLocation(llMain, Gravity.NO_GRAVITY, 0, top);
             } else {
                 timePop.showAsDropDown(llTop);
             }
@@ -469,15 +577,15 @@ public class FundsWaterActivity extends BaseListActivity {
                 timePop.dismiss();
             } else {
                 if (Build.VERSION.SDK_INT >= 24) {
-                    Rect visibleFrame  = new Rect();
-                    llTop.getGlobalVisibleRect(visibleFrame);
-                    int height = llTop.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom;
-                    timePop.setHeight(height);
-                    timePop.showAsDropDown(llTop);
+                    int top = llTop.getHeight() + toptitleView.getHeight() + StaticMembers.STATUS_HEIGHT;
+                    timePop.showAtLocation(llMain, Gravity.NO_GRAVITY, 0, top);
                 } else {
                     timePop.showAsDropDown(llTop);
                 }
             }
+        }
+        if (typePop != null && typePop.isShowing()) {
+            typePop.dismiss();
         }
         if (statusPop != null && statusPop.isShowing()) {
             statusPop.dismiss();
@@ -505,6 +613,10 @@ public class FundsWaterActivity extends BaseListActivity {
             }
             if (timePop != null && timePop.isShowing()) {
                 timePop.dismiss();
+                return true;
+            }
+            if (typePop != null && typePop.isShowing()) {
+                typePop.dismiss();
                 return true;
             }
             finish();

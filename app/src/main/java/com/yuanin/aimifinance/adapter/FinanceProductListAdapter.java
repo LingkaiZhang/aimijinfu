@@ -149,7 +149,7 @@ public class FinanceProductListAdapter extends BaseAdapter {
                     mainViewHolder.interestRates.setText("+" + String.format("%.1f", Double.valueOf(entity.getExtannual())).toString() + "%");
                     mainViewHolder.tvRate.setText(AppUtils.formatDouble("#.0", Double.valueOf(entity.getOrgannual())));
                     mainViewHolder.interestRates.setVisibility(View.VISIBLE);
-                    mainViewHolder.interestRatesLogo.setVisibility(View.VISIBLE);
+                    mainViewHolder.interestRatesLogo.setVisibility(View.GONE);
                 } else {
                     mainViewHolder.tvRate.setText(AppUtils.formatDouble("#.0", Double.valueOf(entity.getAnnual())));
                     mainViewHolder.interestRates.setVisibility(View.GONE);

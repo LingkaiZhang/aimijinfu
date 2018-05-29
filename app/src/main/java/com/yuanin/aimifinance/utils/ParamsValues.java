@@ -193,5 +193,6 @@ public class ParamsValues {
     public final static String LOAN_RISK_STATEMENT = "Loan_risk_statement";
     //我要借款
     public final static String MY_BORROW = "my_borrow";
-
+    //银行存管
+    public final static String BANK_DEPOSITORY = "bank_depository";
 }

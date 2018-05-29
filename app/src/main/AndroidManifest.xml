@@ -214,13 +214,11 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
 
             <!-- 由HTML5点击进入app的第一种方式:自定义链接 -->
             <intent-filter>
@@ -345,8 +343,7 @@
         <activity
             android:name=".activity.LoginRegisterActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar">
-        </activity>
+            android:theme="@android:style/Theme.NoTitleBar" />
         <activity
             android:name=".activity.RegisterOne"
             android:screenOrientation="portrait"
@@ -358,9 +355,21 @@
         <activity
             android:name=".activity.LoginOneActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar"/>
+            android:theme="@android:style/Theme.NoTitleBar" />
         <activity
             android:name=".activity.ForgetPasswordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name=".activity.SetLoginPasswordResultActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name=".activity.MessageCenterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name=".activity.BuySuccessNewActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar"/>
     </application>

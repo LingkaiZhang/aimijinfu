@@ -186,7 +186,7 @@ public class FinanceProductDetailActivity extends BaseFragmentActivity implement
                 intent2.putExtra("entityID", entityID);
                 startActivity(intent2);
             }
-        }, "往期项目");
+        }, "");
         textViews.add(tvProductDetail);
         textViews.add(tvQuestion);
         textViews.add(tvRecord);

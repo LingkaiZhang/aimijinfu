@@ -26,6 +26,7 @@ import com.yuanin.aimifinance.activity.FinanceProductDetailActivity;
 import com.yuanin.aimifinance.activity.GetVerifyCodeActivity;
 import com.yuanin.aimifinance.activity.HrefActivity;
 import com.yuanin.aimifinance.activity.LoginActivity;
+import com.yuanin.aimifinance.activity.MessageCenterActivity;
 import com.yuanin.aimifinance.activity.NoticeListActivity;
 import com.yuanin.aimifinance.activity.WebViewActivity;
 import com.yuanin.aimifinance.adapter.IndexProductListAdapter;
@@ -156,9 +157,14 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
 
 
     @Event(value = {R.id.btnRefresh, R.id.llSafe, R.id.llHelp, R.id.llInvite, R.id.llData, R.id.ivMoreNotice,
-            R.id.imgRedPackets, R.id.rlNoLogin, R.id.btnNewInvest})
+            R.id.imgRedPackets, R.id.rlNoLogin, R.id.btnNewInvest, R.id.llBank_depository})
     private void onViewClicked(View v) {
         switch (v.getId()) {
+            case R.id.llBank_depository:
+                Intent intent5 = new Intent(getActivity(), WebViewActivity.class);
+                intent5.putExtra(ParamsKeys.TYPE,ParamsValues.BANK_DEPOSITORY);
+                startActivity(intent5);
+                break;
             case R.id.llSafe:
                 Intent intent1 = new Intent(getActivity(), WebViewActivity.class);
                 intent1.putExtra(ParamsKeys.TYPE, ParamsValues.SAFE);
@@ -189,7 +195,7 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
                 mPullDownScrollView.autoRefresh();
                 break;
             case R.id.ivMoreNotice:
-                startActivity(new Intent(getActivity(), NoticeListActivity.class));
+                startActivity(new Intent(getActivity(), MessageCenterActivity.class));
                 break;
             case R.id.btnNewInvest:
                 if (StaticMembers.IS_NEED_LOGIN) {

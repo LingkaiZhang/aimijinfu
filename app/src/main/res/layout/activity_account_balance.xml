@@ -47,14 +47,6 @@
 
     </RelativeLayout>
 
-
-    <ScrollView
-        android:id="@+id/svMain"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:scrollbars="none">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -169,6 +161,7 @@
                     android:background="@color/bg"/>
 
                 <LinearLayout
+                    android:id="@+id/llPayTotal"
                     android:layout_width="@dimen/weight"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -201,6 +194,7 @@
 
 
                 <LinearLayout
+                    android:id="@+id/llWithdrawTotal"
                     android:layout_width="@dimen/weight"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -266,5 +260,22 @@
             </LinearLayout>
 
         </LinearLayout>
-    </ScrollView>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="用户资金由上海银行存管"
+                android:textColor="@color/remindyellow"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/small_margin"
+                android:drawableLeft="@mipmap/sh_bank"
+                android:drawablePadding="@dimen/margin_five"/>
+        </RelativeLayout>
 </LinearLayout>

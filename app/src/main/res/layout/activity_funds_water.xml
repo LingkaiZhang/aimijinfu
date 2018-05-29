@@ -1,11 +1,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:id="@+id/llMain"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/bg"
-              android:orientation="vertical"
-              tools:context="com.yuanin.aimifinance.activity.FundsWaterActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical"
+    tools:context="com.yuanin.aimifinance.activity.FundsWaterActivity">
 
     <include
         android:id="@+id/includeTop"
@@ -24,6 +24,61 @@
             android:layout_height="@dimen/normal_height"
             android:background="@color/white"
             android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/rlType"
+                android:layout_width="@dimen/weight"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="类型"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/normal_text"/>
+
+                <ImageView
+                    android:id="@+id/ivTypeArrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/margin_twelve2"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/select_down_arrow"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rlStatus"
+                android:layout_width="@dimen/weight"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/funds_water_status"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/normal_text"/>
+
+                <ImageView
+                    android:id="@+id/ivStatusArrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/margin_twelve2"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/select_down_arrow"/>
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/rlTime"
@@ -51,34 +106,6 @@
                     android:scaleType="centerCrop"
                     android:src="@mipmap/select_down_arrow"/>
 
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/rlStatus"
-                android:layout_width="@dimen/weight"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tvStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="@string/funds_water_status"
-                    android:textColor="@color/text_black"
-                    android:textSize="@dimen/normal_text"/>
-
-                <ImageView
-                    android:id="@+id/ivStatusArrow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/margin_twelve2"
-                    android:scaleType="centerCrop"
-                    android:src="@mipmap/select_down_arrow"/>
             </LinearLayout>
 
         </LinearLayout>

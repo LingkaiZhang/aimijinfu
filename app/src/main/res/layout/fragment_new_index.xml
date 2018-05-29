@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/small_margin"
-                android:src="@mipmap/index_notice" />
+                android:src="@mipmap/index_notice_new" />
 
             <ViewFlipper
                 android:id="@+id/flipper"
@@ -103,6 +103,26 @@
                 android:weightSum="4">
 
                 <LinearLayout
+                    android:id="@+id/llBank_depository"
+                    android:layout_width="@dimen/weight"
+                    android:layout_height="@dimen/margin_seventy"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_gray_click"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/margin_six"
+                        android:drawableTop="@mipmap/bank_depository"
+                        android:text="银行存管"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/normal_text" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/llSafe"
                     android:layout_width="@dimen/weight"
                     android:layout_height="@dimen/margin_seventy"
@@ -115,7 +135,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawablePadding="@dimen/margin_six"
-                        android:drawableTop="@mipmap/index_safe"
+                        android:drawableTop="@mipmap/index_safe_new"
                         android:text="信息披露"
                         android:textColor="@color/text_black"
                         android:textSize="@dimen/normal_text" />
@@ -130,6 +150,7 @@
                     android:background="@drawable/selector_gray_click"
                     android:gravity="center"
                     android:orientation="vertical"
+                    android:visibility="gone"
                     >
 
                     <ImageView
@@ -148,26 +169,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/llHelp"
-                    android:layout_width="@dimen/weight"
-                    android:layout_height="@dimen/margin_seventy"
-                    android:layout_weight="1"
-                    android:background="@drawable/selector_gray_click"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawablePadding="@dimen/margin_six"
-                        android:drawableTop="@mipmap/index_help"
-                        android:text="帮助中心"
-                        android:textColor="@color/text_black"
-                        android:textSize="@dimen/normal_text" />
-
-                </LinearLayout>
-
-                <LinearLayout
                     android:id="@+id/llData"
                     android:layout_width="@dimen/weight"
                     android:layout_height="@dimen/margin_seventy"
@@ -180,12 +181,33 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawablePadding="@dimen/margin_six"
-                        android:drawableTop="@mipmap/index_platform_data"
+                        android:drawableTop="@mipmap/index_platform_data_new"
                         android:text="平台数据"
                         android:textColor="@color/text_black"
                         android:textSize="@dimen/normal_text" />
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llHelp"
+                    android:layout_width="@dimen/weight"
+                    android:layout_height="@dimen/margin_seventy"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_gray_click"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/margin_six"
+                        android:drawableTop="@mipmap/index_help_new"
+                        android:text="帮助中心"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/normal_text" />
+
+                </LinearLayout>
+
             </LinearLayout>
         </LinearLayout>
 
@@ -262,10 +284,9 @@
             <ImageView
                 android:id="@+id/iv_new_guidelines"
                 android:layout_width="300dp"
-                android:layout_height="80dp"
-                android:layout_marginTop="@dimen/small_margin"
+                android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@color/bg"/>
+                android:src="@mipmap/open_step"/>
 
             <Button
                 android:id="@+id/btn_login_register"
@@ -275,7 +296,6 @@
                 android:background="@drawable/selector_index_loginregister_button"
                 android:textColor="@color/white"
                 android:textSize="@dimen/normal_text"
-                android:layout_marginTop="@dimen/small_margin"
                 android:layout_marginBottom="@dimen/small_margin"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"

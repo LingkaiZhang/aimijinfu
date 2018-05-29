@@ -40,10 +40,13 @@ public class ExchangeWaterListAdapter extends GeneralAdapter<FundsWaterEntity> {
             holder.setTextForTextView(R.id.tvType, entity.getType());
             holder.setTextForTextView(R.id.tvStatus, entity.getStatus());
             TextView tvStatus = holder.getView(R.id.tvStatus);
+            TextView tvMoney = holder.getView(R.id.tvMoney);
             if (entity.getStatus().equals(mContext.getResources().getString(R.string.funds_water_finish))) {
-                tvStatus.setTextColor(mContext.getResources().getColor(R.color.theme_color));
+                tvStatus.setTextColor(mContext.getResources().getColor(R.color.trade_success));
+                tvMoney.setTextColor(mContext.getResources().getColor(R.color.theme_color));
             } else if (entity.getStatus().equals(mContext.getResources().getString(R.string.funds_water_no_finish))) {
-                tvStatus.setTextColor(mContext.getResources().getColor(R.color.text_gray));
+                tvStatus.setTextColor(mContext.getResources().getColor(R.color.theme_color));
+                tvMoney.setTextColor(mContext.getResources().getColor(R.color.theme_color));
             } else if (entity.getStatus().equals(mContext.getResources().getString(R.string.funds_water_chuli))) {
                 tvStatus.setTextColor(mContext.getResources().getColor(R.color.man_biao));
             }
