@@ -45,9 +45,6 @@ public class BuySuccessNewActivity extends BaseActivity {
     }
 
     private void iniView() {
-        LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) bannerView.getLayoutParams();
-        lp.width = StaticMembers.SCREEN_WIDTH;
-        bannerView.setLayoutParams(lp);
         bannerView.setImageURI(Uri.parse(buySuccessEntity.getBanner()));
         bannerView.setAspectRatio(2.27f);
     }
@@ -68,10 +65,8 @@ public class BuySuccessNewActivity extends BaseActivity {
             case R.id.btn_continue_loan:
                 Intent intent2 = new Intent(this, HomePageActivity.class);
                 //通知homepage跳到产品
-                EventMessage eventMessage = new EventMessage();
-                eventMessage.setType(EventMessage.HOMEPAGE_JUMP_TAB);
-                eventMessage.setObject(1);
-                EventBus.getDefault().post(eventMessage);
+                intent2.putExtra("currentIndex",1);
+                startActivity(intent2);
                 this.finish();
                 break;
         }

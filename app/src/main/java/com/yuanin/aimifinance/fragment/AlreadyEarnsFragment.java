@@ -106,6 +106,12 @@ public class AlreadyEarnsFragment extends BaseFragment implements XListView.IXLi
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        requestDatas();
+    }
+
+    @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {

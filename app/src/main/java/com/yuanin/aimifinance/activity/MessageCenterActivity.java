@@ -42,6 +42,8 @@ public class MessageCenterActivity extends BaseFragmentActivity {
     private TextView tvMyMessage;
     @ViewInject(R.id.tvSystemNotice)
     private TextView tvSystemNotice;
+    @ViewInject(R.id.ivIsNewMessage)
+    private ImageView ivIsNewMessage;
 
 
     private List<Fragment> fragmentList;
@@ -71,15 +73,15 @@ public class MessageCenterActivity extends BaseFragmentActivity {
         switch (v.getId()) {
             //系统公告
             case R.id.llSystemNotice:
-                fragmentPosition = 1;
-                mViewPager.setCurrentItem(fragmentPosition, false);
-                ViewPagerUtils.changeTextViewStyle_FINANCE(this, 1, textViews);
-                break;
-            //我的消息
-            case R.id.llMyMessage:
                 fragmentPosition = 0;
                 mViewPager.setCurrentItem(fragmentPosition, false);
                 ViewPagerUtils.changeTextViewStyle_FINANCE(this, 0, textViews);
+                break;
+            //我的消息
+            case R.id.llMyMessage:
+                fragmentPosition = 1;
+                mViewPager.setCurrentItem(fragmentPosition, false);
+                ViewPagerUtils.changeTextViewStyle_FINANCE(this, 1, textViews);
                 break;
         }
     }
@@ -134,7 +136,7 @@ public class MessageCenterActivity extends BaseFragmentActivity {
             switch (arg0) {
                 case 0:
                     if (currIndex == 1) {
-                        animation = new TranslateAnimation(one, 0, 0, 0);
+                        animation = new TranslateAnimation(one, offset, 0, 0);
                     }
                     break;
                 case 1:

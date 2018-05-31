@@ -87,6 +87,7 @@ public class MyInvestActivity extends BaseFragmentActivity {
         lvTitle = (RecyclerView) popTitleView.findViewById(R.id.lvDownList);
         lvTitle.setLayoutManager(new GridLayoutManager(this, 2));
         x.view().inject(this);
+        fragmentPosition = getIntent().getIntExtra("fragmentPosition", 0);
         if (textViews == null) {
             textViews = new ArrayList<TextView>();
         }
@@ -97,6 +98,7 @@ public class MyInvestActivity extends BaseFragmentActivity {
 
         InitImageView();
         initViewPager();
+
         type = getIntent().getIntExtra("type", 0);
         if (type == 0) {
             tv_title.setText(titles[0]);

@@ -65,7 +65,7 @@ public class HomePageActivity extends BaseFragmentActivity {
     // 双击back退出程序
     private long mLastBackTime = 0;
     private long TIME_DIFF = 2 * 1000;
-    private int currentIndex;
+    private int currentIndex = 0;
     private DownloadDialog generalDialog;
     private static final int INSTALL_PERMISS_CODE = 200;
 
@@ -79,6 +79,7 @@ public class HomePageActivity extends BaseFragmentActivity {
 //            // Translucent status bar
 //            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 //        }
+        currentIndex = getIntent().getIntExtra("currentIndex", 0);
         EventBus.getDefault().register(this);
         if (textViews == null) {
             textViews = new ArrayList<TextView>();
@@ -235,7 +236,7 @@ public class HomePageActivity extends BaseFragmentActivity {
         mViewPager.setAdapter(viewPagerFragmentAdapter);
         currentIndex = 0;
         mViewPager.setCurrentItem(0, false);
-        ViewPagerUtils.changeTextViewStyle_Main(HomePageActivity.this, 0, textViews);
+        ViewPagerUtils.changeTextViewStyle_Main(HomePageActivity.this, currentIndex, textViews);
     }
 
     @Override

@@ -44,7 +44,7 @@
     <string name="FindPassword">找回密码</string>
     <string name="Register">注册</string>
     <string name="set_login_pwd">设置登录密码</string>
-    <string name="PersonalSettings">个人设置</string>
+    <string name="PersonalSettings">设置</string>
     <string name="double_click">再按一次将退出爱米金服</string>
     <string name="more_help_center">帮助中心</string>
     <string name="more_contact_server">联系客服</string>
@@ -66,12 +66,12 @@
     <string name="title_activity_personal_settings">PersonalSettingsActivity</string>
 
     <!--个人信息设置-->
-    <string name="personal_lock_phone">注册手机</string>
+    <string name="personal_lock_phone">绑定手机</string>
     <string name="personal_certification">实名认证</string>
-    <string name="personal_bank_card">我的银行卡</string>
+    <string name="personal_bank_card">银行卡</string>
     <string name="personal_authorization">代扣授权</string>
-    <string name="personal_exchange_pwd">交易密码</string>
-    <string name="personal_login_pwd">登录密码</string>
+    <string name="personal_exchange_pwd">修改交易密码</string>
+    <string name="personal_login_pwd">修改登录密码</string>
     <string name="personal_open_gesture_pwd">开启手势密码</string>
     <string name="personal_modify_gesture_pwd">修改手势密码</string>
     <string name="personal_open_finger_pwd">开启指纹解锁</string>
@@ -309,9 +309,9 @@
     <string name="total_regular">爱米定期</string>
     <string name="total_little_item">爱米优选</string>
     <string name="total_invest">待收本金(元)</string>
-    <string name="total_already">已收利息(元)</string>
-    <string name="total_wait">待收利息(元)</string>
-    <string name="total_balance">账户余额</string>
+    <string name="total_already">已收收益(元)</string>
+    <string name="total_wait">待收收益(元)</string>
+    <string name="total_balance">可用余额</string>
 
     <!--账户余额-->
     <string name="amount_balance_pay">累计充值(元)</string>
@@ -459,5 +459,7 @@
     <string name="Immediately_lend">立即出借</string>
     <string name="interestRatesLogo">米宝加息</string>
     <string name="remindword">市场有风险, 出借需谨慎</string>
+    <string name="risk_assessment_tips"><![CDATA[爱米金服为您量身打造了风险承受能力评估体系，请您完成评估，以获得最佳出借体验。立即评估>]]></string>
+    <string name="total_money_equation">账户总资产=代收本金+可用余额</string>
 
 </resources>

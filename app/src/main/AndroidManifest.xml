@@ -371,7 +371,11 @@
         <activity
             android:name=".activity.BuySuccessNewActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar"/>
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name=".activity.PasswordManagementActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" />
     </application>
 
 </manifest>

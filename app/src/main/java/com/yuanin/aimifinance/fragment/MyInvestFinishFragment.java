@@ -108,6 +108,12 @@ public class MyInvestFinishFragment extends BaseFragment implements XListView.IX
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        requestDatas();
+    }
+
 
     private void requestDatas() {
         if (!isPrepared || !isVisible || hasLoadedOnce) {

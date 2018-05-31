@@ -36,14 +36,77 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvRiskAssessmentTips"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/risk_assessment_tips"
+                        android:padding="@dimen/small_margin"
+                        android:textSize="@dimen/small_text"
+                        android:textColor="@color/text_gray"/>
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/normal_height"
                         android:layout_marginLeft="@dimen/small_margin"
                         android:gravity="center"
                         android:text="@string/personal_info"
                         android:textColor="@color/text_light_gray"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text"
+                        android:visibility="gone"/>
 
+                    <View
+                        android:id="@+id/viTopMargin"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/margin_eight"
+                        android:visibility="gone"
+                        />
+
+                    <RelativeLayout
+                        android:id="@+id/rlRealNameCertification"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/normal_height"
+                        android:background="@drawable/selector_gray_click">
+
+                        <ImageView
+                            android:id="@+id/ivRealNameCertification"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/small_margin"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/setting_certification"
+                            android:visibility="gone"/>
+
+                        <TextView
+                            android:id="@+id/tvRealNameCertificationTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/normal_height"
+                            android:layout_marginLeft="@dimen/small_margin"
+                            android:layout_toRightOf="@id/ivRealNameCertification"
+                            android:gravity="center_vertical"
+                            android:text="@string/personal_certification"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/normal_text"/>
+
+                        <TextView
+                            android:id="@+id/tvRealNameCertification"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/small_margin"
+                            android:drawablePadding="@dimen/margin_eight"
+                            android:drawableRight="@mipmap/right_arrow_new"
+                            android:text="@string/personal_now_certification"
+                            android:textColor="@color/theme_color"
+                            android:textSize="@dimen/normal_text"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/line"
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/bg"/>
+                    </RelativeLayout>
 
                     <RelativeLayout
                         android:id="@+id/rlPhone"
@@ -58,13 +121,14 @@
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="@dimen/small_margin"
                             android:scaleType="centerCrop"
-                            android:src="@mipmap/setting_phone"/>
+                            android:src="@mipmap/setting_phone"
+                            android:visibility="gone"/>
 
                         <TextView
                             android:id="@+id/tvPhoneTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="@dimen/normal_height"
-                            android:layout_marginLeft="@dimen/margin_eight"
+                            android:layout_marginLeft="@dimen/small_margin"
                             android:layout_toRightOf="@id/ivPhone"
                             android:gravity="center_vertical"
                             android:text="@string/personal_lock_phone"
@@ -82,64 +146,15 @@
                             android:layout_marginRight="@dimen/small_margin"
                             android:layout_toRightOf="@id/tvPhoneTitle"
                             android:drawablePadding="@dimen/margin_eight"
-                            android:drawableRight="@mipmap/mine_right_arrow"
+                            android:drawableRight="@mipmap/right_arrow_new"
                             android:gravity="right"
                             android:singleLine="true"
-                            android:textColor="@color/text_light_gray"
+                            android:textColor="@color/theme_color"
                             android:textSize="@dimen/normal_text"/>
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/line"
-                            android:layout_alignLeft="@id/tvPhoneTitle"
-                            android:layout_alignParentBottom="true"
-                            android:background="@color/bg"/>
-                    </RelativeLayout>
-
-
-                    <RelativeLayout
-                        android:id="@+id/rlRealNameCertification"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/normal_height"
-                        android:background="@drawable/selector_gray_click">
-
-                        <ImageView
-                            android:id="@+id/ivRealNameCertification"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="@dimen/small_margin"
-                            android:scaleType="centerCrop"
-                            android:src="@mipmap/setting_certification"/>
-
-                        <TextView
-                            android:id="@+id/tvRealNameCertificationTitle"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/normal_height"
-                            android:layout_marginLeft="@dimen/margin_eight"
-                            android:layout_toRightOf="@id/ivRealNameCertification"
-                            android:gravity="center_vertical"
-                            android:text="@string/personal_certification"
-                            android:textColor="@color/text_black"
-                            android:textSize="@dimen/normal_text"/>
-
-                        <TextView
-                            android:id="@+id/tvRealNameCertification"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginRight="@dimen/small_margin"
-                            android:drawablePadding="@dimen/margin_eight"
-                            android:drawableRight="@mipmap/mine_right_arrow"
-                            android:text="@string/personal_now_certification"
-                            android:textColor="@color/text_light_gray"
-                            android:textSize="@dimen/normal_text"/>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/line"
-                            android:layout_alignLeft="@id/tvRealNameCertificationTitle"
                             android:layout_alignParentBottom="true"
                             android:background="@color/bg"/>
                     </RelativeLayout>
@@ -158,13 +173,14 @@
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="@dimen/small_margin"
                             android:scaleType="centerCrop"
-                            android:src="@mipmap/setting_bank_card"/>
+                            android:src="@mipmap/setting_bank_card"
+                            android:visibility="gone"/>
 
                         <TextView
                             android:id="@+id/tvBankCardTitle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/normal_height"
-                            android:layout_marginLeft="@dimen/margin_eight"
+                            android:layout_marginLeft="@dimen/small_margin"
                             android:layout_toRightOf="@id/ivBankCard"
                             android:gravity="center_vertical"
                             android:text="@string/personal_bank_card"
@@ -172,15 +188,16 @@
                             android:textSize="@dimen/normal_text"/>
 
                         <TextView
-                            android:id="@+id/tvBankCard"
+                            android:id="@+id/tvIsBankCard"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
                             android:layout_marginRight="@dimen/small_margin"
                             android:drawablePadding="@dimen/margin_eight"
-                            android:drawableRight="@mipmap/mine_right_arrow"
-                            android:textColor="@color/text_light_gray"
+                            android:drawableRight="@mipmap/right_arrow_new"
+                            android:text="未绑定"
+                            android:textColor="@color/theme_color"
                             android:textSize="@dimen/normal_text"/>
                     </RelativeLayout>
 
@@ -194,254 +211,155 @@
                     android:gravity="center"
                     android:text="密码管理"
                     android:textColor="@color/text_light_gray"
-                    android:textSize="@dimen/normal_text"/>
+                    android:textSize="@dimen/normal_text"
+                    android:visibility="gone"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_eight"
+                    />
 
                 <RelativeLayout
-                    android:id="@+id/rlLoginPwd"
+                    android:id="@+id/rlPasswordManagement"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/normal_height"
                     android:background="@drawable/selector_gray_click">
 
                     <ImageView
-                        android:id="@+id/ivLoginPwd"
+                        android:id="@+id/ivPasswordManagement"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/small_margin"
                         android:scaleType="centerCrop"
-                        android:src="@mipmap/setting_password"/>
+                        android:src="@mipmap/setting_bank_card"
+                        android:visibility="gone"/>
 
                     <TextView
-                        android:id="@+id/tvLoginPwdTitle"
+                        android:id="@+id/tvPasswordManagement"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/normal_height"
-                        android:layout_marginLeft="@dimen/margin_eight"
-                        android:layout_toRightOf="@id/ivLoginPwd"
+                        android:layout_marginLeft="@dimen/small_margin"
+                        android:layout_toRightOf="@id/ivPasswordManagement"
                         android:gravity="center_vertical"
-                        android:text="@string/personal_login_pwd"
+                        android:text="密码管理"
                         android:textColor="@color/text_black"
                         android:textSize="@dimen/normal_text"/>
 
                     <TextView
-                        android:id="@+id/tvLoginPwd"
+                        android:id="@+id/tvPassword"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="@dimen/small_margin"
                         android:drawablePadding="@dimen/margin_eight"
-                        android:drawableRight="@mipmap/mine_right_arrow"
-                        android:text="@string/password_manager_modify"
-                        android:textColor="@color/text_light_gray"
+                        android:drawableRight="@mipmap/right_arrow_new"
+                        android:textColor="@color/theme_color"
                         android:textSize="@dimen/normal_text"/>
-
                 </RelativeLayout>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_eight"
+                    />
+
                 <RelativeLayout
-                    android:id="@+id/rlExchangePwd"
+                    android:id="@+id/rlRiskToleranceAssessment"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/normal_height"
                     android:background="@drawable/selector_gray_click">
 
                     <ImageView
-                        android:id="@+id/ivExchangePwd"
+                        android:id="@+id/ivRiskToleranceAssessment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/small_margin"
                         android:scaleType="centerCrop"
-                        android:src="@mipmap/personal_exchange_pwd"/>
+                        android:src="@mipmap/setting_bank_card"
+                        android:visibility="gone"/>
 
                     <TextView
-                        android:id="@+id/tvExchangePwdTitle"
+                        android:id="@+id/tvRiskToleranceAssessment"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/normal_height"
-                        android:layout_marginLeft="@dimen/margin_eight"
-                        android:layout_toRightOf="@id/ivExchangePwd"
+                        android:layout_marginLeft="@dimen/small_margin"
+                        android:layout_toRightOf="@id/ivRiskToleranceAssessment"
                         android:gravity="center_vertical"
-                        android:text="@string/personal_exchange_pwd"
+                        android:text="风险承受能力评估"
                         android:textColor="@color/text_black"
                         android:textSize="@dimen/normal_text"/>
 
-
                     <TextView
-                        android:id="@+id/tvExchangePwd"
+                        android:id="@+id/tvRiskToleranc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="@dimen/small_margin"
                         android:drawablePadding="@dimen/margin_eight"
-                        android:drawableRight="@mipmap/mine_right_arrow"
-                        android:textColor="@color/text_light_gray"
-                        android:textSize="@dimen/normal_text"/>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/line"
-                        android:layout_alignLeft="@id/tvExchangePwdTitle"
-                        android:background="@color/bg"/>
-
+                        android:drawableRight="@mipmap/right_arrow_new"
+                        android:textColor="@color/theme_color"
+                        android:textSize="@dimen/normal_text" />
                 </RelativeLayout>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_eight"
+                    />
+
                 <RelativeLayout
-                    android:id="@+id/rlFingerPwd"
+                    android:id="@+id/llAboutWe"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/normal_height"
-                    android:background="@drawable/selector_gray_click">
+                    android:background="@drawable/selector_gray_click"
+                    android:paddingLeft="@dimen/small_margin"
+                    android:paddingRight="@dimen/small_margin">
 
-                    <ImageView
-                        android:id="@+id/ivFingerPwd"
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/small_margin"
-                        android:scaleType="centerCrop"
-                        android:src="@mipmap/finger_lock"/>
-
-                    <TextView
-                        android:id="@+id/tvFingerPwdTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/normal_height"
-                        android:layout_marginLeft="@dimen/margin_eight"
-                        android:layout_toRightOf="@id/ivFingerPwd"
-                        android:gravity="center_vertical"
-                        android:text="@string/personal_open_finger_pwd"
+                        android:gravity="center"
+                        android:text="@string/mine_about_aimi"
                         android:textColor="@color/text_black"
                         android:textSize="@dimen/normal_text"/>
 
-                    <ToggleButton
-                        android:id="@+id/toggleBtnFingerPwd"
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/small_margin"
-                        android:background="@drawable/selector_toggle_button"
-                        android:textOff=""
-                        android:textOn=""/>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/line"
-                        android:layout_alignLeft="@id/tvFingerPwdTitle"
-                        android:background="@color/bg"/>
+                        android:src="@mipmap/right_arrow_new"/>
                 </RelativeLayout>
 
-                <RelativeLayout
-                    android:id="@+id/rlGesturePwd"
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/normal_height"
-                    android:background="@drawable/selector_gray_click">
-
-                    <ImageView
-                        android:id="@+id/ivGesturePwd"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/small_margin"
-                        android:scaleType="centerCrop"
-                        android:src="@mipmap/open_gesture"/>
-
-                    <TextView
-                        android:id="@+id/tvGesturePwdTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/normal_height"
-                        android:layout_marginLeft="@dimen/margin_eight"
-                        android:layout_toRightOf="@id/ivGesturePwd"
-                        android:gravity="center_vertical"
-                        android:text="@string/personal_open_gesture_pwd"
-                        android:textColor="@color/text_black"
-                        android:textSize="@dimen/normal_text"/>
-
-                    <ToggleButton
-                        android:id="@+id/toggleBtnPwd"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/small_margin"
-                        android:background="@drawable/selector_toggle_button"
-                        android:textOff=""
-                        android:textOn=""/>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/line"
-                        android:layout_alignLeft="@id/tvGesturePwdTitle"
-                        android:background="@color/bg"/>
-
-                </RelativeLayout>
+                    android:layout_height="@dimen/margin_eight"
+                    />
 
                 <RelativeLayout
-                    android:id="@+id/rlModifyGesturePwd"
+                    android:id="@+id/llBottom"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/normal_height"
-                    android:layout_marginBottom="@dimen/normal_height"
-                    android:background="@drawable/selector_gray_click">
-
-                    <ImageView
-                        android:id="@+id/ivModifyGesturePwd"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/small_margin"
-                        android:scaleType="centerCrop"
-                        android:src="@mipmap/modify_gesture"/>
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/tvModifyGesturePwdTitle"
+                        android:id="@+id/tvExitLogin"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/normal_height"
-                        android:layout_marginLeft="@dimen/margin_eight"
-                        android:layout_toRightOf="@id/ivModifyGesturePwd"
-                        android:gravity="center_vertical"
-                        android:text="@string/personal_modify_gesture_pwd"
-                        android:textColor="@color/text_black"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/selector_gray_click"
+                        android:gravity="center"
+                        android:text="@string/personal_exit_login"
+                        android:textColor="@color/theme_color"
                         android:textSize="@dimen/normal_text"/>
-
-                    <TextView
-                        android:id="@+id/tvModifyGesturePwd"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/small_margin"
-                        android:drawablePadding="@dimen/margin_eight"
-                        android:drawableRight="@mipmap/mine_right_arrow"
-                        android:gravity="center_vertical"
-                        android:text="@string/password_manager_modify"
-                        android:textColor="@color/text_light_gray"
-                        android:textSize="@dimen/normal_text"/>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/line"
-                        android:layout_alignLeft="@id/tvModifyGesturePwdTitle"
-                        android:background="@color/bg"/>
-
                 </RelativeLayout>
 
             </LinearLayout>
 
         </ScrollView>
 
-        <LinearLayout
-            android:id="@+id/llBottom"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/normal_height"
-            android:layout_gravity="bottom"
-            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvExitLogin"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/selector_gray_click"
-                android:gravity="center"
-                android:text="@string/personal_exit_login"
-                android:textColor="@color/theme_color"
-                android:textSize="@dimen/normal_text"/>
-        </LinearLayout>
     </FrameLayout>
 </LinearLayout>

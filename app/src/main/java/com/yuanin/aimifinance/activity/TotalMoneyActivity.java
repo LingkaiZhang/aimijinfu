@@ -20,6 +20,7 @@ import com.yuanin.aimifinance.utils.AppUtils;
 import com.yuanin.aimifinance.utils.NetUtils;
 import com.yuanin.aimifinance.utils.ParamsKeys;
 import com.yuanin.aimifinance.utils.ParamsValues;
+import com.yuanin.aimifinance.view.RingProgressBar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,6 +29,8 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.lang.reflect.Type;
+import java.math.RoundingMode;
+import java.text.NumberFormat;
 
 /**
  * 账户总资产
@@ -37,16 +40,8 @@ public class TotalMoneyActivity extends BaseActivity {
     private View toptitleView;
     @ViewInject(R.id.tvRegularInvest)
     private TextView tvRegularInvest;
-    @ViewInject(R.id.tvRegularAlreadyEarn)
-    private TextView tvRegularAlreadyEarn;
     @ViewInject(R.id.tvRegularWaitEarn)
     private TextView tvRegularWaitEarn;
-    @ViewInject(R.id.tvLittleItemInvest)
-    private TextView tvLittleItemInvest;
-    @ViewInject(R.id.tvLittleItemAlreadyEarn)
-    private TextView tvLittleItemAlreadyEarn;
-    @ViewInject(R.id.tvLittleItemWaitEarn)
-    private TextView tvLittleItemWaitEarn;
     @ViewInject(R.id.tvBalance)
     private TextView tvBalance;
     @ViewInject(R.id.tvIceBalance)
@@ -69,13 +64,16 @@ public class TotalMoneyActivity extends BaseActivity {
     private TextView tvNoNet;
     @ViewInject(R.id.tvAlreadyBonus)
     private TextView tvAlreadyBonus;
-    @ViewInject(R.id.tvBonus)
-    private TextView tvBonus;
     @ViewInject(R.id.tvWaitBonus)
     private TextView tvWaitBonus;
+    @ViewInject(R.id.myProgress)
+    private RingProgressBar myProgress;
+    @ViewInject(R.id.tvTotalInvest)
+    private TextView tvTotalInvest;
 
 
     private Context context = TotalMoneyActivity.this;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,24 +84,61 @@ public class TotalMoneyActivity extends BaseActivity {
         requestData();
     }
 
-    @Event(value = {R.id.llBalance, R.id.llRegular, R.id.llLittleItem, R.id.btnRefresh})
+    @Event(value = {R.id.llBalance, R.id.rlMyInvestItem, R.id.btnRefresh,
+            R.id.llWaitPrincipal, R.id.llWaitEarn, R.id.llIceBalance, R.id.llFinishMoney,
+            R.id.llFinishEarn, R.id.llAlreadyBonus, R.id.llAvailableBalance
+    })
     private void onViewClicked(View v) {
         switch (v.getId()) {
             //可用余额
             case R.id.llBalance:
                 break;
-            //爱米定期
-            case R.id.llRegular:
+            //我的资产
+            case R.id.rlMyInvestItem:
                 startActivity(new Intent(context, MyInvestActivity.class));
-                break;
-            //爱米优选
-            case R.id.llLittleItem:
-                Intent intent = new Intent(context, MyInvestActivity.class);
-                intent.putExtra("type", 1);
-                startActivity(intent);
                 break;
             case R.id.btnRefresh:
                 requestData();
+                break;
+            //待收本金
+            case R.id.llWaitPrincipal:
+                Intent intent = new Intent(context, MyInvestActivity.class);
+                intent.putExtra("fragmentPosition",1);
+                startActivity(intent);
+                break;
+            //待收收益
+            case R.id.llWaitEarn:
+                Intent intent1 = new Intent(context, AddUpEarningsActivity.class);
+                intent1.putExtra("fragmentPosition",0);
+                startActivity(intent1);
+                break;
+            //冻结金额
+            case R.id.llIceBalance:
+                Intent intent2 = new Intent(context, MyInvestActivity.class);
+                intent2.putExtra("fragmentPosition",0);
+                startActivity(intent2);
+                break;
+            //已收本金
+            case R.id.llFinishMoney:
+                Intent intent3 = new Intent(context, MyInvestActivity.class);
+                intent3.putExtra("fragmentPosition",2);
+                startActivity(intent3);
+                break;
+            //已收收益
+            case R.id.llFinishEarn:
+                Intent intent4 = new Intent(context, AddUpEarningsActivity.class);
+                intent4.putExtra("fragmentPosition",2);
+                startActivity(intent4);
+                break;
+            //已收奖励
+            case R.id.llAlreadyBonus:
+                Intent intent5 = new Intent(context, FundsWaterActivity.class);
+                intent5.putExtra("currentFundType",7);
+                startActivity(intent5);
+                break;
+            //可用余额
+            case R.id.llAvailableBalance:
+                startActivity(new Intent(context, AccountBalanceActivity.class));
                 break;
         }
     }
@@ -172,22 +207,69 @@ public class TotalMoneyActivity extends BaseActivity {
         );
     }
 
-    private void initViews(TotalAccountEntity entity) {
-        tvRegularInvest.setText(String.valueOf(entity.getDeposit()));
-        tvRegularAlreadyEarn.setText(String.valueOf(entity.getDeposit_interest()));
-        tvRegularWaitEarn.setText(String.valueOf(entity.getWait_deposit_interest()));
-
-        tvLittleItemInvest.setText(String.valueOf(entity.getEnjoy()));
-        tvLittleItemAlreadyEarn.setText(String.valueOf(entity.getEnjoy_interest()));
-        tvLittleItemWaitEarn.setText(String.valueOf(entity.getWait_enjoy_interest()));
-
-        tvBonus.setText(String.valueOf(entity.getAll_reward_amount()));
+    private void initViews(final TotalAccountEntity entity) {
+        tvRegularInvest.setText(String.valueOf(entity.getDeposit() + entity.getEnjoy()));
+        tvRegularWaitEarn.setText(String.valueOf(entity.getWait_deposit_interest() + entity.getWait_enjoy_interest()));
         tvAlreadyBonus.setText(String.valueOf(entity.getReward_amount()));
         tvWaitBonus.setText(String.valueOf(entity.getWait_reward_amount()));
 
         tvBalance.setText(String.valueOf(entity.getBalance()));
         tvIceBalance.setText(String.valueOf(entity.getAppoint()));
         tvCrash.setText(String.valueOf(entity.getWithdraw_amount()));
+
+
+        double total = Double.valueOf(entity.getEnjoy()) + Double.valueOf(entity.getBalance() + entity.getDeposit());
+        tvTotalInvest.setText(String.valueOf(total));
+
+
+        //圆环显示
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                double total = Double.valueOf(entity.getEnjoy()) + Double.valueOf(entity.getBalance() + entity.getDeposit());
+                double keyong = Double.valueOf(entity.getEnjoy() + entity.getDeposit());
+                if (keyong > 0) {
+                    int progress = (int) Math.rint(keyong*100/total);
+                    for(int i=0; i<= progress; i++){
+                        try {
+                            Thread.sleep(20);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        myProgress.setProgress(i);
+
+                        myProgress.setTextString(format3(total) + "");
+                    }
+                } else {
+                    myProgress.setProgress(0);
+                    myProgress.setTextString(String.valueOf(total));
+                }
+
+            }
+        }.start();
+
+    }
+
+    //double数字去两位小数
+    public static String format3(double value) {
+
+        NumberFormat nf = NumberFormat.getNumberInstance();
+        nf.setMaximumFractionDigits(2);
+        /*
+         * setMinimumFractionDigits设置成2
+         *
+         * 如果不这么做，那么当value的值是100.00的时候返回100
+         *
+         * 而不是100.00
+         */
+        nf.setMinimumFractionDigits(2);
+        nf.setRoundingMode(RoundingMode.HALF_UP);
+        /*
+         * 如果想输出的格式用逗号隔开，可以设置成true
+         */
+        nf.setGroupingUsed(false);
+        return nf.format(value);
     }
 
 }

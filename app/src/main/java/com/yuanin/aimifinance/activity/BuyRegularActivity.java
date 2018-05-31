@@ -498,7 +498,7 @@ public class BuyRegularActivity extends BaseActivity {
                                                         buySuccessEntity.setRedPacket("无红包");
                                                     }
                                                     //购买成功
-                                                    Intent intent = new Intent(context, BuySuccessActivity.class);
+                                                    Intent intent = new Intent(context, BuySuccessNewActivity.class);
                                                     intent.putExtra("buySuccessEntity", buySuccessEntity);
                                                     startActivity(intent);
                                                 }

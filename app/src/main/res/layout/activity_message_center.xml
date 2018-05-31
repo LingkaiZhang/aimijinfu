@@ -50,8 +50,7 @@
             android:layout_width="@dimen/weight"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/tvMyMessage"
@@ -59,7 +58,15 @@
                 android:layout_height="wrap_content"
                 android:text="我的消息"
                 android:textColor="@color/text_black"
-                android:textSize="@dimen/normal_text"/>
+                android:textSize="@dimen/normal_text"
+                />
+            <ImageView
+                android:id="@+id/ivIsNewMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/my_message_red_dot"
+                android:layout_marginBottom="@dimen/margin_eight"
+                android:visibility="gone"/>
 
         </LinearLayout>
     </LinearLayout>

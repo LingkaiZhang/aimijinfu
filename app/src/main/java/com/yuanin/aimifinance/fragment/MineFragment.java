@@ -386,7 +386,6 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
                     Float num = (Float) animation.getAnimatedValue();
                     DecimalFormat fnum = new DecimalFormat("##.00");
                     String money = fnum.format(num);
-                    //lingkai
                     if (StaticMembers.IS_SHOW_BALANCE){
                         setMineDataShow(entity);
                     }else{

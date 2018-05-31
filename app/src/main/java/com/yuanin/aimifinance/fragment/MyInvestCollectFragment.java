@@ -234,6 +234,11 @@ public class MyInvestCollectFragment extends BaseFragment implements XListView.I
         requestDatas();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        requestDatas();
+    }
 
     @Override
     public void onRefresh() {

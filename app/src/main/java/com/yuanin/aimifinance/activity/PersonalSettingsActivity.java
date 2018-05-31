@@ -3,14 +3,23 @@ package com.yuanin.aimifinance.activity;
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.BackgroundColorSpan;
+import android.text.style.ClickableSpan;
+import android.text.style.ForegroundColorSpan;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.google.gson.reflect.TypeToken;
@@ -44,16 +53,16 @@ public class PersonalSettingsActivity extends BaseActivity {
     private TextView tvPhone;
     @ViewInject(R.id.tvRealNameCertification)
     private TextView tvRealNameCertification;
-    @ViewInject(R.id.toggleBtnPwd)
-    private ToggleButton toggleBtnPwd;
-    @ViewInject(R.id.rlModifyGesturePwd)
-    private RelativeLayout rlModifyGesturePwd;
-    @ViewInject(R.id.rlFingerPwd)
-    private RelativeLayout rlFingerPwd;
-    @ViewInject(R.id.toggleBtnFingerPwd)
-    private ToggleButton toggleBtnFingerPwd;
+    @ViewInject(R.id.tvRiskAssessmentTips)
+    private TextView tvRiskAssessmentTips;
     @ViewInject(R.id.llMain)
     private LinearLayout llMain;
+    @ViewInject(R.id.tvIsBankCard)
+    private TextView tvIsBankCard;
+    @ViewInject(R.id.tvRiskToleranc)
+    private TextView tvRiskToleranc;
+    @ViewInject(R.id.viTopMargin)
+    private View viTopMargin;
 
     private GeneralDialog exitDialog;
     private Context context = PersonalSettingsActivity.this;
@@ -68,35 +77,38 @@ public class PersonalSettingsActivity extends BaseActivity {
         popView = getLayoutInflater().inflate(R.layout.popupwindow_hk_register, null, false);
         x.view().inject(this);
         initTopBar(getResources().getString(R.string.PersonalSettings), toptitleView, true);
+        initView();
        /* manager = (FingerprintManager) this.getSystemService(Context.FINGERPRINT_SERVICE);
         mKeyManager = (KeyguardManager) this.getSystemService(Context.KEYGUARD_SERVICE);*/
-        toggleBtnPwd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (toggleBtnPwd.isChecked()) {
-                    Intent intent = new Intent(context, GesturePasswordEditActivity.class);
-                    intent.putExtra("where", 1);
-                    startActivity(intent);
-                } else {
-                    Intent intent = new Intent(context, GesturePasswordVerifyActivity.class);
-                    intent.putExtra("where", 1);
-                    startActivity(intent);
-                }
-            }
-        });
 
-        toggleBtnFingerPwd.setOnClickListener(new View.OnClickListener() {
+    }
+
+    private void initView() {
+        String str = getResources().getString(R.string.risk_assessment_tips);
+        int a = str.indexOf("。");
+        //创建Spannablestring
+        SpannableString spannableString = new SpannableString(str);
+        //对文本的中间部分设置点击事件
+        spannableString.setSpan(new ClickableSpan() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PersonalSettingsActivity.this, FingerPasswordActivity.class);
-                intent.putExtra("where", 1);
-                startActivity(intent);
+            public void onClick(View widget) {
+                Intent intent4 = new Intent(context, WebViewActivity.class);
+                intent4.putExtra(ParamsKeys.TYPE, ParamsValues.QUESTION_NAIRE);
+                intent4.putExtra(ParamsKeys.USER_ID,StaticMembers.USER_ID);
+                startActivity(intent4);
             }
-        });
+        }, a + 1, str.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        //设置字体背景颜色
+        ForegroundColorSpan  foregroundColorSpan  = new ForegroundColorSpan(getResources().getColor(R.color.theme_color));
+        spannableString.setSpan(foregroundColorSpan ,a + 1, str.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        tvRiskAssessmentTips.setText(spannableString);
+        //设置，点击后成功跳转
+        tvRiskAssessmentTips.setMovementMethod(LinkMovementMethod.getInstance());
+
     }
 
 
-    @Event(value = {R.id.rlPhone, R.id.rlRealNameCertification, R.id.rlBankCard, R.id.tvExitLogin, R.id.rlModifyGesturePwd, R.id.rlLoginPwd, R.id.rlExchangePwd})
+    @Event(value = {R.id.rlPhone, R.id.rlRealNameCertification, R.id.rlBankCard, R.id.tvExitLogin,R.id.rlPasswordManagement, R.id.rlRiskToleranceAssessment, R.id.llAboutWe})
     private void onViewClicked(View v) {
         switch (v.getId()) {
             case R.id.rlPhone:
@@ -144,71 +156,21 @@ public class PersonalSettingsActivity extends BaseActivity {
                     }
                 });
                 break;
-            //修改交易密码
-            case R.id.rlExchangePwd:
-                if (StaticMembers.HK_STATUS == 1) {
-                    JSONObject obj = AppUtils.getPublicJsonObject(true);
-                    try {
-                        obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_SAFE);
-                        obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_CHANGE_HK_PWD);
-                        String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
-                        obj.put(ParamsKeys.TOKEN, token);
-                        obj.remove(ParamsKeys.KEY);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    Type mType = new TypeToken<ReturnResultEntity<HKRegisterEntity>>() {
-                    }.getType();
-                    NetUtils.request(context, obj, mType, new IHttpRequestCallBack() {
-                        @Override
-                        public void onStart() {
-
-                        }
-
-                        @Override
-                        public void onFinish() {
-
-                        }
-
-                        @Override
-                        public void onSuccess(Object object) {
-                            ReturnResultEntity<HKRegisterEntity> entity = (ReturnResultEntity<HKRegisterEntity>) object;
-                            if (entity.isSuccess(context)) {
-                                if (entity.isNotNull()) {
-                                    Intent intent = new Intent(context, HKRegisterWebActivity.class);
-                                    intent.putExtra("url", entity.getData().get(0).getRedirect_url());
-                                    context.startActivity(intent);
-                                }
-                            } else {
-                                AppUtils.showToast(context, entity.getRemark());
-                            }
-                        }
-
-                        @Override
-                        public void onFailure() {
-                            AppUtils.showConectFail(context);
-                        }
-                    });
-                } else {
-                    PopupWindow mPop = AppUtils.createHKPop(popView, context);
-                    mPop.showAtLocation(llMain, Gravity.CENTER, 0, 0);
-                }
-                break;
-            //修改登录密码
-            case R.id.rlLoginPwd:
-                startActivity(new Intent(context, ModifyLoginPasswordActivity.class));
-                break;
-            //修改手势密码
-            case R.id.rlModifyGesturePwd:
-                Intent intent = new Intent();
-                if (StaticMembers.IS_NEED_GUSTURE_PWD) {
-                    intent.setClass(context, GesturePasswordModifyActivity.class);
-                    intent.putExtra(ParamsKeys.GESTURE_FLAG, ParamsKeys.GESTURE_FLAG_MODIFY);
-                } else {
-                    intent.setClass(context, GesturePasswordEditActivity.class);
-                    intent.putExtra(ParamsKeys.GESTURE_FLAG, ParamsKeys.GESTURE_FLAG_EDIT);
-                }
+            //密码管理
+            case R.id.rlPasswordManagement:
+                Intent intent = new Intent(context, PasswordManagementActivity.class);
                 startActivity(intent);
+                break;
+            //风险承受能力评估
+            case R.id.rlRiskToleranceAssessment:
+                Intent intent4 = new Intent(context, WebViewActivity.class);
+                intent4.putExtra(ParamsKeys.TYPE, ParamsValues.QUESTION_NAIRE);
+                intent4.putExtra(ParamsKeys.USER_ID,StaticMembers.USER_ID);
+                startActivity(intent4);
+                break;
+            //关于爱米
+            case R.id.llAboutWe:
+                startActivity(new Intent(context, AboutOurActivity.class));
                 break;
         }
     }
@@ -227,63 +189,20 @@ public class PersonalSettingsActivity extends BaseActivity {
         } else {
             tvRealNameCertification.setText(getResources().getString(R.string.personal_now_certification));
         }
-        if (StaticMembers.IS_NEED_GUSTURE_PWD) {
-            toggleBtnPwd.setChecked(true);
-            rlModifyGesturePwd.setVisibility(View.VISIBLE);
+        if (StaticMembers.BANK_CARD_STATUS == 0) {
+            tvIsBankCard.setText("未绑卡");
         } else {
-            toggleBtnPwd.setChecked(false);
-            rlModifyGesturePwd.setVisibility(View.GONE);
+            tvIsBankCard.setText("已绑卡");
         }
-        if(android.os.Build.VERSION.SDK_INT >= 23 ){
-            FingerprintManager  manager = (FingerprintManager) this.getSystemService(Context.FINGERPRINT_SERVICE);
-            KeyguardManager  mKeyManager = (KeyguardManager) this.getSystemService(Context.KEYGUARD_SERVICE);
-            //硬件支持，开启屏幕锁，录入指纹
-            if (manager.isHardwareDetected()
-                    && mKeyManager.isKeyguardSecure()
-                    && manager.hasEnrolledFingerprints()) {
-                rlFingerPwd.setVisibility(View.VISIBLE);
-                if (StaticMembers.IS_NEED_FINGER_PWD) {
-                    toggleBtnFingerPwd.setChecked(true);
-                } else {
-                    toggleBtnFingerPwd.setChecked(false);
-                }
-            } else {
-                rlFingerPwd.setVisibility(View.GONE);
-            }
-        }else {
-            rlFingerPwd.setVisibility(View.GONE);
+        if (StaticMembers.QUESTION_NAIRE_STATUS == -1) {
+            tvRiskToleranc.setText("未测评");
+            tvRiskAssessmentTips.setVisibility(View.VISIBLE);
+            viTopMargin.setVisibility(View.GONE);
+        } else {
+            tvRiskToleranc.setText("已测评");
+            tvRiskAssessmentTips.setVisibility(View.GONE);
+            viTopMargin.setVisibility(View.VISIBLE);
         }
-
     }
 
-   /* @TargetApi(Build.VERSION_CODES.M)
-    private void initData() {
-        tvPhone.setText(AppUtils.getProtectedMobile(StaticMembers.MOBILE));
-        if (StaticMembers.HK_STATUS == 1) {
-            tvRealNameCertification.setText(getResources().getString(R.string.personal_already_certification));
-        } else {
-            tvRealNameCertification.setText(getResources().getString(R.string.personal_now_certification));
-        }
-
-        //硬件支持，开启屏幕锁，录入指纹
-        if (manager.isHardwareDetected()
-                && mKeyManager.isKeyguardSecure()
-                && manager.hasEnrolledFingerprints()) {
-            rlFingerPwd.setVisibility(View.VISIBLE);
-            if (StaticMembers.IS_NEED_FINGER_PWD) {
-                toggleBtnFingerPwd.setChecked(true);
-            } else {
-                toggleBtnFingerPwd.setChecked(false);
-            }
-        } else {
-            rlFingerPwd.setVisibility(View.GONE);
-        }
-        if (StaticMembers.IS_NEED_GUSTURE_PWD) {
-            toggleBtnPwd.setChecked(true);
-            rlModifyGesturePwd.setVisibility(View.VISIBLE);
-        } else {
-            toggleBtnPwd.setChecked(false);
-            rlModifyGesturePwd.setVisibility(View.GONE);
-        }
-    }*/
 }

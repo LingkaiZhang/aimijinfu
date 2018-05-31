@@ -59,6 +59,7 @@ public class AddUpEarningsActivity extends BaseFragmentActivity {
         setContentView(R.layout.activity_add_up_earnings);
         x.view().inject(this);
         initTopBar(getResources().getString(R.string.AddUpEarnings), toptitleView, true);
+        fragmentPosition = getIntent().getIntExtra("fragmentPosition",0);
         if (textViews == null) {
             textViews = new ArrayList<TextView>();
         }
