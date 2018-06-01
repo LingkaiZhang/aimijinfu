@@ -148,7 +148,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
 
     @Event(value = { R.id.isShowBalance,R.id.ivMine, R.id.rlEarnMoney, R.id.rlBalance, R.id.tvTotalMoneyTitle, R.id.tvTotalMoney, R.id.rlRegular,
             R.id.rlLittleItem, R.id.btnWithdraw, R.id.btnPay, R.id.rlRedPackets, R.id.btnRefresh,
-            R.id.rlFundsWater, R.id.rlInviteFriend, R.id.llAboutWe, R.id.llEntrust, R.id.rlQuestionnaire})
+            R.id.rlFundsWater, R.id.llAboutWe})
     private void loginClicked(View v) {
         if (StaticMembers.IS_NEED_LOGIN) {
             startActivity(new Intent(getActivity(), LoginActivity.class));
@@ -232,36 +232,22 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
                         startActivity(new Intent(getActivity(), MyInvestActivity.class));
                     }
                     break;
-                //优选资产
-                case R.id.rlLittleItem:
-                    if (tvLittleItemMoney.getText().equals(getString(R.string.Immediately_lend))) {
-                        //通知homepage跳到产品
-                        EventMessage eventMessage = new EventMessage();
-                        eventMessage.setType(EventMessage.HOMEPAGE_JUMP_TAB);
-                        eventMessage.setObject(1);
-                        EventBus.getDefault().post(eventMessage);
-                    } else {
-                        Intent intent4 = new Intent(getActivity(), MyInvestActivity.class);
-                        intent4.putExtra("type", 1);
-                        startActivity(intent4);
-                    }
-                    break;
                 //资金流水
                 case R.id.rlFundsWater:
                     startActivity(new Intent(getActivity(), FundsWaterActivity.class));
                     break;
-                //调查问卷
+               /* //调查问卷
                 case R.id.rlQuestionnaire:
                     Intent intent4 = new Intent(getActivity(), WebViewActivity.class);
                     intent4.putExtra(ParamsKeys.TYPE, ParamsValues.QUESTION_NAIRE);
                     intent4.putExtra(ParamsKeys.USER_ID,StaticMembers.USER_ID);
                     startActivity(intent4);
-                    break;
+                    break;*/
                 //红包
                 case R.id.rlRedPackets:
                     startActivity(new Intent(getActivity(), RedPacketsActivity.class));
                     break;
-                //自动投资
+                /*//自动投资
                 case R.id.llEntrust:
                     if (StaticMembers.HK_STATUS == 1) {
                         startActivity(new Intent(getActivity(), AutoInvestActivity.class));
@@ -269,13 +255,13 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
                         PopupWindow mPop1 = AppUtils.createHKPop(popView, getActivity());
                         mPop1.showAtLocation(llMain, Gravity.CENTER, 0, 0);
                     }
-                    break;
+                    break;*/
                 //邀请好友
-                case R.id.rlInviteFriend:
+               /* case R.id.rlInviteFriend:
                     Intent intent3 = new Intent(getActivity(), WebViewActivity.class);
                     intent3.putExtra(ParamsKeys.TYPE, ParamsValues.RULE);
                     startActivity(intent3);
-                    break;
+                    break;*/
                 case R.id.btnRefresh:
                     requestDatas();
                     break;
@@ -363,9 +349,11 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         tvBalance.setText("0.00");
         tvEarnMoney.setText("0.00");
         tvTotalMoney.setText("0.00");
-        tvRegularMoney.setText(getString(R.string.Immediately_lend));
-        tvLittleItemMoney.setText(getString(R.string.Immediately_lend));
-        tvRedTip.setVisibility(View.GONE);
+        tvRegularMoney.setText(getString(R.string.mine_invest_word));
+        tvRegularMoney.setTextColor(getResources().getColor(R.color.text_gray));
+        tvLittleItemMoney.setText(getString(R.string.mine_invest_word));
+        tvRedTip.setText(getString(R.string.mine_redtip_word));
+        tvRedTip.setTextColor(getResources().getColor(R.color.text_gray));
     }
 
     @SuppressLint("WrongConstant")
@@ -377,7 +365,8 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         eventMessage.setObject(entity.getData().get(0).getAmount());
         EventBus.getDefault().post(eventMessage);
         tvRedTip.setVisibility(View.VISIBLE);
-        tvRedTip.setText(entity.getData().get(0).getRed_num() + "");
+        tvRedTip.setText(entity.getData().get(0).getRed_num() + "个红包");
+        tvRedTip.setTextColor(getResources().getColor(R.color.theme_color));
         if (Float.parseFloat(entity.getData().get(0).getAmount()) != 0) {
             ValueAnimator animator = ValueAnimator.ofFloat(0, Float.parseFloat(entity.getData().get(0).getAmount()));
             animator.setDuration(0);
@@ -440,17 +429,18 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         tvBalance.setText(entity.getData().get(0).getBalance());
 
         if (entity.getData().get(0).getDeposit().equals("-1")) {
-            tvRegularMoney.setText(getString(R.string.Immediately_lend));
+            tvRegularMoney.setText(getString(R.string.mine_invest_word));
         } else {
-            tvRegularMoney.setText(entity.getData().get(0).getDeposit());
+            tvRegularMoney.setText(entity.getData().get(0).getDeposit() + "元");
+            tvRegularMoney.setTextColor(getResources().getColor(R.color.theme_color));
         }
         if (entity.getData().get(0).getEnjoy().equals("-1")) {
-            tvLittleItemMoney.setText(getString(R.string.Immediately_lend));
+            tvLittleItemMoney.setText(getString(R.string.mine_invest_word));
         } else {
-            tvLittleItemMoney.setText(entity.getData().get(0).getEnjoy());
+            tvLittleItemMoney.setText(entity.getData().get(0).getEnjoy() + "元");
         }
         //设置图片
-        Drawable showIcon = getResources().getDrawable(R.mipmap.show_total_money);
+        Drawable showIcon = getResources().getDrawable(R.mipmap.mine_invest_open);
         isShowBalance.setImageDrawable(showIcon);
     }
     //设置我的数据隐藏
@@ -460,17 +450,17 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         tvBalance.setText("*****");
 
         if (entity.getData().get(0).getDeposit().equals("-1")) {
-            tvRegularMoney.setText(getString(R.string.Immediately_lend));
+            tvRegularMoney.setText(getString(R.string.mine_invest_word));
         } else {
             tvRegularMoney.setText("*****");
         }
         if (entity.getData().get(0).getEnjoy().equals("-1")) {
-            tvLittleItemMoney.setText(getString(R.string.Immediately_lend));
+            tvLittleItemMoney.setText(getString(R.string.mine_invest_word));
         } else {
             tvLittleItemMoney.setText("*****");
         }
         //设置图片
-        Drawable hideIcon = getResources().getDrawable(R.mipmap.hide_total_money);
+        Drawable hideIcon = getResources().getDrawable(R.mipmap.mine_invest_closed);
         isShowBalance.setImageDrawable(hideIcon);
     }
 
