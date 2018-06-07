@@ -59,7 +59,7 @@ public class StaticMembers {
     //登录的token值
     public static String LOGIN_TOKEN;
     //激活状态
-    public static int HK_STATUS = 0;
+    public static int HK_STATUS = -1;
     //问卷调查状态
     public static int QUESTION_NAIRE_STATUS = -1;
     //银行卡状态

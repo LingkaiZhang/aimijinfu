@@ -104,7 +104,7 @@ public class OrderFormActivity extends BaseActivity {
         requestData();
     }
 
-    @Event(value = {R.id.btnRefresh, R.id.imgRedPackets, R.id.viewer_contract})
+    @Event(value = {R.id.btnRefresh, R.id.imgRedPackets, R.id.viewer_contract, R.id.btnCheckNetwork})
     private void onViewClicked(View v) {
         switch (v.getId()) {
             //电子合同
@@ -118,6 +118,10 @@ public class OrderFormActivity extends BaseActivity {
             //刷新
             case R.id.btnRefresh:
                 requestData();
+                break;
+            //检查网络
+            case R.id.btnCheckNetwork:
+                AppUtils.checkNetwork(context);
                 break;
             //红包
             case R.id.imgRedPackets:

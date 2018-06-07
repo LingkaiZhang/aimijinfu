@@ -61,7 +61,7 @@ public class RegisterOne extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_one);
         x.view().inject(this);
-        initTopBar("注册", toptitleView, true);
+        initTopBar(getResources().getString(R.string.Register), toptitleView, true);
         context = getApplicationContext();
         initView();
         initData();

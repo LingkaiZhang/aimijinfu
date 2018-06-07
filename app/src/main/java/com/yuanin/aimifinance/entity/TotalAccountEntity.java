@@ -22,6 +22,44 @@ public class TotalAccountEntity implements Serializable {
     private double appoint;
     private double withdraw_amount;
 
+    private double waitInterest;
+    private double alreadyInterest;
+
+    public double getWaitInterest() {
+        return waitInterest;
+    }
+
+    public void setWaitInterest(double waitInterest) {
+        this.waitInterest = waitInterest;
+    }
+
+    public double getAlreadyInterest() {
+        return alreadyInterest;
+    }
+
+    public void setAlreadyInterest(double alreadyInterest) {
+        this.alreadyInterest = alreadyInterest;
+    }
+
+    public double getWaitCapital() {
+        return waitCapital;
+    }
+
+    public void setWaitCapital(double waitCapital) {
+        this.waitCapital = waitCapital;
+    }
+
+    public double getAlreadyCapital() {
+        return alreadyCapital;
+    }
+
+    public void setAlreadyCapital(double alreadyCapital) {
+        this.alreadyCapital = alreadyCapital;
+    }
+
+    private double waitCapital;
+    private double alreadyCapital;
+
     public double getDeposit() {
         return deposit;
     }

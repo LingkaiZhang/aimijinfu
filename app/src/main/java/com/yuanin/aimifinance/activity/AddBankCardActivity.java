@@ -136,7 +136,7 @@ public class AddBankCardActivity extends BaseActivity {
     }
 
 
-    @Event(value = {R.id.btnConfirm, R.id.btnRefresh})
+    @Event(value = {R.id.btnConfirm, R.id.btnRefresh, R.id.btnCheckNetwork})
     private void onViewClicked(View v) {
         switch (v.getId()) {
             //提交
@@ -198,6 +198,10 @@ public class AddBankCardActivity extends BaseActivity {
             //刷新
             case R.id.btnRefresh:
                 requestData();
+                break;
+            //检查网络
+            case R.id.btnCheckNetwork:
+                AppUtils.checkNetwork(context);
                 break;
         }
     }

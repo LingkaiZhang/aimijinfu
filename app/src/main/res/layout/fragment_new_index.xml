@@ -63,7 +63,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/line_one_dp"
             android:orientation="vertical"
-            android:layout_marginBottom="@dimen/margin_six"
             >
 
             <LinearLayout
@@ -270,7 +269,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:layout_marginTop="@dimen/margin_six">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -286,13 +286,14 @@
                 android:layout_width="300dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@mipmap/open_step"/>
+                android:src="@mipmap/new_guide_one"/>
 
             <Button
                 android:id="@+id/btn_login_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="登陆/注册"
+                android:text="@string/loginRegister"
+                android:layout_marginTop="@dimen/margin_five"
                 android:background="@drawable/selector_index_loginregister_button"
                 android:textColor="@color/white"
                 android:textSize="@dimen/normal_text"

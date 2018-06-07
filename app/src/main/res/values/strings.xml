@@ -463,5 +463,9 @@
     <string name="total_money_equation">账户总资产=代收本金+可用余额</string>
     <string name="mine_invest_word">我的资产,资产明细</string>
     <string name="mine_redtip_word">暂无红包可用</string>
+    <string name="loginRegister">登录/注册</string>
+    <string name="openbankaccount">开通银行存管</string>
+    <string name="activateAcount">激活账户</string>
+    <string name="loan_calendar">回款日历</string>
 
 </resources>

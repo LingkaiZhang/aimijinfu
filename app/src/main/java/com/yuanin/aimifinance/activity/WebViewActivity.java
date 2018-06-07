@@ -399,7 +399,7 @@ public class WebViewActivity extends BaseActivity {
     }
 
     // 点击事件
-    @Event(value = {R.id.btnRefresh})
+    @Event(value = {R.id.btnRefresh, R.id.btnCheckNetwork})
     private void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btnRefresh:
@@ -410,6 +410,10 @@ public class WebViewActivity extends BaseActivity {
                 } else if (type.equals(ParamsValues.SHARE_NEW_RED_PACKET)) {
                     requestNewRedPacketData();
                 }
+                break;
+            //检查网络
+            case R.id.btnCheckNetwork:
+                AppUtils.checkNetwork(this);
                 break;
         }
     }

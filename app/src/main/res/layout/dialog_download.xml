@@ -100,7 +100,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/normal_height"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/small_margin"
                 android:orientation="horizontal">
 
@@ -109,8 +109,9 @@
                     android:layout_width="@dimen/weight"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:layout_margin="@dimen/small_margin"
                     android:background="@drawable/selector_dialog_cancel_button_click"
-                    android:textColor="@color/white"
+                    android:textColor="@color/theme_color"
                     android:textSize="@dimen/normal_text"/>
 
                 <Button
@@ -118,6 +119,7 @@
                     android:layout_width="@dimen/weight"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:layout_margin="@dimen/small_margin"
                     android:background="@drawable/selector_dialog_confirm_button_click"
                     android:textColor="@color/white"
                     android:textSize="@dimen/normal_text"/>

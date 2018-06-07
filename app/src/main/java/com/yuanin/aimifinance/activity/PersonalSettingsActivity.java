@@ -194,7 +194,7 @@ public class PersonalSettingsActivity extends BaseActivity {
         } else {
             tvIsBankCard.setText("已绑卡");
         }
-        if (StaticMembers.QUESTION_NAIRE_STATUS == -1) {
+        if (StaticMembers.QUESTION_NAIRE_STATUS == 0) {
             tvRiskToleranc.setText("未测评");
             tvRiskAssessmentTips.setVisibility(View.VISIBLE);
             viTopMargin.setVisibility(View.GONE);

@@ -26,10 +26,12 @@ import com.yuanin.aimifinance.activity.AccountBalanceActivity;
 import com.yuanin.aimifinance.activity.AddBankCardActivity;
 import com.yuanin.aimifinance.activity.AddUpEarningsActivity;
 import com.yuanin.aimifinance.activity.AutoInvestActivity;
+import com.yuanin.aimifinance.activity.CalendarViewActivity;
 import com.yuanin.aimifinance.activity.FundsWaterActivity;
 import com.yuanin.aimifinance.activity.GetVerifyCodeActivity;
 import com.yuanin.aimifinance.activity.HomePageActivity;
 import com.yuanin.aimifinance.activity.LoginActivity;
+import com.yuanin.aimifinance.activity.LoginRegisterActivity;
 import com.yuanin.aimifinance.activity.MyInvestActivity;
 import com.yuanin.aimifinance.activity.PayInputMoneyActivity;
 import com.yuanin.aimifinance.activity.PersonalSettingsActivity;
@@ -81,7 +83,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
     @ViewInject(R.id.viewSpace)
     private View viewSpace;
     @ViewInject(R.id.rlLogin)
-    private RelativeLayout rlLogin;
+    private LinearLayout rlLogin;
     @ViewInject(R.id.rlNoLogin)
     private RelativeLayout rlNoLogin;
     @ViewInject(R.id.rlMine)
@@ -132,7 +134,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         return view;
     }
 
-    @Event(value = {R.id.tvLogin, R.id.tvRegister})
+    @Event(value = {R.id.tvLogin, R.id.tvRegister, R.id.btn_login_register})
     private void noLoginClicked(View v) {
         switch (v.getId()) {
             case R.id.tvRegister:
@@ -143,11 +145,14 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
             case R.id.tvLogin:
                 startActivity(new Intent(getActivity(), LoginActivity.class));
                 break;
+            case R.id.btn_login_register:
+                startActivity(new Intent(getActivity(), LoginRegisterActivity.class));
+                break;
         }
     }
 
     @Event(value = { R.id.isShowBalance,R.id.ivMine, R.id.rlEarnMoney, R.id.rlBalance, R.id.tvTotalMoneyTitle, R.id.tvTotalMoney, R.id.rlRegular,
-            R.id.rlLittleItem, R.id.btnWithdraw, R.id.btnPay, R.id.rlRedPackets, R.id.btnRefresh,
+            R.id.rlLittleItem, R.id.btnWithdraw, R.id.btnPay, R.id.rlRedPackets, R.id.btnRefresh,R.id.llLoanCalendar,
             R.id.rlFundsWater, R.id.llAboutWe})
     private void loginClicked(View v) {
         if (StaticMembers.IS_NEED_LOGIN) {
@@ -235,6 +240,10 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
                 //资金流水
                 case R.id.rlFundsWater:
                     startActivity(new Intent(getActivity(), FundsWaterActivity.class));
+                    break;
+                //回款日历
+                case R.id.llLoanCalendar:
+                    startActivity(new Intent(getActivity(), CalendarViewActivity.class));
                     break;
                /* //调查问卷
                 case R.id.rlQuestionnaire:
@@ -431,7 +440,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         if (entity.getData().get(0).getDeposit().equals("-1")) {
             tvRegularMoney.setText(getString(R.string.mine_invest_word));
         } else {
-            tvRegularMoney.setText(entity.getData().get(0).getDeposit() + "元");
+            tvRegularMoney.setText(Double.valueOf(entity.getData().get(0).getDeposit()) + Double.valueOf(entity.getData().get(0).getEnjoy()) + "元");
             tvRegularMoney.setTextColor(getResources().getColor(R.color.theme_color));
         }
         if (entity.getData().get(0).getEnjoy().equals("-1")) {
@@ -590,6 +599,8 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         StaticMembers.HK_STATUS = entity.getData().get(0).getIs_activate_hkaccount();
         StaticMembers.BANK_CARD_STATUS = entity.getData().get(0).getIs_bind_bankcard();
         StaticMembers.QUESTION_NAIRE_STATUS = entity.getData().get(0).getSurveyresult();
+        //保存用户状态信息
+        AppUtils.save2SharedPreferences(getActivity(),ParamsKeys.USER_INFO_FILE,ParamsKeys.USER_IS_OPEN_ACCOUNT,String.valueOf(entity.getData().get(0).getIs_activate_hkaccount()));
     }
 
     @Override

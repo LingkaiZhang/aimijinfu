@@ -2,7 +2,9 @@ package com.yuanin.aimifinance.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.yuanin.aimifinance.R;
@@ -58,6 +60,15 @@ public class IndexProductListAdapter extends GeneralAdapter<IndexProductEntity> 
         });
         TextView btnStatus = holder.getView(R.id.btnStatus);
         holder.setTextForTextView(R.id.btnStatus, data.getStatusname());
+        //TODO   显示产品类型图标
+        ImageView ivTypeLogo = holder.getView(R.id.iv_type_logo);
+        if (data.getTypename().contains("车")) {
+            ivTypeLogo.setImageDrawable(new BitmapDrawable(context.getResources(), AppUtils.getBitmap(context, R.mipmap.car_loan)) );
+        } else if (data.getTypename().contains("经")) {
+            ivTypeLogo.setImageDrawable(new BitmapDrawable(context.getResources(), AppUtils.getBitmap(context, R.mipmap.manage_loan)) );
+        } else if (data.getTypename().contains("信")) {
+            ivTypeLogo.setImageDrawable(new BitmapDrawable(context.getResources(), AppUtils.getBitmap(context, R.mipmap.credit_loan)) );
+        }
 
         //TODO   显示还款方式
         TextView equalityCorpusAndInterest = holder.getView(R.id.equalityCorpusAndInterest);

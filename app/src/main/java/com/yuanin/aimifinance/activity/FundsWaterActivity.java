@@ -2,9 +2,11 @@ package com.yuanin.aimifinance.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.graphics.drawable.Animatable;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -458,7 +460,7 @@ public class FundsWaterActivity extends BaseListActivity {
     }
 
 
-    @Event(value = {R.id.rlType,R.id.rlTime, R.id.rlStatus, R.id.btnRefresh})
+    @Event(value = {R.id.rlType,R.id.rlTime, R.id.rlStatus, R.id.btnRefresh, R.id.btnCheckNetwork})
     private void onViewClicked(View v) {
         switch (v.getId()) {
             //类型
@@ -480,6 +482,13 @@ public class FundsWaterActivity extends BaseListActivity {
                 isNeedLoadBar = true;
                 requestDatas();
                 break;
+            //检查网络
+            case R.id.btnCheckNetwork:
+               /* Intent intent = new Intent(Settings.ACTION_SETTINGS);
+                startActivity(intent);*/
+               AppUtils.checkNetwork(context);
+                break;
+
         }
     }
 
@@ -487,8 +496,11 @@ public class FundsWaterActivity extends BaseListActivity {
         if (typePop == null) {
             typePop = AppUtils.createPop(popTypeView, R.style.PopupWindowLeftAnimation);
             if (Build.VERSION.SDK_INT >= 24) {
-                int top = llTop.getHeight() + toptitleView.getHeight() + StaticMembers.STATUS_HEIGHT;
-                typePop.showAtLocation(llMain, Gravity.NO_GRAVITY, 0 , top);
+                Rect visibleFrame  = new Rect();
+                llTop.getGlobalVisibleRect(visibleFrame);
+                int height = llTop.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom;
+                typePop.setHeight(height);
+                typePop.showAsDropDown(llTop);
             } else {
                 typePop.showAsDropDown(llTop);
             }
@@ -497,8 +509,11 @@ public class FundsWaterActivity extends BaseListActivity {
                 typePop.dismiss();
             } else {
                 if (Build.VERSION.SDK_INT >= 24) {
-                    int top = llTop.getHeight() + toptitleView.getHeight() + StaticMembers.STATUS_HEIGHT;
-                    typePop.showAtLocation(llMain, Gravity.NO_GRAVITY, 0 , top);
+                    Rect visibleFrame  = new Rect();
+                    llTop.getGlobalVisibleRect(visibleFrame);
+                    int height = llTop.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom;
+                    typePop.setHeight(height);
+                    typePop.showAsDropDown(llTop);
                 } else {
                     typePop.showAsDropDown(llTop);
                 }
@@ -527,8 +542,11 @@ public class FundsWaterActivity extends BaseListActivity {
         if (statusPop == null) {
             statusPop = AppUtils.createPop(popStatusView, R.style.PopupWindowCenterAnimation);
             if (Build.VERSION.SDK_INT >= 24) {
-                int top = llTop.getHeight() + toptitleView.getHeight() + StaticMembers.STATUS_HEIGHT;
-                statusPop.showAtLocation(llMain, Gravity.NO_GRAVITY, 0, top);
+                Rect visibleFrame  = new Rect();
+                llTop.getGlobalVisibleRect(visibleFrame);
+                int height = llTop.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom;
+                statusPop.setHeight(height);
+                statusPop.showAsDropDown(llTop);
             } else {
                 statusPop.showAsDropDown(llTop);
             }
@@ -537,8 +555,11 @@ public class FundsWaterActivity extends BaseListActivity {
                 statusPop.dismiss();
             } else {
                 if (Build.VERSION.SDK_INT >= 24) {
-                    int top = llTop.getHeight() + toptitleView.getHeight() + StaticMembers.STATUS_HEIGHT;
-                    statusPop.showAtLocation(llMain, Gravity.NO_GRAVITY, 0, top);
+                    Rect visibleFrame  = new Rect();
+                    llTop.getGlobalVisibleRect(visibleFrame);
+                    int height = llTop.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom;
+                    statusPop.setHeight(height);
+                    statusPop.showAsDropDown(llTop);
                 } else {
                     statusPop.showAsDropDown(llTop);
                 }
@@ -567,8 +588,11 @@ public class FundsWaterActivity extends BaseListActivity {
         if (timePop == null) {
             timePop = AppUtils.createPop(popTimeView, R.style.PopupWindowRightAnimation);
             if (Build.VERSION.SDK_INT >= 24) {
-                int top = llTop.getHeight() + toptitleView.getHeight() + StaticMembers.STATUS_HEIGHT;
-                timePop.showAtLocation(llMain, Gravity.NO_GRAVITY, 0, top);
+                Rect visibleFrame  = new Rect();
+                llTop.getGlobalVisibleRect(visibleFrame);
+                int height = llTop.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom;
+                timePop.setHeight(height);
+                timePop.showAsDropDown(llTop);
             } else {
                 timePop.showAsDropDown(llTop);
             }
@@ -577,8 +601,11 @@ public class FundsWaterActivity extends BaseListActivity {
                 timePop.dismiss();
             } else {
                 if (Build.VERSION.SDK_INT >= 24) {
-                    int top = llTop.getHeight() + toptitleView.getHeight() + StaticMembers.STATUS_HEIGHT;
-                    timePop.showAtLocation(llMain, Gravity.NO_GRAVITY, 0, top);
+                    Rect visibleFrame  = new Rect();
+                    llTop.getGlobalVisibleRect(visibleFrame);
+                    int height = llTop.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom;
+                    timePop.setHeight(height);
+                    timePop.showAsDropDown(llTop);
                 } else {
                     timePop.showAsDropDown(llTop);
                 }

@@ -18,6 +18,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.StatFs;
 import android.os.Vibrator;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.view.Gravity;
@@ -484,6 +485,7 @@ public class AppUtils {
         deleteSharedPreferences(context, ParamsKeys.GESTURE_SHARE_FILE_NAME);
         deleteSharedPreferences(context, ParamsKeys.LOGIN_FILE);
         deleteSharedPreferences(context, ParamsKeys.FINGER_PWD_SHARE_FILE_NAME);
+        deleteSharedPreferences(context,ParamsKeys.USER_INFO_FILE);
         initBooleanData(context);
         //刷新首页登录状态
         EventMessage eventMessage2 = new EventMessage();
@@ -791,6 +793,7 @@ public class AppUtils {
         return df.format(num);
     }
 
+    //获取图片资源转化位图方法
     public static Bitmap getBitmap(Context context, int resID) {
         BitmapFactory.Options opt = new BitmapFactory.Options();
         opt.inPreferredConfig = Bitmap.Config.RGB_565;
@@ -909,6 +912,13 @@ public class AppUtils {
             tvMonth.setText("十二月");
         }
         tvWeek.setText(AppUtils.dateToStr(date, "EEE"));
+    }
+
+
+    //检查网络设置跳转页面
+    public static void checkNetwork (Context context) {
+        Intent intent = new Intent(Settings.ACTION_SETTINGS);
+        context.startActivity(intent);
     }
 
 

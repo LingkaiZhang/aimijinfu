@@ -87,10 +87,12 @@ public class SetLoginPasswordActivity extends BaseActivity {
                 if (isShowPassword) {
                     imPasswordMark.setImageResource(R.mipmap.login_hide_pwd);
                     etLoginPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    etLoginPassword.setSelection(etLoginPassword.getText().length());
                     isShowPassword = false;
                 } else {
                     imPasswordMark.setImageResource(R.mipmap.login_show_pwd);
                     etLoginPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
+                    etLoginPassword.setSelection(etLoginPassword.getText().length());
                     isShowPassword = true;
                 }
             }

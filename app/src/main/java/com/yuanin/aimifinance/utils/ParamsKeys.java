@@ -129,6 +129,7 @@ public class ParamsKeys {
      */
     public static final String IS_SHOW_BALANCE = "is_show_balance";
     public static final String MINE_FILE = "mine_file";
-
+    public static final String USER_IS_OPEN_ACCOUNT = "user_is_open_account";
+    public static final String USER_INFO_FILE = "user_info_file";
 
 }

@@ -68,8 +68,12 @@ public class TotalMoneyActivity extends BaseActivity {
     private TextView tvWaitBonus;
     @ViewInject(R.id.myProgress)
     private RingProgressBar myProgress;
-    @ViewInject(R.id.tvTotalInvest)
-    private TextView tvTotalInvest;
+    @ViewInject(R.id.tvWaitCapital)
+    private TextView tvWaitCapital;
+    @ViewInject(R.id.tvFinishMoney)
+    private TextView tvFinishMoney;
+    @ViewInject(R.id.tvFinishEarn)
+    private TextView tvFinishEarn;
 
 
     private Context context = TotalMoneyActivity.this;
@@ -217,9 +221,9 @@ public class TotalMoneyActivity extends BaseActivity {
         tvIceBalance.setText(String.valueOf(entity.getAppoint()));
         tvCrash.setText(String.valueOf(entity.getWithdraw_amount()));
 
-
-        double total = Double.valueOf(entity.getEnjoy()) + Double.valueOf(entity.getBalance() + entity.getDeposit());
-        tvTotalInvest.setText(String.valueOf(total));
+        tvFinishMoney.setText(String.valueOf(entity.getAlreadyCapital()));
+        tvFinishEarn.setText(String.valueOf(entity.getAlreadyInterest()));
+        tvWaitCapital.setText(String.valueOf(entity.getWaitCapital()));
 
 
         //圆环显示
@@ -228,7 +232,7 @@ public class TotalMoneyActivity extends BaseActivity {
             public void run() {
                 super.run();
                 double total = Double.valueOf(entity.getEnjoy()) + Double.valueOf(entity.getBalance() + entity.getDeposit());
-                double keyong = Double.valueOf(entity.getEnjoy() + entity.getDeposit());
+                double keyong = Double.valueOf(entity.getBalance());
                 if (keyong > 0) {
                     int progress = (int) Math.rint(keyong*100/total);
                     for(int i=0; i<= progress; i++){

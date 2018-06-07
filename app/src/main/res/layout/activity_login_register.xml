@@ -31,7 +31,7 @@
         android:layout_marginRight="@dimen/small_margin"
         android:layout_marginTop="@dimen/small_margin"
         android:background="@mipmap/login_edittext_bg"
-        android:drawableLeft="@mipmap/login_phone"
+        android:drawableLeft="@mipmap/phone_logo_new"
         android:drawablePadding="@dimen/margin_eight"
         android:gravity="center_vertical"
         android:hint="@string/input_phone_please"

@@ -236,12 +236,16 @@ public class PayInputMoneyActivity extends BaseActivity {
         etMoney.requestFocus();
     }
 
-    @Event(value = {R.id.btnPay, R.id.btnRefresh})
+    @Event(value = {R.id.btnPay, R.id.btnRefresh, R.id.btnCheckNetwork})
     private void onViewClicked(View v) {
         switch (v.getId()) {
             //刷新
             case R.id.btnRefresh:
                 requestData();
+                break;
+            //检查网络
+            case R.id.btnCheckNetwork:
+                AppUtils.checkNetwork(context);
                 break;
             //提交充值
             case R.id.btnPay:

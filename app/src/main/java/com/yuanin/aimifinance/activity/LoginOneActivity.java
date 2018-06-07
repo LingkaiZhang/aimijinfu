@@ -65,7 +65,7 @@ public class LoginOneActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_one);
         x.view().inject(this);
-        initTopBar("登录", toptitleView, true);
+        initTopBar(getResources().getString(R.string.login), toptitleView, true);
         context = getApplicationContext();
         phone = getIntent().getStringExtra("phone");
         initView();
@@ -90,10 +90,12 @@ public class LoginOneActivity extends BaseActivity {
                 if (isShowPassword) {
                     imPasswordMark.setImageResource(R.mipmap.login_hide_pwd);
                     etLoginPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    etLoginPassword.setSelection(etLoginPassword.getText().length());
                     isShowPassword = false;
                 } else {
                     imPasswordMark.setImageResource(R.mipmap.login_show_pwd);
                     etLoginPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
+                    etLoginPassword.setSelection(etLoginPassword.getText().length());
                     isShowPassword = true;
                 }
             }

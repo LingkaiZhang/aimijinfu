@@ -30,13 +30,47 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawablePadding="@dimen/small_margin"
-            android:drawableTop="@mipmap/no_net"
+            android:drawableTop="@mipmap/not_net_new"
             android:gravity="center_horizontal"
             android:textColor="@color/text_light_gray"
             android:textSize="@dimen/big_text"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/small_margin"
+            android:gravity="center"
+            >
+
+            <Button
+                android:id="@+id/btnCheckNetwork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_dialog_cancel_button_click"
+                android:text="检查网络"
+                android:textSize="@dimen/normal_text"
+                android:textColor="@color/theme_color"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                />
+
+            <Button
+                android:id="@+id/btnRefresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="刷新看看"
+                android:background="@drawable/selector_dialog_confirm_button_click"
+                android:textColor="@color/white"
+                android:paddingRight="25dp"
+                android:paddingLeft="25dp"
+                android:textSize="@dimen/normal_text"
+                android:layout_marginLeft="60dp"/>
+
+        </LinearLayout>
+
         <Button
-            android:id="@+id/btnRefresh"
+            android:id="@+id/btnRefresh1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -48,6 +82,7 @@
             android:paddingTop="@dimen/margin_eight"
             android:text="@string/click_refresh"
             android:textColor="@color/text_light_gray"
-            android:textSize="@dimen/normal_text"/>
+            android:textSize="@dimen/normal_text"
+            android:visibility="gone"/>
     </LinearLayout>
 </LinearLayout>

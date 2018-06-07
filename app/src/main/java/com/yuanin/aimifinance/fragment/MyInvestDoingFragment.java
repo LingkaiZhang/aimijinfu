@@ -82,7 +82,7 @@ public class MyInvestDoingFragment extends BaseFragment implements XListView.IXL
         return view;
     }
 
-    @Event(value = {R.id.btnRefresh})
+    @Event(value = {R.id.btnRefresh, R.id.btnCheckNetwork})
     private void onViewClicked(View v) {
         switch (v.getId()) {
             //刷新
@@ -94,6 +94,10 @@ public class MyInvestDoingFragment extends BaseFragment implements XListView.IXL
                 hasLoadedOnce = false;
                 isNeedLoadBar = true;
                 requestDatas();
+                break;
+            //检查网络
+            case R.id.btnCheckNetwork:
+                AppUtils.checkNetwork(getActivity());
                 break;
             default:
                 break;

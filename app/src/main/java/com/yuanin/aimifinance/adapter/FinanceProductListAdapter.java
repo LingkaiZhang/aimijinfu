@@ -2,11 +2,13 @@ package com.yuanin.aimifinance.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -116,6 +118,8 @@ public class FinanceProductListAdapter extends BaseAdapter {
                         .findViewById(R.id.interestFirstThenCost);
                 mainViewHolder.equalityCorpusAndInterest = (TextView) convertView
                         .findViewById(R.id.equalityCorpusAndInterest);
+                mainViewHolder.ivTypeLogo = (ImageView) convertView
+                        .findViewById(R.id.iv_type_logo);
 
                 convertView.setTag(mainViewHolder);
             } else {
@@ -136,6 +140,16 @@ public class FinanceProductListAdapter extends BaseAdapter {
                 mainViewHolder.interestFirstThenCost.setVisibility(View.GONE);
                 mainViewHolder.equalityCorpusAndInterest.setVisibility(View.VISIBLE);
             }
+
+            //TODO   显示产品类型图标
+
+           /* if (entity.getTypename().contains("车")) {
+                mainViewHolder.ivTypeLogo.setBackgroundDrawable(new BitmapDrawable(mContext.getResources(), AppUtils.getBitmap(mContext, R.mipmap.car_loan)) );
+            } else if (entity.getTypename().contains("经")) {
+                mainViewHolder.ivTypeLogo.setBackgroundDrawable(new BitmapDrawable(mContext.getResources(), AppUtils.getBitmap(mContext, R.mipmap.manage_loan)) );
+            } else if (entity.getTypename().contains("信")) {
+                mainViewHolder.ivTypeLogo.setBackgroundDrawable(new BitmapDrawable(mContext.getResources(), AppUtils.getBitmap(mContext, R.mipmap.credit_loan)) );
+            }*/
 
             //TODO  加息功能代码
             if (entity.getOrgannual() == null || entity.getExtannual() == null) {
@@ -215,5 +229,6 @@ public class FinanceProductListAdapter extends BaseAdapter {
 
         TextView interestFirstThenCost;
         TextView equalityCorpusAndInterest;
+        ImageView ivTypeLogo;
     }
 }

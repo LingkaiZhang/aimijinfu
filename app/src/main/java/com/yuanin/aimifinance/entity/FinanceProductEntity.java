@@ -39,6 +39,16 @@ public class FinanceProductEntity implements Serializable {
     private String extannual;
     private String organnual;
 
+   /* private String typename;
+
+    public String getTypename() {
+        return typename;
+    }
+
+    public void setTypename(String typename) {
+        this.typename = typename;
+    }*/
+
     public String getExtannual() {
         return extannual;
     }

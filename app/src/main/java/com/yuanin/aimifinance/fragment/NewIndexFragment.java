@@ -2,6 +2,7 @@ package com.yuanin.aimifinance.fragment;
 
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Animatable;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -26,8 +27,10 @@ import com.yuanin.aimifinance.activity.FinanceProductDetailActivity;
 import com.yuanin.aimifinance.activity.GetVerifyCodeActivity;
 import com.yuanin.aimifinance.activity.HrefActivity;
 import com.yuanin.aimifinance.activity.LoginActivity;
+import com.yuanin.aimifinance.activity.LoginRegisterActivity;
 import com.yuanin.aimifinance.activity.MessageCenterActivity;
 import com.yuanin.aimifinance.activity.NoticeListActivity;
+import com.yuanin.aimifinance.activity.OpenAccountActivity;
 import com.yuanin.aimifinance.activity.WebViewActivity;
 import com.yuanin.aimifinance.adapter.IndexProductListAdapter;
 import com.yuanin.aimifinance.base.BaseFragment;
@@ -120,7 +123,12 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
 
     @ViewInject(R.id.interest_rates)
     private TextView interestRates;
-
+    @ViewInject(R.id.ll_new_guidelines)
+    private LinearLayout llNewGuidelines;
+    @ViewInject(R.id.btn_login_register)
+    private Button btnLoginRegister;
+    @ViewInject(R.id.iv_new_guidelines)
+    private ImageView ivNewGuideLines;
 
     /**
      * 标志位，标志已经初始化完成
@@ -157,7 +165,7 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
 
 
     @Event(value = {R.id.btnRefresh, R.id.llSafe, R.id.llHelp, R.id.llInvite, R.id.llData, R.id.ivMoreNotice,
-            R.id.imgRedPackets, R.id.rlNoLogin, R.id.btnNewInvest, R.id.llBank_depository})
+            R.id.imgRedPackets, R.id.rlNoLogin, R.id.btnNewInvest, R.id.llBank_depository, R.id.btn_login_register})
     private void onViewClicked(View v) {
         switch (v.getId()) {
             case R.id.llBank_depository:
@@ -228,6 +236,16 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
                 intent.putExtra("where", 2);
                 startActivity(intent);
                 break;
+            case R.id.btn_login_register:
+                if (btnLoginRegister.getText().toString().equals(getString(R.string.loginRegister))) {
+                    Intent intent3 = new Intent(getActivity(), LoginRegisterActivity.class);
+                    startActivity(intent3);
+                } else if (btnLoginRegister.getText().toString().equals(getString(R.string.openbankaccount))) {
+                    getActivity().startActivity(new Intent(getActivity(), OpenAccountActivity.class));
+                } else if (btnLoginRegister.getText().toString().equals(getString(R.string.activateAcount))) {
+                    //TODO
+                }
+                break;
         }
     }
 
@@ -249,10 +267,30 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
         if (StaticMembers.IS_NEED_LOGIN) {
             rlNoLogin.setVisibility(View.GONE);
             llLogin.setVisibility(View.VISIBLE);
+            llNewGuidelines.setVisibility(View.VISIBLE);
+            Bitmap newGuidleOne = AppUtils.getBitmap(getActivity(), R.mipmap.new_guide_one);
+            ivNewGuideLines.setImageBitmap(newGuidleOne);
+            btnLoginRegister.setText(getString(R.string.loginRegister));
         } else {
             rlNoLogin.setVisibility(View.GONE);
             llLogin.setVisibility(View.VISIBLE);
             tvTotalMoney.setText(StaticMembers.TOTAL_MONEY + "元");
+
+            //是否开户
+            String userIsOpenAccount = AppUtils.getFromSharedPreferences(getActivity(), ParamsKeys.USER_INFO_FILE, ParamsKeys.USER_IS_OPEN_ACCOUNT);
+            if (userIsOpenAccount.equals("1") ) {
+                //是否购买过新手标
+                llNewGuidelines.setVisibility(View.GONE);
+            } else {
+                if (userIsOpenAccount.equals("0")) {
+                    //getActivity().startActivity(new Intent(getActivity(), OpenAccountActivity.class));
+                    Bitmap newGuidleTwo = AppUtils.getBitmap(getActivity(), R.mipmap.new_guide_two);
+                    ivNewGuideLines.setImageBitmap(newGuidleTwo);
+                    btnLoginRegister.setText(getString(R.string.openbankaccount));
+                }else if (userIsOpenAccount.equals("2")){
+                    btnLoginRegister.setText(getString(R.string.activateAcount));
+                }
+            }
         }
     }
 
@@ -287,6 +325,7 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
                 initIsLogin();
             } else if (eventMessage.getType() == EventMessage.UPDATE_INDEX_TOTAL) {
                 tvTotalMoney.setText(String.valueOf(eventMessage.getObject()) + "元");
+                initIsLogin();
             }
         }
     }
@@ -386,7 +425,7 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
         JSONObject obj = AppUtils.getPublicJsonObject(false);
         try {
             obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_PRODUCT);
-            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_GET_INDEX_PRODUCT);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_NEW_INDEX_PRODUCT);
             String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
             obj.put(ParamsKeys.TOKEN, token);
             obj.remove(ParamsKeys.KEY);

@@ -15,13 +15,13 @@ public class ParamsValues {
     public final static String KEY = "5bbf31b975954ffb90a19e69ef274c0f";
     //正式环境
 
-    public final static String NET_URL = "https://shapi.aimilicai.com/";
+   // public final static String NET_URL = "https://shapi.aimilicai.com/";
 
     //public final static String NET_URL = "http://csp2p.yuanin.com/";
     //key
     public final static String VERSION_CODE = "6.0.0";
     //测试
-    //public final static String NET_URL = "http://csapi.yuanin.com/";
+    public final static String NET_URL = "http://csp2p.yuanin.com/";
     public final static String TEL = "400-666-2082";
     /**
      * 网络请求模块参数
@@ -153,6 +153,13 @@ public class ParamsValues {
     public final static String MOTHED_AUTO_DELETE = "auto_delete";
     //自动投资记录
     public final static String MOTHED_AUTO_LOG_LIST = "auto_log_list";
+
+    //TODO 6.0.0 新版本接口
+    //获取首页商品信息(6.0.0)
+    public final static String MOTHED_NEW_INDEX_PRODUCT = "newIndexproductlist";
+    //获取理财商品列表信息(新)
+    public final static String MOTHED_GET_PRODUCT_LIST = "getproductlist";
+
 
 
     /**
