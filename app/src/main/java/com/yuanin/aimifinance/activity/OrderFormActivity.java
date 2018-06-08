@@ -88,6 +88,10 @@ public class OrderFormActivity extends BaseActivity {
     private TextView tvNoNet;
     @ViewInject(R.id.mine_contract_mode)
     private View mineContractMode;
+    @ViewInject(R.id.tvNoAward)
+    private TextView tvNoAward;
+    @ViewInject(R.id.tvFinishAward)
+    private TextView tvFinishAward;
 
 
     private String entityID;
@@ -147,7 +151,7 @@ public class OrderFormActivity extends BaseActivity {
         JSONObject obj = AppUtils.getPublicJsonObject(true);
         try {
             obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_PRODUCT);
-            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_GET_INVEST_DETAIL);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_GET_NEW_INVEST_DETAIL);
             obj.put(ParamsKeys.INVEST_ID, entityID);
             String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
             obj.put(ParamsKeys.TOKEN, token);
@@ -270,6 +274,14 @@ public class OrderFormActivity extends BaseActivity {
             mineContractMode.setVisibility(View.GONE);
         } else {
             mineContractMode.setVisibility(View.VISIBLE);
+        }
+        //订单奖励
+        if(orderFormEntity.getWait_interest() == 0 && orderFormEntity.getYes_interest() == 0) {
+            tvNoAward.setVisibility(View.GONE);
+            tvFinishAward.setVisibility(View.GONE);
+        } else {
+            tvNoAward.setText(String.valueOf(orderFormEntity.getWait_interest()));
+            tvFinishAward.setText(String.valueOf(orderFormEntity.getYes_interest()));
         }
     }
 

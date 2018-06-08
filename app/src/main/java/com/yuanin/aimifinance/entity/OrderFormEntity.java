@@ -28,8 +28,28 @@ public class OrderFormEntity implements Serializable {
     //是否提前还款 0 否; 1 是;
     private String is_prerepayment;
 
-
+    //电子合同链接
     private String ele_contact_link;
+    //待收奖励
+    private double wait_interest;
+    //已收奖励
+    private double yes_interest;
+
+    public double getWait_interest() {
+        return wait_interest;
+    }
+
+    public void setWait_interest(double wait_interest) {
+        this.wait_interest = wait_interest;
+    }
+
+    public double getYes_interest() {
+        return yes_interest;
+    }
+
+    public void setYes_interest(double yes_interest) {
+        this.yes_interest = yes_interest;
+    }
 
     public String getEle_contact_link() {
         return ele_contact_link;

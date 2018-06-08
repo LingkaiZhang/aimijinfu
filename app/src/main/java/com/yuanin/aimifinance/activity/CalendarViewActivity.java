@@ -1,6 +1,7 @@
 package com.yuanin.aimifinance.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,17 +10,29 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.reflect.TypeToken;
 import com.haibin.calendarview.Calendar;
 import com.haibin.calendarview.CalendarLayout;
 import com.haibin.calendarview.CalendarView;
 import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.base.BaseActivity;
+import com.yuanin.aimifinance.entity.RepayCalenderEntity;
+import com.yuanin.aimifinance.entity.ReturnResultEntity;
+import com.yuanin.aimifinance.entity.UserAccountEntity;
+import com.yuanin.aimifinance.inter.IHttpRequestCallBack;
+import com.yuanin.aimifinance.utils.AppUtils;
+import com.yuanin.aimifinance.utils.NetUtils;
+import com.yuanin.aimifinance.utils.ParamsKeys;
+import com.yuanin.aimifinance.utils.ParamsValues;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +64,11 @@ public class CalendarViewActivity extends BaseActivity
     @ViewInject(R.id.tvNewLoan)
     private TextView tvNewLoan;
 
-
+    private int currentYear = 0;
+    private int currentMouth = 0;
+    private Calendar mCalendar;
+    private Context context = CalendarViewActivity.this;
+    private List<RepayCalenderEntity> mList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,18 +78,22 @@ public class CalendarViewActivity extends BaseActivity
         x.view().inject(this);
         initTopBar(getString(R.string.loan_calendar),toptitleView, true);
         initView();
-        initData();
+
     }
+
+
 
     private void initData() {
         List<Calendar> schemes = new ArrayList<>();
         int year = mCalendarView.getCurYear();
         int month = mCalendarView.getCurMonth();
-
-        schemes.add(getSchemeCalendar(year, month, 3, 0, "假"));
-        schemes.add(getSchemeCalendar(year, month, 6, 0, "事"));
-        schemes.add(getSchemeCalendar(year, month, 9, 0, "议"));
-        schemes.add(getSchemeCalendar(year, month, 25, 0, "假"));
+        int curDay = mCalendarView.getCurDay();
+        schemes.add(getSchemeCalendar(year, month, curDay, 0, "假"));
+        for (int i = 0; i < mList.size(); i++) {
+            String day = mList.get(i).getDate().split("-")[2];
+            int mday = Integer.parseInt(day);
+            schemes.add(getSchemeCalendar(mCalendar.getYear(),mCalendar.getMonth(),mday,0,""));
+        }
         mCalendarView.setSchemeDate(schemes);
     }
 
@@ -131,7 +152,6 @@ public class CalendarViewActivity extends BaseActivity
     }
 
 
-    @SuppressLint("SetTextI18n")
     @Override
     public void onDateSelected(Calendar calendar, boolean isClick) {
         mTextLunar.setVisibility(View.VISIBLE);
@@ -140,7 +160,83 @@ public class CalendarViewActivity extends BaseActivity
         mTextYear.setText(String.valueOf(calendar.getYear()));
         mTextLunar.setText(calendar.getLunar());
         mYear = calendar.getYear();
+        mCalendar = calendar;
         Toast.makeText(this,"点击了:" + calendar.getMonth() + "月" + calendar.getDay() + "日",Toast.LENGTH_LONG).show();
+        if (currentYear == calendar.getYear() && currentMouth == calendar.getMonth()) {
+            setDateinfo(mList);
+        } else {
+            currentYear = calendar.getYear();
+            currentMouth = calendar.getMonth();
+            requestdata(calendar);
+        }
+
+    }
+
+    private void requestdata(Calendar calendar) {
+        String date = calendar.getYear() + "-" + calendar.getMonth() + "-" + calendar.getDay() ;
+
+        JSONObject obj = AppUtils.getPublicJsonObject(true);
+        try {
+            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_FUND);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_USER_REPAY_CALENDER);
+            obj.put("date",date);
+            String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
+            obj.put(ParamsKeys.TOKEN, token);
+            obj.remove(ParamsKeys.KEY);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Type mType = new TypeToken<ReturnResultEntity<RepayCalenderEntity>>() {
+        }.getType();
+        NetUtils.request(obj, mType, new IHttpRequestCallBack() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onSuccess(Object object) {
+                ReturnResultEntity<RepayCalenderEntity> entity = (ReturnResultEntity<RepayCalenderEntity>) object;
+                if (entity.isSuccess(context)) {
+                    if (entity.isNotNull()) {
+                        mList = entity.getData();
+                        setDateinfo(mList);
+                    } else {
+                        //当月没有出借信息
+                        mList.clear();
+                        setDateinfo(mList);
+                    }
+                } else {
+                    AppUtils.showToast(CalendarViewActivity.this, entity.getRemark());
+                }
+            }
+
+            @Override
+            public void onFailure() {
+                AppUtils.showConectFail(CalendarViewActivity.this);
+            }
+        });
+    }
+
+    private void setDateinfo(List<RepayCalenderEntity> mList) {
+        tvWaitFund.setText("0.00");
+        tvAleardyFund.setText("0.00");
+        tvNewLoan.setText("0.00");
+        for (int i = 0; i < mList.size(); i++) {
+            String date = mList.get(i).getDate();
+            String[] split = date.split("-");
+            if (Integer.parseInt(split[2]) == mCalendar.getDay()&& Integer.parseInt(split[1]) == mCalendar.getMonth()) {
+                tvWaitFund.setText(mList.get(i).getReceiving());
+                tvAleardyFund.setText(mList.get(i).getReceived());
+                tvNewLoan.setText(mList.get(i).getNewCapital());
+            }
+        }
+        initData();
     }
 
     /**

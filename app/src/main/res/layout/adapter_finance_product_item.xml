@@ -34,7 +34,7 @@
                 android:layout_height="15dp"
                 android:layout_gravity="center"
                 android:layout_marginRight="@dimen/margin_five"
-                android:src="@mipmap/credit_loan" />
+                />
 
             <TextView
                 android:id="@id/tvName"

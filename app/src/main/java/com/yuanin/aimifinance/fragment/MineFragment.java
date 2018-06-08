@@ -6,6 +6,7 @@ import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.reflect.TypeToken;
 import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.activity.AboutOurActivity;
@@ -41,6 +43,7 @@ import com.yuanin.aimifinance.activity.WebViewActivity;
 import com.yuanin.aimifinance.activity.WebViewHtmlActivity;
 import com.yuanin.aimifinance.activity.WithdrawActivity;
 import com.yuanin.aimifinance.base.BaseFragment;
+import com.yuanin.aimifinance.entity.ActivityInfoEntity;
 import com.yuanin.aimifinance.entity.EventMessage;
 import com.yuanin.aimifinance.entity.ReturnResultEntity;
 import com.yuanin.aimifinance.entity.UserAccountEntity;
@@ -102,6 +105,11 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
     @ViewInject(R.id.isShowBalance)
     private ImageView isShowBalance;
 
+    @ViewInject(R.id.sdv_wonderful_activity1)
+    private SimpleDraweeView sdvWonderFulActivity1;
+    @ViewInject(R.id.sdv_wonderful_activity2)
+    private SimpleDraweeView sdvWonderFulActivity2;
+
 
     private List<UserAccountEntity> mList;
     private View mainView;
@@ -113,6 +121,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
     private boolean hadShowPop = false;
     private boolean hadShowPop2 = false;
     private View popViewQuestion;
+    private List<ActivityInfoEntity> mActivityList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -131,6 +140,8 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         //注册EventBus
         EventBus.getDefault().register(this);
         initScroll();
+        //TODO 活动信息
+        requestActivityInformation();
         return view;
     }
 
@@ -278,7 +289,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         }
     }
 
-    @Event(value = {R.id.llAboutWe, R.id.rlMyBorrow })
+    @Event(value = {R.id.llAboutWe, R.id.rlMyBorrow, R.id.sdv_wonderful_activity1, R.id.sdv_wonderful_activity2})
     private void loginClicked2(View v) {
         switch (v.getId()) {
             //我要借款
@@ -291,6 +302,13 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
             case R.id.llAboutWe:
                 startActivity(new Intent(getActivity(), AboutOurActivity.class));
                 break;
+            //精彩活动
+            case R.id.sdv_wonderful_activity1:
+
+                break;
+            case R.id.sdv_wonderful_activity2:
+
+                break;
         }
     }
 
@@ -298,6 +316,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
     @Override
     public void onResume() {
         super.onResume();
+
         if (StaticMembers.IS_NEED_LOGIN) {
             rlNoLogin.setVisibility(View.VISIBLE);
             rlLogin.setVisibility(View.GONE);
@@ -317,10 +336,73 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         }
     }
 
+    private void requestActivityInformation() {
+        JSONObject obj = AppUtils.getPublicJsonObject(false);
+        try {
+            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_FUND);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_GET_ACTIVITY_INFO);
+            String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
+            obj.put(ParamsKeys.TOKEN, token);
+            obj.remove(ParamsKeys.KEY);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Type mTpye = new TypeToken<ReturnResultEntity<ActivityInfoEntity>>() {
+        }.getType();
+        NetUtils.request(obj, mTpye, 1000 * 15, new IHttpRequestCallBack() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onSuccess(Object object) {
+                ReturnResultEntity<ActivityInfoEntity> entity = (ReturnResultEntity<ActivityInfoEntity>) object;
+                if (entity.isSuccess(getActivity())) {
+                    if (entity.isNotNull()) {
+                        setActivityInfo(entity);
+                    }
+                } else {
+                    AppUtils.showToast(getActivity(), entity.getRemark());
+                }
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        });
+
+    }
+
+    private void setActivityInfo(ReturnResultEntity<ActivityInfoEntity> entity) {
+        sdvWonderFulActivity1.setImageURI(Uri.parse(entity.getData().get(0).getCover_img()));
+        sdvWonderFulActivity2.setImageURI(Uri.parse(entity.getData().get(1).getCover_img()));
+        sdvWonderFulActivity1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppUtils.showToast(getActivity(),"点击了活动1");
+            }
+        });
+        sdvWonderFulActivity2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppUtils.showToast(getActivity(),"点击了活动2");
+            }
+        });
+    }
+
     @SuppressLint("WrongConstant")
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
+        //TODO 活动信息
+        requestActivityInformation();
         if (isVisibleToUser) {
             if (StaticMembers.IS_NEED_LOGIN) {
                 rlNoLogin.setVisibility(View.VISIBLE);

@@ -197,7 +197,7 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
         JSONObject obj = AppUtils.getPublicJsonObject(false);
         try {
             obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_PRODUCT);
-            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_GET_NEW_PRODUCT);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_NEW_INDEX_PRODUCT);
             obj.put(ParamsKeys.PAGE_QTY, String.valueOf(StaticMembers.PAGE_SIZE));
             obj.put(ParamsKeys.CURRENT_PAGE, String.valueOf(PageIndex));
             String token = AppUtils.getMd5Value(AppUtils.getToken(obj));

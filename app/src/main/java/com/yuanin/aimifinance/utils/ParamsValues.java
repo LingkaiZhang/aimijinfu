@@ -159,6 +159,12 @@ public class ParamsValues {
     public final static String MOTHED_NEW_INDEX_PRODUCT = "newIndexproductlist";
     //获取理财商品列表信息(新)
     public final static String MOTHED_GET_PRODUCT_LIST = "getproductlist";
+    //回款日历
+    public final static String MOTHED_USER_REPAY_CALENDER = "repayCalender";
+    //订单详情
+    public final static String MOTHED_GET_NEW_INVEST_DETAIL = "getNewInvestdetail";
+    //活动信息
+    public final static String MOTHED_GET_ACTIVITY_INFO = "getActivityInfo";
 
 
 
