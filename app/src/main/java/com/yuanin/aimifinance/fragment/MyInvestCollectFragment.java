@@ -120,7 +120,7 @@ public class MyInvestCollectFragment extends BaseFragment implements XListView.I
         JSONObject obj = AppUtils.getPublicJsonObject(true);
         try {
             obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_PRODUCT);
-            obj.put(ParamsKeys.MOTHED, ParamsValues.GET_INVEST_PROJECT_LIST);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.GET_NEW_INVEST_PROJECT_LIST);
             obj.put(ParamsKeys.PAGE_QTY, String.valueOf(StaticMembers.PAGE_SIZE));
             obj.put(ParamsKeys.CURRENT_PAGE, String.valueOf(PageIndex));
             obj.put(ParamsKeys.TYPE, String.valueOf(MyInvestActivity.type));

@@ -29,11 +29,13 @@ import com.yuanin.aimifinance.activity.AddBankCardActivity;
 import com.yuanin.aimifinance.activity.AddUpEarningsActivity;
 import com.yuanin.aimifinance.activity.AutoInvestActivity;
 import com.yuanin.aimifinance.activity.CalendarViewActivity;
+import com.yuanin.aimifinance.activity.CallBackWebActivity;
 import com.yuanin.aimifinance.activity.FundsWaterActivity;
 import com.yuanin.aimifinance.activity.GetVerifyCodeActivity;
 import com.yuanin.aimifinance.activity.HomePageActivity;
 import com.yuanin.aimifinance.activity.LoginActivity;
 import com.yuanin.aimifinance.activity.LoginRegisterActivity;
+import com.yuanin.aimifinance.activity.MessageCenterActivity;
 import com.yuanin.aimifinance.activity.MyInvestActivity;
 import com.yuanin.aimifinance.activity.PayInputMoneyActivity;
 import com.yuanin.aimifinance.activity.PersonalSettingsActivity;
@@ -109,7 +111,8 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
     private SimpleDraweeView sdvWonderFulActivity1;
     @ViewInject(R.id.sdv_wonderful_activity2)
     private SimpleDraweeView sdvWonderFulActivity2;
-
+    @ViewInject(R.id.ivMessage)
+    private ImageView ivMessage;
 
     private List<UserAccountEntity> mList;
     private View mainView;
@@ -141,7 +144,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         EventBus.getDefault().register(this);
         initScroll();
         //TODO 活动信息
-        requestActivityInformation();
+       // requestActivityInformation();
         return view;
     }
 
@@ -164,10 +167,10 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
 
     @Event(value = { R.id.isShowBalance,R.id.ivMine, R.id.rlEarnMoney, R.id.rlBalance, R.id.tvTotalMoneyTitle, R.id.tvTotalMoney, R.id.rlRegular,
             R.id.rlLittleItem, R.id.btnWithdraw, R.id.btnPay, R.id.rlRedPackets, R.id.btnRefresh,R.id.llLoanCalendar,
-            R.id.rlFundsWater, R.id.llAboutWe})
+            R.id.rlFundsWater, R.id.llAboutWe, R.id.ivMessage})
     private void loginClicked(View v) {
         if (StaticMembers.IS_NEED_LOGIN) {
-            startActivity(new Intent(getActivity(), LoginActivity.class));
+            startActivity(new Intent(getActivity(), LoginRegisterActivity.class));
         } else {
             switch (v.getId()) {
                 case R.id.isShowBalance:
@@ -191,6 +194,11 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
                         Intent intent2 = new Intent(getActivity(), PersonalSettingsActivity.class);
                         startActivity(intent2);
                     }
+                    break;
+                //消息中心
+                case R.id.ivMessage:
+                    Intent intent1 = new Intent(getActivity(), MessageCenterActivity.class);
+                    startActivity(intent1);
                     break;
                 //累计收益
                 case R.id.rlEarnMoney:
@@ -302,13 +310,6 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
             case R.id.llAboutWe:
                 startActivity(new Intent(getActivity(), AboutOurActivity.class));
                 break;
-            //精彩活动
-            case R.id.sdv_wonderful_activity1:
-
-                break;
-            case R.id.sdv_wonderful_activity2:
-
-                break;
         }
     }
 
@@ -380,18 +381,24 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
 
     }
 
-    private void setActivityInfo(ReturnResultEntity<ActivityInfoEntity> entity) {
+    private void setActivityInfo(final ReturnResultEntity<ActivityInfoEntity> entity) {
         sdvWonderFulActivity1.setImageURI(Uri.parse(entity.getData().get(0).getCover_img()));
         sdvWonderFulActivity2.setImageURI(Uri.parse(entity.getData().get(1).getCover_img()));
         sdvWonderFulActivity1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), CallBackWebActivity.class);
+                intent.putExtra("url",entity.getData().get(0).getUrl_route() );
+                startActivity(intent);
                 AppUtils.showToast(getActivity(),"点击了活动1");
             }
         });
         sdvWonderFulActivity2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), CallBackWebActivity.class);
+                intent.putExtra("url", entity.getData().get(1).getUrl_route());
+                startActivity(intent);
                 AppUtils.showToast(getActivity(),"点击了活动2");
             }
         });
@@ -598,6 +605,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
             @Override
             public void onFinish() {
                 pbLoading.setVisibility(View.GONE);
+                ivMessage.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -693,6 +701,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
     private void refreshData() {
         mPullDownScrollView.stopRefresh();
         pbLoading.setVisibility(View.VISIBLE);
+        ivMessage.setVisibility(View.GONE);
         hasLoadedOnce = false;
         requestDatas();
     }

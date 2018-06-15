@@ -23,6 +23,9 @@ public class ParamsKeys {
     //注册
     public final static String TYPE = "type";
     public final static String VERIFYCODE = "verifycode";
+    public final static String IMAGECODE = "imageCode";
+    public final static String SMSCODE = "smsCode";
+
 
     //开户
     public final static String USER_ID = "userid";
@@ -132,4 +135,5 @@ public class ParamsKeys {
     public static final String USER_IS_OPEN_ACCOUNT = "user_is_open_account";
     public static final String USER_INFO_FILE = "user_info_file";
 
+    public static final String SMS_VERIFY_CODE = "verifycode";
 }

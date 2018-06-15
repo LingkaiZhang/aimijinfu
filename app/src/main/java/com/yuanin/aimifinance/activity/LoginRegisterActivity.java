@@ -15,6 +15,7 @@ import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.base.BaseActivity;
 import com.yuanin.aimifinance.entity.EventMessage;
 import com.yuanin.aimifinance.entity.LoginEntity;
+import com.yuanin.aimifinance.entity.RegisterVerifyMobileEntity;
 import com.yuanin.aimifinance.entity.ReturnResultEntity;
 import com.yuanin.aimifinance.inter.IHttpRequestCallBack;
 import com.yuanin.aimifinance.utils.AppUtils;
@@ -59,7 +60,11 @@ public class LoginRegisterActivity extends BaseActivity {
 
     private void initView() {
         String mobile = AppUtils.getFromSharedPreferences(this, ParamsKeys.LOGIN_MBOILE_FILE, ParamsKeys.LOGIN_MBOILE);
-        etPhone.setText(mobile);
+        if (mobile.length() > 0){
+            etPhone.setText(mobile);
+            etPhone.setClearIconVisible(true);
+        }
+
         if (etPhone.getText().toString().trim().length() != 11) {
             btnConfirm.setBackgroundResource(R.mipmap.login_button_enable);
             btnConfirm.setEnabled(false);
@@ -102,72 +107,11 @@ public class LoginRegisterActivity extends BaseActivity {
                     AppUtils.showToast(this, getResources().getString(R.string.login_input_right_phone));
                     return;
                 }
-                //请求接口：判断手机号是否是已注册用户
-                //跳转注册页面
-                /*Intent intent1 = new Intent(this, RegisterOne.class);
-                intent1.putExtra("phone", etPhone.getText().toString().trim() );
-                startActivity(intent1);*/
-                //跳转登录页面
-                /*Intent intent2 = new Intent(this, LoginOneActivity.class);
-                intent2.putExtra("phone", etPhone.getText().toString().trim());
-                startActivity(intent2);*/
-                JSONObject obj = AppUtils.getPublicJsonObject(false);
-                try {
-                    obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_USER);
-                    obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_LOGIN);
-                    obj.put(ParamsKeys.MOBILE, AppUtils.rsaEncode(this, etPhone.getText().toString().trim()));
-                    obj.put(ParamsKeys.PASSWORD, AppUtils.rsaEncode(this,"Aabc1234" ));
-                    String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
-                    obj.put(ParamsKeys.TOKEN, token);
-                    obj.remove(ParamsKeys.KEY);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                Type mType = new TypeToken<ReturnResultEntity<LoginEntity>>() {
-                }.getType();
-                NetUtils.request(this, obj, mType, new IHttpRequestCallBack() {
-                    @Override
-                    public void onStart() {
+                //请求接口：判断手机号是否是已注册用户(利用老登陆接口)
+                //questLoginRegisterJudge();
+                //新的手机号验证接口
+                questLoginRegisterJudgeNew();
 
-                    }
-
-                    @Override
-                    public void onFinish() {
-
-                    }
-
-                    @Override
-                    public void onSuccess(Object object) {
-                        ReturnResultEntity<LoginEntity> entity = (ReturnResultEntity<LoginEntity>) object;
-                        if (entity.isSuccess(context)) {
-                            if (entity.isNotNull()) {
-                                //跳转登录页面
-                            Intent intent2 = new Intent(context, LoginOneActivity.class);
-                            intent2.putExtra("phone", etPhone.getText().toString().trim());
-                            startActivity(intent2);
-                            }
-                        } else {
-                           if (entity.getRemark().equals("抱歉，您输入的手机号不存在！")) {
-                               //跳转注册页面
-                                Intent intent1 = new Intent(context, RegisterOne.class);
-                                intent1.putExtra("phone", etPhone.getText().toString().trim() );
-                                startActivity(intent1);
-                                LoginRegisterActivity.this.finish();
-                           } else {
-                               //跳转登录页面
-                               Intent intent2 = new Intent(context, LoginOneActivity.class);
-                               intent2.putExtra("phone", etPhone.getText().toString().trim());
-                               startActivity(intent2);
-                               LoginRegisterActivity.this.finish();
-                           }
-                        }
-                    }
-
-                    @Override
-                    public void onFailure() {
-                        AppUtils.showConectFail(context);
-                    }
-                });
                 break;
             case R.id.tvProtocol:
                 Intent intent = new Intent(this, WebViewActivity.class);
@@ -175,5 +119,123 @@ public class LoginRegisterActivity extends BaseActivity {
                 startActivity(intent);
                 break;
         }
+    }
+
+    private void questLoginRegisterJudgeNew() {
+        JSONObject obj = AppUtils.getPublicJsonObject(false);
+        try {
+            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_USER);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_REGISTER_VERIFY_MOBILE);
+            obj.put(ParamsKeys.MOBILE, AppUtils.rsaEncode(this, etPhone.getText().toString().trim()));
+            String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
+            obj.put(ParamsKeys.TOKEN, token);
+            obj.remove(ParamsKeys.KEY);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Type mType = new TypeToken<ReturnResultEntity<RegisterVerifyMobileEntity>>() {
+        }.getType();
+        NetUtils.request(this, obj, mType, new IHttpRequestCallBack() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onSuccess(Object object) {
+                ReturnResultEntity<RegisterVerifyMobileEntity> entity = (ReturnResultEntity<RegisterVerifyMobileEntity>) object;
+                if (entity.isSuccess(context)) {
+                    //跳转注册页面
+                    Intent intent1 = new Intent(context, RegisterOne.class);
+                    intent1.putExtra("phone", etPhone.getText().toString().trim() );
+                    startActivity(intent1);
+                    LoginRegisterActivity.this.finish();
+                } else {
+                    if (entity.isNotNull()) {
+                       if (entity.getData().get(0).getErrorCode().equals("RF0002")) {
+                           //跳转登录页面
+                           Intent intent2 = new Intent(context, LoginOneActivity.class);
+                           intent2.putExtra("phone", etPhone.getText().toString().trim());
+                           startActivity(intent2);
+                           LoginRegisterActivity.this.finish();
+                       } else {
+                           AppUtils.showToast(context,entity.getRemark());
+                       }
+                    } else {
+                       AppUtils.showToast(context, entity.getRemark());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure() {
+                AppUtils.showConectFail(context);
+            }
+        });
+    }
+
+    private void questLoginRegisterJudge() {
+        JSONObject obj = AppUtils.getPublicJsonObject(false);
+        try {
+            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_USER);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_LOGIN);
+            obj.put(ParamsKeys.MOBILE, AppUtils.rsaEncode(this, etPhone.getText().toString().trim()));
+            obj.put(ParamsKeys.PASSWORD, AppUtils.rsaEncode(this,"Aabc1234" ));
+            String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
+            obj.put(ParamsKeys.TOKEN, token);
+            obj.remove(ParamsKeys.KEY);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Type mType = new TypeToken<ReturnResultEntity<LoginEntity>>() {
+        }.getType();
+        NetUtils.request(this, obj, mType, new IHttpRequestCallBack() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onSuccess(Object object) {
+                ReturnResultEntity<LoginEntity> entity = (ReturnResultEntity<LoginEntity>) object;
+                if (entity.isSuccess(context)) {
+                    if (entity.isNotNull()) {
+                        //跳转登录页面
+                    Intent intent2 = new Intent(context, LoginOneActivity.class);
+                    intent2.putExtra("phone", etPhone.getText().toString().trim());
+                    startActivity(intent2);
+                    }
+                } else {
+                   if (entity.getRemark().equals("抱歉，您输入的手机号不存在！")) {
+                       //跳转注册页面
+                        Intent intent1 = new Intent(context, RegisterOne.class);
+                        intent1.putExtra("phone", etPhone.getText().toString().trim() );
+                        startActivity(intent1);
+                        LoginRegisterActivity.this.finish();
+                   } else {
+                       //跳转登录页面
+                       Intent intent2 = new Intent(context, LoginOneActivity.class);
+                       intent2.putExtra("phone", etPhone.getText().toString().trim());
+                       startActivity(intent2);
+                       LoginRegisterActivity.this.finish();
+                   }
+                }
+            }
+
+            @Override
+            public void onFailure() {
+                AppUtils.showConectFail(context);
+            }
+        });
     }
 }

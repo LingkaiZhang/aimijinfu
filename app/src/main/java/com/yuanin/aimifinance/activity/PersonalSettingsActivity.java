@@ -178,7 +178,6 @@ public class PersonalSettingsActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-//        initData();
         initData();
     }
 

@@ -203,7 +203,7 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
                 mPullDownScrollView.autoRefresh();
                 break;
             case R.id.ivMoreNotice:
-                startActivity(new Intent(getActivity(), MessageCenterActivity.class));
+                startActivity(new Intent(getActivity(), NoticeListActivity.class));
                 break;
             case R.id.btnNewInvest:
                 if (StaticMembers.IS_NEED_LOGIN) {

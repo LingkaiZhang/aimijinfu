@@ -108,15 +108,58 @@ public class ForgetPasswordActivity extends BaseActivity {
         switch (v.getId()) {
             //点击下一步
             case R.id.btnConfirm:
-                String smsCode = edSmsCode.getText().toString().trim();
-                Intent intent = new Intent(this, SetLoginPasswordActivity.class);
-                intent.putExtra("phone",phone);
-                intent.putExtra("smsCode", smsCode);
-                intent.putExtra("where","forgetpassword");
-                startActivity(intent);
+                //进行短信验证
+                requestVerificationSms();
                 break;
 
         }
+    }
+
+    private void requestVerificationSms() {
+        JSONObject obj = AppUtils.getPublicJsonObject(false);
+        try {
+            obj.put(ParamsKeys.MODULE,ParamsValues.MODULE_USER);
+            obj.put(ParamsKeys.MOTHED,ParamsValues.MOTHED_SMS_VERIFICATION);
+            obj.put(ParamsKeys.MOBILE,AppUtils.rsaEncode(this, phone));
+            obj.put(ParamsKeys.SMS_VERIFY_CODE,edSmsCode.getText().toString().trim());
+            String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
+            obj.put(ParamsKeys.TOKEN, token);
+            obj.remove(ParamsKeys.KEY);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Type mType2 = new TypeToken<ReturnResultEntity<?>>() {
+        }.getType();
+        NetUtils.request(this, obj, mType2, new IHttpRequestCallBack() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onSuccess(Object object) {
+                ReturnResultEntity<?> entity = (ReturnResultEntity<?>) object;
+                if (entity.isSuccess(context)) {
+                    String smsCode = edSmsCode.getText().toString().trim();
+                    Intent intent = new Intent(ForgetPasswordActivity.this, SetLoginPasswordActivity.class);
+                    intent.putExtra("phone",phone);
+                    intent.putExtra("smsCode", smsCode);
+                    intent.putExtra("where","forgetpassword");
+                    startActivity(intent);
+                }
+                AppUtils.showToast(context, entity.getRemark());
+            }
+
+            @Override
+            public void onFailure() {
+                AppUtils.showConectFail(context);
+            }
+        });
     }
 
     private void requestForgetPasswordSmsCode() {

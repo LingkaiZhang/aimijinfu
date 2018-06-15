@@ -75,7 +75,38 @@ public class CodeUtils {
         canvas.save(Canvas.ALL_SAVE_FLAG);//保存    
         canvas.restore();    
         return bitmap;    
-    }    
+    }
+
+    //生成验证码图片
+    public Bitmap createBitmap(String imageCodeStr) {
+        mPaddingLeft = 0; //每次生成验证码图片时初始化
+        mPaddingTop = 0;
+
+        Bitmap bitmap = Bitmap.createBitmap(DEFAULT_WIDTH, DEFAULT_HEIGHT, Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+
+       // code = createCode();
+        code = createCode(imageCodeStr);
+
+        canvas.drawColor(Color.rgb(DEFAULT_COLOR, DEFAULT_COLOR, DEFAULT_COLOR));
+        Paint paint = new Paint();
+        paint.setTextSize(DEFAULT_FONT_SIZE);
+
+        for (int i = 0; i < code.length(); i++) {
+            randomTextStyle(paint);
+            randomPadding();
+            canvas.drawText(code.charAt(i) + "" , mPaddingLeft, mPaddingTop, paint);
+        }
+
+        //干扰线
+        for (int i = 0; i < DEFAULT_LINE_NUMBER; i++) {
+            drawLine(canvas, paint);
+        }
+
+        canvas.save(Canvas.ALL_SAVE_FLAG);//保存
+        canvas.restore();
+        return bitmap;
+    }
     /** 
      * 得到图片中的验证码字符串 
      * @return  
@@ -93,7 +124,18 @@ public class CodeUtils {
         }    
     
         return mBuilder.toString();    
-    }    
+    }
+
+    //生成验证码
+    public String createCode(String imageCodeStr) {
+        mBuilder.delete(0, mBuilder.length()); //使用之前首先清空内容
+
+        /*for (int i = 0; i < DEFAULT_CODE_LENGTH; i++) {
+            mBuilder.append(CHARS[mRandom.nextInt(CHARS.length)]);
+        }*/
+        mBuilder.append(imageCodeStr);
+        return mBuilder.toString();
+    }
     
     //生成干扰线    
     private void drawLine(Canvas canvas, Paint paint) {    

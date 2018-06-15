@@ -16,9 +16,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.reflect.TypeToken;
 import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.base.BaseActivity;
+import com.yuanin.aimifinance.entity.CaptchaEntity;
 import com.yuanin.aimifinance.entity.ReturnResultEntity;
 import com.yuanin.aimifinance.entity.VerifyEntity;
 import com.yuanin.aimifinance.inter.IHttpRequestCallBack;
@@ -35,6 +37,7 @@ import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.io.InputStream;
 import java.lang.reflect.Type;
 
 public class RegisterOne extends BaseActivity {
@@ -42,7 +45,7 @@ public class RegisterOne extends BaseActivity {
     @ViewInject(R.id.includeTop)
     private View toptitleView;
     @ViewInject(R.id.image_code)
-    private ImageView imageCode;
+    private SimpleDraweeView imageCode;
     @ViewInject(R.id.ed_image_code)
     private EditText edImageCode;
     @ViewInject(R.id.ed_sms_code)
@@ -70,7 +73,58 @@ public class RegisterOne extends BaseActivity {
     private void initData() {
         phone = getIntent().getStringExtra("phone");
         //获取注册短信验证码
-      //  requestRegisterSmsCode();
+        requestRegisterSmsCode();
+        //获取图形验证码
+        requestRegisterImageCode();
+    }
+
+    private void requestRegisterImageCode() {
+        JSONObject obj = AppUtils.getPublicJsonObject(false);
+        try {
+            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_CAPTCHA);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_GET_CAPTCHA);
+            obj.put(ParamsKeys.MOBILE, AppUtils.rsaEncode(this, phone));
+            String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
+            obj.put(ParamsKeys.TOKEN, token);
+            obj.remove(ParamsKeys.KEY);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Type mType2 = new TypeToken<ReturnResultEntity<CaptchaEntity>>() {
+        }.getType();
+        NetUtils.request(this, obj, mType2, new IHttpRequestCallBack() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onSuccess(Object object) {
+                ReturnResultEntity<CaptchaEntity> entity = (ReturnResultEntity<CaptchaEntity>) object;
+                if (entity.isSuccess(context)) {
+                    if (entity.isNotNull()) {
+                        String captcha = entity.getData().get(0).getCaptcha();
+                        //设置图形验证码
+                        codeUtils = CodeUtils.getInstance();
+                        Bitmap bitmap = codeUtils.createBitmap(captcha);
+                        imageCode.setImageBitmap(bitmap);
+                    }
+                    AppUtils.showToast(context, entity.getRemark());
+                } else {
+                    AppUtils.showToast(context, entity.getRemark());
+                }
+            }
+
+            @Override
+            public void onFailure() {
+                AppUtils.showConectFail(context);
+            }
+        });
     }
 
     private void requestRegisterSmsCode() {
@@ -116,9 +170,8 @@ public class RegisterOne extends BaseActivity {
     }
 
     private void initView() {
-        codeUtils = CodeUtils.getInstance();
-        Bitmap bitmap = codeUtils.createBitmap();
-        imageCode.setImageBitmap(bitmap);
+
+        //图形验证码输入框
         edImageCode.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -186,9 +239,13 @@ public class RegisterOne extends BaseActivity {
         countDownTextView.start();
     }
 
-    @Event(value = {R.id.btnConfirm})
+    @Event(value = {R.id.btnConfirm, R.id.image_code})
     private void onViewClicked(View v) {
         switch (v.getId()) {
+            //点击图形验证码
+            case R.id.image_code:
+                requestRegisterImageCode();
+                break;
             //点击下一步
             case R.id.btnConfirm:
                 String imageCode = edImageCode.getText().toString().trim();
@@ -199,19 +256,64 @@ public class RegisterOne extends BaseActivity {
                 String code = codeUtils.getCode();
                 Log.e("code", code);
                 if (code.equalsIgnoreCase(imageCode)) {
-
+                //请求校验
+                    requestRegisterVerifyCode();
                 } else {
                     Toast.makeText(this, "图片验证码错误", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                String smsCode = edSmsCode.getText().toString().trim();
-                Intent intent = new Intent(this, SetLoginPasswordActivity.class);
-                intent.putExtra("phone", phone);
-                intent.putExtra("smsCode", smsCode);
-                intent.putExtra("where", "register");
-                startActivity(intent);
+
                 break;
+
         }
+    }
+
+    private void requestRegisterVerifyCode() {
+        JSONObject obj = AppUtils.getPublicJsonObject(false);
+        try {
+            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_USER);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_REGISTER_VERIFY_CODE);
+            obj.put(ParamsKeys.IMAGECODE,edImageCode.getText().toString().trim());
+            obj.put(ParamsKeys.SMSCODE,edSmsCode.getText().toString().trim());
+            obj.put(ParamsKeys.MOBILE, AppUtils.rsaEncode(this, phone));
+            String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
+            obj.put(ParamsKeys.TOKEN, token);
+            obj.remove(ParamsKeys.KEY);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Type mType2 = new TypeToken<ReturnResultEntity<?>>() {
+        }.getType();
+        NetUtils.request(this, obj, mType2, new IHttpRequestCallBack() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onSuccess(Object object) {
+                ReturnResultEntity<?> entity = (ReturnResultEntity<?>) object;
+                if (entity.isSuccess(context)) {
+                    String smsCode = edSmsCode.getText().toString().trim();
+                    Intent intent = new Intent(RegisterOne.this, SetLoginPasswordActivity.class);
+                    intent.putExtra("phone", phone);
+                    intent.putExtra("smsCode", smsCode);
+                    intent.putExtra("where", "register");
+                    startActivity(intent);
+                }
+                AppUtils.showToast(context, entity.getRemark());
+            }
+
+            @Override
+            public void onFailure() {
+                AppUtils.showConectFail(context);
+            }
+        });
     }
 }

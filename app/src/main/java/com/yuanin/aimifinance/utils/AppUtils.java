@@ -29,6 +29,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -154,7 +155,7 @@ public class AppUtils {
         final PopupWindow mPop = new PopupWindow(popView, RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT, true);
         mPop.setAnimationStyle(R.style.SignPopupWindowAnimation);
         mPop.setFocusable(false);
-        ImageButton ivClose = (ImageButton) popView.findViewById(R.id.ivClose);
+        ImageView ivClose = (ImageView) popView.findViewById(R.id.ivClose);
         ivClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

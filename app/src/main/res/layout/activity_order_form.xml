@@ -493,6 +493,7 @@
                     android:background="@color/bg"/>
 
                 <RelativeLayout
+                    android:id="@+id/rlNoAward"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/normal_height"
                     android:paddingLeft="@dimen/small_margin"
@@ -524,6 +525,7 @@
                     android:background="@color/bg"/>
 
                 <RelativeLayout
+                    android:id="@+id/rlFinishAward"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/normal_height"
                     android:paddingLeft="@dimen/small_margin"

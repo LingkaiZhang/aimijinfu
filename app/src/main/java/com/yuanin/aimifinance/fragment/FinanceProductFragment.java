@@ -131,7 +131,7 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
         return view;
     }
 
-    @Event(value = {R.id.btnRefresh, R.id.ivToTop})
+    @Event(value = {R.id.btnRefresh, R.id.ivToTop, R.id.btnCheckNetwork})
     private void onViewClicked(View v) {
         switch (v.getId()) {
             //刷新
@@ -143,6 +143,10 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
                 hasLoadedOnce = false;
                 isNeedLoadBar = true;
                 requestDatas();
+                break;
+            //检查网络
+            case R.id.btnCheckNetwork:
+                AppUtils.checkNetwork(getActivity());
                 break;
             case R.id.ivToTop:
                 lvProduct.setSelection(0);
@@ -197,7 +201,7 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
         JSONObject obj = AppUtils.getPublicJsonObject(false);
         try {
             obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_PRODUCT);
-            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_NEW_INDEX_PRODUCT);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_GET_PRODUCT_LIST);
             obj.put(ParamsKeys.PAGE_QTY, String.valueOf(StaticMembers.PAGE_SIZE));
             obj.put(ParamsKeys.CURRENT_PAGE, String.valueOf(PageIndex));
             String token = AppUtils.getMd5Value(AppUtils.getToken(obj));

@@ -17,6 +17,7 @@ import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.base.BaseActivity;
 import com.yuanin.aimifinance.entity.EventMessage;
 import com.yuanin.aimifinance.entity.LoginEntity;
+import com.yuanin.aimifinance.entity.RegisterNewEntity;
 import com.yuanin.aimifinance.entity.ReturnResultEntity;
 import com.yuanin.aimifinance.inter.IHttpRequestCallBack;
 import com.yuanin.aimifinance.utils.AppManager;
@@ -73,6 +74,8 @@ public class SetLoginPasswordActivity extends BaseActivity {
     }
 
     private void initView() {
+        btnConfirm.setBackgroundResource(R.mipmap.login_button_enable);
+        btnConfirm.setEnabled(false);
 
         imClearMark.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +115,13 @@ public class SetLoginPasswordActivity extends BaseActivity {
                     imClearMark.setVisibility(View.GONE);
                     imPasswordMark.setVisibility(View.GONE);
                 }
-
+                if (etLoginPassword.getText().toString().trim().length() >= 6) {
+                    btnConfirm.setBackgroundResource(R.drawable.selector_theme_corner_button);
+                    btnConfirm.setEnabled(true);
+                } else {
+                    btnConfirm.setBackgroundResource(R.mipmap.login_button_enable);
+                    btnConfirm.setEnabled(false);
+                }
 
             }
 
@@ -128,89 +137,216 @@ public class SetLoginPasswordActivity extends BaseActivity {
         switch (v.getId()) {
             //点击完成
             case R.id.btnConfirm:
-                String password = etLoginPassword.getText().toString().trim();
-                JSONObject obj = AppUtils.getPublicJsonObject(false);
-                if (where == "forgetpassword") {
-                    try {
-                        obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_USER);
-                        obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_FIND_PWD);
-                        obj.put(ParamsKeys.MOBILE, AppUtils.rsaEncode(this, phone));
-                        obj.put(ParamsKeys.PASSWORD, AppUtils.rsaEncode(this, password));
-                        obj.put(ParamsKeys.VERIFYCODE, smsCode);
-                        String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
-                        obj.put(ParamsKeys.TOKEN, token);
-                        obj.remove(ParamsKeys.KEY);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                //老的接口
+                //requestRegisterAndForgetPassword();
 
-                } else if (where == "register") {
-                    try {
-                        obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_USER);
-                        obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_REGISTER);
-                        obj.put(ParamsKeys.MOBILE, AppUtils.rsaEncode(this, phone));
-                        obj.put(ParamsKeys.PASSWORD, AppUtils.rsaEncode(this, password));
-                        obj.put(ParamsKeys.VERIFYCODE, smsCode);
-                        String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
-                        obj.put(ParamsKeys.TOKEN, token);
-                        obj.remove(ParamsKeys.KEY);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                //新的接口
+                if(where.equals("register") ){
+                    questRegisterNew();
+                } else if (where.contains("forgetpassword")) {
+                    questUpdatePasswordNew();
                 }
-
-                Type mType = new TypeToken<ReturnResultEntity<LoginEntity>>() {
-                }.getType();
-                NetUtils.request(this, obj, mType, new IHttpRequestCallBack() {
-                    @Override
-                    public void onStart() {
-
-                    }
-
-                    @Override
-                    public void onFinish() {
-
-                    }
-
-                    @Override
-                    public void onSuccess(Object object) {
-                        ReturnResultEntity<LoginEntity> entity = (ReturnResultEntity<LoginEntity>) object;
-                        if (entity.isSuccess(context)) {
-                            AppManager.getAppManager().finishActivity(LoginActivity.class);
-                            AppManager.getAppManager().finishActivity(GetVerifyCodeActivity.class);
-                            AppUtils.save2SharedPreferences(context, ParamsKeys.LOGIN_FILE, ParamsKeys.LOGIN_KEY_MOBILE, entity.getData().get(0).getMobile());
-                            AppUtils.save2SharedPreferences(context, ParamsKeys.LOGIN_FILE, ParamsKeys.LOGIN_KEY_USERID, entity.getData().get(0).getUserid());
-                            AppUtils.save2SharedPreferences(context, ParamsKeys.LOGIN_FILE, ParamsKeys.LOGIN_KEY_TOKEN, entity.getData().get(0).getLogin_token());
-                            StaticMembers.IS_NEED_LOGIN = false;
-                            StaticMembers.USER_ID = entity.getData().get(0).getUserid();
-                            StaticMembers.MOBILE = entity.getData().get(0).getMobile();
-                            StaticMembers.LOGIN_TOKEN = entity.getData().get(0).getLogin_token();
-                            StaticMembers.RSA_MOBILE = AppUtils.rsaEncode(context, entity.getData().get(0).getMobile());
-                            //刷新个人中心
-                            EventMessage eventMessage = new EventMessage();
-                            eventMessage.setType(EventMessage.REFRESH_MINE);
-                            EventBus.getDefault().post(eventMessage);
-                            //刷新首页登录状态
-                            EventMessage eventMessage2 = new EventMessage();
-                            eventMessage2.setType(EventMessage.UPDATE_INDEX_LOGIN);
-                            EventBus.getDefault().post(eventMessage2);
-                            Intent intent = new Intent(context, GesturePasswordEditActivity.class);
-                            if (where == "register") {
-                                intent.putExtra(ParamsKeys.GESTURE_FLAG, ParamsKeys.GESTURE_FLAG_FIRST_EDIT);
-                            }
-                            startActivity(intent);
-                            SetLoginPasswordActivity.this.finish();
-                        }
-                        AppUtils.showToast(context, entity.getRemark());
-                    }
-
-                    @Override
-                    public void onFailure() {
-                        AppUtils.showConectFail(context);
-                    }
-                });
-
                 break;
         }
+    }
+
+    private void questUpdatePasswordNew() {
+        String password = etLoginPassword.getText().toString().trim();
+        JSONObject obj = AppUtils.getPublicJsonObject(false);
+        try {
+            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_USER);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_UPDATE_PASSWORD_NEW);
+            obj.put(ParamsKeys.MOBILE, AppUtils.rsaEncode(this, phone));
+            obj.put(ParamsKeys.NEW_PASSWORD, AppUtils.rsaEncode(this, password));
+            String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
+            obj.put(ParamsKeys.TOKEN, token);
+            obj.remove(ParamsKeys.KEY);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Type mType2 = new TypeToken<ReturnResultEntity<?>>() {
+        }.getType();
+        NetUtils.request(this, obj, mType2, new IHttpRequestCallBack() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onSuccess(Object object) {
+                ReturnResultEntity<?> entity = (ReturnResultEntity<?>) object;
+                if (entity.isSuccess(context)) {
+                    startActivity(new Intent(SetLoginPasswordActivity.this,LoginRegisterActivity.class));
+                    AppManager.getAppManager().finishActivity(LoginOneActivity.class);
+                    AppManager.getAppManager().finishActivity(ForgetPasswordActivity.class);
+                    AppManager.getAppManager().finishActivity(SetLoginPasswordActivity.class);
+                }
+                AppUtils.showToast(context, entity.getRemark());
+            }
+
+            @Override
+            public void onFailure() {
+                AppUtils.showConectFail(context);
+            }
+        });
+    }
+
+    private void questRegisterNew() {
+        String password = etLoginPassword.getText().toString().trim();
+        JSONObject obj = AppUtils.getPublicJsonObject(false);
+        try {
+            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_USER);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_REGISTER_NEW);
+            obj.put(ParamsKeys.MOBILE, AppUtils.rsaEncode(this, phone));
+            obj.put(ParamsKeys.PASSWORD, AppUtils.rsaEncode(this, password));
+            obj.put(ParamsKeys.VERIFYCODE, smsCode);
+            String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
+            obj.put(ParamsKeys.TOKEN, token);
+            obj.remove(ParamsKeys.KEY);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Type mType = new TypeToken<ReturnResultEntity<RegisterNewEntity>>() {
+        }.getType();
+        NetUtils.request(this, obj, mType, new IHttpRequestCallBack() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onSuccess(Object object) {
+                ReturnResultEntity<RegisterNewEntity> entity = (ReturnResultEntity<RegisterNewEntity>) object;
+                if (entity.isSuccess(context)) {
+                    AppManager.getAppManager().finishActivity(LoginRegisterActivity.class);
+                    AppManager.getAppManager().finishActivity(RegisterOne.class);
+                    AppManager.getAppManager().finishActivity(SetLoginPasswordActivity.class);
+                    AppUtils.save2SharedPreferences(context, ParamsKeys.LOGIN_FILE, ParamsKeys.LOGIN_KEY_MOBILE, entity.getData().get(0).getMobile());
+                    AppUtils.save2SharedPreferences(context, ParamsKeys.LOGIN_FILE, ParamsKeys.LOGIN_KEY_USERID, entity.getData().get(0).getUserid());
+                    AppUtils.save2SharedPreferences(context, ParamsKeys.LOGIN_FILE, ParamsKeys.LOGIN_KEY_TOKEN, entity.getData().get(0).getLogin_token());
+                    StaticMembers.IS_NEED_LOGIN = false;
+                    StaticMembers.USER_ID = entity.getData().get(0).getUserid();
+                    StaticMembers.MOBILE = entity.getData().get(0).getMobile();
+                    StaticMembers.LOGIN_TOKEN = entity.getData().get(0).getLogin_token();
+                    StaticMembers.RSA_MOBILE = AppUtils.rsaEncode(context, entity.getData().get(0).getMobile());
+                    //刷新个人中心
+                    EventMessage eventMessage = new EventMessage();
+                    eventMessage.setType(EventMessage.REFRESH_MINE);
+                    EventBus.getDefault().post(eventMessage);
+                    //刷新首页登录状态
+                    EventMessage eventMessage2 = new EventMessage();
+                    eventMessage2.setType(EventMessage.UPDATE_INDEX_LOGIN);
+                    EventBus.getDefault().post(eventMessage2);
+                    Intent intent = new Intent(context, GesturePasswordEditActivity.class);
+                    if (where == "register") {
+                        intent.putExtra(ParamsKeys.GESTURE_FLAG, ParamsKeys.GESTURE_FLAG_FIRST_EDIT);
+                    }
+                    startActivity(intent);
+                    SetLoginPasswordActivity.this.finish();
+
+                }
+                AppUtils.showToast(context, entity.getRemark());
+            }
+
+            @Override
+            public void onFailure() {
+                AppUtils.showConectFail(context);
+            }
+        });
+    }
+
+    //原来接口
+    private void requestRegisterAndForgetPassword() {
+        String password = etLoginPassword.getText().toString().trim();
+        JSONObject obj = AppUtils.getPublicJsonObject(false);
+        if (where == "forgetpassword") {
+            try {
+                obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_USER);
+                obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_FIND_PWD);
+                obj.put(ParamsKeys.MOBILE, AppUtils.rsaEncode(this, phone));
+                obj.put(ParamsKeys.PASSWORD, AppUtils.rsaEncode(this, password));
+                obj.put(ParamsKeys.VERIFYCODE, smsCode);
+                String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
+                obj.put(ParamsKeys.TOKEN, token);
+                obj.remove(ParamsKeys.KEY);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        } else if (where == "register") {
+            try {
+                obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_USER);
+                obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_REGISTER);
+                obj.put(ParamsKeys.MOBILE, AppUtils.rsaEncode(this, phone));
+                obj.put(ParamsKeys.PASSWORD, AppUtils.rsaEncode(this, password));
+                obj.put(ParamsKeys.VERIFYCODE, smsCode);
+                String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
+                obj.put(ParamsKeys.TOKEN, token);
+                obj.remove(ParamsKeys.KEY);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        Type mType = new TypeToken<ReturnResultEntity<LoginEntity>>() {
+        }.getType();
+        NetUtils.request(this, obj, mType, new IHttpRequestCallBack() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onSuccess(Object object) {
+                ReturnResultEntity<LoginEntity> entity = (ReturnResultEntity<LoginEntity>) object;
+                if (entity.isSuccess(context)) {
+                    AppManager.getAppManager().finishActivity(LoginActivity.class);
+                    AppManager.getAppManager().finishActivity(GetVerifyCodeActivity.class);
+                    AppUtils.save2SharedPreferences(context, ParamsKeys.LOGIN_FILE, ParamsKeys.LOGIN_KEY_MOBILE, entity.getData().get(0).getMobile());
+                    AppUtils.save2SharedPreferences(context, ParamsKeys.LOGIN_FILE, ParamsKeys.LOGIN_KEY_USERID, entity.getData().get(0).getUserid());
+                    AppUtils.save2SharedPreferences(context, ParamsKeys.LOGIN_FILE, ParamsKeys.LOGIN_KEY_TOKEN, entity.getData().get(0).getLogin_token());
+                    StaticMembers.IS_NEED_LOGIN = false;
+                    StaticMembers.USER_ID = entity.getData().get(0).getUserid();
+                    StaticMembers.MOBILE = entity.getData().get(0).getMobile();
+                    StaticMembers.LOGIN_TOKEN = entity.getData().get(0).getLogin_token();
+                    StaticMembers.RSA_MOBILE = AppUtils.rsaEncode(context, entity.getData().get(0).getMobile());
+                    //刷新个人中心
+                    EventMessage eventMessage = new EventMessage();
+                    eventMessage.setType(EventMessage.REFRESH_MINE);
+                    EventBus.getDefault().post(eventMessage);
+                    //刷新首页登录状态
+                    EventMessage eventMessage2 = new EventMessage();
+                    eventMessage2.setType(EventMessage.UPDATE_INDEX_LOGIN);
+                    EventBus.getDefault().post(eventMessage2);
+                    Intent intent = new Intent(context, GesturePasswordEditActivity.class);
+                    if (where == "register") {
+                        intent.putExtra(ParamsKeys.GESTURE_FLAG, ParamsKeys.GESTURE_FLAG_FIRST_EDIT);
+                    }
+                    startActivity(intent);
+                    SetLoginPasswordActivity.this.finish();
+                }
+                AppUtils.showToast(context, entity.getRemark());
+            }
+
+            @Override
+            public void onFailure() {
+                AppUtils.showConectFail(context);
+            }
+        });
     }
 }

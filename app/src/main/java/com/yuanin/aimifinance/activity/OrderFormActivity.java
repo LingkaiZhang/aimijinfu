@@ -10,6 +10,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -92,6 +93,10 @@ public class OrderFormActivity extends BaseActivity {
     private TextView tvNoAward;
     @ViewInject(R.id.tvFinishAward)
     private TextView tvFinishAward;
+    @ViewInject(R.id.rlNoAward)
+    private RelativeLayout rlNoAward;
+    @ViewInject(R.id.rlFinishAward)
+    private RelativeLayout rlFinishAward;
 
 
     private String entityID;
@@ -277,11 +282,11 @@ public class OrderFormActivity extends BaseActivity {
         }
         //订单奖励
         if(orderFormEntity.getWait_interest() == 0 && orderFormEntity.getYes_interest() == 0) {
-            tvNoAward.setVisibility(View.GONE);
-            tvFinishAward.setVisibility(View.GONE);
+            rlNoAward.setVisibility(View.GONE);
+            rlFinishAward.setVisibility(View.GONE);
         } else {
-            tvNoAward.setText(String.valueOf(orderFormEntity.getWait_interest()));
-            tvFinishAward.setText(String.valueOf(orderFormEntity.getYes_interest()));
+            tvNoAward.setText(String.valueOf(orderFormEntity.getWait_interest()) + "元");
+            tvFinishAward.setText(String.valueOf(orderFormEntity.getYes_interest()) + "元");
         }
     }
 

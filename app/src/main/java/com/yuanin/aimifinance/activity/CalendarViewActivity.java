@@ -161,7 +161,7 @@ public class CalendarViewActivity extends BaseActivity
         mTextLunar.setText(calendar.getLunar());
         mYear = calendar.getYear();
         mCalendar = calendar;
-        Toast.makeText(this,"点击了:" + calendar.getMonth() + "月" + calendar.getDay() + "日",Toast.LENGTH_LONG).show();
+//        Toast.makeText(this,"点击了:" + calendar.getMonth() + "月" + calendar.getDay() + "日",Toast.LENGTH_LONG).show();
         if (currentYear == calendar.getYear() && currentMouth == calendar.getMonth()) {
             setDateinfo(mList);
         } else {

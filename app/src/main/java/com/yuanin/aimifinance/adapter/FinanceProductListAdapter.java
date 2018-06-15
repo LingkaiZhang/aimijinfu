@@ -142,14 +142,18 @@ public class FinanceProductListAdapter extends BaseAdapter {
             }
 
             //TODO   显示产品类型图标
-
-            if (entity.getTypename().contains("车")) {
+            if (entity.getTypename() != null) {
+                if (entity.getTypename().contains("车")) {
+                    mainViewHolder.ivTypeLogo.setBackgroundDrawable(new BitmapDrawable(mContext.getResources(), AppUtils.getBitmap(mContext, R.mipmap.car_loan)) );
+                } else if (entity.getTypename().contains("经")) {
+                    mainViewHolder.ivTypeLogo.setBackgroundDrawable(new BitmapDrawable(mContext.getResources(), AppUtils.getBitmap(mContext, R.mipmap.manage_loan)) );
+                } else if (entity.getTypename().contains("信")) {
+                    mainViewHolder.ivTypeLogo.setBackgroundDrawable(new BitmapDrawable(mContext.getResources(), AppUtils.getBitmap(mContext, R.mipmap.credit_loan)) );
+                }
+            } else {
                 mainViewHolder.ivTypeLogo.setBackgroundDrawable(new BitmapDrawable(mContext.getResources(), AppUtils.getBitmap(mContext, R.mipmap.car_loan)) );
-            } else if (entity.getTypename().contains("经")) {
-                mainViewHolder.ivTypeLogo.setBackgroundDrawable(new BitmapDrawable(mContext.getResources(), AppUtils.getBitmap(mContext, R.mipmap.manage_loan)) );
-            } else if (entity.getTypename().contains("信")) {
-                mainViewHolder.ivTypeLogo.setBackgroundDrawable(new BitmapDrawable(mContext.getResources(), AppUtils.getBitmap(mContext, R.mipmap.credit_loan)) );
             }
+
 
             //TODO  加息功能代码
             if (entity.getOrgannual() == null || entity.getExtannual() == null) {

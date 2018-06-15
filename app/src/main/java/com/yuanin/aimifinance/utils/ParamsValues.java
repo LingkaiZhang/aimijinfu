@@ -17,7 +17,7 @@ public class ParamsValues {
 
    // public final static String NET_URL = "https://shapi.aimilicai.com/";
 
-    //public final static String NET_URL = "http://csp2p.yuanin.com/";
+//    public final static String NET_URL = "http://csapi.yuanin.com/";
     //key
     public final static String VERSION_CODE = "6.0.0";
     //测试
@@ -60,9 +60,9 @@ public class ParamsValues {
     //充值
     public final static String MOTHED_HK_RECHARGE = "haikou_recharge";
     //激活
-    public final static String MOTHED_ACTIVATE_UESR = " activate_user";
+    public final static String MOTHED_ACTIVATE_UESR = "activate_user";
     //绑定银行卡
-    public final static String MOTHED_SAVE_BANK_CARD = " savebankcard";
+    public final static String MOTHED_SAVE_BANK_CARD = "savebankcard";
 
     //修改登录密码
     public final static String MOTHED_UPDATE_PASSWORD = "updatepassword";
@@ -165,7 +165,25 @@ public class ParamsValues {
     public final static String MOTHED_GET_NEW_INVEST_DETAIL = "getNewInvestdetail";
     //活动信息
     public final static String MOTHED_GET_ACTIVITY_INFO = "getActivityInfo";
-
+    //获取手机图型验证码
+    public final static String MODULE_CAPTCHA= "captcha";
+    public final static String MOTHED_GET_CAPTCHA = "getCaptcha";
+    //登录注册手机号验证
+    public final static String MOTHED_REGISTER_VERIFY_MOBILE= "registerverifymobile";
+    //注册验证码验证
+    public final static String MOTHED_REGISTER_VERIFY_CODE= "registerverifycode";
+    //新的注册
+    public final static String MOTHED_REGISTER_NEW = "registerNew";
+    //我的资产(新)
+    public final static String GET_NEW_INVEST_PROJECT_LIST = "getNewInvestprojectlist";
+    //找回密码验证短信验证码
+    public final static String MOTHED_SMS_VERIFICATION = "smsVerification";
+    //找回密码(新)
+    public final static String MOTHED_UPDATE_PASSWORD_NEW = "updatepasswordNew";
+    //登录接口(新)
+    public final static String MOTHED_VIP_LOGIN_NEW = "viplogin";
+    //我的消息
+    public final static String MOTHED_MY_MESSAGE = "mymessage";
 
 
     /**
