@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/popMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/icon_transparent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/redMain"
+            android:layout_width="300dp"
+            android:layout_height="250dp"
+            android:background="@mipmap/pop_open_bank_account">
+
+
+            <Button
+                android:id="@+id/btnGo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="@dimen/small_margin"
+                android:gravity="center"
+                android:background="@drawable/selector_hk_register_btn"
+                android:text="立即开户"
+                android:textColor="@color/white"
+                android:textSize="@dimen/normal_text"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="@dimen/small_margin">
+
+                <Button
+                    android:id="@+id/btnGo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="暂不开通"
+                    android:textSize="14sp"
+                    android:textColor="@color/gray_cancel"
+                    android:background="@drawable/selector_gray_click_btn"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    />
+
+                <Button
+                    android:id="@+id/ivClose"
+                    android:layout_marginLeft="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="立即开通"
+                    android:textSize="14sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/selector_dialog_confirm_button_click"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp" />
+
+            </LinearLayout>
+
+
+        </FrameLayout>
+
+        <ImageButton
+            android:id="@+id/ivClose1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/big_margin"
+            android:background="@mipmap/pop_redpacket_close"
+            android:visibility="gone"/>
+    </LinearLayout>
+</LinearLayout>
