@@ -239,6 +239,7 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line"
@@ -519,6 +520,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
+                    android:background="@color/bg"
                     android:text="提前结清收益将按还款日期重新计算"
                     android:gravity="center"
                     android:textColor="@color/remindyellow"

@@ -3,10 +3,12 @@ package com.yuanin.aimifinance.adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -14,6 +16,7 @@ import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.activity.FinanceProductDetailActivity;
 import com.yuanin.aimifinance.activity.OrderFormActivity;
 import com.yuanin.aimifinance.entity.MyInvestEntity;
+import com.yuanin.aimifinance.utils.AppUtils;
 import com.yuanin.aimifinance.utils.GeneralAdapter;
 import com.yuanin.aimifinance.utils.GeneralViewHolder;
 import com.yuanin.aimifinance.utils.StaticMembers;
@@ -50,6 +53,7 @@ public class MyInvestListAdapter extends GeneralAdapter<MyInvestEntity> {
         holder.setTextForTextView(R.id.tvStartDate, data.getCreated());
         holder.setTextForTextView(R.id.tvEndDate, data.getExpire_time());
         TextView tvEndDateTitle = holder.getView(R.id.tvEndDateTitle);
+        ImageView ivPrintMark = holder.getView(R.id.ivPrintMark);
 
         switch (select) {
             case 1:
@@ -59,9 +63,11 @@ public class MyInvestListAdapter extends GeneralAdapter<MyInvestEntity> {
                 if (data.getStatus() == 3) {
                     holder.setTextForTextView(R.id.tvStatus, "已满标");
                     tvStatus.setTextColor(context.getResources().getColor(R.color.man_biao));
+                    ivPrintMark.setImageDrawable(context.getResources().getDrawable(R.drawable.blue_print));
                 } else {
                     holder.setTextForTextView(R.id.tvStatus, "还款中");
                     tvStatus.setTextColor(context.getResources().getColor(R.color.jin_xing));
+                    ivPrintMark.setImageDrawable(context.getResources().getDrawable(R.drawable.yellow_print));
                 }
 
                 break;
@@ -70,23 +76,27 @@ public class MyInvestListAdapter extends GeneralAdapter<MyInvestEntity> {
                 llLeave.setVisibility(View.GONE);
                 holder.setTextForTextView(R.id.tvStatus, "募集中");
                 tvStatus.setTextColor(context.getResources().getColor(R.color.jin_xing));
+                ivPrintMark.setImageDrawable(context.getResources().getDrawable(R.drawable.yellow_print));
                 break;
             case 3:
                 tvEndDateTitle.setText("流标时间:");
                 llLeave.setVisibility(View.GONE);
                 holder.setTextForTextView(R.id.tvStatus, "已流标");
                 tvStatus.setTextColor(context.getResources().getColor(R.color.liu_biao));
+                ivPrintMark.setImageDrawable(context.getResources().getDrawable(R.drawable.gray_print));
                 break;
             case 4:
                 tvEndDateTitle.setText("到期时间:");
                 llLeave.setVisibility(View.GONE);
-                //TODO  提前结清
+                //提前结清
                 if (data.getStatus() == 9) {
                     holder.setTextForTextView(R.id.tvStatus, "提前结清");
                     tvStatus.setTextColor(context.getResources().getColor(R.color.prepayment));
+                    ivPrintMark.setImageDrawable(context.getResources().getDrawable(R.drawable.yellow_print));
                 } else {
                     holder.setTextForTextView(R.id.tvStatus, "已还款");
                     tvStatus.setTextColor(context.getResources().getColor(R.color.huan_kuan));
+                    ivPrintMark.setImageDrawable(context.getResources().getDrawable(R.drawable.red_print));
                 }
                 break;
         }

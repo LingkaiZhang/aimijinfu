@@ -5,6 +5,7 @@ import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -130,7 +131,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.pull_scrollview_mine, container, false);
         mainView = inflater.inflate(R.layout.fragment_mine, container, false);
-        popView = inflater.inflate(R.layout.popupwindow_hk_register, container, false);
+        popView = inflater.inflate(R.layout.popupwindow_hk_register_new, container, false);
         popViewQuestion = inflater.inflate(R.layout.popupwindow_question_naire, container, false);
         x.view().inject(this, view);
         x.view().inject(this, mainView);
@@ -157,7 +158,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
                 startActivity(intent);
                 break;
             case R.id.tvLogin:
-                startActivity(new Intent(getActivity(), LoginActivity.class));
+                startActivity(new Intent(getActivity(), LoginRegisterActivity.class));
                 break;
             case R.id.btn_login_register:
                 startActivity(new Intent(getActivity(), LoginRegisterActivity.class));
@@ -190,10 +191,10 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
                     break;
                 //个人中心
                 case R.id.ivMine:
-                    if (mList != null && mList.size() > 0) {
+                   // if (mList != null && mList.size() > 0) {
                         Intent intent2 = new Intent(getActivity(), PersonalSettingsActivity.class);
                         startActivity(intent2);
-                    }
+                   // }
                     break;
                 //消息中心
                 case R.id.ivMessage:
@@ -390,7 +391,6 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
                 Intent intent = new Intent(getActivity(), CallBackWebActivity.class);
                 intent.putExtra("url",entity.getData().get(0).getUrl_route() );
                 startActivity(intent);
-                AppUtils.showToast(getActivity(),"点击了活动1");
             }
         });
         sdvWonderFulActivity2.setOnClickListener(new View.OnClickListener() {
@@ -399,7 +399,6 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
                 Intent intent = new Intent(getActivity(), CallBackWebActivity.class);
                 intent.putExtra("url", entity.getData().get(1).getUrl_route());
                 startActivity(intent);
-                AppUtils.showToast(getActivity(),"点击了活动2");
             }
         });
     }
@@ -448,10 +447,10 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         tvEarnMoney.setText("0.00");
         tvTotalMoney.setText("0.00");
         tvRegularMoney.setText(getString(R.string.mine_invest_word));
-        tvRegularMoney.setTextColor(getResources().getColor(R.color.text_gray));
+        tvRegularMoney.setTextColor(Color.GRAY);
         tvLittleItemMoney.setText(getString(R.string.mine_invest_word));
         tvRedTip.setText(getString(R.string.mine_redtip_word));
-        tvRedTip.setTextColor(getResources().getColor(R.color.text_gray));
+        tvRedTip.setTextColor(Color.GRAY);
     }
 
     @SuppressLint("WrongConstant")
@@ -689,8 +688,15 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         StaticMembers.HK_STATUS = entity.getData().get(0).getIs_activate_hkaccount();
         StaticMembers.BANK_CARD_STATUS = entity.getData().get(0).getIs_bind_bankcard();
         StaticMembers.QUESTION_NAIRE_STATUS = entity.getData().get(0).getSurveyresult();
+        if (String.valueOf(entity.getData().get(0).getBuyNewAble()) != null) {
+            StaticMembers.IS_ABLE_BUY_NEW_PRODUCT = entity.getData().get(0).getBuyNewAble();
+        }
+
         //保存用户状态信息
-        AppUtils.save2SharedPreferences(getActivity(),ParamsKeys.USER_INFO_FILE,ParamsKeys.USER_IS_OPEN_ACCOUNT,String.valueOf(entity.getData().get(0).getIs_activate_hkaccount()));
+        AppUtils.save2SharedPreferences(getActivity(),ParamsKeys.USER_INFO_FILE,ParamsKeys.USER_IS_OPEN_ACCOUNT,
+                String.valueOf(entity.getData().get(0).getIs_activate_hkaccount()));
+        AppUtils.save2SharedPreferences(getActivity(),ParamsKeys.USER_INFO_FILE,ParamsKeys.USER_IS_ABLE_BUY_NEW_PRODUCT,
+                String.valueOf(entity.getData().get(0).getBuyNewAble()));
     }
 
     @Override

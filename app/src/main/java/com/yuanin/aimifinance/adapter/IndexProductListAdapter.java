@@ -11,6 +11,7 @@ import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.activity.BuyRegularActivity;
 import com.yuanin.aimifinance.activity.FinanceProductDetailActivity;
 import com.yuanin.aimifinance.activity.LoginActivity;
+import com.yuanin.aimifinance.activity.LoginRegisterActivity;
 import com.yuanin.aimifinance.entity.IndexProductEntity;
 import com.yuanin.aimifinance.utils.AppUtils;
 import com.yuanin.aimifinance.utils.GeneralAdapter;
@@ -109,7 +110,7 @@ public class IndexProductListAdapter extends GeneralAdapter<IndexProductEntity> 
                 @Override
                 public void onClick(View v) {
                     if (StaticMembers.IS_NEED_LOGIN) {
-                        context.startActivity(new Intent(context, LoginActivity.class));
+                        context.startActivity(new Intent(context, LoginRegisterActivity.class));
                     } else {
                         StaticMembers.isShowLastItem = false;
                         Intent intent = new Intent(context, BuyRegularActivity.class);

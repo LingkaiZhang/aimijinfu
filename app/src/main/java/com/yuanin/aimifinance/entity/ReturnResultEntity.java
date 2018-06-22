@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.yuanin.aimifinance.activity.LoginActivity;
+import com.yuanin.aimifinance.activity.LoginRegisterActivity;
 import com.yuanin.aimifinance.utils.AppUtils;
 import com.yuanin.aimifinance.utils.StaticMembers;
 
@@ -57,7 +58,7 @@ public class ReturnResultEntity<T> implements Serializable {
         } else {
             if (result == 400 && !StaticMembers.IS_NEED_LOGIN) {
                 AppUtils.exitLogin(context);
-                context.startActivity(new Intent(context, LoginActivity.class));
+                context.startActivity(new Intent(context, LoginRegisterActivity.class));
                 AppUtils.showToast(context, remark);
             }
             return false;

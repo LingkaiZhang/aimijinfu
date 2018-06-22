@@ -61,7 +61,7 @@ public class AccountBalanceActivity extends BaseActivity {
         setContentView(R.layout.activity_account_balance);
         x.view().inject(this);
         initTopBar("可用余额", toptitleView, true);
-        popView = getLayoutInflater().inflate(R.layout.popupwindow_hk_register,null);
+        popView = getLayoutInflater().inflate(R.layout.popupwindow_hk_register_new,null);
         requestData();
     }
 

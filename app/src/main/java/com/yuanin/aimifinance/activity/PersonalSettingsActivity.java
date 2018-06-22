@@ -74,7 +74,7 @@ public class PersonalSettingsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_settings);
-        popView = getLayoutInflater().inflate(R.layout.popupwindow_hk_register, null, false);
+        popView = getLayoutInflater().inflate(R.layout.popupwindow_hk_register_new, null, false);
         x.view().inject(this);
         initTopBar(getResources().getString(R.string.PersonalSettings), toptitleView, true);
         initView();

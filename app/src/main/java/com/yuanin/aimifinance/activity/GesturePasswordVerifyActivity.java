@@ -82,7 +82,7 @@ public class GesturePasswordVerifyActivity extends BaseActivity {
             case R.id.tvChangeUser:
                 startActivity(new Intent(GesturePasswordVerifyActivity.this, HomePageActivity.class));
                 AppUtils.exitLogin(this);
-                startActivity(new Intent(GesturePasswordVerifyActivity.this, LoginActivity.class));
+                startActivity(new Intent(GesturePasswordVerifyActivity.this, LoginRegisterActivity.class));
                 this.finish();
                 break;
             //切换指纹密码

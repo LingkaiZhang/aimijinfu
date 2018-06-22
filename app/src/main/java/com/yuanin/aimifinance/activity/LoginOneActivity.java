@@ -1,8 +1,10 @@
 package com.yuanin.aimifinance.activity;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -15,8 +17,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.reflect.TypeToken;
+import com.mylhyl.acp.Acp;
+import com.mylhyl.acp.AcpListener;
+import com.mylhyl.acp.AcpOptions;
 import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.base.BaseActivity;
+import com.yuanin.aimifinance.dialog.GeneralDialog;
 import com.yuanin.aimifinance.entity.EventMessage;
 import com.yuanin.aimifinance.entity.LoginEntity;
 import com.yuanin.aimifinance.entity.ReturnResultEntity;
@@ -35,6 +41,7 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.lang.reflect.Type;
+import java.util.List;
 
 import de.greenrobot.event.EventBus;
 
@@ -59,6 +66,7 @@ public class LoginOneActivity extends BaseActivity {
     private boolean isShowPassword = false;
     private String phone;
     private boolean isClear = false;
+    private GeneralDialog generalDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -205,9 +213,39 @@ public class LoginOneActivity extends BaseActivity {
                 });
                 break;
             case R.id.tv_forget_password:
-                Intent intent = new Intent(this, ForgetPasswordActivity.class);
-                intent.putExtra("phone",phone);
-                startActivity(intent);
+
+                generalDialog = new GeneralDialog(this, true, "提示", "您的手机号能否接收短信？", "不能", "能", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Acp.getInstance(LoginOneActivity.this).request(new AcpOptions.Builder()
+                                        .setPermissions(Manifest.permission.CALL_PHONE)
+                                        .build(),
+                                new AcpListener() {
+                                    @Override
+                                    public void onGranted() {
+                                        //用intent启动拨打电话
+                                        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + ParamsValues.TEL));
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        startActivity(intent);
+                                    }
+
+                                    @Override
+                                    public void onDenied(List<String> permissions) {
+                                        AppUtils.showToast(LoginOneActivity.this, permissions.toString() + "权限拒绝");
+                                    }
+                                });
+                        generalDialog.dismiss();
+                    }
+
+                }, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(LoginOneActivity.this, ForgetPasswordActivity.class);
+                        intent.putExtra("phone",phone);
+                        startActivity(intent);
+                        generalDialog.dismiss();
+                    }
+                });
                 break;
         }
     }

@@ -50,7 +50,7 @@ public class AddUpEarningsListAdapter extends GeneralAdapter<AddUpEarningsEntity
                 break;
         }
         if (data.getPeriodqty().length() != 0) {
-            holder.setTextForTextView(R.id.tvTime, data.getPeriodqty() + "期");
+            holder.setTextForTextView(R.id.tvTime, data.getPeriodqty() + "期/" + data.getTerm() + "期");
         } else {
             holder.setTextForTextView(R.id.tvTime, "");
         }

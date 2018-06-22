@@ -136,4 +136,5 @@ public class ParamsKeys {
     public static final String USER_INFO_FILE = "user_info_file";
 
     public static final String SMS_VERIFY_CODE = "verifycode";
+    public static final String USER_IS_ABLE_BUY_NEW_PRODUCT = "buyNewAble";
 }

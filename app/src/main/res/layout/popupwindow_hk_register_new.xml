@@ -39,28 +39,28 @@
                 android:layout_marginBottom="@dimen/small_margin">
 
                 <Button
-                    android:id="@+id/btnGo"
+                    android:id="@+id/ivClose"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="暂不开通"
                     android:textSize="14sp"
                     android:textColor="@color/gray_cancel"
                     android:background="@drawable/selector_gray_click_btn"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
                     />
 
                 <Button
-                    android:id="@+id/ivClose"
-                    android:layout_marginLeft="50dp"
+                    android:id="@+id/btnGo"
+                    android:layout_marginLeft="40dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="立即开通"
                     android:textSize="14sp"
                     android:textColor="@color/white"
                     android:background="@drawable/selector_dialog_confirm_button_click"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp" />
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp" />
 
             </LinearLayout>
 

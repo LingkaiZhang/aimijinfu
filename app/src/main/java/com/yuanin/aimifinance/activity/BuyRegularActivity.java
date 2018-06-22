@@ -133,7 +133,7 @@ public class BuyRegularActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_regular);
-        popView = getLayoutInflater().inflate(R.layout.popupwindow_hk_register, null, false);
+        popView = getLayoutInflater().inflate(R.layout.popupwindow_hk_register_new, null, false);
         x.view().inject(this);
         btnConfirm.setClickable(false);
         entityID = getIntent().getStringExtra("entityID");

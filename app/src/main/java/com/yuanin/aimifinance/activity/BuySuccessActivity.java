@@ -127,7 +127,7 @@ public class BuySuccessActivity extends BaseActivity {
             case R.id.btnInvite:
             case R.id.imgRedPackets:
                 if (StaticMembers.IS_NEED_LOGIN) {
-                    startActivity(new Intent(BuySuccessActivity.this, LoginActivity.class));
+                    startActivity(new Intent(BuySuccessActivity.this, LoginRegisterActivity.class));
                 } else {
                     if (buySuccessEntity.getRed_type() == 1) {
                         Intent intent = new Intent(BuySuccessActivity.this, WebViewActivity.class);

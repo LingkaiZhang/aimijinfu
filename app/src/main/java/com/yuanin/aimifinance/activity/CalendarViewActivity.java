@@ -89,10 +89,12 @@ public class CalendarViewActivity extends BaseActivity
         int month = mCalendarView.getCurMonth();
         int curDay = mCalendarView.getCurDay();
         schemes.add(getSchemeCalendar(year, month, curDay, 0, "假"));
-        for (int i = 0; i < mList.size(); i++) {
-            String day = mList.get(i).getDate().split("-")[2];
-            int mday = Integer.parseInt(day);
-            schemes.add(getSchemeCalendar(mCalendar.getYear(),mCalendar.getMonth(),mday,0,""));
+        if (mList != null) {
+            for (int i = 0; i < mList.size(); i++) {
+                String day = mList.get(i).getDate().split("-")[2];
+                int mday = Integer.parseInt(day);
+                schemes.add(getSchemeCalendar(mCalendar.getYear(),mCalendar.getMonth(),mday,0,""));
+            }
         }
         mCalendarView.setSchemeDate(schemes);
     }
@@ -208,8 +210,11 @@ public class CalendarViewActivity extends BaseActivity
                         setDateinfo(mList);
                     } else {
                         //当月没有出借信息
-                        mList.clear();
+                        if(mList != null) {
+                            mList.clear();
+                        }
                         setDateinfo(mList);
+                        AppUtils.showToast(CalendarViewActivity.this, entity.getRemark());
                     }
                 } else {
                     AppUtils.showToast(CalendarViewActivity.this, entity.getRemark());
@@ -227,13 +232,15 @@ public class CalendarViewActivity extends BaseActivity
         tvWaitFund.setText("0.00");
         tvAleardyFund.setText("0.00");
         tvNewLoan.setText("0.00");
-        for (int i = 0; i < mList.size(); i++) {
-            String date = mList.get(i).getDate();
-            String[] split = date.split("-");
-            if (Integer.parseInt(split[2]) == mCalendar.getDay()&& Integer.parseInt(split[1]) == mCalendar.getMonth()) {
-                tvWaitFund.setText(mList.get(i).getReceiving());
-                tvAleardyFund.setText(mList.get(i).getReceived());
-                tvNewLoan.setText(mList.get(i).getNewCapital());
+        if (mList != null) {
+            for (int i = 0; i < mList.size(); i++) {
+                String date = mList.get(i).getDate();
+                String[] split = date.split("-");
+                if (Integer.parseInt(split[2]) == mCalendar.getDay() && Integer.parseInt(split[1]) == mCalendar.getMonth()) {
+                    tvWaitFund.setText(mList.get(i).getReceiving());
+                    tvAleardyFund.setText(mList.get(i).getReceived());
+                    tvNewLoan.setText(mList.get(i).getNewCapital());
+                }
             }
         }
         initData();

@@ -262,7 +262,7 @@ public class FinanceProductDetailActivity extends BaseFragmentActivity implement
 //                break;
             case R.id.tvBuy:
                 if (StaticMembers.IS_NEED_LOGIN) {
-                    startActivity(new Intent(this, LoginActivity.class));
+                    startActivity(new Intent(this, LoginRegisterActivity.class));
                 } else {
                     Intent intent = new Intent(this, BuyRegularActivity.class);
                     intent.putExtra("entityID", entityID);

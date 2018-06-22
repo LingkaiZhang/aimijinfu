@@ -52,7 +52,7 @@ public class GesturePasswordModifyActivity extends BaseActivity {
             case R.id.text_forget_gesture:
                 startActivity(new Intent(GesturePasswordModifyActivity.this, HomePageActivity.class));
                 AppUtils.exitLogin(this);
-                startActivity(new Intent(GesturePasswordModifyActivity.this, LoginActivity.class));
+                startActivity(new Intent(GesturePasswordModifyActivity.this, LoginRegisterActivity.class));
                 this.finish();
                 break;
             //取消

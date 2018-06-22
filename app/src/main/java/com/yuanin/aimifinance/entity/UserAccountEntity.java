@@ -18,8 +18,18 @@ public class UserAccountEntity implements Serializable {
     private int is_bind_bankcard;
     //HK状态
     private int is_activate_hkaccount;
-
+    //是否已进行问卷调查
     private int surveyresult;
+    //是否可以购买新手标 0不可以 1 可以
+    private int buyNewAble;
+
+    public int getBuyNewAble() {
+        return buyNewAble;
+    }
+
+    public void setBuyNewAble(int buyNewAble) {
+        this.buyNewAble = buyNewAble;
+    }
 
     public int getSurveyresult() {
         return surveyresult;

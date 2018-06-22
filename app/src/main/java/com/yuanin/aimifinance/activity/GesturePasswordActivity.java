@@ -28,9 +28,11 @@ import de.greenrobot.event.EventBus;
 /**
  * 手势密码设置界面
  */
-public class GesturePasswordEditActivity extends BaseActivity {
+public class GesturePasswordActivity extends BaseActivity {
     @ViewInject(R.id.includeTop)
     private View toptitleView;
+    @ViewInject(R.id.includeTop1)
+    private View includeTop;
     @ViewInject(R.id.text_tip)
     private TextView mTextTip;
     @ViewInject(R.id.gesture_container)
@@ -49,9 +51,10 @@ public class GesturePasswordEditActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gesture_edit);
+        setContentView(R.layout.activity_gesture_password);
         x.view().inject(this);
-        AppUtils.setCurrentDateToTopTitle(toptitleView);
+        initTopBar("设置手势密码", includeTop, true);
+        //AppUtils.setCurrentDateToTopTitle(toptitleView);
         flag = getIntent().getStringExtra(ParamsKeys.GESTURE_FLAG);
         if (flag == null) {
             flag = "thishere";
@@ -76,9 +79,9 @@ public class GesturePasswordEditActivity extends BaseActivity {
             //取消
             case R.id.tvCancel:
                 if (flag.equals(ParamsKeys.GESTURE_FLAG_FIRST_EDIT)) {
-                    startActivity(new Intent(GesturePasswordEditActivity.this, OpenAccountActivity.class));
+                    startActivity(new Intent(GesturePasswordActivity.this, OpenAccountActivity.class));
                 }
-                GesturePasswordEditActivity.this.finish();
+                GesturePasswordActivity.this.finish();
                 break;
         }
     }
@@ -88,9 +91,9 @@ public class GesturePasswordEditActivity extends BaseActivity {
     public void onBackPressed() {
         super.onBackPressed();
         if (flag.equals(ParamsKeys.GESTURE_FLAG_FIRST_EDIT)) {
-            startActivity(new Intent(GesturePasswordEditActivity.this, OpenAccountActivity.class));
+            startActivity(new Intent(GesturePasswordActivity.this, OpenAccountActivity.class));
         }
-        GesturePasswordEditActivity.this.finish();
+        GesturePasswordActivity.this.finish();
     }
 
     private void setUpViews() {
@@ -103,7 +106,7 @@ public class GesturePasswordEditActivity extends BaseActivity {
                             mTextTip.setText(getResources().getString(R.string.at_least_four_point));
                             mTextTip.setTextColor(getResources().getColor(R.color.theme_color));
                             mGestureContentView.clearDrawlineState(0L);
-                            AppUtils.Vibrate(GesturePasswordEditActivity.this, 250);
+                            AppUtils.Vibrate(GesturePasswordActivity.this, 250);
                             return;
                         }
                         if (mIsFirstInput) {
@@ -115,15 +118,15 @@ public class GesturePasswordEditActivity extends BaseActivity {
                             tvShu.setVisibility(View.VISIBLE);
                         } else {
                             if (inputCode.equals(mFirstPassword)) {
-                                AppUtils.save2SharedPreferences(GesturePasswordEditActivity.this, ParamsKeys.GESTURE_SHARE_FILE_NAME,
+                                AppUtils.save2SharedPreferences(GesturePasswordActivity.this, ParamsKeys.GESTURE_SHARE_FILE_NAME,
                                         ParamsKeys.GESTURE_SHARE_DATA_NAME, inputCode);
-                                Toast.makeText(GesturePasswordEditActivity.this,
+                                Toast.makeText(GesturePasswordActivity.this,
                                         getResources().getString(R.string.setup_success), Toast.LENGTH_SHORT).show();
                                 mGestureContentView.clearDrawlineState(0L);
                                 StaticMembers.IS_NEED_GUSTURE_PWD = true;
                                 if (where != 1) {
                                     if (flag.equals(ParamsKeys.GESTURE_FLAG_FIRST_EDIT)) {
-                                        startActivity(new Intent(GesturePasswordEditActivity.this, OpenAccountActivity.class));
+                                        startActivity(new Intent(GesturePasswordActivity.this, OpenAccountActivity.class));
                                     }
                                     //通知homepage跳到个人中心
                                     EventMessage eventMessage = new EventMessage();
@@ -132,19 +135,19 @@ public class GesturePasswordEditActivity extends BaseActivity {
                                     EventBus.getDefault().post(eventMessage);
 
                                 }
-                                GesturePasswordEditActivity.this.finish();
+                                GesturePasswordActivity.this.finish();
                             } else {
                                 mTextTip.setText(getResources().getString(R.string.not_same));
                                 mTextTip.setTextColor(getResources().getColor(R.color.theme_color));
                                 // 左右移动动画
                                 Animation shakeAnimation = AnimationUtils
                                         .loadAnimation(
-                                                GesturePasswordEditActivity.this,
+                                                GesturePasswordActivity.this,
                                                 R.anim.shake);
                                 mTextTip.startAnimation(shakeAnimation);
                                 // 保持绘制的线，1.5秒后清除
                                 mGestureContentView.clearDrawlineState(1300L);
-                                AppUtils.Vibrate(GesturePasswordEditActivity.this, 250);
+                                AppUtils.Vibrate(GesturePasswordActivity.this, 250);
                             }
                         }
                         mIsFirstInput = false;

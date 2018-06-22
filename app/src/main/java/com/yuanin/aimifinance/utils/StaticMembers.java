@@ -26,6 +26,7 @@ public class StaticMembers {
 
     public static final int POINT_STATE_WRONG = 2; // 错误状态
 
+
     //屏幕宽高
     public static int SCREEN_WIDTH; // 按下状态
 
@@ -66,6 +67,8 @@ public class StaticMembers {
     public static int BANK_CARD_STATUS = 0;
     //账户总资产
     public static String TOTAL_MONEY = "0.00";
+    //是否可以购买新手标 0 不可以1可以
+    public static int IS_ABLE_BUY_NEW_PRODUCT = 0;
 
     //分享list
     public final static String[] SHARE_TEXTS = {"发送给朋友", "分享到朋友圈", "发送给好友", "分享到QQ空间"};

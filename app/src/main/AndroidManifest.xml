@@ -380,7 +380,12 @@
             android:name=".activity.CalendarViewActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />
-        <activity android:name=".activity.RechargeResultActivity"
+        <activity
+            android:name=".activity.RechargeResultActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name=".activity.GesturePasswordActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />
     </application>

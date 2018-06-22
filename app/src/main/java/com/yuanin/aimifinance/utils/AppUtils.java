@@ -41,6 +41,7 @@ import com.google.gson.reflect.TypeToken;
 import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.activity.HKRegisterWebActivity;
 import com.yuanin.aimifinance.activity.LoginActivity;
+import com.yuanin.aimifinance.activity.LoginRegisterActivity;
 import com.yuanin.aimifinance.activity.OpenAccountActivity;
 import com.yuanin.aimifinance.activity.WebViewActivity;
 import com.yuanin.aimifinance.dialog.GeneralDialog;
@@ -155,7 +156,7 @@ public class AppUtils {
         final PopupWindow mPop = new PopupWindow(popView, RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT, true);
         mPop.setAnimationStyle(R.style.SignPopupWindowAnimation);
         mPop.setFocusable(false);
-        ImageView ivClose = (ImageView) popView.findViewById(R.id.ivClose);
+        Button ivClose = (Button) popView.findViewById(R.id.ivClose);
         ivClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -164,7 +165,7 @@ public class AppUtils {
         });
         Button btnGo = (Button) popView.findViewById(R.id.btnGo);
         if (StaticMembers.HK_STATUS == 0) {
-            btnGo.setText("立即开户");
+            btnGo.setText("立即开通");
             btnGo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -256,6 +257,7 @@ public class AppUtils {
         return mPop;
     }
 
+    //产品安全等级
     public static PopupWindow createSLPop(View popView, final Context context ) {
         final PopupWindow mPop = new PopupWindow(popView, RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT, true);
         mPop.setAnimationStyle(R.style.SignPopupWindowAnimation);
@@ -414,7 +416,7 @@ public class AppUtils {
                 public void onClick(View v) {
                     safeDialog.dismiss();
                     AppUtils.exitLogin(context);
-                    context.startActivity(new Intent(context, LoginActivity.class));
+                    context.startActivity(new Intent(context, LoginRegisterActivity.class));
 
                 }
             });

@@ -171,7 +171,7 @@ public class FingerPasswordActivity extends BaseActivity {
             case R.id.tvChangeUser:
                 startActivity(new Intent(FingerPasswordActivity.this, HomePageActivity.class));
                 AppUtils.exitLogin(this);
-                startActivity(new Intent(FingerPasswordActivity.this, LoginActivity.class));
+                startActivity(new Intent(FingerPasswordActivity.this, LoginRegisterActivity.class));
                 this.finish();
                 break;
             case R.id.tvCancel:

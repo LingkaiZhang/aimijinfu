@@ -65,7 +65,7 @@ public class CallBackWebActivity extends BaseActivity {
         Object insertObj = new Object() {
             @JavascriptInterface
             public void HtmlcallJava() {
-                startActivityForResult(new Intent(CallBackWebActivity.this, LoginActivity.class), 12);
+                startActivityForResult(new Intent(CallBackWebActivity.this, LoginRegisterActivity.class), 12);
                 Toast.makeText(CallBackWebActivity.this, "请您先登录用户", Toast.LENGTH_SHORT).show();
             }
 

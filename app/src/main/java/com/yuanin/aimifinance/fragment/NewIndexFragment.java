@@ -129,6 +129,8 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
     private Button btnLoginRegister;
     @ViewInject(R.id.iv_new_guidelines)
     private ImageView ivNewGuideLines;
+    @ViewInject(R.id.llNewProduct)
+    private LinearLayout llNewProduct;
 
     /**
      * 标志位，标志已经初始化完成
@@ -165,7 +167,7 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
 
 
     @Event(value = {R.id.btnRefresh, R.id.llSafe, R.id.llHelp, R.id.llInvite, R.id.llData, R.id.ivMoreNotice,
-            R.id.imgRedPackets, R.id.rlNoLogin, R.id.btnNewInvest, R.id.llBank_depository, R.id.btn_login_register})
+            R.id.imgRedPackets, R.id.rlNoLogin, R.id.btnNewInvest, R.id.llBank_depository, R.id.btn_login_register, R.id.btnCheckNetwork})
     private void onViewClicked(View v) {
         switch (v.getId()) {
             case R.id.llBank_depository:
@@ -185,7 +187,7 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
                 break;
             case R.id.llInvite:
                 if (StaticMembers.IS_NEED_LOGIN) {
-                    startActivity(new Intent(getActivity(), LoginActivity.class));
+                    startActivity(new Intent(getActivity(), LoginRegisterActivity.class));
                 } else {
                     Intent intent3 = new Intent(getActivity(), WebViewActivity.class);
                     intent3.putExtra(ParamsKeys.TYPE, ParamsValues.RULE);
@@ -202,12 +204,15 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
                 requestBannerData();
                 mPullDownScrollView.autoRefresh();
                 break;
+            case R.id.btnCheckNetwork:
+                AppUtils.checkNetwork(getActivity());
+                break;
             case R.id.ivMoreNotice:
                 startActivity(new Intent(getActivity(), NoticeListActivity.class));
                 break;
             case R.id.btnNewInvest:
                 if (StaticMembers.IS_NEED_LOGIN) {
-                    startActivity(new Intent(getActivity(), LoginActivity.class));
+                    startActivity(new Intent(getActivity(), LoginRegisterActivity.class));
                 } else {
                     StaticMembers.isShowLastItem = false;
                     if (indexProductEntity != null) {
@@ -224,7 +229,7 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
                 break;
             case R.id.imgRedPackets:
                 if (StaticMembers.IS_NEED_LOGIN) {
-                    startActivity(new Intent(getActivity(), LoginActivity.class));
+                    startActivity(new Intent(getActivity(), LoginRegisterActivity.class));
                 } else {
                     Intent intent = new Intent(getActivity(), WebViewActivity.class);
                     intent.putExtra(ParamsKeys.TYPE, ParamsValues.SHARE_RED_PACKET);
@@ -278,9 +283,20 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
 
             //是否开户
             String userIsOpenAccount = AppUtils.getFromSharedPreferences(getActivity(), ParamsKeys.USER_INFO_FILE, ParamsKeys.USER_IS_OPEN_ACCOUNT);
+            String userIsAbleBuyNewProduct = AppUtils.getFromSharedPreferences(getActivity(), ParamsKeys.USER_INFO_FILE, ParamsKeys.USER_IS_ABLE_BUY_NEW_PRODUCT);
+
             if (userIsOpenAccount.equals("1") ) {
                 //是否购买过新手标
-                llNewGuidelines.setVisibility(View.GONE);
+                if (userIsAbleBuyNewProduct.equals("0")) {
+                    llNewGuidelines.setVisibility(View.GONE);
+                    llNewProduct.setVisibility(View.GONE);
+                }else {
+                    Bitmap newGuidleThree = AppUtils.getBitmap(getActivity(), R.mipmap.new_guide_three);
+                    ivNewGuideLines.setImageBitmap(newGuidleThree);
+                    btnLoginRegister.setText("出借试一笔");
+                    llNewGuidelines.setVisibility(View.GONE);
+                    llNewProduct.setVisibility(View.VISIBLE);
+                }
             } else {
                 if (userIsOpenAccount.equals("0")) {
                     //getActivity().startActivity(new Intent(getActivity(), OpenAccountActivity.class));

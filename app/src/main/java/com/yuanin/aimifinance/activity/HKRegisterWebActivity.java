@@ -80,6 +80,32 @@ public class HKRegisterWebActivity extends BaseActivity {
 //                Toast.makeText(SinaPayActivity.this, "接受到调用 ", Toast.LENGTH_SHORT).show();
             }
 
+           /* 充值成功:
+
+            继续充值: 1
+            立即出借: 2
+
+
+            充值失败:
+
+            联系客服:3
+            再试一次:4
+
+
+            申请提现成功:
+
+            返回账户: 5
+            提现记录: 6
+
+            申请提现失败:
+
+            联系客服:7
+            再试一次: 8
+
+
+            绑卡开户:
+            操作成功 : 9
+            操作失败: 10*/
             @JavascriptInterface
             public void HtmlcallJava2(String param) {
                 /*if (param.equals("1")) {
@@ -118,8 +144,10 @@ public class HKRegisterWebActivity extends BaseActivity {
                     contactCustomerService();
                 } else if (param.equals("8")) {
                     startActivity(new Intent(context,WithdrawActivity.class));
-                } else {
+                } else if (param.equals("10")){
                     AppUtils.showToast(context, "操作失败，请重试");
+                } else if (param.equals("9")) {
+                    AppUtils.showToast(context, "操作成功");
                 }
                 HKRegisterWebActivity.this.finish();
             }

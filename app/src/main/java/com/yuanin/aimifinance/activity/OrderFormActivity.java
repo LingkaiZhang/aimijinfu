@@ -135,7 +135,7 @@ public class OrderFormActivity extends BaseActivity {
             //红包
             case R.id.imgRedPackets:
                 if (StaticMembers.IS_NEED_LOGIN) {
-                    startActivity(new Intent(context, LoginActivity.class));
+                    startActivity(new Intent(context, LoginRegisterActivity.class));
                 } else {
                     if (orderFormEntity.getRed_type() == 1) {
                         Intent intent = new Intent(OrderFormActivity.this, WebViewActivity.class);

@@ -22,6 +22,15 @@ public class AddUpEarningsEntity implements Serializable {
     private int status;
     private String waitinterest;
     private String receivedinterest;
+    private String term;
+
+    public String getTerm() {
+        return term;
+    }
+
+    public void setTerm(String term) {
+        this.term = term;
+    }
 
     public String getWaitinterest() {
         return waitinterest;

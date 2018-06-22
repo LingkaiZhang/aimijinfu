@@ -16,6 +16,7 @@ import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.activity.BuyRegularActivity;
 import com.yuanin.aimifinance.activity.FinanceProductDetailActivity;
 import com.yuanin.aimifinance.activity.LoginActivity;
+import com.yuanin.aimifinance.activity.LoginRegisterActivity;
 import com.yuanin.aimifinance.entity.FinanceProductEntity;
 import com.yuanin.aimifinance.utils.AppUtils;
 import com.yuanin.aimifinance.utils.StaticMembers;
@@ -184,7 +185,7 @@ public class FinanceProductListAdapter extends BaseAdapter {
                     @Override
                     public void onClick(View v) {
                         if (StaticMembers.IS_NEED_LOGIN) {
-                            mContext.startActivity(new Intent(mContext, LoginActivity.class));
+                            mContext.startActivity(new Intent(mContext, LoginRegisterActivity.class));
                         } else {
                             StaticMembers.isShowLastItem = false;
                             Intent intent = new Intent(mContext, BuyRegularActivity.class);
