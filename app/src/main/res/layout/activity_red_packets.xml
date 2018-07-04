@@ -16,7 +16,8 @@
         android:id="@+id/llMain"
         android:layout_width="match_parent"
         android:layout_height="@dimen/normal_height"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:visibility="gone">
 
 
         <TextView
@@ -52,7 +53,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
-        android:src="@mipmap/bottom_cursor"/>
+        android:src="@mipmap/bottom_cursor"
+        android:visibility="gone"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/mViewPager"

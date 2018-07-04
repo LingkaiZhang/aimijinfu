@@ -688,7 +688,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="用户资金由上海银行存管"
+            android:text="用户资金由新网银行存管"
             android:textColor="@color/remindyellow"
             android:layout_marginBottom="@dimen/small_margin"
             android:drawableLeft="@mipmap/sh_bank"

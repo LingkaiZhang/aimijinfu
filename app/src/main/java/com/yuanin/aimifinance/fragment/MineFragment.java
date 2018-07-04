@@ -407,8 +407,6 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        //TODO 活动信息
-        requestActivityInformation();
         if (isVisibleToUser) {
             if (StaticMembers.IS_NEED_LOGIN) {
                 rlNoLogin.setVisibility(View.VISIBLE);
@@ -418,12 +416,16 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
                 tvRemind.setVisibility(View.GONE);
                 mPullDownScrollView.setPullRefreshEnable(false);
                 clearInfo();
+                //TODO 活动信息
+                requestActivityInformation();
             } else {
                 rlNoLogin.setVisibility(View.GONE);
                 rlLogin.setVisibility(View.VISIBLE);
                 rlMine.setVisibility(View.VISIBLE);
                 mPullDownScrollView.setPullRefreshEnable(true);
                 refreshData();
+                //TODO 活动信息
+                requestActivityInformation();
             }
         }
     }

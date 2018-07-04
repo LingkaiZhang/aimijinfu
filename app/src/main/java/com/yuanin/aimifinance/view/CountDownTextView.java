@@ -46,7 +46,7 @@ public class CountDownTextView extends TextView {
     /**
      * 不可用状态下字体颜色Id
      */
-    private int unusableColorId = android.R.color.black;
+    private int unusableColorId = android.R.color.darker_gray;
 
 
     public CountDownTextView(Context context) {

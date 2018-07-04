@@ -32,6 +32,7 @@ import org.xutils.x;
 
 import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -173,7 +174,17 @@ public class RedPacketsFragment extends BaseFragment implements XListView.IXList
                                     mAdp = new RedPacketsListAdapter(mList, getActivity());
                                     lvPlan.setAdapter(mAdp);
                                 } else {
-                                    mList.addAll(entity.getData());
+                                    //集合去重
+                                    ArrayList<String> newList = new ArrayList<>();
+                                    for (int i = 0; i < mList.size(); i++) {
+                                        newList.add(mList.get(i).getId());
+                                    }
+                                    for (int i = 0; i < entity.getData().size(); i++) {
+                                        if (!newList.contains(entity.getData().get(i).getId())) {
+                                            mList.add(entity.getData().get(i));
+                                        }
+                                    }
+                                    //mList.addAll(entity.getData());
                                     mAdp.notifyDataSetChanged();
                                 }
                                 if (entity.getData().size() < StaticMembers.PAGE_SIZE) {

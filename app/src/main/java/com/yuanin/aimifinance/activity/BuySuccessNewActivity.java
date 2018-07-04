@@ -14,6 +14,8 @@ import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.base.BaseActivity;
 import com.yuanin.aimifinance.entity.BuySuccessEntity;
 import com.yuanin.aimifinance.entity.EventMessage;
+import com.yuanin.aimifinance.utils.ParamsKeys;
+import com.yuanin.aimifinance.utils.ParamsValues;
 import com.yuanin.aimifinance.utils.StaticMembers;
 
 import org.xutils.view.annotation.Event;
@@ -53,9 +55,12 @@ public class BuySuccessNewActivity extends BaseActivity {
     private void onViewClicked(View v){
         switch (v.getId()) {
             case R.id.bannerView:
-                Intent intent = new Intent(this, HrefActivity.class);
+               /* Intent intent = new Intent(this, HrefActivity.class);
                 intent.putExtra("url", buySuccessEntity.getBanner_url());
-                startActivity(intent);
+                startActivity(intent);*/
+                Intent intent3 = new Intent(this, WebViewActivity.class);
+                intent3.putExtra(ParamsKeys.TYPE, ParamsValues.RULE);
+                startActivity(intent3);
                 break;
             case R.id.btn_check_order:
                 Intent intent1 = new Intent(this, OrderFormActivity.class);

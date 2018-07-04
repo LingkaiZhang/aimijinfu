@@ -509,7 +509,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/small_margin"
                         android:gravity="center_vertical"
-                        >
+                        android:visibility="gone">
 
                         <CheckBox
                             android:paddingTop="5dp"
@@ -542,10 +542,10 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="@dimen/margin_twenty_four"
+                        android:paddingBottom="@dimen/small_margin"
                         android:paddingLeft="@dimen/small_margin"
                         android:paddingRight="@dimen/small_margin"
-                        android:paddingTop="8dp"
+                        android:paddingTop="16dp"
                         android:gravity="center_horizontal">
 
                         <TextView

@@ -18,10 +18,11 @@ public class ParamsValues {
    // public final static String NET_URL = "https://shapi.aimilicai.com/";
 
 //    public final static String NET_URL = "http://csapi.yuanin.com/";
+    public final static String NET_URL = "http://csapi.yuanin.com/";
     //key
     public final static String VERSION_CODE = "6.0.0";
     //测试
-    public final static String NET_URL = "http://csp2p.yuanin.com/";
+   // public final static String NET_URL = "http://javaxwcsp2p.yuanin.com/";
     public final static String TEL = "400-666-2082";
     /**
      * 网络请求模块参数

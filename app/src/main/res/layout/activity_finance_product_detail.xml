@@ -554,7 +554,8 @@
                                         android:layout_height="wrap_content"
                                         android:text="元"
                                         android:textColor="@color/theme_color"
-                                        android:textSize="@dimen/normal_text"/>
+                                        android:textSize="@dimen/normal_text"
+                                        android:visibility="gone"/>
                                 </LinearLayout>
                             </LinearLayout>
 

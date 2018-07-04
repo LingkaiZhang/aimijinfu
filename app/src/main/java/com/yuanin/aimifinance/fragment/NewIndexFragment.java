@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Animatable;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -25,6 +26,7 @@ import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.activity.CallBackWebActivity;
 import com.yuanin.aimifinance.activity.FinanceProductDetailActivity;
 import com.yuanin.aimifinance.activity.GetVerifyCodeActivity;
+import com.yuanin.aimifinance.activity.HomePageActivity;
 import com.yuanin.aimifinance.activity.HrefActivity;
 import com.yuanin.aimifinance.activity.LoginActivity;
 import com.yuanin.aimifinance.activity.LoginRegisterActivity;
@@ -48,6 +50,7 @@ import com.yuanin.aimifinance.utils.NetUtils;
 import com.yuanin.aimifinance.utils.ParamsKeys;
 import com.yuanin.aimifinance.utils.ParamsValues;
 import com.yuanin.aimifinance.utils.StaticMembers;
+import com.yuanin.aimifinance.utils.ViewPagerUtils;
 import com.yuanin.aimifinance.view.ConvenientBanner;
 import com.yuanin.aimifinance.view.MyListView;
 import com.yuanin.aimifinance.view.XScrollView;
@@ -249,6 +252,15 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
                     getActivity().startActivity(new Intent(getActivity(), OpenAccountActivity.class));
                 } else if (btnLoginRegister.getText().toString().equals(getString(R.string.activateAcount))) {
                     //TODO
+                } else if (btnLoginRegister.getText().toString().equals(getString(R.string.Immediately_lend))) {
+                    final HomePageActivity mainActivity = (HomePageActivity) getActivity();
+                    mainActivity.setFragment2Fragment(new HomePageActivity.Fragment2Fragment() {
+                        @Override
+                        public void switchFragment(ViewPager viewPager) {
+                            viewPager.setCurrentItem(1);
+                        }
+                    });
+                    mainActivity.forSkip();
                 }
                 break;
         }
@@ -293,8 +305,8 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
                 }else {
                     Bitmap newGuidleThree = AppUtils.getBitmap(getActivity(), R.mipmap.new_guide_three);
                     ivNewGuideLines.setImageBitmap(newGuidleThree);
-                    btnLoginRegister.setText("出借试一笔");
-                    llNewGuidelines.setVisibility(View.GONE);
+                    btnLoginRegister.setText(getString(R.string.Immediately_lend));
+                    llNewGuidelines.setVisibility(View.VISIBLE);
                     llNewProduct.setVisibility(View.VISIBLE);
                 }
             } else {

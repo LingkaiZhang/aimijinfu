@@ -14,7 +14,21 @@
     <com.yuanin.aimifinance.view.ObservableWebView
         android:id="@+id/wvHref"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_weight="1"
+        android:layout_height="0dp" />
+
+    <Button
+        android:id="@+id/btn_risk_indication"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="阅读并同意(5s)"
+        android:paddingTop="@dimen/margin_eight"
+        android:paddingBottom="@dimen/margin_eight"
+        android:textSize="@dimen/normal_text"
+        android:textColor="@color/white"
+        android:background="@color/theme_color"
+        android:visibility="gone"
+        />
 
 
 </LinearLayout>

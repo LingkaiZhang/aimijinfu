@@ -23,7 +23,8 @@
         android:gravity="center"
         android:text="没有更多券　|　查看无效券  >>"
         android:textColor="@color/text_light_gray"
-        android:textSize="@dimen/small_text"/>
+        android:textSize="@dimen/small_text"
+        android:visibility="gone"/>
 
     <include
         android:id="@+id/viewRemind"

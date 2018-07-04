@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -68,6 +69,8 @@ public class HomePageActivity extends BaseFragmentActivity {
     private int currentIndex = 0;
     private DownloadDialog generalDialog;
     private static final int INSTALL_PERMISS_CODE = 200;
+    //20180628
+    private Fragment2Fragment fragment2Fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -234,8 +237,8 @@ public class HomePageActivity extends BaseFragmentActivity {
         // 设置ViewPager适配器
         ViewPagerFragmentAdapter viewPagerFragmentAdapter = new ViewPagerFragmentAdapter(getSupportFragmentManager(), list, fragmentList);
         mViewPager.setAdapter(viewPagerFragmentAdapter);
-        currentIndex = 0;
-        mViewPager.setCurrentItem(0, false);
+       // currentIndex = 0;
+        mViewPager.setCurrentItem(currentIndex, false);
         ViewPagerUtils.changeTextViewStyle_Main(HomePageActivity.this, currentIndex, textViews);
     }
 
@@ -285,4 +288,19 @@ public class HomePageActivity extends BaseFragmentActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
+    //20180628 由首页fragment跳转到项目Fragment
+    public interface Fragment2Fragment{
+        void switchFragment(ViewPager viewPager);
+    }
+
+    public void setFragment2Fragment(Fragment2Fragment fragment2Fragment) {
+        this.fragment2Fragment = fragment2Fragment;
+    }
+    public void forSkip(){
+        if(fragment2Fragment != null){
+            fragment2Fragment.switchFragment(mViewPager);
+        }
+    }
 }
+

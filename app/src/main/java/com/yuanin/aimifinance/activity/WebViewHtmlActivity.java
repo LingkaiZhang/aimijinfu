@@ -2,6 +2,7 @@ package com.yuanin.aimifinance.activity;
 
 import android.net.http.SslError;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.SslErrorHandler;
@@ -9,9 +10,11 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 
 import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.base.BaseActivity;
+import com.yuanin.aimifinance.utils.AppUtils;
 import com.yuanin.aimifinance.utils.ParamsKeys;
 import com.yuanin.aimifinance.utils.ParamsValues;
 import com.yuanin.aimifinance.view.ObservableWebView;
@@ -29,6 +32,8 @@ public class WebViewHtmlActivity extends BaseActivity {
     private View toptitleView;
     @ViewInject(R.id.wvHref)
     private ObservableWebView wvHref;
+    @ViewInject(R.id.btn_risk_indication)
+    private Button btn_risk_indication;
 
     private String type;
 
@@ -45,9 +50,22 @@ public class WebViewHtmlActivity extends BaseActivity {
         } else if (type.equals(ParamsValues.LOAN_RISK_STATEMENT)) {
             initTopBar(getString(R.string.loan_risk_instruction), toptitleView, true);
             String url = ParamsValues.NET_URL + "html/instruction.html";
+            setView();
             initWebView(url);
         }
 
+    }
+
+    private void setView() {
+        btn_risk_indication.setVisibility(View.VISIBLE);
+        CountTime  mc = new CountTime(10000, 1000);//第一个参数总计时时间，第二个是间隔时间，单位都是毫秒值
+        mc.start();
+        btn_risk_indication.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppUtils.showToast(WebViewHtmlActivity.this,"点击了");
+            }
+        });
     }
 
     private void initWebViewTitle(String url) {
@@ -152,5 +170,23 @@ public class WebViewHtmlActivity extends BaseActivity {
         });
         wvHref.loadUrl(url);
         //http://csapi.yuanin.com/html/showasset.php?productid=
+    }
+
+    public class CountTime extends CountDownTimer {
+
+        public CountTime(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {   ////开始计时调用的函数
+            btn_risk_indication.setText("阅读并同意(" + millisUntilFinished / 1000 + "秒)"); //其中millisUntilFinished已经是倒计时的时间了
+            btn_risk_indication.setEnabled(false);
+        }
+        @Override
+        public void onFinish() {    //完成计时调用的函数
+            btn_risk_indication.setText("点击进行风险测评");
+            btn_risk_indication.setEnabled(true);
+        }
     }
 }

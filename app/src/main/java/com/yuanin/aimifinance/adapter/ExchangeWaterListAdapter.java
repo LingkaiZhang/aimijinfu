@@ -31,7 +31,7 @@ public class ExchangeWaterListAdapter extends GeneralAdapter<FundsWaterEntity> {
         TextView tvTitleDate = holder.getView(R.id.tvTitleDate);
         LinearLayout llMain = holder.getView(R.id.llMain);
         if (entity.getStyle() == 1) {
-            tvTitleDate.setVisibility(View.VISIBLE);
+            tvTitleDate.setVisibility(View.GONE);
             llMain.setVisibility(View.GONE);
             holder.setTextForTextView(R.id.tvTitleDate, entity.getCreated());
         } else {

@@ -52,7 +52,7 @@ public class RedPacketsActivity extends BaseFragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_red_packets);
         x.view().inject(this);
-        initTopBar(getResources().getString(R.string.RedPackets), toptitleView, true);
+        initTopBar("我的红包", toptitleView, true);
         if (textViews == null) {
             textViews = new ArrayList<TextView>();
         }

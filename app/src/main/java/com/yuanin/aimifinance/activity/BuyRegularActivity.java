@@ -137,7 +137,7 @@ public class BuyRegularActivity extends BaseActivity {
         x.view().inject(this);
         btnConfirm.setClickable(false);
         entityID = getIntent().getStringExtra("entityID");
-        initTopBarWithRightText("出借", toptitleView, new View.OnClickListener() {
+        initTopBarWithRightText("确认支付", toptitleView, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(BuyRegularActivity.this, FinanceProductDetailActivity.class);
