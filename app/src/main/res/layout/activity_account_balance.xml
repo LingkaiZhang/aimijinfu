@@ -235,7 +235,7 @@
                 android:paddingTop="30dp">
 
                 <Button
-                    android:id="@+id/btn_recharge"
+                    android:id="@+id/btn_withdraw"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="提现"
@@ -246,7 +246,7 @@
                     android:paddingRight="@dimen/account_balance_button"/>
 
                 <Button
-                    android:id="@+id/btn_withdraw"
+                    android:id="@+id/btn_recharge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="充值"
