@@ -460,7 +460,7 @@
     <string name="interestRatesLogo">米宝加息</string>
     <string name="remindword">市场有风险, 出借需谨慎</string>
     <string name="risk_assessment_tips"><![CDATA[爱米金服为您量身打造了风险承受能力评估体系，请您完成评估，以获得最佳出借体验。立即评估>]]></string>
-    <string name="total_money_equation">账户总资产=代收本金+可用余额</string>
+    <string name="total_money_equation">账户总资产=待收本金+可用余额</string>
     <string name="mine_invest_word">我的资产,资产明细</string>
     <string name="mine_redtip_word">暂无红包可用</string>
     <string name="loginRegister">登录/注册</string>

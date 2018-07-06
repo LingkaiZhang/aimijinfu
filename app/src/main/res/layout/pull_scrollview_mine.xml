@@ -16,22 +16,22 @@
 
         <ImageView
             android:id="@+id/ivMine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_centerVertical="true"
             android:paddingLeft="@dimen/small_margin"
             android:paddingRight="@dimen/margin_eight"
-            android:src="@drawable/selector_mine_me"/>
+            android:src="@mipmap/mine_head_portrait"/>
 
         <TextView
+            android:id="@+id/tvUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="*辉"
             android:textColor="@color/white"
             android:textSize="@dimen/big_text"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/ivMine"
-            android:visibility="gone"/>
+            />
 
         <ProgressBar
             android:id="@+id/pbLoading"
