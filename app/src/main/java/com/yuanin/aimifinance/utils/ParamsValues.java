@@ -17,7 +17,6 @@ public class ParamsValues {
 
    // public final static String NET_URL = "https://shapi.aimilicai.com/";
 
-//    public final static String NET_URL = "http://csapi.yuanin.com/";
   //  public final static String NET_URL = "http://csapi.yuanin.com/";
     //key
     public final static String VERSION_CODE = "6.0.0";
