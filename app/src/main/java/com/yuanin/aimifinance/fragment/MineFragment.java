@@ -114,6 +114,8 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
     private SimpleDraweeView sdvWonderFulActivity2;
     @ViewInject(R.id.ivMessage)
     private ImageView ivMessage;
+    @ViewInject(R.id.tvUserName)
+    private TextView tvUserName;
 
     private List<UserAccountEntity> mList;
     private View mainView;
@@ -526,6 +528,8 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         tvTotalMoney.setText(entity.getData().get(0).getAmount());
         tvEarnMoney.setText(entity.getData().get(0).getInterest());
         tvBalance.setText(entity.getData().get(0).getBalance());
+        tvUserName.setText(entity.getData().get(0).getNameTitle());
+
 
         if (entity.getData().get(0).getDeposit().equals("-1")) {
             tvRegularMoney.setText(getString(R.string.mine_invest_word));

@@ -23,6 +23,20 @@ public class UserAccountEntity implements Serializable {
     //是否可以购买新手标 0不可以 1 可以
     private int buyNewAble;
 
+    //用户姓名
+    private String nameTitle;
+
+    public String getNameTitle() {
+        return nameTitle;
+    }
+
+    public void setNameTitle(String nameTitle) {
+        this.nameTitle = nameTitle;
+    }
+
+
+
+
     public int getBuyNewAble() {
         return buyNewAble;
     }
