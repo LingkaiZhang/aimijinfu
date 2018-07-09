@@ -13,6 +13,16 @@ public class PayEntity implements Serializable {
     private String balance;
     private List<BindingCardEntity> bank;
 
+    private List<StrEntity> cue;
+
+    public List<StrEntity> getCue() {
+        return cue;
+    }
+
+    public void setCue(List<StrEntity> cue) {
+        this.cue = cue;
+    }
+
     public String getBalance() {
         return balance;
     }

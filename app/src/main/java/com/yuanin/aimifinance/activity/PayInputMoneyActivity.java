@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.Selection;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -73,11 +74,14 @@ public class PayInputMoneyActivity extends BaseActivity {
     private ImageView loadingImage;
     @ViewInject(R.id.tvNoNet)
     private TextView tvNoNet;
+    @ViewInject(R.id.llTips)
+    private LinearLayout llTips;
 
     private Context context = PayInputMoneyActivity.this;
 
     private double minMoney, balance = 0;
     private int money;
+    private boolean isFirst = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -199,6 +203,7 @@ public class PayInputMoneyActivity extends BaseActivity {
                                 balance = Double.parseDouble(entity.getData().get(0).getBalance());
                                 minMoney = Double.parseDouble(entity.getData().get(0).getBank().get(0).getMin_recharge());
                                 initView(entity.getData().get(0).getBank().get(0));
+                                initView2(entity);
                             }
                             llMain.setVisibility(View.VISIBLE);
                             tvNoContent.setVisibility(View.GONE);
@@ -220,6 +225,21 @@ public class PayInputMoneyActivity extends BaseActivity {
                     }
                 }
         );
+    }
+
+    private void initView2(ReturnResultEntity<PayEntity> entity) {
+        if (isFirst) {
+            isFirst = false;
+            for (int i = 0; i < entity.getData().get(0).getCue().size(); i++) {
+                TextView textView = new TextView(this);
+                textView.setGravity(Gravity.CENTER_VERTICAL);
+                textView.setTextColor(getResources().getColor(R.color.text_light_gray));
+                textView.setTextSize(12);
+                textView.setPadding(0, AppUtils.dip2px(this, 8), 0, 0);
+                textView.setText(entity.getData().get(0).getCue().get(i).getStr());
+                llTips.addView(textView);
+            }
+        }
     }
 
     private void initView(BindingCardEntity entity) {

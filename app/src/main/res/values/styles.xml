@@ -24,12 +24,12 @@
 
     <style name="passwordEditText">
         <item name="android:inputType">textPassword</item>
-        <item name="android:maxLength">16</item>
+        <item name="android:maxLength">20</item>
     </style>
 
     <style name="registerPasswordEditText">
         <item name="android:inputType">textPassword</item>
-        <item name="android:maxLength">16</item>
+        <item name="android:maxLength">20</item>
         <item name="android:digits">@string/password_limit</item>
     </style>
 

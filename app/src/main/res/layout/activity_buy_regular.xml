@@ -336,7 +336,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:text="红包奖励"
+                            android:text="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;红包"
                             android:textColor="@color/text_black"
                             android:textSize="@dimen/normal_text"/>
 

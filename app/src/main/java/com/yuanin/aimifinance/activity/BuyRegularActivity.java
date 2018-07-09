@@ -241,7 +241,7 @@ public class BuyRegularActivity extends BaseActivity {
         tvUnit.setText(buyProductEntity.getUnit());
         tvLeaveMoney.setText(String.valueOf(buyProductEntity.getAmount()));
         tvBalance.setText(String.valueOf(buyProductEntity.getBalance()));
-        etShare.setHint("请按" + buyProductEntity.getEachamount() + "元的整数倍出借");
+        etShare.setHint("请输入" + buyProductEntity.getEachamount() + "元的整数倍");
         if (buyProductEntity.getIs_new() == 1) {
             rlRedPackets.setVisibility(View.GONE);
         } else {
@@ -444,7 +444,7 @@ public class BuyRegularActivity extends BaseActivity {
                     } else {
                         tips = "您确定要出借" + buyqty + "元吗？";
                     }
-                    generalDialog = new GeneralDialog(context, false, "提示",
+                    generalDialog = new GeneralDialog(context, false, "确认支付",
                             tips, "取消", "确定", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
