@@ -38,6 +38,7 @@ import com.yuanin.aimifinance.activity.LoginActivity;
 import com.yuanin.aimifinance.activity.LoginRegisterActivity;
 import com.yuanin.aimifinance.activity.MessageCenterActivity;
 import com.yuanin.aimifinance.activity.MyInvestActivity;
+import com.yuanin.aimifinance.activity.NoticeListActivity;
 import com.yuanin.aimifinance.activity.PayInputMoneyActivity;
 import com.yuanin.aimifinance.activity.PersonalSettingsActivity;
 import com.yuanin.aimifinance.activity.RedPacketsActivity;
@@ -200,7 +201,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
                     break;
                 //消息中心
                 case R.id.ivMessage:
-                    Intent intent1 = new Intent(getActivity(), MessageCenterActivity.class);
+                    Intent intent1 = new Intent(getActivity(), NoticeListActivity.class);
                     startActivity(intent1);
                     break;
                 //累计收益

@@ -448,7 +448,7 @@ public class FinanceProductDetailActivity extends BaseFragmentActivity implement
         }
 
         if (productDetailEntity.getRecruitmentperiod() != null) {
-            tvRecruitmentPeriod.setText(productDetailEntity.getRecruitmentperiod());
+            tvRecruitmentPeriod.setText(productDetailEntity.getRecruitmentperiod() + "天");
         } else {
             tvRecruitmentPeriod.setText("6天");
         }
