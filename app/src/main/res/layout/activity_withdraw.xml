@@ -311,6 +311,186 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_eight"
+                android:paddingBottom="@dimen/margin_five"
+                android:orientation="vertical"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/small_margin"
+                    android:textSize="@dimen/normal_text"
+                    android:text="转出方式"
+                    android:textColor="@color/text_black"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line"
+                    android:layout_marginLeft="@dimen/small_margin"
+                    android:background="@color/bg"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:layout_marginLeft="@dimen/small_margin"
+                        android:id="@+id/cb_normalwithdraw"
+                        android:padding="@dimen/margin_five"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/selector_checkbox"
+                        android:checked="true"
+                        />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_marginTop="@dimen/margin_five"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="普通到账"
+                                android:textColor="@color/text_black"
+                                android:textSize="@dimen/small_text"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="( 本月免费提现次数剩余"
+                                android:textSize="@dimen/small_text"
+                                android:textColor="@color/text_gray"/>
+                            <TextView
+                                android:id="@+id/tv_freeCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="3"
+                                android:textSize="@dimen/normal_text"
+                                android:textColor="@color/theme_color"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/small_text"
+                                android:textColor="@color/text_gray"
+                                android:text="次,超过3次,2元/次 )"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_marginTop="@dimen/margin_five"
+                            android:layout_marginBottom="@dimen/margin_five"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="预计"
+                                android:textSize="@dimen/small_text"
+                                android:textColor="@color/text_gray"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="下一个工作日"
+                                android:textSize="@dimen/small_text"
+                                android:textColor="@color/theme_color"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/small_text"
+                                android:textColor="@color/text_gray"
+                                android:text="到账,遇双休日和法定节假日顺延,无金额限制."/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line"
+                    android:layout_marginLeft="@dimen/small_margin"
+                    android:background="@color/bg"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_five">
+                    <CheckBox
+                        android:layout_marginLeft="@dimen/small_margin"
+                        android:id="@+id/cb_quickWithdraw"
+                        android:padding="@dimen/margin_five"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/selector_checkbox"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_marginTop="@dimen/margin_five"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/small_text"
+                                android:text="快速到账"
+                                android:textColor="@color/text_black"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="( 5元/次 )"
+                                android:textColor="@color/text_gray"
+                                android:textSize="@dimen/small_text"/>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_five"
+                            android:layout_marginBottom="@dimen/margin_five">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="预计"
+                                android:textSize="@dimen/small_text"
+                                android:textColor="@color/text_gray"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/theme_color"
+                                android:text="两小时内"
+                                android:textSize="@dimen/small_text"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="到账."
+                                android:textSize="@dimen/small_text"
+                                android:textColor="@color/text_gray"/>
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
 
             <Button
                 android:id="@+id/btnWithdraw"

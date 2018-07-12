@@ -611,7 +611,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/margin_eight"/>
+        android:layout_height="@dimen/margin_five" />
 
     <TextView
         android:layout_width="match_parent"

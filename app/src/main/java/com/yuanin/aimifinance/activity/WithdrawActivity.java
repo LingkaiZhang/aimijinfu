@@ -9,6 +9,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -80,9 +82,20 @@ public class WithdrawActivity extends BaseActivity {
     @ViewInject(R.id.imageIcon)
     private SimpleDraweeView imageIcon;
 
+    @ViewInject(R.id.tv_freeCount)
+    private TextView tv_freeCount;
+    @ViewInject(R.id.cb_normalwithdraw)
+    private CheckBox cb_normalwithdraw;
+    @ViewInject(R.id.cb_quickWithdraw)
+    private CheckBox cb_quickWithdraw;
+
+
     private String balance, fee;
     private Context context = WithdrawActivity.this;
     private boolean isFirst = true;
+    //提现类型 1 普通提现 2 快速提现
+    private int cash_type = 0;
+    private String cash_fee = "5.0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +104,37 @@ public class WithdrawActivity extends BaseActivity {
         x.view().inject(this);
         initTopBarWithPhone(getResources().getString(R.string.Withdraw), toptitleView);
         initListener();
+        //提现方式选择
+        initView();
     }
+
+    private void initView() {
+        cb_normalwithdraw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    cb_quickWithdraw.setChecked(false);
+                    tvFee.setText(fee);
+                    initEdittext(etMoney.getText().toString());
+                } else {
+                    // cb_quickWithdraw.setChecked(true);
+                }
+            }
+        });
+        cb_quickWithdraw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    cb_normalwithdraw.setChecked(false);
+                    tvFee.setText(cash_fee);
+                    initEdittext(etMoney.getText().toString());
+                } else {
+                    // cb_normalwithdraw.setChecked(true);
+                }
+            }
+        });
+    }
+
 
     @Override
     protected void onResume() {
@@ -170,7 +213,7 @@ public class WithdrawActivity extends BaseActivity {
         );
     }
 
-    @Event(value = {R.id.btnWithdraw, R.id.btnRefresh, R.id.tvWithdrawAll})
+    @Event(value = {R.id.btnWithdraw, R.id.btnRefresh, R.id.tvWithdrawAll, R.id.btnCheckNetwork})
     private void onViewClicked(View v) {
         switch (v.getId()) {
             case R.id.tvWithdrawAll:
@@ -186,8 +229,21 @@ public class WithdrawActivity extends BaseActivity {
             case R.id.btnRefresh:
                 requestData();
                 break;
+            //检查网络
+            case R.id.btnCheckNetwork:
+                AppUtils.checkNetwork(this);
+                break;
             //提交提现
             case R.id.btnWithdraw:
+                //提现方式选择
+                if (cb_normalwithdraw.isChecked() && cb_quickWithdraw.isChecked() == false) {
+                    cash_type = 1;
+                } else if (cb_quickWithdraw.isChecked() && cb_normalwithdraw.isChecked() == false ) {
+                    cash_type = 2;
+                } else {
+                    AppUtils.showToast(this, "请选择提现方式.");
+                    return;
+                }
                 if (etMoney.getText().toString().trim().length() == 0 || Double.parseDouble(etMoney.getText().toString().trim()) <= 0) {
                     AppUtils.showToast(this, getResources().getString(R.string.withdraw_input_more_zero));
                     return;
@@ -200,15 +256,16 @@ public class WithdrawActivity extends BaseActivity {
                     AppUtils.showToast(this, getResources().getString(R.string.withdraw_get_money_not_zero));
                     return;
                 }
-                if (Double.parseDouble(etMoney.getText().toString().trim()) > 50000) {
+                /*if (Double.parseDouble(etMoney.getText().toString().trim()) > 50000) {
                     AppUtils.showToast(this, getResources().getString(R.string.withdraw_limit));
                     return;
-                }
+                }*/
                 JSONObject obj = AppUtils.getPublicJsonObject(true);
                 try {
                     obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_FUND);
                     obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_HK_CASH);
                     obj.put(ParamsKeys.AMOUNT, etMoney.getText().toString().trim());
+                    obj.put(ParamsKeys.CASH_TYPE,String.valueOf(cash_type));
                     String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
                     obj.put(ParamsKeys.TOKEN, token);
                     obj.remove(ParamsKeys.KEY);
@@ -273,6 +330,7 @@ public class WithdrawActivity extends BaseActivity {
         tvBalance.setText(balance);
         tvFee.setText(fee);
         tvCount.setText(entity.getData().get(0).getQty());
+        tv_freeCount.setText(entity.getData().get(0).getQty());
         etMoney.requestFocus();
         AppUtils.openKeyboard(etMoney);
     }
@@ -334,13 +392,24 @@ public class WithdrawActivity extends BaseActivity {
             }
         }
         if (s.length() > 0) {
-            double getMoney = Double.parseDouble(s.toString()) - Double.parseDouble(fee);
-            if (getMoney <= 0) {
-                tvGetMoney.setText("0.00");
+            if (cb_quickWithdraw.isChecked()) {
+                double getMoney = Double.parseDouble(s.toString()) - Double.parseDouble(cash_fee);
+                if (getMoney <= 0) {
+                    tvGetMoney.setText("0.00");
+                } else {
+                    java.text.NumberFormat nf = java.text.NumberFormat.getInstance();
+                    nf.setGroupingUsed(false);
+                    tvGetMoney.setText(nf.format(getMoney));
+                }
             } else {
-                java.text.NumberFormat nf = java.text.NumberFormat.getInstance();
-                nf.setGroupingUsed(false);
-                tvGetMoney.setText(nf.format(getMoney));
+                double getMoney = Double.parseDouble(s.toString()) - Double.parseDouble(fee);
+                if (getMoney <= 0) {
+                    tvGetMoney.setText("0.00");
+                } else {
+                    java.text.NumberFormat nf = java.text.NumberFormat.getInstance();
+                    nf.setGroupingUsed(false);
+                    tvGetMoney.setText(nf.format(getMoney));
+                }
             }
         } else {
             tvGetMoney.setText("0.00");

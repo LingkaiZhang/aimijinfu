@@ -137,4 +137,9 @@ public class ParamsKeys {
 
     public static final String SMS_VERIFY_CODE = "verifycode";
     public static final String USER_IS_ABLE_BUY_NEW_PRODUCT = "buyNewAble";
+
+    /*
+     * 提现
+     * */
+    public static final String CASH_TYPE ="cash_type";
 }

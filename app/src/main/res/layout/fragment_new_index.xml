@@ -270,7 +270,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@color/white"
-            android:layout_marginTop="@dimen/margin_six">
+            android:layout_marginTop="@dimen/margin_six"
+            >
 
             <TextView
                 android:layout_width="wrap_content"
@@ -423,10 +424,12 @@
 
             <Button
                 android:id="@+id/btnNewInvest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="220dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="@dimen/small_margin"
                 android:layout_marginTop="@dimen/margin_twelve2"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
                 android:background="@drawable/selector_index_new_button"
                 android:text="立即出借"
                 android:textColor="@color/white"

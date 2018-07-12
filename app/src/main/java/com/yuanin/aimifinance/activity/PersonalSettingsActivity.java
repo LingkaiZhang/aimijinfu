@@ -26,6 +26,7 @@ import com.google.gson.reflect.TypeToken;
 import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.base.BaseActivity;
 import com.yuanin.aimifinance.dialog.GeneralDialog;
+import com.yuanin.aimifinance.entity.EventMessage;
 import com.yuanin.aimifinance.entity.HKRegisterEntity;
 import com.yuanin.aimifinance.entity.ReturnResultEntity;
 import com.yuanin.aimifinance.inter.IHttpRequestCallBack;
@@ -42,6 +43,8 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.lang.reflect.Type;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * 个人设置
@@ -92,8 +95,9 @@ public class PersonalSettingsActivity extends BaseActivity {
         spannableString.setSpan(new ClickableSpan() {
             @Override
             public void onClick(View widget) {
-                Intent intent4 = new Intent(context, WebViewActivity.class);
-                intent4.putExtra(ParamsKeys.TYPE, ParamsValues.QUESTION_NAIRE);
+                Intent intent4 = new Intent(context, WebViewHtmlActivity.class);
+                //intent4.putExtra(ParamsKeys.TYPE, ParamsValues.QUESTION_NAIRE);
+                intent4.putExtra(ParamsKeys.TYPE, ParamsValues.LOAN_RISK_STATEMENT);
                 intent4.putExtra(ParamsKeys.USER_ID,StaticMembers.USER_ID);
                 startActivity(intent4);
             }
@@ -163,8 +167,9 @@ public class PersonalSettingsActivity extends BaseActivity {
                 break;
             //风险承受能力评估
             case R.id.rlRiskToleranceAssessment:
-                Intent intent4 = new Intent(context, WebViewActivity.class);
-                intent4.putExtra(ParamsKeys.TYPE, ParamsValues.QUESTION_NAIRE);
+                Intent intent4 = new Intent(context, WebViewHtmlActivity.class);
+                //intent4.putExtra(ParamsKeys.TYPE, ParamsValues.QUESTION_NAIRE);
+                intent4.putExtra(ParamsKeys.TYPE, ParamsValues.LOAN_RISK_STATEMENT);
                 intent4.putExtra(ParamsKeys.USER_ID,StaticMembers.USER_ID);
                 startActivity(intent4);
                 break;
@@ -178,6 +183,10 @@ public class PersonalSettingsActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        //刷新个人中心数据
+        EventMessage eventMessage = new EventMessage();
+        eventMessage.setType(EventMessage.REFRESH_MINE);
+        EventBus.getDefault().post(eventMessage);
         initData();
     }
 

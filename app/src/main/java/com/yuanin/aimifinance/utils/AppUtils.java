@@ -44,6 +44,7 @@ import com.yuanin.aimifinance.activity.LoginActivity;
 import com.yuanin.aimifinance.activity.LoginRegisterActivity;
 import com.yuanin.aimifinance.activity.OpenAccountActivity;
 import com.yuanin.aimifinance.activity.WebViewActivity;
+import com.yuanin.aimifinance.activity.WebViewHtmlActivity;
 import com.yuanin.aimifinance.dialog.GeneralDialog;
 import com.yuanin.aimifinance.dialog.ShareDialog;
 import com.yuanin.aimifinance.entity.EventMessage;
@@ -246,8 +247,9 @@ public class AppUtils {
         btnGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent4 = new Intent(context, WebViewActivity.class);
-                intent4.putExtra(ParamsKeys.TYPE, ParamsValues.QUESTION_NAIRE);
+                Intent intent4 = new Intent(context, WebViewHtmlActivity.class);
+                //intent4.putExtra(ParamsKeys.TYPE, ParamsValues.QUESTION_NAIRE);
+                intent4.putExtra(ParamsKeys.TYPE, ParamsValues.LOAN_RISK_STATEMENT);
                 intent4.putExtra(ParamsKeys.USER_ID,StaticMembers.USER_ID);
                 context.startActivity(intent4);
                 mPop.dismiss();
@@ -379,6 +381,8 @@ public class AppUtils {
         } else {
             toast.setText(content);
         }
+        //Toast显示在屏幕中间
+        toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
 

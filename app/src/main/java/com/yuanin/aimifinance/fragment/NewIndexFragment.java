@@ -285,6 +285,7 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
             rlNoLogin.setVisibility(View.GONE);
             llLogin.setVisibility(View.VISIBLE);
             llNewGuidelines.setVisibility(View.VISIBLE);
+            llNewProduct.setVisibility(View.VISIBLE);
             Bitmap newGuidleOne = AppUtils.getBitmap(getActivity(), R.mipmap.new_guide_one);
             ivNewGuideLines.setImageBitmap(newGuidleOne);
             btnLoginRegister.setText(getString(R.string.loginRegister));
@@ -587,7 +588,7 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
             btnNewInvest.setBackgroundResource(R.drawable.selector_index_new_button);
             btnNewInvest.setEnabled(true);
         } else {
-            btnNewInvest.setBackgroundResource(R.mipmap.index_button_enable);
+            btnNewInvest.setBackgroundResource(R.drawable.selector_index_new_button_unclick);
             btnNewInvest.setEnabled(false);
         }
         btnNewInvest.setText(indexProductEntity.getStatusname());

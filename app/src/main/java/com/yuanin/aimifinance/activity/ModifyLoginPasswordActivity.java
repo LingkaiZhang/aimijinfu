@@ -51,11 +51,11 @@ public class ModifyLoginPasswordActivity extends BaseActivity {
         switch (v.getId()) {
             //确定
             case R.id.btnConfirm:
-                if (etOriginalPwd.getText().toString().trim().length() < 6 || etNewPwd.getText().toString().trim().length() > 16) {
+                if (etOriginalPwd.getText().toString().trim().length() < 6 || etNewPwd.getText().toString().trim().length() > 20) {
                     AppUtils.showToast(this, getResources().getString(R.string.modify_login_input_right_pwd_old));
                     return;
                 }
-                if (etNewPwd.getText().toString().trim().length() < 6 || etNewPwd.getText().toString().trim().length() > 16) {
+                if (etNewPwd.getText().toString().trim().length() < 6 || etNewPwd.getText().toString().trim().length() > 20) {
                     AppUtils.showToast(this, getResources().getString(R.string.modify_login_input_right_pwd_new));
                     return;
                 }

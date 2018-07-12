@@ -239,7 +239,7 @@
     <string name="connect_request_fail">请求失败了呢</string>
     <!--登录-->
     <string name="login_input_right_phone">请输入正确的11位电话号码</string>
-    <string name="login_input_right_pwd">请输入正确的6&#8211;16位的登录密码</string>
+    <string name="login_input_right_pwd">请输入正确的6&#8211;20位的登录密码</string>
 
     <string name="input_feedback">请输入反馈内容</string>
 
@@ -254,8 +254,8 @@
     <string name="certification_input_id_card">请输入正确的15或18位身份证号</string>
 
     <!--修改登录密码-->
-    <string name="modify_login_input_right_pwd_old">请输入正确的6&#8211;16位的原登录密码</string>
-    <string name="modify_login_input_right_pwd_new">请输入正确的6&#8211;16位的新登录密码</string>
+    <string name="modify_login_input_right_pwd_old">请输入正确的6&#8211;20位的原登录密码</string>
+    <string name="modify_login_input_right_pwd_new">请输入正确的6&#8211;20位的新登录密码</string>
     <!--个人设置中心-->
     <string name="personal_finish_certification">请先完成实名认证</string>
     <string name="personal_already_certification">已认证</string>

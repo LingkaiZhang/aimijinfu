@@ -22,6 +22,7 @@ public class ParamsValues {
     public final static String VERSION_CODE = "6.0.0";
     //测试
     public final static String NET_URL = "http://javaxwcsp2p.yuanin.com/";
+    public final static String NET_URL_WEIXIN = "http://javadjxwwechat.yuanin.com/";
     public final static String TEL = "400-666-2082";
     /**
      * 网络请求模块参数

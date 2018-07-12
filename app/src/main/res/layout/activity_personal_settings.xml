@@ -216,8 +216,7 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/margin_eight"
-                    />
+                    android:layout_height="@dimen/margin_five" />
 
                 <RelativeLayout
                     android:id="@+id/rlPasswordManagement"
@@ -261,7 +260,7 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/margin_eight"
+                    android:layout_height="@dimen/margin_five"
                     />
 
                 <RelativeLayout
@@ -306,7 +305,7 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/margin_eight"
+                    android:layout_height="@dimen/margin_five"
                     />
 
                 <RelativeLayout
@@ -336,7 +335,7 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/margin_eight"
+                    android:layout_height="@dimen/margin_five"
                     />
 
                 <RelativeLayout

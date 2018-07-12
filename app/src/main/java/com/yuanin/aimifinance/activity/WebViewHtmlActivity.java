@@ -1,5 +1,6 @@
 package com.yuanin.aimifinance.activity;
 
+import android.content.Intent;
 import android.net.http.SslError;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -17,6 +18,7 @@ import com.yuanin.aimifinance.base.BaseActivity;
 import com.yuanin.aimifinance.utils.AppUtils;
 import com.yuanin.aimifinance.utils.ParamsKeys;
 import com.yuanin.aimifinance.utils.ParamsValues;
+import com.yuanin.aimifinance.utils.StaticMembers;
 import com.yuanin.aimifinance.view.ObservableWebView;
 
 import org.xutils.view.annotation.ViewInject;
@@ -36,6 +38,7 @@ public class WebViewHtmlActivity extends BaseActivity {
     private Button btn_risk_indication;
 
     private String type;
+    private String userid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +46,14 @@ public class WebViewHtmlActivity extends BaseActivity {
         setContentView(R.layout.activity_webview_html);
         x.view().inject(this);
         type = getIntent().getStringExtra(ParamsKeys.TYPE);
+        userid = getIntent().getStringExtra(ParamsKeys.USER_ID);
         if (type.equals(ParamsValues.MY_BORROW)) {
             initTopBar(getString(R.string.I_want_borrow), toptitleView, true);
-            String url = ParamsValues.NET_URL + "html/borrow_alldai.html";
+            String url = ParamsValues.NET_URL_WEIXIN + "borrow_index.html";
             initWebViewTitle(url);
         } else if (type.equals(ParamsValues.LOAN_RISK_STATEMENT)) {
             initTopBar(getString(R.string.loan_risk_instruction), toptitleView, true);
-            String url = ParamsValues.NET_URL + "html/instruction.html";
+            String url = ParamsValues.NET_URL_WEIXIN + "Instruction.html";
             setView();
             initWebView(url);
         }
@@ -63,7 +67,10 @@ public class WebViewHtmlActivity extends BaseActivity {
         btn_risk_indication.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AppUtils.showToast(WebViewHtmlActivity.this,"点击了");
+                Intent intent4 = new Intent(WebViewHtmlActivity.this, WebViewActivity.class);
+                intent4.putExtra(ParamsKeys.TYPE, ParamsValues.QUESTION_NAIRE);
+                intent4.putExtra(ParamsKeys.USER_ID, StaticMembers.USER_ID);
+                startActivity(intent4);
             }
         });
     }

@@ -16,7 +16,7 @@
             android:id="@+id/redMain"
             android:layout_width="300dp"
             android:layout_height="250dp"
-            android:background="@mipmap/pop_open_bank_account">
+            android:background="@mipmap/open_bank_account">
 
 
             <Button

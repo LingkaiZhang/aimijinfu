@@ -26,4 +26,6 @@ public class SetLoginPasswordResultActivity extends BaseActivity {
         initTopBar3("设置登录密码", toptitleView, true);
         context = getApplicationContext();
     }
+
+
 }

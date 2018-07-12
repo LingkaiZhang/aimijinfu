@@ -125,8 +125,8 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
      * 是否已被加载过一次，第二次就不再去请求数据了
      */
     private boolean hasLoadedOnce = false;
-    private boolean hadShowPop = false;
-    private boolean hadShowPop2 = false;
+    private boolean hadShowPop = true;
+    private boolean hadShowPop2 = true;
     private View popViewQuestion;
     private List<ActivityInfoEntity> mActivityList;
 
@@ -147,8 +147,6 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         //注册EventBus
         EventBus.getDefault().register(this);
         initScroll();
-        //TODO 活动信息
-       // requestActivityInformation();
         return view;
     }
 
@@ -335,7 +333,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
             rlLogin.setVisibility(View.VISIBLE);
             rlMine.setVisibility(View.VISIBLE);
             mPullDownScrollView.setPullRefreshEnable(true);
-            if (isVisible) {
+             if (isVisible) {
                 refreshData();
             }
         }
@@ -419,6 +417,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
                 tvRemind.setVisibility(View.GONE);
                 mPullDownScrollView.setPullRefreshEnable(false);
                 clearInfo();
+
                 //TODO 活动信息
                 requestActivityInformation();
             } else {
@@ -439,7 +438,9 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         if (eventMessage != null) {
             if (eventMessage.getType() == EventMessage.REFRESH_MINE) {
                 hasLoadedOnce = false;
-                requestDatas();
+                hadShowPop = false;
+                hadShowPop2 = false;
+                requestDatas2();
             }
         }
     }
@@ -587,7 +588,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
     }
 
     private void requestDatas() {
-        if (StaticMembers.IS_NEED_LOGIN || hasLoadedOnce) {
+         if (StaticMembers.IS_NEED_LOGIN || hasLoadedOnce) {
             return;
         }
         JSONObject obj = AppUtils.getPublicJsonObject(true);
@@ -685,7 +686,111 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
                     setUserState(entity);
                     setPersonalInfo(entity);
                 }
-                AppUtils.showConectFail2(getActivity());
+                AppUtils.showConectFail(getActivity());
+            }
+        });
+
+    }
+    private void requestDatas2() {
+        if (StaticMembers.IS_NEED_LOGIN || hasLoadedOnce) {
+            return;
+        }
+        JSONObject obj = AppUtils.getPublicJsonObject(true);
+        try {
+            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_FUND);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_USER_ACCOUNT_NEW);
+            String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
+            obj.put(ParamsKeys.TOKEN, token);
+            obj.remove(ParamsKeys.KEY);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Type mType = new TypeToken<ReturnResultEntity<UserAccountEntity>>() {
+        }.getType();
+        NetUtils.request(obj, mType, 1000 * 15, new IHttpRequestCallBack() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFinish() {
+                pbLoading.setVisibility(View.GONE);
+                ivMessage.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onSuccess(Object object) {
+                ReturnResultEntity<UserAccountEntity> entity = (ReturnResultEntity<UserAccountEntity>) object;
+                if (entity.isSuccess(getActivity())) {
+                    if (entity.isNotNull()) {
+                        hasLoadedOnce = true;
+                        StaticMembers.aCache.put(ParamsKeys.MINE_INFO, entity);
+                        mList = entity.getData();
+                        setUserState(entity);
+                        setPersonalInfo(entity);
+                    } else {
+                        entity = (ReturnResultEntity<UserAccountEntity>) AppUtils.fail2SetData(ParamsKeys.MINE_INFO);
+                        if (entity != null) {
+                            mList = entity.getData();
+                            setUserState(entity);
+                            setPersonalInfo(entity);
+                        }
+                        AppUtils.showRequestFail(getActivity());
+                    }
+
+                  /*  if (StaticMembers.QUESTION_NAIRE_STATUS == 0) {
+                        PopupWindow mPop = AppUtils.createQNPop(popViewQuestion, getActivity());
+                        mPop.showAtLocation(llMain, Gravity.CENTER, 0, 0);
+                    }*/
+
+                   /* if(hadShowPop){
+                        hadShowPop = !hadShowPop;
+                    } else {
+                        if(StaticMembers.HK_STATUS == 1){
+                            if (StaticMembers.QUESTION_NAIRE_STATUS == 0) {
+                                if (hadShowPop2) {
+                                    hadShowPop2 = !hadShowPop2;
+                                } else {
+                                    PopupWindow mPop = AppUtils.createQNPop(popViewQuestion, getActivity());
+                                    mPop.showAtLocation(llMain, Gravity.CENTER, 0, 0);
+                                    hadShowPop2 = !hadShowPop2;
+                                }
+                            }
+                        } else if (StaticMembers.QUESTION_NAIRE_STATUS == 0){
+                            if (hadShowPop2){
+                                hadShowPop2 = !hadShowPop2;
+                            }else{
+                                PopupWindow mPop = AppUtils.createQNPop(popViewQuestion, getActivity());
+                                mPop.showAtLocation(llMain, Gravity.CENTER, 0, 0);
+                                hadShowPop2 = !hadShowPop2;
+                            }
+                        } else {
+                            PopupWindow mPop = AppUtils.createHKPop(popView, getActivity());
+                            mPop.showAtLocation(llMain, Gravity.CENTER, 0, 0);
+                            hadShowPop = !hadShowPop;
+                        }
+                    }*/
+                } else {
+                    AppUtils.showToast(getActivity(), entity.getRemark());
+                    entity = (ReturnResultEntity<UserAccountEntity>) AppUtils.fail2SetData(ParamsKeys.MINE_INFO);
+                    if (entity != null) {
+                        mList = entity.getData();
+                        setUserState(entity);
+                        setPersonalInfo(entity);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure() {
+                ReturnResultEntity<UserAccountEntity> entity = (ReturnResultEntity<UserAccountEntity>) AppUtils.fail2SetData(ParamsKeys.MINE_INFO);
+                if (entity != null) {
+                    mList = entity.getData();
+                    setUserState(entity);
+                    setPersonalInfo(entity);
+                }
+                AppUtils.showConectFail(getActivity());
             }
         });
 

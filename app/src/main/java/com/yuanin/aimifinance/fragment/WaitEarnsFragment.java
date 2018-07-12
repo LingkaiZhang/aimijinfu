@@ -110,11 +110,11 @@ public class WaitEarnsFragment extends BaseFragment implements XListView.IXListV
         this.tvAlready = tvAlready;
     }
 
-    @Override
+   /* @Override
     public void onResume() {
         super.onResume();
         requestDatas();
-    }
+    }*/
 
     private void requestDatas() {
         if (!isPrepared || !isVisible || hasLoadedOnce) {

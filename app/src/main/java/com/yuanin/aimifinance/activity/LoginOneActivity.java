@@ -144,7 +144,7 @@ public class LoginOneActivity extends BaseActivity {
     private void onViewClicked(View v){
         switch (v.getId()) {
             case R.id.btnConfirm:
-                if (etLoginPassword.getText().toString().trim().length() < 6 || etLoginPassword.getText().toString().trim().length() > 16) {
+                if (etLoginPassword.getText().toString().trim().length() < 6 || etLoginPassword.getText().toString().trim().length() > 20) {
                     AppUtils.showToast(this, getResources().getString(R.string.login_input_right_pwd));
                     return;
                 }

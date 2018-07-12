@@ -94,12 +94,17 @@ public class AboutOurActivity extends BaseActivity {
     }
 
 
-    @Event(value = {R.id.btnRefresh, R.id.rlSafe, R.id.rlHelp, R.id.rlServe, R.id.rlYijian, R.id.rlWebsite, R.id.rlWeChat, R.id.rlEmail, R.id.rlVersion})
+    @Event(value = {R.id.btnRefresh, R.id.rlSafe, R.id.rlHelp, R.id.rlServe, R.id.rlYijian, R.id.rlWebsite,
+            R.id.rlWeChat, R.id.rlEmail, R.id.rlVersion, R.id.btnCheckNetwork})
     private void onViewClicked(View v) {
         switch (v.getId()) {
             //刷新
             case R.id.btnRefresh:
                 requestData();
+                break;
+            //检查网络
+            case R.id.btnCheckNetwork:
+                AppUtils.checkNetwork(this);
                 break;
             //安全保障
             case R.id.rlSafe:

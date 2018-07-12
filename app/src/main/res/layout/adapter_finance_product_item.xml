@@ -108,7 +108,7 @@
         android:orientation="horizontal"
         android:paddingBottom="@dimen/small_margin"
         android:paddingLeft="@dimen/small_margin"
-        android:paddingRight="@dimen/small_margin">
+        >
 
 
         <LinearLayout

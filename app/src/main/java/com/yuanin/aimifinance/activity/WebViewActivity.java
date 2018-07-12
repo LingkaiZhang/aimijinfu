@@ -84,7 +84,7 @@ public class WebViewActivity extends BaseActivity {
         if (type != null) {
             if (type.equals(ParamsValues.HELP)) {
                 initTopBarWithRightText(getResources().getString(R.string.more_help_center), toptitleView, null, "");
-                url = ParamsValues.NET_URL + "html/help.php";
+                url = ParamsValues.NET_URL_WEIXIN + "help_center.html";
                 setUrl(url, new FrameLayout.LayoutParams(-1, -1));
             } else if (type.equals(ParamsValues.BUY_PROTOCOL)) {
                 initTopBarWithRightText(getResources().getString(R.string.more_buy_protocol), toptitleView, null, "");
@@ -92,7 +92,7 @@ public class WebViewActivity extends BaseActivity {
                 setUrl(url, new FrameLayout.LayoutParams(-1, -1));
             } else if (type.equals(ParamsValues.DATA_REPORT)) {
                 initTopBarWithRightText(getResources().getString(R.string.index_data_report), toptitleView, null, "");
-                url = ParamsValues.NET_URL + "html/datareport.php";
+                url = ParamsValues.NET_URL_WEIXIN+ "platform_data.html";
                 setUrl(url, new FrameLayout.LayoutParams(-1, -1));
             } else if (type.equals(ParamsValues.AUTO_INVEST_PROTOCOL)) {
                 initTopBarWithRightText("自动投标介绍", toptitleView, null, "");
@@ -100,11 +100,11 @@ public class WebViewActivity extends BaseActivity {
                 setUrl(url, new FrameLayout.LayoutParams(-1, -1));
             } else if (type.equals(ParamsValues.REGISTER_PROTOCOL)) {
                 initTopBarWithRightText(getResources().getString(R.string.more_register_protocol), toptitleView, null, "");
-                url = ParamsValues.NET_URL + "html/userprotocol.php";
-                setUrl(url, new FrameLayout.LayoutParams(-1, -1));
+                url = ParamsValues.NET_URL_WEIXIN + "aimiAgreement.html";
+                  setUrl(url, new FrameLayout.LayoutParams(-1, -1));
             } else if (type.equals(ParamsValues.SAFE)) {
                 initTopBarWithRightText(getResources().getString(R.string.more_safe), toptitleView, null, "");
-                url = ParamsValues.NET_URL + "html/security.php";
+                url = ParamsValues.NET_URL_WEIXIN + "information_disclosure.html";
                 setUrl(url, new FrameLayout.LayoutParams(-1, -1));
             } else if (type.equals(ParamsValues.RULE)) {
                 initTopBarWithRightText(getResources().getString(R.string.invite_friend), toptitleView, new View.OnClickListener() {
@@ -123,7 +123,7 @@ public class WebViewActivity extends BaseActivity {
                     }
                 }, "邀请列表");
                 requestData();
-                url = ParamsValues.NET_URL + "html/inviterule.php";
+                url = ParamsValues.NET_URL_WEIXIN + "invest_frend.html";
                 FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(-1, -1);
                 lp.setMargins(0, 0, 0, AppUtils.dip2px(this, 48));
                 setUrl(url, lp);
@@ -134,7 +134,7 @@ public class WebViewActivity extends BaseActivity {
             } else if (type.equals(ParamsValues.NOTICE_DETAIL)) {
                 initTopBarWithRightText(getResources().getString(R.string.notice_detail), toptitleView, null, "");
                 String entityID = getIntent().getStringExtra("entityID");
-                url = ParamsValues.NET_URL + "html/noticedetail.php?noticeid=" + entityID;
+                url = ParamsValues.NET_URL_WEIXIN + "notice.html?page=" + entityID;
                 setUrl(url, new FrameLayout.LayoutParams(-1, -1));
             } else if (type.equals(ParamsValues.SHARE_RED_PACKET)) {
                 initTopBarWithRightText(getResources().getString(R.string.share_red_packet), toptitleView, null, "");
@@ -146,15 +146,15 @@ public class WebViewActivity extends BaseActivity {
             } else if (type.equals(ParamsValues.QUESTION_NAIRE)) {
                 initTopBarWithRightText(getResources().getString(R.string.mine_questionnaire), toptitleView, null, "");
                 String user_id = getIntent().getStringExtra(ParamsKeys.USER_ID);
-                url = ParamsValues.NET_URL + "survey/showsurvey.php?userid=" + user_id;
+                url = ParamsValues.NET_URL_WEIXIN + "survey.html?userid=" + user_id;
                 setUrl(url, new FrameLayout.LayoutParams(-1, -1));
             } else if (type.equals(ParamsValues.MODEL_LOAN_CONTRACT)) {
                 initTopBarWithRightText(getResources().getString(R.string.model_loan_contract), toptitleView, null, "");
-                url = ParamsValues.NET_URL + "html/generic/web/viewer.html?file=pdf/MI20180313005N.pdf";
+                url = ParamsValues.NET_URL_WEIXIN + "generic/web/viewer.html?file=pdf/MI20180313005N.pdf";
                 setUrl(url, new FrameLayout.LayoutParams(-1, -1));
             } else if (type.equals(ParamsValues.BANK_DEPOSITORY)) {
                 initTopBarWithRightText("银行存管", toptitleView, null, "");
-                url = ParamsValues.NET_URL + "html/banner_lanmao_online.html";
+                url = ParamsValues.NET_URL_WEIXIN + "bankDepository.html";
                 setUrl(url,new FrameLayout.LayoutParams(-1, -1));
             }
         }

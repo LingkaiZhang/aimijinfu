@@ -56,11 +56,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="爱米定期"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/small_text"
+                        android:drawableLeft="@drawable/red_print"
                         android:drawablePadding="5dp"
-                        android:drawableLeft="@drawable/red_print"/>
+                        android:text="待收本金"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/small_text" />
 
                     <TextView
                         android:layout_marginTop="5dp"

@@ -218,7 +218,7 @@ public class TotalMoneyActivity extends BaseActivity {
         tvWaitBonus.setText(String.valueOf(entity.getWait_reward_amount()));
 
         tvBalance.setText(String.valueOf(entity.getBalance()));
-        tvIceBalance.setText(String.valueOf(entity.getAppoint()));
+        tvIceBalance.setText(String.valueOf(entity.getAppoint() - entity.getWithdraw_amount()));
         tvCrash.setText(String.valueOf(entity.getWithdraw_amount()));
 
         tvFinishMoney.setText(String.valueOf(entity.getAlreadyCapital()));

@@ -88,7 +88,7 @@ public class AssetsFragment extends BaseFragment {
                     super.onReceivedTitle(view, title);
                 }
             });
-            wvHref.loadUrl(ParamsValues.NET_URL + "html/security_search.php?productid=" + productDetailEntity.getId());
+            wvHref.loadUrl(ParamsValues.NET_URL_WEIXIN + "safetyAuditing.html?myid=" + productDetailEntity.getId());
             //http://csapi.yuanin.com/html/security_search.php?productid=12128
         }
 
