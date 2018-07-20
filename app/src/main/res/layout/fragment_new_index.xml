@@ -16,14 +16,14 @@
         <com.yuanin.aimifinance.view.ConvenientBanner
             android:id="@+id/cyclicImageView"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="170dp"
             android:background="@mipmap/image_loading"
             app:canLoop="true" />
 
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/margin_thirty_four"
+            android:layout_height="@dimen/margin_thirty_five"
             android:background="@color/white">
 
             <ImageView
@@ -57,11 +57,15 @@
                 android:flipInterval="3000" />
         </RelativeLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_one_dp"
+            />
+
         <LinearLayout
             android:id="@+id/llLogin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/line_one_dp"
+            android:layout_height="70dp"
             android:orientation="vertical"
             >
 
@@ -92,10 +96,11 @@
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_seventy"
-                android:layout_marginTop="@dimen/line_one_dp"
                 android:background="@color/white"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -113,11 +118,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawablePadding="@dimen/margin_six"
+                        android:drawablePadding="@dimen/margin_eight"
                         android:drawableTop="@mipmap/bank_depository"
                         android:text="银行存管"
                         android:textColor="@color/text_black"
-                        android:textSize="@dimen/normal_text" />
+                        android:textSize="@dimen/thirteen_text" />
 
                 </LinearLayout>
 
@@ -133,11 +138,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawablePadding="@dimen/margin_six"
+                        android:drawablePadding="@dimen/margin_eight"
                         android:drawableTop="@mipmap/index_safe_new"
                         android:text="信息披露"
                         android:textColor="@color/text_black"
-                        android:textSize="@dimen/normal_text" />
+                        android:textSize="@dimen/thirteen_text" />
 
                 </LinearLayout>
 
@@ -179,11 +184,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawablePadding="@dimen/margin_six"
+                        android:drawablePadding="@dimen/margin_eight"
                         android:drawableTop="@mipmap/index_platform_data_new"
                         android:text="平台数据"
                         android:textColor="@color/text_black"
-                        android:textSize="@dimen/normal_text" />
+                        android:textSize="@dimen/thirteen_text" />
 
                 </LinearLayout>
 
@@ -199,11 +204,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawablePadding="@dimen/margin_six"
+                        android:drawablePadding="@dimen/margin_eight"
                         android:drawableTop="@mipmap/index_help_new"
                         android:text="帮助中心"
                         android:textColor="@color/text_black"
-                        android:textSize="@dimen/normal_text" />
+                        android:textSize="@dimen/thirteen_text" />
 
                 </LinearLayout>
 
@@ -264,62 +269,65 @@
 
         </RelativeLayout>
 
+
+
         <LinearLayout
             android:id="@+id/ll_new_guidelines"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_height="175dp"
             android:background="@color/white"
-            android:layout_marginTop="@dimen/margin_six"
+            android:layout_marginTop="@dimen/margin_five"
+            android:orientation="vertical"
             >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="新手指引"
-                android:textSize="18sp"
-                android:layout_marginTop="@dimen/small_margin"
                 android:layout_gravity="center_horizontal"
-                android:textColor="@color/text_black"/>
+                android:layout_marginTop="17.5dp"
+                android:text="新手指引"
+                android:textColor="@color/text_black"
+                android:textSize="15sp" />
 
             <ImageView
                 android:id="@+id/iv_new_guidelines"
                 android:layout_width="300dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@mipmap/new_guide_one"/>
+                android:src="@mipmap/new_guide_one" />
 
             <Button
                 android:id="@+id/btn_login_register"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/loginRegister"
-                android:layout_marginTop="@dimen/margin_five"
+                android:layout_width="126dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_ten"
                 android:background="@drawable/selector_index_loginregister_button"
+                android:text="@string/loginRegister"
                 android:textColor="@color/white"
-                android:textSize="@dimen/normal_text"
-                android:layout_marginBottom="@dimen/small_margin"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:paddingLeft="30dp"
-                android:paddingRight="30dp"
-                android:layout_gravity="center_horizontal"/>
+                android:textSize="16sp" />
 
         </LinearLayout>
+
 
         <LinearLayout
             android:id="@+id/llNewProduct"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_six"
+            android:layout_height="205dp"
             android:background="@color/white"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_five"
+                android:background="@color/bg"
+               />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginTop="17dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -329,21 +337,21 @@
                     android:drawablePadding="@dimen/margin_four"
                     android:text="新手推荐"
                     android:textColor="@color/theme_color"
-                    android:textSize="@dimen/small_text" />
+                    android:textSize="@dimen/thirteen_text" />
 
                 <View
                     android:layout_width="@dimen/line_one_dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/margin_eight"
-                    android:background="@color/gray_cancel_click" />
+                    android:background="@color/top_line" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_eight"
                     android:text="新手专享"
-                    android:textColor="@color/text_light_gray"
-                    android:textSize="@dimen/small_text" />
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/thirteen_text" />
             </LinearLayout>
 
 
@@ -428,21 +436,22 @@
                 android:layout_height="40dp"
                 android:layout_marginBottom="@dimen/small_margin"
                 android:layout_marginTop="@dimen/margin_twelve2"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
                 android:background="@drawable/selector_index_new_button"
                 android:text="立即出借"
                 android:textColor="@color/white"
-                android:textSize="@dimen/normal_text" />
+                android:textSize="@dimen/big_text" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/line_one_dp"
-            android:layout_marginTop="@dimen/margin_six"
+            android:layout_height="50dp"
             android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_five"
+                android:background="@color/top_line"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -456,7 +465,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="热门推荐"
-                    android:textColor="@color/text_black"
+                    android:textColor="@color/text_light_gray"
                     android:textSize="@dimen/big_text" />
 
                 <TextView
@@ -471,6 +480,11 @@
                     android:textSize="@dimen/small_text"
                     android:visibility="gone"/>
             </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_one_dp"
+                android:background="@color/bg"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -509,7 +523,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/margin_twenty_four"
+        android:paddingBottom="@dimen/small_margin"
         android:paddingLeft="@dimen/small_margin"
         android:paddingRight="@dimen/small_margin"
         android:gravity="center_horizontal">
@@ -518,8 +532,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/remindword"
-            android:textSize="14sp"
-            android:textColor="@color/remindyellow"/>
+            android:textSize="@dimen/small_text"
+            android:textColor="@color/text_gray"/>
 
     </LinearLayout>
 </LinearLayout>

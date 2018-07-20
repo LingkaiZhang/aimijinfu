@@ -53,7 +53,7 @@ public class WebViewHtmlActivity extends BaseActivity {
             initWebViewTitle(url);
         } else if (type.equals(ParamsValues.LOAN_RISK_STATEMENT)) {
             initTopBar(getString(R.string.loan_risk_instruction), toptitleView, true);
-            String url = ParamsValues.NET_URL_WEIXIN + "Instruction.html";
+            String url = ParamsValues.NET_URL_WEIXIN + "instruction.html";
             setView();
             initWebView(url);
         }

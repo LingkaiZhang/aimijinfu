@@ -57,7 +57,7 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/margin_six"
+                    android:layout_height="@dimen/margin_eight"
                     android:background="@color/bg"/>
 
                 <RelativeLayout
@@ -71,7 +71,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/order_invest_money"
-                        android:textColor="@color/text_black"
+                        android:textColor="@color/text_light_gray"
                         android:textSize="@dimen/normal_text"/>
 
                     <TextView
@@ -102,7 +102,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/order_rate"
-                        android:textColor="@color/text_black"
+                        android:textColor="@color/text_light_gray"
                         android:textSize="@dimen/normal_text"/>
 
                     <LinearLayout
@@ -150,7 +150,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/order_earn_money"
-                        android:textColor="@color/text_black"
+                        android:textColor="@color/text_light_gray"
                         android:textSize="@dimen/normal_text"/>
 
                     <TextView
@@ -181,7 +181,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/order_time"
-                        android:textColor="@color/text_black"
+                        android:textColor="@color/text_light_gray"
                         android:textSize="@dimen/normal_text"/>
 
                     <TextView
@@ -191,7 +191,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:textColor="@color/text_black"
-                        android:textSize="@dimen/small_text"/>
+                        android:textSize="@dimen/normal_text"/>
 
                 </RelativeLayout>
 
@@ -212,7 +212,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/order_type"
-                        android:textColor="@color/text_black"
+                        android:textColor="@color/text_light_gray"
                         android:textSize="@dimen/normal_text"/>
 
                     <TextView
@@ -229,7 +229,7 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/margin_six"
+                    android:layout_height="@dimen/margin_eight"
                     android:background="@color/bg"/>
 
 
@@ -249,7 +249,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/order_invest_time"
-                            android:textColor="@color/text_black"
+                            android:textColor="@color/text_light_gray"
                             android:textSize="@dimen/normal_text"/>
 
                         <TextView
@@ -258,7 +258,8 @@
                             android:layout_marginTop="2dp"
                             android:text="@string/order_invest_time_bottom"
                             android:textColor="@color/text_light_gray"
-                            android:textSize="@dimen/small_text"/>
+                            android:textSize="@dimen/small_text"
+                            android:visibility="gone"/>
                     </LinearLayout>
 
 
@@ -295,7 +296,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/order_earn_time"
-                            android:textColor="@color/text_black"
+                            android:textColor="@color/text_light_gray"
                             android:textSize="@dimen/normal_text"/>
 
                         <TextView
@@ -304,7 +305,8 @@
                             android:layout_marginTop="2dp"
                             android:text="@string/order_earn_time_bottom"
                             android:textColor="@color/text_light_gray"
-                            android:textSize="@dimen/small_text"/>
+                            android:textSize="@dimen/small_text"
+                            android:visibility="gone"/>
                     </LinearLayout>
 
 
@@ -341,7 +343,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/order_end_time"
-                            android:textColor="@color/text_black"
+                            android:textColor="@color/text_light_gray"
                             android:textSize="@dimen/normal_text"/>
 
                         <TextView
@@ -350,7 +352,8 @@
                             android:layout_marginTop="2dp"
                             android:text="@string/order_end_time_bottom"
                             android:textColor="@color/text_light_gray"
-                            android:textSize="@dimen/small_text"/>
+                            android:textSize="@dimen/small_text"
+                            android:visibility="gone"/>
                     </LinearLayout>
 
 
@@ -368,7 +371,7 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/margin_six"
+                    android:layout_height="@dimen/margin_eight"
                     android:background="@color/bg"/>
 
                 <RelativeLayout
@@ -382,7 +385,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/order_no_finish_money"
-                        android:textColor="@color/text_black"
+                        android:textColor="@color/text_light_gray"
                         android:textSize="@dimen/normal_text"/>
 
                     <TextView
@@ -412,7 +415,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/order_finish_money"
-                        android:textColor="@color/text_black"
+                        android:textColor="@color/text_light_gray"
                         android:textSize="@dimen/normal_text"/>
 
                     <TextView
@@ -443,7 +446,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/order_no_finish_earn"
-                        android:textColor="@color/text_black"
+                        android:textColor="@color/text_light_gray"
                         android:textSize="@dimen/normal_text"/>
 
                     <TextView
@@ -473,7 +476,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/order_finish_earn"
-                        android:textColor="@color/text_black"
+                        android:textColor="@color/text_light_gray"
                         android:textSize="@dimen/normal_text"/>
 
                     <TextView
@@ -504,7 +507,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="待收奖励"
-                        android:textColor="@color/text_black"
+                        android:textColor="@color/text_light_gray"
                         android:textSize="@dimen/normal_text"/>
 
                     <TextView
@@ -536,7 +539,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="已收奖励"
-                        android:textColor="@color/text_black"
+                        android:textColor="@color/text_light_gray"
                         android:textSize="@dimen/normal_text"/>
 
                     <TextView
@@ -553,7 +556,7 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/margin_six"
+                    android:layout_height="@dimen/margin_eight"
                     android:background="@color/bg"/>
 
                 <RelativeLayout
@@ -568,16 +571,12 @@
                         android:gravity="center_horizontal">
                         <Button
                             android:id="@+id/viewer_contract"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="250dp"
+                            android:layout_height="40dp"
                             android:text="查看出借合同"
                             android:textColor="@color/theme_color"
                             android:textSize="@dimen/big_text"
                             android:layout_marginTop="30dp"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:paddingRight="50dp"
-                            android:paddingLeft="50dp"
                             android:layout_marginBottom="30dp"
                             android:background="@drawable/selector_contract_button_click"
                             style="@style/Widget.AppCompat.Button"/>

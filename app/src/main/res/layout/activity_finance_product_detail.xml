@@ -64,7 +64,8 @@
                                     android:layout_marginTop="@dimen/margin_eight"
                                     android:gravity="center_vertical"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/normal_text"/>
+                                    android:textSize="@dimen/normal_text"
+                                    />
 
 
                                 <LinearLayout
@@ -85,7 +86,7 @@
                                         android:layout_height="wrap_content"
                                         android:text="%"
                                         android:textColor="@color/white"
-                                        android:textSize="22sp"/>
+                                        android:textSize="15sp"/>
 
                                     <TextView
                                         android:id="@+id/interestRates"
@@ -103,7 +104,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="@string/buy_regular_rate"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/small_text"/>
+                                    android:textSize="@dimen/thirteen_text"/>
 
 
                                 <LinearLayout
@@ -126,7 +127,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textColor="@color/white"
-                                            android:textSize="@dimen/normal_text"/>
+                                            android:textSize="@dimen/big_text"/>
 
 
                                         <TextView
@@ -159,7 +160,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textColor="@color/white"
-                                            android:textSize="@dimen/normal_text"/>
+                                            android:textSize="@dimen/big_text"/>
 
 
                                         <TextView
@@ -191,7 +192,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:textColor="@color/white"
-                                            android:textSize="@dimen/normal_text"/>
+                                            android:textSize="@dimen/big_text"/>
 
 
                                         <TextView
@@ -246,7 +247,7 @@
                         <LinearLayout
                             android:id="@+id/llLeaveTime"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/normal_height"
+                            android:layout_height="@dimen/margin_forty_four"
                             android:background="@color/white"
                             android:gravity="center_vertical"
                             android:orientation="horizontal"
@@ -418,7 +419,7 @@
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="@dimen/margin_forty_four"
                                 android:orientation="horizontal"
                                 >
 
@@ -445,6 +446,8 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="借款合同(范本)"
+                                        android:textSize="@dimen/thirteen_text"
+                                        android:textColor="@color/text_light_gray"
                                         android:gravity="right"
                                         android:layout_marginRight="@dimen/small_margin"
                                         />
@@ -463,13 +466,14 @@
                                 android:orientation="horizontal"
                                 android:paddingLeft="@dimen/small_margin"
                                 android:paddingRight="@dimen/small_margin"
-                                android:paddingTop="@dimen/margin_twenty_four">
+                                android:paddingTop="14dp">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/text_gray"
-                                    android:text="产品名称"/>
+                                    android:text="产品名称"
+                                    android:textSize="@dimen/thirteen_text"/>
 
 
                                 <LinearLayout
@@ -484,7 +488,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:textColor="@color/text_gray"
-                                        android:textSize="@dimen/normal_text"/>
+                                        android:textSize="@dimen/thirteen_text"/>
 
                                 </LinearLayout>
                             </LinearLayout>
@@ -495,13 +499,14 @@
                                 android:orientation="horizontal"
                                 android:paddingLeft="@dimen/small_margin"
                                 android:paddingRight="@dimen/small_margin"
-                                android:paddingTop="@dimen/small_margin">
+                                android:paddingTop="18dp">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/text_gray"
-                                    android:text="产品类型"/>
+                                    android:text="产品类型"
+                                    android:textSize="@dimen/thirteen_text"/>
 
 
                                 <LinearLayout
@@ -516,7 +521,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:textColor="@color/text_gray"
-                                        android:textSize="@dimen/normal_text"/>
+                                        android:textSize="@dimen/thirteen_text"/>
                                 </LinearLayout>
                             </LinearLayout>
 
@@ -526,13 +531,14 @@
                                 android:orientation="horizontal"
                                 android:paddingLeft="@dimen/small_margin"
                                 android:paddingRight="@dimen/small_margin"
-                                android:paddingTop="@dimen/small_margin">
+                                android:paddingTop="18dp">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/text_gray"
-                                    android:text="项目金额(元)"/>
+                                    android:text="项目金额(元)"
+                                    android:textSize="@dimen/thirteen_text"/>
 
 
                                 <LinearLayout
@@ -547,14 +553,14 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:textColor="@color/theme_color"
-                                        android:textSize="@dimen/normal_text"/>
+                                        android:textSize="@dimen/thirteen_text"/>
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="元"
                                         android:textColor="@color/theme_color"
-                                        android:textSize="@dimen/normal_text"
+                                        android:textSize="@dimen/thirteen_text"
                                         android:visibility="gone"/>
                                 </LinearLayout>
                             </LinearLayout>
@@ -565,13 +571,14 @@
                                 android:orientation="horizontal"
                                 android:paddingLeft="@dimen/small_margin"
                                 android:paddingRight="@dimen/small_margin"
-                                android:paddingTop="@dimen/small_margin">
+                                android:paddingTop="18dp">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/text_gray"
-                                    android:text="还款方式"/>
+                                    android:text="还款方式"
+                                    android:textSize="@dimen/thirteen_text"/>
 
                                 <TextView
                                     android:id="@+id/tvRepay"
@@ -580,7 +587,7 @@
                                     android:layout_marginLeft="@dimen/small_margin"
                                     android:gravity="right"
                                     android:textColor="@color/text_gray"
-                                    android:textSize="@dimen/normal_text"/>
+                                    android:textSize="@dimen/thirteen_text"/>
 
                             </LinearLayout>
 
@@ -657,14 +664,15 @@
                                 android:paddingBottom="8dp"
                                 android:paddingLeft="@dimen/small_margin"
                                 android:paddingRight="@dimen/small_margin"
-                                android:paddingTop="@dimen/small_margin"
+                                android:paddingTop="18dp"
                                 >
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/text_gray"
-                                    android:text="安全等级"/>
+                                    android:text="安全等级"
+                                    android:textSize="@dimen/thirteen_text"/>
 
                                 <ImageView
                                     android:id="@+id/iv_safety_level"
@@ -739,7 +747,7 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:paddingBottom="@dimen/margin_twenty_four"
+                                android:paddingBottom="@dimen/small_text"
                                 android:paddingLeft="@dimen/small_margin"
                                 android:paddingRight="@dimen/small_margin"
                                 android:paddingTop="8dp"
@@ -749,18 +757,21 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/remindword"
-                                    android:textSize="14sp"
-                                    android:textColor="@color/remindyellow"/>
+                                    android:textSize="@dimen/small_text"
+                                    android:textColor="@color/text_gray"/>
 
                             </LinearLayout>
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="48dp"
+                            android:layout_height="44dp"
                             android:layout_alignParentBottom="true"
                             android:gravity="center"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:layout_marginTop="@dimen/margin_five"
+                            android:layout_marginBottom="@dimen/margin_five"
+                            android:background="@color/white">
 
                             <ImageView
                                 android:id="@+id/ivBottom"

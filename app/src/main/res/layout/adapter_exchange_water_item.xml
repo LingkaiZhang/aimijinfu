@@ -14,18 +14,17 @@
         android:paddingBottom="@dimen/margin_eight"
         android:paddingTop="@dimen/margin_eight"
         android:textColor="@color/text_black"
-        android:textSize="@dimen/normal_text"/>
+        android:textSize="@dimen/normal_text"
+        />
 
     <LinearLayout
         android:id="@+id/llMain"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:background="@color/white"
         android:orientation="horizontal"
-        android:paddingBottom="@dimen/small_margin"
         android:paddingLeft="@dimen/small_margin"
-        android:paddingRight="@dimen/small_margin"
-        android:paddingTop="@dimen/small_margin">
+        android:paddingRight="@dimen/small_margin">
 
 
         <LinearLayout
@@ -51,7 +50,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_light_gray"
                 android:textSize="@dimen/small_text"
-                android:text="12月17日 10:35"/>
+                android:text="12月17日 10:35"
+                android:layout_marginTop="@dimen/margin_eight"/>
 
 
         </LinearLayout>
@@ -100,7 +100,8 @@
                 android:textColor="@color/text_light_gray"
                 android:textSize="@dimen/small_text"
                 android:singleLine="true"
-                android:text="-100000.00元"/>
+                android:text="-100000.00元"
+                android:layout_marginTop="@dimen/margin_eight"/>
 
 
         </LinearLayout>

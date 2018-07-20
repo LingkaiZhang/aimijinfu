@@ -72,6 +72,16 @@
                         android:drawablePadding="5dp"
                         android:drawableLeft="@drawable/yellow_print"/>
 
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="出借冻结"
+                        android:textSize="@dimen/small_text"
+                        android:textColor="@color/black"
+                        android:drawablePadding="5dp"
+                        android:drawableLeft="@drawable/gray_print"/>
+
                 </LinearLayout>
                 <TextView
                     android:layout_width="wrap_content"
@@ -125,7 +135,7 @@
                         android:text="(车易贷&amp;信用贷&amp;经营贷)"
                         android:layout_marginLeft="@dimen/margin_five"
                         android:layout_toRightOf="@+id/tvMyInvest"
-                        />
+                        android:visibility="gone"/>
 
                     <TextView
                         android:id="@+id/tvWaitCapital"
@@ -523,8 +533,8 @@
                     android:background="@color/bg"
                     android:text="提前结清收益将按还款日期重新计算"
                     android:gravity="center"
-                    android:textColor="@color/remindyellow"
-                    android:textSize="@dimen/normal_text"/>
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/small_text"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

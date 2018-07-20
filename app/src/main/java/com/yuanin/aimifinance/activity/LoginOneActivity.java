@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.reflect.TypeToken;
@@ -61,6 +62,8 @@ public class LoginOneActivity extends BaseActivity {
     private TextView tvForgetPassword;
     @ViewInject(R.id.tv_phone)
     private TextView tvPhone;
+    @ViewInject(R.id.ll_password)
+    private LinearLayout ll_password;
 
     private Context context;
     private boolean isShowPassword = false;
@@ -107,6 +110,26 @@ public class LoginOneActivity extends BaseActivity {
                     isShowPassword = true;
                 }
             }
+        });
+        //输入框获取焦点监听
+        etLoginPassword.setOnFocusChangeListener(new android.view.View.OnFocusChangeListener() {
+
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+
+                if (hasFocus) {
+
+                    // 获得焦点
+                    ll_password.setBackground(getResources().getDrawable(R.drawable.login_edittext_bg_gray));
+
+                } else {
+
+                    // 失去焦点
+                    ll_password.setBackground(getResources().getDrawable(R.drawable.login_edittext_bg_gray));
+                }
+
+            }
+
         });
         etLoginPassword.addTextChangedListener(new TextWatcher() {
             @Override
@@ -194,7 +217,7 @@ public class LoginOneActivity extends BaseActivity {
                                 EventMessage eventMessage2 = new EventMessage();
                                 eventMessage2.setType(EventMessage.UPDATE_INDEX_LOGIN);
                                 EventBus.getDefault().post(eventMessage2);
-                                Intent intent = new Intent(context, GesturePasswordEditActivity.class);
+                                Intent intent = new Intent(context, GesturePasswordActivity.class);
                                 intent.putExtra(ParamsKeys.GESTURE_FLAG, ParamsKeys.GESTURE_FLAG_EDIT);
                                 startActivity(intent);
                             }

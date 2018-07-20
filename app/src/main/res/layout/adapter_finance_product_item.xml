@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/llItem"
               android:layout_width="match_parent"
-              android:layout_height="90dp"
+              android:layout_height="94dp"
               android:background="@drawable/selector_gray_click"
               android:orientation="vertical">
 
@@ -24,7 +24,7 @@
             android:layout_weight="1.4"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/small_margin"
-            android:layout_marginTop="@dimen/margin_six"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="2dp"
             android:orientation="horizontal">
 
@@ -42,6 +42,9 @@
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:text="爱米定期"
+                android:maxLines="1"
+                android:maxEms="7"
+                android:ellipsize="end"
                 android:textColor="@color/text_black"
                 android:textSize="@dimen/normal_text"/>
 
@@ -53,7 +56,7 @@
             android:text="@string/interestRatesLogo"
             android:textColor="@color/theme_color"
             android:textSize="10sp"
-            android:layout_marginTop="@dimen/margin_five"
+            android:layout_marginTop="@dimen/margin_twelve2"
             android:background="@drawable/textview_border_interest_rates"
             android:visibility="gone"
             />
@@ -69,9 +72,10 @@
             android:id="@+id/interestFirstThenCost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_eight"
             android:text="先息后本"
             android:textSize="10sp"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="@dimen/margin_twelve2"
             android:textColor="@color/theme_color"
             android:background="@drawable/textview_border_interest_first_then_cost"
             android:visibility="gone"/>
@@ -81,9 +85,10 @@
             android:id="@+id/equalityCorpusAndInterest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_eight"
             android:text="等额本息"
             android:textSize="10sp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/margin_twelve2"
             android:textColor="@color/login_register_blue"
             android:background="@drawable/textview_border_equality_corpus_and_interest"
             android:visibility="gone"/>
@@ -129,7 +134,7 @@
                     android:layout_height="wrap_content"
                     android:text="10.00"
                     android:textColor="@color/theme_color"
-                    android:textSize="24sp"/>
+                    android:textSize="25sp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -209,8 +214,8 @@
 
             <TextView
                 android:id="@+id/btnStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="73dp"
+                android:layout_height="26dp"
                 android:background="@drawable/selector_index_button"
                 android:gravity="center"
                 android:text="立即出借"

@@ -236,7 +236,7 @@ public class BuyRegularActivity extends BaseActivity {
  //       tvRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(buyProductEntity.getAnnual())));
         tvTime.setText(buyProductEntity.getTerm());
         tvTimeNew.setText(buyProductEntity.getTerm());
-        tvSingle.setText(buyProductEntity.getEachamount());
+        tvSingle.setText(buyProductEntity.getAnnual());
         tvLeaveMoneyNew.setText(String.valueOf(buyProductEntity.getAmount()));
         tvUnit.setText(buyProductEntity.getUnit());
         tvLeaveMoney.setText(String.valueOf(buyProductEntity.getAmount()));

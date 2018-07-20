@@ -29,8 +29,8 @@
     <string name="login">登录</string>
     <string name="login_problem">登录遇到问题?</string>
     <string name="register_middle">《爱米金服服务协议》</string>
-    <string name="balance">可用余额(元)</string>
-    <string name="earn_money">累计收益(元)</string>
+    <string name="balance">可用余额 (元)</string>
+    <string name="earn_money">收益明细 (元)</string>
     <string name="pay">充值</string>
     <string name="withdraw">提现</string>
     <string name="red_packets_money">现金红包</string>
@@ -80,7 +80,7 @@
     <string name="title_activity_add_up_earnings">AddUpEarningsActivity</string>
 
     <!--累计收益-->
-    <string name="AddUpEarnings">累计收益</string>
+    <string name="AddUpEarnings">收益明细</string>
     <string name="add_up_earnings_time">时间</string>
     <string name="add_up_earnings_seven_day">最近一周</string>
     <string name="add_up_earnings_one_month">1个月</string>
@@ -202,9 +202,9 @@
     <string name="buy_regular_detail">商品详情</string>
     <string name="buy_regular_time2">项目期限</string>
     <string name="buy_regular_choose">请选择红包</string>
-    <string name="buy_regular_earn2">预计收益(元)</string>
-    <string name="buy_regular_pay_money">应付金额(元)</string>
-    <string name="buy_regular_balance2">可用余额(元)</string>
+    <string name="buy_regular_earn2">预计收益 (元)</string>
+    <string name="buy_regular_pay_money">应付金额 (元)</string>
+    <string name="buy_regular_balance2">可用余额 (元)</string>
     <string name="buy_regular_i_agree">我同意</string>
     <string name="buy_regular_xieyi">《爱米金服出借服务协议》</string>
     <string name="buy_regular_confirm_pay">确认并支付</string>
@@ -321,8 +321,8 @@
     <string name="try_money">体验金</string>
     <string name="choose_redpackets">选择红包</string>
 
-    <string name="earn_wait">待收收益(元)</string>
-    <string name="earn_already">已收收益(元)</string>
+    <string name="earn_wait">待收明细(元)</string>
+    <string name="earn_already">已收明细(元)</string>
 
     <string name="invite_friend">邀请好友</string>
     <string name="my_invite_friend">我邀请的人</string>
@@ -394,9 +394,9 @@
     <!--<string name="personal_account">新浪账户</string>-->
 
 
-    <string name="order_invest_money">出借本金</string>
+    <string name="order_invest_money">出借金额</string>
     <string name="order_rate">约定年化借款利率</string>
-    <string name="order_earn_money">预期总收益</string>
+    <string name="order_earn_money">预期收益</string>
     <string name="order_time">项目周期</string>
     <string name="order_type">还款方式</string>
     <string name="order_invest_time">出借时间</string>
@@ -405,10 +405,10 @@
     <string name="order_earn_time_bottom">满标次日起息并显示收益</string>
     <string name="order_end_time">到期时间</string>
     <string name="order_end_time_bottom">还款时间为每天14点或18点</string>
-    <string name="order_no_finish_money">未结本金</string>
-    <string name="order_no_finish_earn">未结收益</string>
-    <string name="order_finish_money">已结本金</string>
-    <string name="order_finish_earn">已结收益</string>
+    <string name="order_no_finish_money">待收本金</string>
+    <string name="order_no_finish_earn">待收收益</string>
+    <string name="order_finish_money">已收本金</string>
+    <string name="order_finish_earn">已收收益</string>
 
 
     <string name="view_bank_help">绑定银行卡说明</string>
@@ -460,7 +460,7 @@
     <string name="interestRatesLogo">米宝加息</string>
     <string name="remindword">市场有风险, 出借需谨慎</string>
     <string name="risk_assessment_tips"><![CDATA[爱米金服为您量身打造了风险承受能力评估体系，请您完成评估，以获得最佳出借体验。立即评估>]]></string>
-    <string name="total_money_equation">账户总资产=待收本金+可用余额</string>
+    <string name="total_money_equation">账户总资产=待收本金+可用余额+出借冻结</string>
     <string name="mine_invest_word">我的资产,资产明细</string>
     <string name="mine_redtip_word">暂无红包可用</string>
     <string name="loginRegister">登录/注册</string>

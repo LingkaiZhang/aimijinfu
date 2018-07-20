@@ -3,7 +3,7 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/bg"
+              android:background="@color/white"
                 android:id="@+id/llMain"
               android:orientation="vertical"
               tools:context="com.yuanin.aimifinance.activity.AccountBalanceActivity">
@@ -34,15 +34,15 @@
                 android:layout_height="wrap_content"
                 android:text="@string/zero_zero_zero"
                 android:textColor="@color/white"
-                android:textSize="40sp"/>
+                android:textSize="36sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_twelve2"
-                android:text="@string/balance"
+                android:text= "@string/balance"
                 android:textColor="@color/white"
-                android:textSize="@dimen/normal_text"/>
+                android:textSize="@dimen/small_margin"/>
         </LinearLayout>
 
     </RelativeLayout>
@@ -126,7 +126,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="66dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -142,7 +142,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/zero_zero_zero"
-                        android:textColor="@color/theme_color"
+                        android:textColor="@color/text_gray"
                         android:textSize="@dimen/normal_text"/>
 
                     <TextView
@@ -150,7 +150,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_four"
                         android:gravity="center_vertical"
-                        android:text="冻结中(元)"
+                        android:text="冻结金额(元)"
                         android:textColor="@color/text_light_gray"
                         android:textSize="@dimen/small_text"/>
                 </LinearLayout>
@@ -174,7 +174,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/zero_zero_zero"
-                        android:textColor="@color/theme_color"
+                        android:textColor="@color/text_gray"
                         android:textSize="@dimen/normal_text"/>
 
                     <TextView
@@ -207,7 +207,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="@string/zero_zero_zero"
-                        android:textColor="@color/theme_color"
+                        android:textColor="@color/text_gray"
                         android:textSize="@dimen/normal_text"/>
 
                     <TextView
@@ -232,50 +232,56 @@
                 android:background="@color/white"
                 android:orientation="horizontal"
                 android:gravity="center"
-                android:paddingTop="30dp">
+                android:paddingTop="31dp">
 
                 <Button
                     android:id="@+id/btn_withdraw"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
                     android:text="提现"
                     android:textColor="@color/theme_color"
-                    android:textSize="@dimen/normal_text"
+                    android:textSize="@dimen/big_text"
                     android:background="@drawable/selector_dialog_cancel_button_click"
-                    android:paddingLeft="@dimen/account_balance_button"
-                    android:paddingRight="@dimen/account_balance_button"/>
+                    />
 
                 <Button
                     android:id="@+id/btn_recharge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
                     android:text="充值"
                     android:layout_marginLeft="70dp"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/normal_text"
+                    android:textSize="@dimen/big_text"
                     android:background="@drawable/selector_dialog_confirm_button_click"
-                    android:paddingLeft="@dimen/account_balance_button"
-                    android:paddingRight="@dimen/account_balance_button"/>
+
+                    />
 
             </LinearLayout>
 
         </LinearLayout>
 
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="bottom|center"
+        android:layout_marginBottom="@dimen/small_margin"
+        >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="用户资金由新网银行存管"
-                android:textColor="@color/remindyellow"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/small_margin"
-                android:drawableLeft="@mipmap/sh_bank"
-                android:drawablePadding="@dimen/margin_five"/>
-        </RelativeLayout>
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:src="@mipmap/sh_bank_gray"
+            android:layout_marginBottom="2dp"/>
+
+        <TextView
+            android:layout_marginLeft="@dimen/margin_four"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用户资金由存管银行存管"
+            android:textSize="@dimen/small_text"
+            android:textColor="@color/text_gray"
+            />
+    </LinearLayout>
 </LinearLayout>

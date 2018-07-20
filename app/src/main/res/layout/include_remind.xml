@@ -45,25 +45,21 @@
 
             <Button
                 android:id="@+id/btnCheckNetwork"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="110dp"
+                android:layout_height="40dp"
                 android:background="@drawable/selector_dialog_cancel_button_click"
                 android:text="检查网络"
                 android:textSize="@dimen/normal_text"
                 android:textColor="@color/theme_color"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp"
                 />
 
             <Button
                 android:id="@+id/btnRefresh"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="110dp"
+                android:layout_height="40dp"
                 android:text="刷新看看"
                 android:background="@drawable/selector_dialog_confirm_button_click"
                 android:textColor="@color/white"
-                android:paddingRight="25dp"
-                android:paddingLeft="25dp"
                 android:textSize="@dimen/normal_text"
                 android:layout_marginLeft="60dp"/>
 

@@ -146,7 +146,7 @@ public class WebViewActivity extends BaseActivity {
             } else if (type.equals(ParamsValues.QUESTION_NAIRE)) {
                 initTopBarWithRightText(getResources().getString(R.string.mine_questionnaire), toptitleView, null, "");
                 String user_id = getIntent().getStringExtra(ParamsKeys.USER_ID);
-                url = ParamsValues.NET_URL_WEIXIN + "survey.html?userid=" + user_id;
+                url = ParamsValues.NET_URL_WEIXIN + "discover.html?userid=" + user_id;
                 setUrl(url, new FrameLayout.LayoutParams(-1, -1));
             } else if (type.equals(ParamsValues.MODEL_LOAN_CONTRACT)) {
                 initTopBarWithRightText(getResources().getString(R.string.model_loan_contract), toptitleView, null, "");

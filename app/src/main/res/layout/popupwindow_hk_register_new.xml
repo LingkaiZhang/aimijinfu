@@ -60,7 +60,9 @@
                     android:textColor="@color/white"
                     android:background="@drawable/selector_dialog_confirm_button_click"
                     android:paddingLeft="25dp"
-                    android:paddingRight="25dp" />
+                    android:paddingRight="25dp"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"/>
 
             </LinearLayout>
 

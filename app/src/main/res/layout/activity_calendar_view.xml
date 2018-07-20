@@ -106,7 +106,7 @@
             android:layout_height="wrap_content"
             android:background="#fff"
             app:month_view="com.yuanin.aimifinance.view.SimpleMonthView"
-            app:calendar_height="46dp"
+            app:calendar_height="40dp"
             app:current_month_lunar_text_color="#CFCFCF"
             app:current_month_text_color="#333333"
             app:min_year="2015"
@@ -129,10 +129,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="66dp"
         android:orientation="horizontal"
         android:layout_marginTop="8dp"
-        android:background="#fff"
+        android:background="@color/white"
         >
 
         <LinearLayout
@@ -146,7 +146,7 @@
                 android:id="@+id/tvWaitFund"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="12345.36"
+                android:text="0.00"
                 android:textColor="#333"/>
 
             <TextView
@@ -169,7 +169,7 @@
                 android:id="@+id/tvAleardyFund"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="12345.36"
+                android:text="0.00"
                 android:textColor="#333"/>
 
             <TextView
@@ -192,7 +192,7 @@
                 android:id="@+id/tvNewLoan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1200.36"
+                android:text="0.00"
                 android:textColor="#333"/>
 
             <TextView

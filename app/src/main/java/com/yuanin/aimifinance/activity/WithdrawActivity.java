@@ -94,7 +94,7 @@ public class WithdrawActivity extends BaseActivity {
     private Context context = WithdrawActivity.this;
     private boolean isFirst = true;
     //提现类型 1 普通提现 2 快速提现
-    private int cash_type = 0;
+    private int cash_type = 1;
     private String cash_fee = "5.0";
 
     @Override

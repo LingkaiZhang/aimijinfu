@@ -27,6 +27,7 @@ public class RingProgressBar extends View {
      */
     private Paint ringPaint;
     private Paint ringProgressPaint;
+    private Paint ringProgressPaint2;
     private Paint txtPaint;
 
     /**
@@ -38,6 +39,11 @@ public class RingProgressBar extends View {
      * 圆环进度的颜色
      */
     private int ringProgressColor;
+
+    /**
+     * 圆环进度的颜色2
+     */
+    private int ringProgressColor2;
 
     /**
      * 中间进度百分比的字符串的颜色
@@ -63,6 +69,10 @@ public class RingProgressBar extends View {
      * 当前进度
      */
     private int progress;
+    /**
+     * 当前进度
+     */
+    private int progress2;
     /**
      * 是否显示中间的进度
      */
@@ -108,6 +118,7 @@ public class RingProgressBar extends View {
         //获取自定义属性和默认值
         ringColor = mTypedArray.getColor(R.styleable.RingProgressBar_ringColor, Color.GRAY);
         ringProgressColor = mTypedArray.getColor(R.styleable.RingProgressBar_ringProgressColor, Color.GREEN);
+        ringProgressColor2 = mTypedArray.getColor(R.styleable.RingProgressBar_ringProgressColor2, Color.GRAY);
         textColor = mTypedArray.getColor(R.styleable.RingProgressBar_textColor, Color.GREEN);
         textSize = mTypedArray.getDimension(R.styleable.RingProgressBar_textSize, 16);
         ringWidth = mTypedArray.getDimension(R.styleable.RingProgressBar_ringWidth, 5);
@@ -144,16 +155,30 @@ public class RingProgressBar extends View {
                 break;
         }
 
+        //圆环进度画笔2
+        ringProgressPaint2 = new Paint();
+        ringProgressPaint2.setColor(ringProgressColor2); //设置圆环的颜色
+        ringProgressPaint2.setStrokeWidth(ringWidth); //设置圆环的宽度
+        ringProgressPaint2.setAntiAlias(true);  //消除锯齿
+        switch (style) {
+            case STROKE:
+                ringProgressPaint2.setStyle(Paint.Style.STROKE);
+                break;
+            case FILL:
+                ringProgressPaint2.setStyle(Paint.Style.FILL_AND_STROKE);
+                break;
+        }
+
         //百分比文字画笔
         txtPaint = new Paint();
         txtPaint.setColor(textColor);
-        txtPaint.setTextSize(textSize);
+        txtPaint.setTextSize((float) (textSize * 0.9));
         txtPaint.setTypeface(Typeface.DEFAULT); //设置字体
 
         //文字画笔
         tvPaint = new Paint();
         tvPaint.setColor(Color.BLACK);
-        tvPaint.setTextSize((float) (textSize*0.7));
+        tvPaint.setTextSize((float) (textSize * 0.7));
         tvPaint.setTypeface(Typeface.DEFAULT); //设置字体
     }
 
@@ -173,11 +198,15 @@ public class RingProgressBar extends View {
                 + radius, mYCenter + radius);  //用于定义的圆弧的形状和大小的界限
         switch (style) {
             case STROKE:
-                canvas.drawArc(oval, -90, 360 * progress / max_yuanhuan, false, ringProgressPaint);  //根据进度画圆弧
+                canvas.drawArc(oval, -90, 360 * progress2 / max_yuanhuan, false, ringProgressPaint2);  //根据进度画圆弧2
+                canvas.drawArc(oval, (-90) + 360 * progress2 / max_yuanhuan, 360 * (progress - progress2)/ max_yuanhuan, false, ringProgressPaint);  //根据进度画圆弧
+
                 break;
             case FILL:
-                if (progress != 0)
-                    canvas.drawArc(oval, -90, 360 * progress / max_yuanhuan, true, ringProgressPaint);  //根据进度画圆弧
+                if (progress != 0 || progress != 0)
+                    canvas.drawArc(oval, -90, 360 * progress2 / max_yuanhuan, true, ringProgressPaint2);  //根据进度画圆弧2
+                    canvas.drawArc(oval, (-90) + 360 * progress2 / max_yuanhuan, 360 * (progress - progress2) / max_yuanhuan, true, ringProgressPaint);  //根据进度画圆弧
+
                 break;
         }
 
@@ -230,7 +259,7 @@ public class RingProgressBar extends View {
      * 刷新界面调用postInvalidate()能在非UI线程刷新
      * @param progress
      */
-    public synchronized void setProgress(int progress) {
+    public synchronized void setProgress(int progress, int progress2) {
         if(progress < 0){
             throw new IllegalArgumentException("progress not less than 0");
         }
@@ -239,6 +268,17 @@ public class RingProgressBar extends View {
         }
         if(progress <= max_yuanhuan){
             this.progress = progress;
+            postInvalidate();
+        }
+
+        if(progress2 < 0){
+            throw new IllegalArgumentException("progress not less than 0");
+        }
+        if(progress2 > max_yuanhuan){
+            progress2 = max_yuanhuan;
+        }
+        if(progress2 <= max_yuanhuan){
+            this.progress2 = progress2;
             postInvalidate();
         }
 

@@ -1,5 +1,6 @@
 package com.yuanin.aimifinance.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 
 import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.base.BaseActivity;
+import com.yuanin.aimifinance.dialog.GeneralDialog;
+import com.yuanin.aimifinance.dialog.GeneralNoTitleDialog;
 import com.yuanin.aimifinance.entity.EventMessage;
 import com.yuanin.aimifinance.utils.AppUtils;
 import com.yuanin.aimifinance.utils.ParamsKeys;
@@ -41,12 +44,17 @@ public class GesturePasswordActivity extends BaseActivity {
     private TextView tvReset;
     @ViewInject(R.id.tvShu)
     private TextView tvShu;
+    @ViewInject(R.id.tvUserPhone)
+    private TextView tvUserPhone;
 
     private boolean mIsFirstInput = true;
     private String mFirstPassword = null;
     private GestureContentView mGestureContentView;
     private String flag = "";
     private int where;
+
+    private Context context = GesturePasswordActivity.this;
+    private GeneralNoTitleDialog generalDialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,6 +69,24 @@ public class GesturePasswordActivity extends BaseActivity {
         }
         where = getIntent().getIntExtra("where", 0);
         setUpViews();
+
+        if(flag.equals(ParamsKeys.GESTURE_FLAG_EDIT)){
+            generalDialog = new GeneralNoTitleDialog(context, false, "设置手势密码可以使你的账户更加安全",
+                    "设置", "立即离开", new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    generalDialog.dismiss();
+                }
+            }, new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (flag.equals(ParamsKeys.GESTURE_FLAG_FIRST_EDIT)) {
+                        startActivity(new Intent(GesturePasswordActivity.this, OpenAccountActivity.class));
+                    }
+                    GesturePasswordActivity.this.finish();
+                }
+            });
+        }
 
     }
 
@@ -97,6 +123,8 @@ public class GesturePasswordActivity extends BaseActivity {
     }
 
     private void setUpViews() {
+        String mobile = AppUtils.getFromSharedPreferences(context, ParamsKeys.LOGIN_FILE, ParamsKeys.LOGIN_KEY_MOBILE);
+        tvUserPhone.setText(AppUtils.getProtectedMobile(mobile));
         // 初始化一个显示各个点的viewGroup
         mGestureContentView = new GestureContentView(this, false, "",
                 new GestureDrawline.GestureCallBack() {

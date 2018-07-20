@@ -231,22 +231,29 @@ public class TotalMoneyActivity extends BaseActivity {
             @Override
             public void run() {
                 super.run();
-                double total = Double.valueOf(entity.getEnjoy()) + Double.valueOf(entity.getBalance() + entity.getDeposit());
-                double keyong = Double.valueOf(entity.getBalance());
-                if (keyong > 0) {
+                double total = entity.getEnjoy() + entity.getBalance() + entity.getDeposit()
+                        + entity.getAppoint() - entity.getWithdraw_amount();
+                double keyong = entity.getBalance() + entity.getAppoint() - entity.getWithdraw_amount();
+                double dongjie = entity.getAppoint() - entity.getWithdraw_amount();
+                if (keyong > 0 && dongjie >= 0) {
                     int progress = (int) Math.rint(keyong*100/total);
+                    int progress2 = (int) Math.rint(dongjie*100/total);
                     for(int i=0; i<= progress; i++){
                         try {
                             Thread.sleep(20);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        myProgress.setProgress(i);
+                        if (i >= progress2) {
+                            myProgress.setProgress(i,progress2);
+                        } else {
+                            myProgress.setProgress(i,i);
+                        }
 
                         myProgress.setTextString(format3(total) + "");
                     }
                 } else {
-                    myProgress.setProgress(0);
+                    myProgress.setProgress(0,0);
                     myProgress.setTextString(String.valueOf(total));
                 }
 

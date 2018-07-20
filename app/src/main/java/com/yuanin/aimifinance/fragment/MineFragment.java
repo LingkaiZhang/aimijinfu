@@ -169,7 +169,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
 
     @Event(value = { R.id.isShowBalance,R.id.ivMine, R.id.rlEarnMoney, R.id.rlBalance, R.id.tvTotalMoneyTitle, R.id.tvTotalMoney, R.id.rlRegular,
             R.id.rlLittleItem, R.id.btnWithdraw, R.id.btnPay, R.id.rlRedPackets, R.id.btnRefresh,R.id.llLoanCalendar,
-            R.id.rlFundsWater, R.id.llAboutWe, R.id.ivMessage})
+            R.id.rlFundsWater, R.id.llAboutWe, R.id.ivMessage, R.id.tvUserName})
     private void loginClicked(View v) {
         if (StaticMembers.IS_NEED_LOGIN) {
             startActivity(new Intent(getActivity(), LoginRegisterActivity.class));
@@ -192,6 +192,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
                     break;
                 //个人中心
                 case R.id.ivMine:
+                case R.id.tvUserName:
                    // if (mList != null && mList.size() > 0) {
                         Intent intent2 = new Intent(getActivity(), PersonalSettingsActivity.class);
                         startActivity(intent2);
@@ -418,7 +419,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
                 mPullDownScrollView.setPullRefreshEnable(false);
                 clearInfo();
 
-                //TODO 活动信息
+                // 活动信息
                 requestActivityInformation();
             } else {
                 rlNoLogin.setVisibility(View.GONE);
@@ -426,7 +427,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
                 rlMine.setVisibility(View.VISIBLE);
                 mPullDownScrollView.setPullRefreshEnable(true);
                 refreshData();
-                //TODO 活动信息
+                // 活动信息
                 requestActivityInformation();
             }
         }
@@ -453,10 +454,10 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         tvEarnMoney.setText("0.00");
         tvTotalMoney.setText("0.00");
         tvRegularMoney.setText(getString(R.string.mine_invest_word));
-        tvRegularMoney.setTextColor(Color.GRAY);
+        tvRegularMoney.setTextColor(getResources().getColor(R.color.text_gray));
         tvLittleItemMoney.setText(getString(R.string.mine_invest_word));
         tvRedTip.setText(getString(R.string.mine_redtip_word));
-        tvRedTip.setTextColor(Color.GRAY);
+        tvRedTip.setTextColor(getResources().getColor(R.color.text_gray));
     }
 
     @SuppressLint("WrongConstant")

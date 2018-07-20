@@ -317,7 +317,8 @@
                 android:layout_marginTop="@dimen/margin_eight"
                 android:paddingBottom="@dimen/margin_five"
                 android:orientation="vertical"
-                android:background="@color/white">
+                android:background="@color/white"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"

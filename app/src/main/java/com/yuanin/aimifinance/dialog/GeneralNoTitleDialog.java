@@ -15,23 +15,17 @@ import android.widget.TextView;
 import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.utils.StaticMembers;
 
+public class GeneralNoTitleDialog {
 
-/**
- * @author huangxin
- * @date 2015/11/10
- * @desc 通用dialog
- */
-public class GeneralDialog {
     private AlertDialog dialog;
     private View view;
-    private TextView tvTips, tvTitle;
+    private TextView tvTips;
     private Button btnCancel, btnConfirm;
     private LinearLayout llMain;
-    private View viewLineOne;
 
 
-    public GeneralDialog(Context context, boolean isCancelable, String title, String tips, String leftStr, String rigthStr, View.OnClickListener leftListener, View.OnClickListener rightListener) {
-        view = LayoutInflater.from(context).inflate(R.layout.dialog_genaral, null);
+    public GeneralNoTitleDialog(Context context, boolean isCancelable, String tips, String leftStr, String rigthStr, View.OnClickListener leftListener, View.OnClickListener rightListener) {
+        view = LayoutInflater.from(context).inflate(R.layout.dialog_genaral_notitle, null);
         dialog = new AlertDialog.Builder(context).create();
         dialog.setCancelable(isCancelable);
         dialog.setView(new EditText(context));
@@ -41,13 +35,6 @@ public class GeneralDialog {
         window.setContentView(view);
         window.setWindowAnimations(R.style.BottomDialog); // 添加动画
         initViews();
-        if (title.length() > 0) {
-            tvTitle.setText(title);
-        }  else {
-            tvTitle.setVisibility(View.GONE);
-            viewLineOne.setVisibility(View.GONE);
-        }
-
         tvTips.setText(tips);
         btnCancel.setText(leftStr);
         btnConfirm.setText(rigthStr);
@@ -58,11 +45,9 @@ public class GeneralDialog {
 
     private void initViews() {
         tvTips = (TextView) view.findViewById(R.id.tvTips);
-        tvTitle = (TextView) view.findViewById(R.id.tvTitle);
         btnCancel = (Button) view.findViewById(R.id.btnCancel);
         btnConfirm = (Button) view.findViewById(R.id.btnConfirm);
         llMain = (LinearLayout) view.findViewById(R.id.llMain);
-        viewLineOne = view.findViewById(R.id.view_line_one);
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) llMain.getLayoutParams();
         lp.width = StaticMembers.SCREEN_WIDTH;
         llMain.setLayoutParams(lp);
@@ -71,6 +56,5 @@ public class GeneralDialog {
     public void dismiss() {
         dialog.dismiss();
     }
-
 
 }

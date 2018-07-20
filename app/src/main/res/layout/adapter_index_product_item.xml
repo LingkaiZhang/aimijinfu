@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/llItem"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
+    android:layout_height="104dp"
     android:background="@drawable/selector_gray_click"
     android:orientation="vertical">
 
@@ -31,9 +31,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
            android:layout_marginLeft="@dimen/margin_five"
-            android:layout_marginTop="@dimen/margin_six"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="2dp"
-            android:singleLine="true"
+            android:maxLines="1"
+            android:maxEms="7"
+            android:ellipsize="end"
             android:text="爱米定期"
             android:textColor="@color/text_black"
             android:textSize="@dimen/normal_text"
@@ -48,7 +50,7 @@
             android:text="@string/interestRatesLogo"
             android:textColor="@color/theme_color"
             android:textSize="10sp"
-            android:layout_marginTop="@dimen/margin_five"
+            android:layout_marginTop="@dimen/margin_twelve2"
             android:background="@drawable/textview_border_interest_rates"
             app:layout_constraintTop_toTopOf="@id/topLL"
             app:layout_constraintLeft_toRightOf="@+id/tvName"
@@ -58,17 +60,16 @@
             android:id="@+id/interestFirstThenCost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="先息后本"
-            android:textSize="10sp"
-            android:layout_marginTop="@dimen/margin_six"
-            android:textColor="@color/theme_color"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/margin_twelve2"
             android:background="@drawable/textview_border_interest_first_then_cost"
-            app:layout_constraintTop_toTopOf="@id/topLL"
+            android:text="先息后本"
+            android:textColor="@color/theme_color"
+            android:textSize="10sp"
+            android:visibility="gone"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:visibility="gone"
-            />
+            app:layout_constraintTop_toTopOf="@id/topLL" />
 
         <TextView
             android:id="@+id/equalityCorpusAndInterest"
@@ -76,9 +77,9 @@
             android:layout_height="wrap_content"
             android:text="等额本息"
             android:textSize="10sp"
-            android:layout_marginTop="@dimen/margin_six"
+            android:layout_marginTop="@dimen/margin_twelve2"
             android:textColor="@color/login_register_blue"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="@dimen/small_margin"
             android:background="@drawable/textview_border_equality_corpus_and_interest"
             app:layout_constraintTop_toTopOf="@id/topLL"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -96,7 +97,7 @@
         android:orientation="horizontal"
         android:paddingBottom="@dimen/margin_eight"
         android:paddingLeft="@dimen/small_margin"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/tvName">
 
 
         <LinearLayout
@@ -117,7 +118,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/theme_color"
-                    android:textSize="24sp"/>
+                    android:textSize="25sp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -131,7 +132,7 @@
                     android:id="@+id/interestRates"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="+1.0%"
+                    android:text=" +1.0%"
                     android:textColor="@color/theme_color"
                     android:textSize="14sp"
                     android:visibility="gone"/>
@@ -196,8 +197,8 @@
 
             <TextView
                 android:id="@+id/btnStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="73dp"
+                android:layout_height="26dp"
                 android:background="@drawable/selector_index_button"
                 android:gravity="center"
                 android:text="立即出借"

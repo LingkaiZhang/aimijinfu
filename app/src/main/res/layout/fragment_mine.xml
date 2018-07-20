@@ -364,7 +364,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:orientation="horizontal"
         android:background="@color/white"
         android:paddingBottom="@dimen/margin_eight">
@@ -377,30 +377,33 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_marginTop="@dimen/margin_eight"
+                android:layout_marginTop="@dimen/margin_ten"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/mine_invest"
-                android:layout_marginLeft="@dimen/small_margin"/>
+                android:layout_marginLeft="@dimen/small_margin"
+                />
 
             <LinearLayout
                 android:layout_marginTop="@dimen/margin_eight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_eight"
+                android:layout_marginLeft="@dimen/margin_ten"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_black"
-                    android:text="我的资产"/>
+                    android:text="我的资产"
+                    android:textSize="@dimen/normal_text"/>
                 <TextView
                     android:id="@+id/tvRegularMoney"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/small_text"
-                    android:text="@string/mine_invest_word"/>
+                    android:text="@string/mine_invest_word"
+                    android:textColor="@color/text_gray"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -418,7 +421,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_marginTop="@dimen/margin_eight"
+                android:layout_marginTop="@dimen/margin_ten"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/mine_red_new"
@@ -428,20 +431,22 @@
                 android:layout_marginTop="@dimen/margin_eight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_eight"
+                android:layout_marginLeft="@dimen/margin_ten"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_black"
-                    android:text="我的红包"/>
+                    android:text="我的红包"
+                    android:textSize="@dimen/normal_text"/>
                 <TextView
                     android:id="@+id/tvRedTip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/small_text"
-                    android:text="@string/mine_redtip_word"/>
+                    android:text="@string/mine_redtip_word"
+                    android:textColor="@color/text_gray"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -458,7 +463,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:orientation="horizontal"
         android:background="@color/white"
         android:paddingBottom="@dimen/margin_eight">
@@ -471,7 +476,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_marginTop="@dimen/margin_eight"
+                android:layout_marginTop="@dimen/margin_ten"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/mine_trade_log"
@@ -481,19 +486,21 @@
                 android:layout_marginTop="@dimen/margin_eight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_eight"
+                android:layout_marginLeft="@dimen/margin_ten"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_black"
-                    android:text="交易流水"/>
+                    android:text="交易流水"
+                    android:textSize="@dimen/normal_text"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/small_text"
-                    android:text="交易明细,尽在掌握"/>
+                    android:text="交易明细,尽在掌握"
+                    android:textColor="@color/text_gray"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -511,7 +518,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_marginTop="@dimen/margin_eight"
+                android:layout_marginTop="@dimen/margin_ten"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/mine_calendar"
@@ -521,19 +528,21 @@
                 android:layout_marginTop="@dimen/margin_eight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_eight"
+                android:layout_marginLeft="@dimen/margin_ten"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_black"
-                    android:text="回款日历"/>
+                    android:text="回款日历"
+                    android:textSize="@dimen/normal_text"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/small_text"
-                    android:text="项目回款,一目了然"/>
+                    android:text="项目回款,一目了然"
+                    android:textColor="@color/text_gray"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -551,7 +560,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:orientation="horizontal"
         android:background="@color/white"
         android:paddingBottom="@dimen/margin_eight">
@@ -564,7 +573,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_marginTop="@dimen/margin_eight"
+                android:layout_marginTop="@dimen/margin_ten"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/mine_loan"
@@ -574,19 +583,21 @@
                 android:layout_marginTop="@dimen/margin_eight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_eight"
+                android:layout_marginLeft="@dimen/margin_ten"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_black"
-                    android:text="我要借款"/>
+                    android:text="我要借款"
+                    android:textSize="@dimen/normal_text"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/small_text"
-                    android:text="资金周转,快速放款"/>
+                    android:text="资金周转,快速放款"
+                    android:textColor="@color/text_gray"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -647,7 +658,7 @@
             android:scaleType="fitCenter"
             app:actualImageScaleType="fitCenter"
             app:fadeDuration="300"
-            app:placeholderImage="@mipmap/banner_new"
+            app:placeholderImage="@mipmap/image_loading"
             app:placeholderImageScaleType="fitCenter"
             app:roundedCornerRadius="5dp"
             app:roundTopLeft="true"
@@ -666,7 +677,7 @@
             android:layout_height="80dp"
             app:actualImageScaleType="fitXY"
             app:fadeDuration="300"
-            app:placeholderImage="@mipmap/banner_new"
+            app:placeholderImage="@mipmap/image_loading"
             app:placeholderImageScaleType="fitCenter"
             app:roundedCornerRadius="5dp"
             app:roundTopLeft="true"
@@ -683,17 +694,22 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
+        android:layout_marginBottom="@dimen/small_margin"
+        android:layout_marginTop="@dimen/small_margin"
         >
 
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:src="@mipmap/sh_bank_gray"/>
+
         <TextView
+            android:layout_marginLeft="@dimen/margin_four"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="用户资金由新网银行存管"
-            android:textColor="@color/remindyellow"
-            android:layout_marginBottom="@dimen/small_margin"
-            android:drawableLeft="@mipmap/sh_bank"
-            android:drawablePadding="@dimen/margin_five"
-            android:layout_marginTop="@dimen/small_margin"
+            android:text="用户资金由存管银行存管"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/small_text"
            />
     </LinearLayout>
 

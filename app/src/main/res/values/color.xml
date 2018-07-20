@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="white">#ffffff</color>
-        <color name="bg">#f5f5f9</color>
+        <color name="bg">#f0f0f0</color>
     <color name="gray_cancel_click">#ddd</color>
-    <!--<color name="top_line">#eee</color>-->
+    <color name="top_line">#eee</color>
     <color name="gray_cancel">#ccc</color>
+    <color name="gray_line">#ccc</color>
     <color name="my_invest_blue">#51c0f9</color>
     <color name="select_gray">#eee</color>
     <color name="theme_color">#ff0036</color>

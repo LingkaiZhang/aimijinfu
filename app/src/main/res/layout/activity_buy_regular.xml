@@ -171,7 +171,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="50dp"
-                    android:paddingTop="50dp"
+                    android:paddingTop="80dp"
                     android:baselineAligned="false"
                     android:background="@color/theme_color"
                     android:orientation="horizontal">
@@ -188,7 +188,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/normal_text"/>
+                            android:textSize="@dimen/big_text"/>
 
 
                         <TextView
@@ -211,7 +211,7 @@
                     <LinearLayout
                         android:layout_width="@dimen/weight"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -221,14 +221,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/normal_text"/>
+                            android:textSize="@dimen/big_text"/>
 
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/margin_four"
-                            android:text="起借金额(元)"
+                            android:text="约定年化借款利率(%)"
                             android:textColor="@color/white"
                             android:textSize="@dimen/small_text"/>
                     </LinearLayout>
@@ -253,7 +253,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/normal_text"/>
+                            android:textSize="@dimen/big_text"/>
 
 
                         <TextView
@@ -274,10 +274,10 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/normal_height"
+                        android:layout_height="44dp"
                         android:layout_marginLeft="@dimen/small_margin"
                         android:layout_marginRight="@dimen/small_margin"
-                        android:layout_marginTop="@dimen/margin_twelve2">
+                        android:layout_marginTop="@dimen/small_text">
 
                         <TextView
                             android:id="@+id/tvMoneyTitle"
@@ -296,7 +296,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
                             android:text="元"
-                            android:textColor="@color/text_light_gray"
+                            android:textColor="@color/text_black"
                             android:textSize="@dimen/normal_text"/>
 
                         <EditText
@@ -366,7 +366,7 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/margin_twelve2"
+                        android:layout_height="@dimen/margin_five"
                         android:background="@color/bg"/>
 
                     <RelativeLayout
@@ -381,7 +381,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="@dimen/small_margin"
                             android:text="@string/buy_regular_pay_money"
-                            android:textColor="@color/text_black"
+                            android:textColor="@color/text_gray"
                             android:textSize="@dimen/normal_text"/>
 
                         <TextView
@@ -395,19 +395,19 @@
                             android:layout_toRightOf="@id/tvPayMoneyTitle"
                             android:gravity="right"
                             android:text="@string/zero_zero_zero"
-                            android:textColor="@color/theme_color"
+                            android:textColor="@color/text_black"
                             android:textSize="@dimen/normal_text"/>
                     </RelativeLayout>
 
-                    <View
+                    <!--<View
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/line"
                         android:layout_marginLeft="@dimen/small_margin"
-                        android:background="@color/bg"/>
+                        android:background="@color/bg"/>-->
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/normal_height">
+                        android:layout_height="@dimen/margin_forty_four">
 
                         <TextView
                             android:id="@+id/tvBalanceTitle"
@@ -416,7 +416,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="@dimen/small_margin"
                             android:text="@string/buy_regular_balance2"
-                            android:textColor="@color/text_black"
+                            android:textColor="@color/text_gray"
                             android:textSize="@dimen/normal_text"/>
 
                         <TextView
@@ -430,15 +430,15 @@
                             android:layout_toRightOf="@id/tvBalanceTitle"
                             android:gravity="right"
                             android:text="@string/zero_zero_zero"
-                            android:textColor="@color/theme_color"
+                            android:textColor="@color/text_black"
                             android:textSize="@dimen/normal_text"/>
                     </RelativeLayout>
 
-                    <View
+                    <!--<View
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/line"
                         android:layout_marginLeft="@dimen/small_margin"
-                        android:background="@color/bg"/>
+                        android:background="@color/bg"/>-->
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -502,6 +502,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/line"
                         android:layout_marginLeft="@dimen/small_margin"
+                        android:layout_marginRight="@dimen/small_margin"
                         android:background="@color/bg"/>
 
                     <LinearLayout
@@ -552,8 +553,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/remindword"
-                            android:textSize="14sp"
-                            android:textColor="@color/remindyellow"/>
+                            android:textSize="@dimen/small_text"
+                            android:textColor="@color/text_gray"/>
 
                     </LinearLayout>
 
