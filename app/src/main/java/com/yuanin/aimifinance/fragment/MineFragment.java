@@ -53,6 +53,7 @@ import com.yuanin.aimifinance.entity.ReturnResultEntity;
 import com.yuanin.aimifinance.entity.UserAccountEntity;
 import com.yuanin.aimifinance.inter.IHttpRequestCallBack;
 import com.yuanin.aimifinance.utils.AppUtils;
+import com.yuanin.aimifinance.utils.FmtMicrometer;
 import com.yuanin.aimifinance.utils.LogUtils;
 import com.yuanin.aimifinance.utils.NetUtils;
 import com.yuanin.aimifinance.utils.ParamsKeys;
@@ -537,13 +538,13 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         if (entity.getData().get(0).getDeposit().equals("-1")) {
             tvRegularMoney.setText(getString(R.string.mine_invest_word));
         } else {
-            tvRegularMoney.setText(Double.valueOf(entity.getData().get(0).getDeposit()) + Double.valueOf(entity.getData().get(0).getEnjoy()) + "元");
+            tvRegularMoney.setText(FmtMicrometer.format5(Double.valueOf(entity.getData().get(0).getDeposit()) + Double.valueOf(entity.getData().get(0).getEnjoy())) + "元");
             tvRegularMoney.setTextColor(getResources().getColor(R.color.theme_color));
         }
         if (entity.getData().get(0).getEnjoy().equals("-1")) {
             tvLittleItemMoney.setText(getString(R.string.mine_invest_word));
         } else {
-            tvLittleItemMoney.setText(entity.getData().get(0).getEnjoy() + "元");
+            tvLittleItemMoney.setText(FmtMicrometer.format5(Double.valueOf(entity.getData().get(0).getDeposit()) + Double.valueOf(entity.getData().get(0).getEnjoy())) + "元");
         }
         //设置图片
         Drawable showIcon = getResources().getDrawable(R.mipmap.mine_invest_open);

@@ -17,6 +17,7 @@ import com.yuanin.aimifinance.entity.ReturnResultEntity;
 import com.yuanin.aimifinance.entity.TotalAccountEntity;
 import com.yuanin.aimifinance.inter.IHttpRequestCallBack;
 import com.yuanin.aimifinance.utils.AppUtils;
+import com.yuanin.aimifinance.utils.FmtMicrometer;
 import com.yuanin.aimifinance.utils.NetUtils;
 import com.yuanin.aimifinance.utils.ParamsKeys;
 import com.yuanin.aimifinance.utils.ParamsValues;
@@ -212,18 +213,18 @@ public class TotalMoneyActivity extends BaseActivity {
     }
 
     private void initViews(final TotalAccountEntity entity) {
-        tvRegularInvest.setText(String.valueOf(entity.getDeposit() + entity.getEnjoy()));
-        tvRegularWaitEarn.setText(String.valueOf(entity.getWait_deposit_interest() + entity.getWait_enjoy_interest()));
-        tvAlreadyBonus.setText(String.valueOf(entity.getReward_amount()));
-        tvWaitBonus.setText(String.valueOf(entity.getWait_reward_amount()));
+        tvRegularInvest.setText(FmtMicrometer.format5(entity.getDeposit() + entity.getEnjoy()));
+        tvRegularWaitEarn.setText(FmtMicrometer.format5(entity.getWait_deposit_interest() + entity.getWait_enjoy_interest()));
+        tvAlreadyBonus.setText(FmtMicrometer.format5(entity.getReward_amount()));
+        tvWaitBonus.setText(FmtMicrometer.format5(entity.getWait_reward_amount()));
 
-        tvBalance.setText(String.valueOf(entity.getBalance()));
-        tvIceBalance.setText(String.valueOf(entity.getAppoint() - entity.getWithdraw_amount()));
-        tvCrash.setText(String.valueOf(entity.getWithdraw_amount()));
+        tvBalance.setText(FmtMicrometer.format5(entity.getBalance()));
+        tvIceBalance.setText(FmtMicrometer.format5(entity.getAppoint() - entity.getWithdraw_amount()));
+        tvCrash.setText(FmtMicrometer.format5(entity.getWithdraw_amount()));
 
-        tvFinishMoney.setText(String.valueOf(entity.getAlreadyCapital()));
-        tvFinishEarn.setText(String.valueOf(entity.getAlreadyInterest()));
-        tvWaitCapital.setText(String.valueOf(entity.getWaitCapital()));
+        tvFinishMoney.setText(FmtMicrometer.format5(entity.getAlreadyCapital()));
+        tvFinishEarn.setText(FmtMicrometer.format5(entity.getAlreadyInterest()));
+        tvWaitCapital.setText(FmtMicrometer.format5(entity.getWaitCapital()));
 
 
         //圆环显示
@@ -254,7 +255,7 @@ public class TotalMoneyActivity extends BaseActivity {
                     }
                 } else {
                     myProgress.setProgress(0,0);
-                    myProgress.setTextString(String.valueOf(total));
+                    myProgress.setTextString(FmtMicrometer.format5(total));
                 }
 
             }

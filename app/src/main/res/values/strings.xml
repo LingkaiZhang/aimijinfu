@@ -110,7 +110,7 @@
     <!--提现-->
     <string name="Withdraw">提现</string>
     <string name="withdraw_now">申请提现</string>
-    <string name="withdraw_input_money_title">提现金额</string>
+    <string name="withdraw_input_money_title">提现金额(元)</string>
     <string name="withdraw_money_input">请输入提现金额</string>
     <string name="withdraw_fee">手续费(元)：</string>
     <string name="withdraw_get_money">实到金额(元)：</string>

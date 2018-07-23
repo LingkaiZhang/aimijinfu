@@ -125,7 +125,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/small_margin"
-                        android:layout_marginTop="@dimen/margin_eight"
                         android:orientation="horizontal">
 
                         <TextView
@@ -149,7 +148,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/margin_eight"
                         android:layout_marginTop="6dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:visibility="gone">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -232,7 +232,8 @@
                             android:layout_height="wrap_content"
                             android:text="元"
                             android:textColor="@color/theme_color"
-                            android:textSize="@dimen/normal_text"/>
+                            android:textSize="@dimen/normal_text"
+                            android:visibility="gone"/>
                     </LinearLayout>
 
                     <TextView
@@ -296,7 +297,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/withdraw_get_money"
                             android:textColor="@color/text_black"
-                            android:textSize="@dimen/small_text"/>
+                            android:textSize="@dimen/normal_text"/>
 
                         <TextView
                             android:id="@+id/tvGetMoney"
@@ -304,7 +305,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/zero_zero_zero"
                             android:textColor="@color/theme_color"
-                            android:textSize="@dimen/small_text"/>
+                            android:textSize="@dimen/small_text"
+                            />
 
                     </LinearLayout>
                 </RelativeLayout>

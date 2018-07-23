@@ -82,7 +82,7 @@ public class HKRegisterWebActivity extends BaseActivity {
 
            /* 充值成功:
 
-            继续充值: 1
+            继续充值: 9
             立即出借: 2
 
 
@@ -104,7 +104,7 @@ public class HKRegisterWebActivity extends BaseActivity {
 
 
             绑卡开户:
-            操作成功 : 9
+            操作成功 : 1
             操作失败: 10*/
             @JavascriptInterface
             public void HtmlcallJava2(String param) {
@@ -122,7 +122,7 @@ public class HKRegisterWebActivity extends BaseActivity {
                 eventMessage.setType(EventMessage.REFRESH_MINE);
                 EventBus.getDefault().post(eventMessage);
 
-                if (param.equals("1")) {
+                if (param.equals("9")) {
                     startActivity(new Intent(context,PayInputMoneyActivity.class));
                 } else if (param.equals("2")) {
                     Intent intent2 = new Intent(context, HomePageActivity.class);
@@ -146,7 +146,7 @@ public class HKRegisterWebActivity extends BaseActivity {
                     startActivity(new Intent(context,WithdrawActivity.class));
                 } else if (param.equals("10")){
                     AppUtils.showToast(context, "操作失败，请重试");
-                } else if (param.equals("9")) {
+                } else if (param.equals("1")) {
                     AppUtils.showToast(context, "操作成功");
                 }
                 HKRegisterWebActivity.this.finish();

@@ -118,7 +118,6 @@ public class OrderFormActivity extends BaseActivity {
         switch (v.getId()) {
             //电子合同
             case R.id.viewer_contract:
-                //TODO
 //                 Toast.makeText(context,orderFormEntity.getEle_contact_link(),Toast.LENGTH_SHORT).show();
                 Intent intentPDF = new Intent(context, PDFActivity.class);
                 intentPDF.putExtra("pdfURL",orderFormEntity.getEle_contact_link());

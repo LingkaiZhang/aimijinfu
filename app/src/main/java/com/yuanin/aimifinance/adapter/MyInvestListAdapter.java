@@ -17,6 +17,7 @@ import com.yuanin.aimifinance.activity.FinanceProductDetailActivity;
 import com.yuanin.aimifinance.activity.OrderFormActivity;
 import com.yuanin.aimifinance.entity.MyInvestEntity;
 import com.yuanin.aimifinance.utils.AppUtils;
+import com.yuanin.aimifinance.utils.FmtMicrometer;
 import com.yuanin.aimifinance.utils.GeneralAdapter;
 import com.yuanin.aimifinance.utils.GeneralViewHolder;
 import com.yuanin.aimifinance.utils.StaticMembers;
@@ -48,8 +49,8 @@ public class MyInvestListAdapter extends GeneralAdapter<MyInvestEntity> {
         LinearLayout llLeave = holder.getView(R.id.llLeave);
         TextView tvStatus = holder.getView(R.id.tvStatus);
         holder.setTextForTextView(R.id.tvName, data.getProject_name());
-        holder.setTextForTextView(R.id.tvInvestMoney, data.getAmount());
-        holder.setTextForTextView(R.id.tvEarn, data.getInterest() + "");
+        holder.setTextForTextView(R.id.tvInvestMoney, FmtMicrometer.format6(data.getAmount()));
+        holder.setTextForTextView(R.id.tvEarn, FmtMicrometer.format6(data.getInterest()));
         holder.setTextForTextView(R.id.tvStartDate, data.getCreated());
         holder.setTextForTextView(R.id.tvEndDate, data.getExpire_time());
         TextView tvEndDateTitle = holder.getView(R.id.tvEndDateTitle);

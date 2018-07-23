@@ -167,11 +167,19 @@ public class PersonalSettingsActivity extends BaseActivity {
                 break;
             //风险承受能力评估
             case R.id.rlRiskToleranceAssessment:
-                Intent intent4 = new Intent(context, WebViewHtmlActivity.class);
-                //intent4.putExtra(ParamsKeys.TYPE, ParamsValues.QUESTION_NAIRE);
-                intent4.putExtra(ParamsKeys.TYPE, ParamsValues.LOAN_RISK_STATEMENT);
-                intent4.putExtra(ParamsKeys.USER_ID,StaticMembers.USER_ID);
-                startActivity(intent4);
+                if (StaticMembers.QUESTION_NAIRE_STATUS == 0) {
+                    Intent intent4 = new Intent(context, WebViewHtmlActivity.class);
+                    //intent4.putExtra(ParamsKeys.TYPE, ParamsValues.QUESTION_NAIRE);
+                    intent4.putExtra(ParamsKeys.TYPE, ParamsValues.LOAN_RISK_STATEMENT);
+                    intent4.putExtra(ParamsKeys.USER_ID,StaticMembers.USER_ID);
+                    startActivity(intent4);
+                } else {
+                    Intent intent4 = new Intent(context, WebViewActivity.class);
+                    intent4.putExtra(ParamsKeys.TYPE, ParamsValues.QUESTION_NAIRE);
+                    intent4.putExtra(ParamsKeys.USER_ID, StaticMembers.USER_ID);
+                    startActivity(intent4);
+                }
+
                 break;
             //关于爱米
             case R.id.llAboutWe:

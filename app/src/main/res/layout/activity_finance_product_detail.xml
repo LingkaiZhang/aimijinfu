@@ -61,7 +61,6 @@
                                     android:id="@+id/tvTitle"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/margin_eight"
                                     android:gravity="center_vertical"
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/normal_text"
@@ -104,6 +103,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="@string/buy_regular_rate"
                                     android:textColor="@color/white"
+                                    android:layout_marginTop="@dimen/margin_five"
                                     android:textSize="@dimen/thirteen_text"/>
 
 

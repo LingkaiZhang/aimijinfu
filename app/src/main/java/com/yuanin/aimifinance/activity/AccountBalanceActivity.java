@@ -19,6 +19,7 @@ import com.yuanin.aimifinance.entity.ReturnResultEntity;
 import com.yuanin.aimifinance.entity.UserBalanceEntity;
 import com.yuanin.aimifinance.inter.IHttpRequestCallBack;
 import com.yuanin.aimifinance.utils.AppUtils;
+import com.yuanin.aimifinance.utils.FmtMicrometer;
 import com.yuanin.aimifinance.utils.NetUtils;
 import com.yuanin.aimifinance.utils.ParamsKeys;
 import com.yuanin.aimifinance.utils.ParamsValues;
@@ -157,10 +158,10 @@ public class AccountBalanceActivity extends BaseActivity {
     }
 
     private void initViews(UserBalanceEntity entity) {
-        tvBalance.setText(String.valueOf(entity.getBalance()));
-        tvWithdrawing.setText(String.valueOf(entity.getWithdraw_amount()));
-        tvPayTotal.setText(String.valueOf(entity.getAll_recharge_amount()));
-        tvIceBalance.setText(String.valueOf(entity.getAppoint()));
-        tvWithdrawTotal.setText(String.valueOf(entity.getAll_withdraw_amount()));
+        tvBalance.setText(FmtMicrometer.format5(entity.getBalance()));
+        tvWithdrawing.setText(FmtMicrometer.format5(entity.getWithdraw_amount()));
+        tvPayTotal.setText(FmtMicrometer.format5(entity.getAll_recharge_amount()));
+        tvIceBalance.setText(FmtMicrometer.format5(entity.getAppoint()));
+        tvWithdrawTotal.setText(FmtMicrometer.format5(entity.getAll_withdraw_amount()));
     }
 }

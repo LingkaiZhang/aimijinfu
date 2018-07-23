@@ -1,5 +1,6 @@
 package com.yuanin.aimifinance.utils;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 
@@ -72,6 +73,22 @@ public class FmtMicrometer {
 
 	}
 
-	
+	/**
+	 * 字符串保留两位小数
+	 * */
 
+	public static String format5(double value) {
+
+		return String.format("%.2f", value).toString();
+	}
+
+	/**
+	 * 字符串保留两位小数
+	 * */
+
+	public static String format6(String num) {
+		DecimalFormat format = new DecimalFormat("0.00");
+		String a = format.format(new BigDecimal( num));
+		return a ;
+	}
 }

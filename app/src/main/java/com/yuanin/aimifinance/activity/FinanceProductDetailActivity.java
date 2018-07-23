@@ -396,7 +396,8 @@ public class FinanceProductDetailActivity extends BaseFragmentActivity implement
         }
         double earn = AppUtils.calcInterest(10000.00, Double.parseDouble(productDetailEntity.getAnnual()), Integer.parseInt(productDetailEntity.getTerm()), productDetailEntity.getUnit(), repay_method);
         tvEarn.setText(earn + "");
-        tvTitle.setText(productDetailEntity.getProject_name());
+       // tvTitle.setText(productDetailEntity.getProject_name());
+        tvTitle.setText("");
         tvTotalMoney.setText(productDetailEntity.getAmount());
  //       tvRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(productDetailEntity.getAnnual())));
         tvTime.setText(productDetailEntity.getTerm());
