@@ -29,8 +29,9 @@
                 android:id="@+id/rlSafe"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/normal_height"
-                android:layout_marginTop="@dimen/small_margin"
-                android:background="@drawable/selector_gray_click">
+                android:layout_marginTop="@dimen/margin_eight"
+                android:background="@drawable/selector_gray_click"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/ivSafe"
@@ -72,7 +73,8 @@
                 android:id="@+id/rlHelp"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/normal_height"
-                android:background="@drawable/selector_gray_click">
+                android:background="@drawable/selector_gray_click"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/ivHelp"
@@ -109,7 +111,7 @@
                 android:id="@+id/rlServe"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/normal_height"
-                android:layout_marginTop="@dimen/margin_twelve2"
+                android:layout_marginTop="@dimen/margin_eight"
                 android:background="@drawable/selector_gray_click">
 
                 <ImageView
@@ -322,7 +324,7 @@
                 android:id="@+id/rlYijian"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/normal_height"
-                android:layout_marginTop="@dimen/margin_twelve2"
+                android:layout_marginTop="@dimen/margin_eight"
                 android:background="@drawable/selector_gray_click">
 
                 <ImageView
@@ -360,7 +362,7 @@
                 android:id="@+id/rlVersion"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/normal_height"
-                android:layout_marginTop="@dimen/margin_twelve2"
+                android:layout_marginTop="@dimen/margin_eight"
                 android:background="@drawable/selector_gray_click">
 
                 <ImageView

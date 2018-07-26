@@ -28,6 +28,7 @@ import com.yuanin.aimifinance.entity.EventMessage;
 import com.yuanin.aimifinance.entity.LoginEntity;
 import com.yuanin.aimifinance.entity.ReturnResultEntity;
 import com.yuanin.aimifinance.inter.IHttpRequestCallBack;
+import com.yuanin.aimifinance.utils.AppManager;
 import com.yuanin.aimifinance.utils.AppUtils;
 import com.yuanin.aimifinance.utils.NetUtils;
 import com.yuanin.aimifinance.utils.ParamsKeys;
@@ -111,7 +112,7 @@ public class LoginOneActivity extends BaseActivity {
                 }
             }
         });
-        //输入框获取焦点监听
+       /* //输入框获取焦点监听
         etLoginPassword.setOnFocusChangeListener(new android.view.View.OnFocusChangeListener() {
 
             @Override
@@ -120,7 +121,7 @@ public class LoginOneActivity extends BaseActivity {
                 if (hasFocus) {
 
                     // 获得焦点
-                    ll_password.setBackground(getResources().getDrawable(R.drawable.login_edittext_bg_gray));
+                    ll_password.setBackground(getResources().getDrawable(R.drawable.login_edittext_bg_red));
 
                 } else {
 
@@ -130,7 +131,7 @@ public class LoginOneActivity extends BaseActivity {
 
             }
 
-        });
+        });*/
         etLoginPassword.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -222,6 +223,7 @@ public class LoginOneActivity extends BaseActivity {
                                 startActivity(intent);
                             }
                             LoginOneActivity.this.finish();
+                            AppManager.getAppManager().finishActivity(LoginRegisterActivity.class);
                         } else {
                             isClear = true;
                             AppUtils.openKeyboard(etLoginPassword);

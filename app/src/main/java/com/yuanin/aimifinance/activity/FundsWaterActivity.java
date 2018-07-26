@@ -321,8 +321,10 @@ public class FundsWaterActivity extends BaseListActivity {
                 String typeStr = String.valueOf(mTypePopList.get(position));
                 if (position == 0) {
                     tvType.setText("类型");
+                    tvType.setTextColor(getResources().getColor(R.color.text_black));
                 } else {
                     tvType.setText(typeStr);
+                    tvType.setTextColor(getResources().getColor(R.color.theme_color));
                 }
                 if (typePop != null && typePop.isShowing()) {
                     typePop.dismiss();
@@ -349,8 +351,10 @@ public class FundsWaterActivity extends BaseListActivity {
                 String timeStr = String.valueOf(mTimePopList.get(position));
                 if (position == 0) {
                     tvTime.setText(getResources().getString(R.string.add_up_earnings_time));
+                    tvTime.setTextColor(getResources().getColor(R.color.text_black));
                 } else {
                     tvTime.setText(timeStr);
+                    tvTime.setTextColor(getResources().getColor(R.color.theme_color));
                 }
                 if (timePop != null && timePop.isShowing()) {
                     timePop.dismiss();
@@ -378,8 +382,10 @@ public class FundsWaterActivity extends BaseListActivity {
                 String statusStr = String.valueOf(mStatusPopList.get(position));
                 if (position == 0) {
                     tvStatus.setText(getResources().getString(R.string.funds_water_status));
+                    tvStatus.setTextColor(getResources().getColor(R.color.text_black));
                 } else {
                     tvStatus.setText(statusStr);
+                    tvStatus.setTextColor(getResources().getColor(R.color.theme_color));
                 }
                 if (statusPop != null && statusPop.isShowing()) {
                     statusPop.dismiss();

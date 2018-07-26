@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.entity.InvestRecordEntity;
+import com.yuanin.aimifinance.utils.FmtMicrometer;
 import com.yuanin.aimifinance.utils.GeneralAdapter;
 import com.yuanin.aimifinance.utils.GeneralViewHolder;
 
@@ -24,7 +25,7 @@ public class InvestRecordListAdapter extends GeneralAdapter<InvestRecordEntity> 
     @Override
     public void convert(GeneralViewHolder holder, InvestRecordEntity data) {
         holder.setTextForTextView(R.id.tvInvestAccount, data.getMobile());
-        holder.setTextForTextView(R.id.tvInvestMoney, data.getAmount());
+        holder.setTextForTextView(R.id.tvInvestMoney, FmtMicrometer.format6(data.getAmount()));
         holder.setTextForTextView(R.id.tvInvestTime, data.getCreated());
     }
 }

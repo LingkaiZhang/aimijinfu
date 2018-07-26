@@ -26,7 +26,7 @@
         android:paddingBottom="@dimen/margin_eight"
         android:textSize="@dimen/normal_text"
         android:textColor="@color/white"
-        android:background="@color/theme_color"
+        android:background="#dfdfdf"
         android:visibility="gone"
         />
 

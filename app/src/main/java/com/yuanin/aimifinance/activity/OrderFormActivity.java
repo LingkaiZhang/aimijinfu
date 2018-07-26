@@ -21,6 +21,7 @@ import com.yuanin.aimifinance.entity.OrderFormEntity;
 import com.yuanin.aimifinance.entity.ReturnResultEntity;
 import com.yuanin.aimifinance.inter.IHttpRequestCallBack;
 import com.yuanin.aimifinance.utils.AppUtils;
+import com.yuanin.aimifinance.utils.FmtMicrometer;
 import com.yuanin.aimifinance.utils.NetUtils;
 import com.yuanin.aimifinance.utils.ParamsKeys;
 import com.yuanin.aimifinance.utils.ParamsValues;
@@ -97,6 +98,8 @@ public class OrderFormActivity extends BaseActivity {
     private RelativeLayout rlNoAward;
     @ViewInject(R.id.rlFinishAward)
     private RelativeLayout rlFinishAward;
+    @ViewInject(R.id.imageView)
+    private ImageView imageView;
 
 
     private String entityID;
@@ -221,14 +224,17 @@ public class OrderFormActivity extends BaseActivity {
             case 2:
                 tvStatus.setText("募集中");
                 tvStatus.setTextColor(getResources().getColor(R.color.jin_xing));
+                imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.yellow_print));
                 break;
             case 3:
                 tvStatus.setText("已满标");
                 tvStatus.setTextColor(getResources().getColor(R.color.man_biao));
+                imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.blue_print));
                 break;
             case 4:
                 tvStatus.setText("已流标");
                 tvStatus.setTextColor(getResources().getColor(R.color.liu_biao));
+                imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.gray_print));
                 break;
             case 7:
                 //TODO  提前结清
@@ -236,13 +242,16 @@ public class OrderFormActivity extends BaseActivity {
                     if (orderFormEntity.getIs_prerepayment().equals("1")) {
                         tvStatus.setText("提前结清");
                         tvStatus.setTextColor(getResources().getColor(R.color.prepayment));
+                        imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.prepayment_print));
                     } else {
                         tvStatus.setText("已还款");
                         tvStatus.setTextColor(getResources().getColor(R.color.huan_kuan));
+                        imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.red_print));
                     }
                 } else {
                     tvStatus.setText("已还款");
                     tvStatus.setTextColor(getResources().getColor(R.color.huan_kuan));
+                    imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.huankuan_print));
                 }
 
                 break;
@@ -251,21 +260,22 @@ public class OrderFormActivity extends BaseActivity {
             case 8:
                 tvStatus.setText("还款中");
                 tvStatus.setTextColor(getResources().getColor(R.color.jin_xing));
+                imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.yellow_print));
                 break;
         }
         tvName.setText(orderFormEntity.getProject_name());
         tvMoney.setText(orderFormEntity.getAmount() + "元");
         tvRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(orderFormEntity.getAnnual_new())) + "%");
-        tvEarn.setText(String.valueOf(orderFormEntity.getInterest_total()) + "元");
+        tvEarn.setText(FmtMicrometer.format5(orderFormEntity.getInterest_total()) + "元");
         tvTime.setText(orderFormEntity.getTerm());
         tvType.setText(orderFormEntity.getRepay_method());
         tvInvestTime.setText(orderFormEntity.getInvestdate());
         tvEarnTime.setText(orderFormEntity.getInterestdate());
         tvEndTime.setText(orderFormEntity.getExpire_time());
-        tvNoFinishMoney.setText(String.valueOf(orderFormEntity.getCapital_wait()) + "元");
-        tvNoFinishEarn.setText(String.valueOf(orderFormEntity.getInterest_wait()) + "元");
-        tvFinishMoney.setText(String.valueOf(orderFormEntity.getCapital_yes()) + "元");
-        tvFinishEarn.setText(String.valueOf(orderFormEntity.getInterest_yes()) + "元");
+        tvNoFinishMoney.setText(FmtMicrometer.format5(orderFormEntity.getCapital_wait()) + "元");
+        tvNoFinishEarn.setText(FmtMicrometer.format5(orderFormEntity.getInterest_wait()) + "元");
+        tvFinishMoney.setText(FmtMicrometer.format5(orderFormEntity.getCapital_yes()) + "元");
+        tvFinishEarn.setText(FmtMicrometer.format5(orderFormEntity.getInterest_yes()) + "元");
         if (orderFormEntity.getIs_red() == 1) {
             imgRedPackets.setVisibility(View.VISIBLE);
             imgLogo.setVisibility(View.VISIBLE);
@@ -284,8 +294,8 @@ public class OrderFormActivity extends BaseActivity {
             rlNoAward.setVisibility(View.GONE);
             rlFinishAward.setVisibility(View.GONE);
         } else {
-            tvNoAward.setText(String.valueOf(orderFormEntity.getWait_interest()) + "元");
-            tvFinishAward.setText(String.valueOf(orderFormEntity.getYes_interest()) + "元");
+            tvNoAward.setText(FmtMicrometer.format5(orderFormEntity.getWait_interest()) + "元");
+            tvFinishAward.setText(FmtMicrometer.format5(orderFormEntity.getYes_interest()) + "元");
         }
     }
 

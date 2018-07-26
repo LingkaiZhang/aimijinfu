@@ -75,9 +75,17 @@ public class MyInvestListAdapter extends GeneralAdapter<MyInvestEntity> {
             case 2:
                 tvEndDateTitle.setText("截止时间:");
                 llLeave.setVisibility(View.GONE);
-                holder.setTextForTextView(R.id.tvStatus, "募集中");
-                tvStatus.setTextColor(context.getResources().getColor(R.color.jin_xing));
-                ivPrintMark.setImageDrawable(context.getResources().getDrawable(R.drawable.yellow_print));
+
+                if (data.getStatus() == 3) {
+                    holder.setTextForTextView(R.id.tvStatus, "已满标");
+                    tvStatus.setTextColor(context.getResources().getColor(R.color.man_biao));
+                    ivPrintMark.setImageDrawable(context.getResources().getDrawable(R.drawable.blue_print));
+                } else {
+                    holder.setTextForTextView(R.id.tvStatus, "募集中");
+                    tvStatus.setTextColor(context.getResources().getColor(R.color.jin_xing));
+                    ivPrintMark.setImageDrawable(context.getResources().getDrawable(R.drawable.yellow_print));
+                }
+
                 break;
             case 3:
                 tvEndDateTitle.setText("流标时间:");
@@ -93,11 +101,11 @@ public class MyInvestListAdapter extends GeneralAdapter<MyInvestEntity> {
                 if (data.getStatus() == 9) {
                     holder.setTextForTextView(R.id.tvStatus, "提前结清");
                     tvStatus.setTextColor(context.getResources().getColor(R.color.prepayment));
-                    ivPrintMark.setImageDrawable(context.getResources().getDrawable(R.drawable.yellow_print));
+                    ivPrintMark.setImageDrawable(context.getResources().getDrawable(R.drawable.prepayment_print));
                 } else {
                     holder.setTextForTextView(R.id.tvStatus, "已还款");
                     tvStatus.setTextColor(context.getResources().getColor(R.color.huan_kuan));
-                    ivPrintMark.setImageDrawable(context.getResources().getDrawable(R.drawable.red_print));
+                    ivPrintMark.setImageDrawable(context.getResources().getDrawable(R.drawable.huankuan_print));
                 }
                 break;
         }

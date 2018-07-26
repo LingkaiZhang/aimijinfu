@@ -85,9 +85,14 @@ public class RedPacketsFragment extends BaseFragment implements XListView.IXList
         return view;
     }
 
-    @Event(value = {R.id.btnRefresh, R.id.tvMore})
+    @Event(value = {R.id.btnRefresh, R.id.tvMore, R.id.btnCheckNetwork})
     private void onViewClicked(View v) {
         switch (v.getId()) {
+            //检查网络
+            case R.id.btnCheckNetwork:
+                AppUtils.checkNetwork(getActivity());
+                break;
+
             //刷新
             case R.id.btnRefresh:
                 if (mList != null) {

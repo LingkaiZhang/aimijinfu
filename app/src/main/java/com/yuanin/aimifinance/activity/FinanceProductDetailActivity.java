@@ -40,6 +40,7 @@ import com.yuanin.aimifinance.inter.INotifyCallBack;
 import com.yuanin.aimifinance.inter.ISlideCallback;
 import com.yuanin.aimifinance.service.ProductTimerCount;
 import com.yuanin.aimifinance.utils.AppUtils;
+import com.yuanin.aimifinance.utils.FmtMicrometer;
 import com.yuanin.aimifinance.utils.NetUtils;
 import com.yuanin.aimifinance.utils.ParamsKeys;
 import com.yuanin.aimifinance.utils.ParamsValues;
@@ -216,7 +217,8 @@ public class FinanceProductDetailActivity extends BaseFragmentActivity implement
 
     // 点击事件
     @Event(value = {R.id.tvProductDetail,
-            R.id.tvRecord, R.id.tvQuestion, R.id.tvPlan, R.id.tvBuy, R.id.btnRefresh, R.id.tvModel_loan_contract, R.id.tvInstruction, R.id.iv_safety_level })
+            R.id.tvRecord, R.id.tvQuestion, R.id.tvPlan, R.id.tvBuy, R.id.btnRefresh, R.id.tvModel_loan_contract,
+            R.id.tvInstruction, R.id.iv_safety_level, R.id.btnCheckNetwork })
     private void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_safety_level:
@@ -271,6 +273,9 @@ public class FinanceProductDetailActivity extends BaseFragmentActivity implement
                 break;
             case R.id.btnRefresh:
                 requestData();
+                break;
+            case R.id.btnCheckNetwork:
+                AppUtils.checkNetwork(context);
                 break;
             default:
                 break;
@@ -398,11 +403,11 @@ public class FinanceProductDetailActivity extends BaseFragmentActivity implement
         tvEarn.setText(earn + "");
        // tvTitle.setText(productDetailEntity.getProject_name());
         tvTitle.setText("");
-        tvTotalMoney.setText(productDetailEntity.getAmount());
+        tvTotalMoney.setText(FmtMicrometer.format6(productDetailEntity.getAmount()));
  //       tvRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(productDetailEntity.getAnnual())));
         tvTime.setText(productDetailEntity.getTerm());
         tvUnit.setText("期限(" + productDetailEntity.getUnit() + ")");
-        tvLeaveMoney.setText(productDetailEntity.getBuyamount());
+        tvLeaveMoney.setText(FmtMicrometer.format6(productDetailEntity.getBuyamount()));
         if (productDetailEntity.getIsbuy() == 1) {
             tvBuy.setBackgroundResource(R.drawable.selector_theme_button);
             tvBuy.setEnabled(true);
@@ -434,7 +439,7 @@ public class FinanceProductDetailActivity extends BaseFragmentActivity implement
             interestRates.setVisibility(View.GONE);
         } else {
             if (Double.valueOf(productDetailEntity.getExtannual()) > 0 && Double.valueOf(productDetailEntity.getOrgannual()) > 0 ) {
-                interestRates.setText("+" + productDetailEntity.getExtannual() + "%");
+                interestRates.setText("+" + FmtMicrometer.format6(productDetailEntity.getExtannual()) + "%");
                 tvRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(productDetailEntity.getOrgannual())));
                 interestRates.setVisibility(View.VISIBLE);
             } else {

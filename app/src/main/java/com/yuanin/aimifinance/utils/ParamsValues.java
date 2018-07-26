@@ -21,8 +21,8 @@ public class ParamsValues {
     //key
     public final static String VERSION_CODE = "6.0.0";
     //测试
-    public final static String NET_URL = "http://javadjshcsp2p.yuanin.com/";
-    public final static String NET_URL_WEIXIN = "http://javadjshwechat.yuanin.com/";
+    public final static String NET_URL = "https://prop2papi.aimilicai.com/";
+    public final static String NET_URL_WEIXIN = "https://prowechat.aimilicai.com/";
     public final static String TEL = "400-666-2082";
     /**
      * 网络请求模块参数

@@ -59,6 +59,27 @@ public class LoginRegisterActivity extends BaseActivity {
     }
 
     private void initView() {
+        //输入框获取焦点监听
+       /* etPhone.setOnFocusChangeListener(new android.view.View.OnFocusChangeListener() {
+
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+
+                if (hasFocus) {
+
+                    // 获得焦点
+                    etPhone.setBackground(getResources().getDrawable(R.drawable.login_edittext_bg_red));
+
+                } else {
+
+                    // 失去焦点
+                    etPhone.setBackground(getResources().getDrawable(R.drawable.login_edittext_bg_gray));
+                }
+
+            }
+
+        });*/
+
         String mobile = AppUtils.getFromSharedPreferences(this, ParamsKeys.LOGIN_MBOILE_FILE, ParamsKeys.LOGIN_MBOILE);
         if (mobile.length() > 0){
             etPhone.setText(mobile);
@@ -162,7 +183,7 @@ public class LoginRegisterActivity extends BaseActivity {
                            Intent intent2 = new Intent(context, LoginOneActivity.class);
                            intent2.putExtra("phone", etPhone.getText().toString().trim());
                            startActivity(intent2);
-                           LoginRegisterActivity.this.finish();
+                           //LoginRegisterActivity.this.finish();
                        } else {
                            AppUtils.showToast(context,entity.getRemark());
                        }

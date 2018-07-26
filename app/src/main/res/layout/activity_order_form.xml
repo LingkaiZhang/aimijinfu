@@ -43,6 +43,15 @@
                         android:textColor="@color/text_black"
                         android:textSize="@dimen/big_text"/>
 
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/yellow_print"
+                        android:layout_toLeftOf="@+id/tvStatus"
+                        android:layout_marginRight="@dimen/margin_four"/>
+
                     <TextView
                         android:id="@+id/tvStatus"
                         android:layout_width="wrap_content"
@@ -424,7 +433,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:textColor="@color/theme_color"
+                        android:textColor="@color/text_black"
                         android:textSize="@dimen/normal_text"/>
 
                 </RelativeLayout>
@@ -485,7 +494,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:textColor="@color/theme_color"
+                        android:textColor="@color/text_black"
                         android:textSize="@dimen/normal_text"/>
 
                 </RelativeLayout>
@@ -549,7 +558,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:text="0"
-                        android:textColor="@color/theme_color"
+                        android:textColor="@color/text_black"
                         android:textSize="@dimen/normal_text"/>
 
                 </RelativeLayout>

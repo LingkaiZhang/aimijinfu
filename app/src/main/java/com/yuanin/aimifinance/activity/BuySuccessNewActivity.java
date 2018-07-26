@@ -55,12 +55,12 @@ public class BuySuccessNewActivity extends BaseActivity {
     private void onViewClicked(View v){
         switch (v.getId()) {
             case R.id.bannerView:
-               /* Intent intent = new Intent(this, HrefActivity.class);
+                Intent intent = new Intent(this, HrefActivity.class);
                 intent.putExtra("url", buySuccessEntity.getBanner_url());
-                startActivity(intent);*/
-                Intent intent3 = new Intent(this, WebViewActivity.class);
+                startActivity(intent);
+                /*Intent intent3 = new Intent(this, WebViewActivity.class);
                 intent3.putExtra(ParamsKeys.TYPE, ParamsValues.RULE);
-                startActivity(intent3);
+                startActivity(intent3);*/
                 break;
             case R.id.btn_check_order:
                 Intent intent1 = new Intent(this, OrderFormActivity.class);

@@ -45,6 +45,7 @@ import com.yuanin.aimifinance.inter.IHttpRequestCallBack;
 import com.yuanin.aimifinance.inter.IScrollCallBack;
 import com.yuanin.aimifinance.listener.OnItemClickListener;
 import com.yuanin.aimifinance.utils.AppUtils;
+import com.yuanin.aimifinance.utils.FmtMicrometer;
 import com.yuanin.aimifinance.utils.ImageHolderView;
 import com.yuanin.aimifinance.utils.NetUtils;
 import com.yuanin.aimifinance.utils.ParamsKeys;
@@ -582,7 +583,7 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
     private void setNewData(IndexProductEntity data) {
         indexProductEntity = data;
 //        tvNewRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(data.getAnnual())));
-        tvNewAmount.setText(indexProductEntity.getAmount() + "元");
+        tvNewAmount.setText(FmtMicrometer.format6(indexProductEntity.getAmount()) + "元");
         tvNewTime.setText(indexProductEntity.getTerm() + indexProductEntity.getUnit());
         if (indexProductEntity.getIsbuy() == 1) {
             btnNewInvest.setBackgroundResource(R.drawable.selector_index_new_button);

@@ -14,6 +14,7 @@ import com.yuanin.aimifinance.activity.LoginActivity;
 import com.yuanin.aimifinance.activity.LoginRegisterActivity;
 import com.yuanin.aimifinance.entity.IndexProductEntity;
 import com.yuanin.aimifinance.utils.AppUtils;
+import com.yuanin.aimifinance.utils.FmtMicrometer;
 import com.yuanin.aimifinance.utils.GeneralAdapter;
 import com.yuanin.aimifinance.utils.GeneralViewHolder;
 import com.yuanin.aimifinance.utils.StaticMembers;
@@ -44,7 +45,7 @@ public class IndexProductListAdapter extends GeneralAdapter<IndexProductEntity> 
         holder.setTextForTextView(R.id.tvTime, data.getTerm());
         holder.setTextForTextView(R.id.tvUnit, data.getUnit());
         holder.setTextForTextView(R.id.tvName, data.getTitle());
-        holder.setTextForTextView(R.id.tvLeaveMoney, "剩余" + data.getAmount() + "元");
+        holder.setTextForTextView(R.id.tvLeaveMoney, "剩余" + FmtMicrometer.format6(data.getAmount()) + "元");
         holder.getConvertView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,9 +67,9 @@ public class IndexProductListAdapter extends GeneralAdapter<IndexProductEntity> 
         if (data.getTypename().contains("车")) {
             ivTypeLogo.setImageDrawable(new BitmapDrawable(context.getResources(), AppUtils.getBitmap(context, R.mipmap.car_loan)) );
         } else if (data.getTypename().contains("经")) {
-            ivTypeLogo.setImageDrawable(new BitmapDrawable(context.getResources(), AppUtils.getBitmap(context, R.mipmap.manage_loan)) );
+            ivTypeLogo.setImageDrawable(new BitmapDrawable(context.getResources(), AppUtils.getBitmap(context, R.mipmap.manage_loan_blue)) );
         } else if (data.getTypename().contains("信")) {
-            ivTypeLogo.setImageDrawable(new BitmapDrawable(context.getResources(), AppUtils.getBitmap(context, R.mipmap.credit_loan)) );
+            ivTypeLogo.setImageDrawable(new BitmapDrawable(context.getResources(), AppUtils.getBitmap(context, R.mipmap.credit_loan_yellow)) );
         }
 
         //TODO   显示还款方式
@@ -87,18 +88,18 @@ public class IndexProductListAdapter extends GeneralAdapter<IndexProductEntity> 
         TextView interestRatesLogo = holder.getView(R.id.interestRatesLogo);
 
         if (data.getOrgannual() == null || data.getExtannual() == null) {
-            holder.setTextForTextView(R.id.tvRate, AppUtils.formatDouble("#.0", Double.valueOf(data.getAnnual())));
+            holder.setTextForTextView(R.id.tvRate, AppUtils.formatDouble("#.00", Double.valueOf(data.getAnnual())));
             interestRates.setVisibility(View.GONE);
             interestRatesLogo.setVisibility(View.GONE);
         } else {
 
             if (Double.valueOf(data.getExtannual()) > 0 && Double.valueOf(data.getOrgannual()) > 0) {
-                interestRates.setText("+" + String.format("%.1f", Double.valueOf(data.getExtannual())).toString() + "%");
-                holder.setTextForTextView(R.id.tvRate, AppUtils.formatDouble("#.0", Double.valueOf(data.getOrgannual())));
+                interestRates.setText("+" + String.format("%.2f", Double.valueOf(data.getExtannual())).toString() + "%");
+                holder.setTextForTextView(R.id.tvRate, AppUtils.formatDouble("#.00", Double.valueOf(data.getOrgannual())));
                 interestRates.setVisibility(View.VISIBLE);
                 interestRatesLogo.setVisibility(View.GONE);
             } else {
-                holder.setTextForTextView(R.id.tvRate, AppUtils.formatDouble("#.0", Double.valueOf(data.getAnnual())));
+                holder.setTextForTextView(R.id.tvRate, AppUtils.formatDouble("#.00", Double.valueOf(data.getAnnual())));
                 interestRates.setVisibility(View.GONE);
                 interestRatesLogo.setVisibility(View.GONE);
             }

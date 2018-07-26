@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.entity.FundsWaterEntity;
+import com.yuanin.aimifinance.utils.FmtMicrometer;
 import com.yuanin.aimifinance.utils.GeneralAdapter;
 import com.yuanin.aimifinance.utils.GeneralViewHolder;
 
@@ -50,7 +51,7 @@ public class ExchangeWaterListAdapter extends GeneralAdapter<FundsWaterEntity> {
             } else if (entity.getStatus().equals(mContext.getResources().getString(R.string.funds_water_chuli))) {
                 tvStatus.setTextColor(mContext.getResources().getColor(R.color.man_biao));
             }
-            holder.setTextForTextView(R.id.tvMoney, entity.getMoney() + "元");
+            holder.setTextForTextView(R.id.tvMoney, FmtMicrometer.format6(entity.getMoney()) + "元");
             holder.setTextForTextView(R.id.tvDate, entity.getCreated());
         }
     }

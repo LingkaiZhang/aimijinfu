@@ -64,6 +64,7 @@
         app:fadeDuration="300"
         app:placeholderImage="@mipmap/image_loading"
         app:placeholderImageScaleType="fitCenter"
+        android:visibility="gone"
        />
 
 </LinearLayout>

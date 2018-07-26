@@ -70,7 +70,7 @@ public class GesturePasswordActivity extends BaseActivity {
         where = getIntent().getIntExtra("where", 0);
         setUpViews();
 
-        if(flag.equals(ParamsKeys.GESTURE_FLAG_EDIT)){
+        if(flag.equals(ParamsKeys.GESTURE_FLAG_EDIT )|| flag.equals(ParamsKeys.GESTURE_FLAG_FIRST_EDIT)){
             generalDialog = new GeneralNoTitleDialog(context, false, "设置手势密码可以使你的账户更加安全",
                     "设置", "立即离开", new View.OnClickListener() {
                 @Override

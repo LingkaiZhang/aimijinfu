@@ -181,7 +181,7 @@ public class SetLoginPasswordActivity extends BaseActivity {
             public void onSuccess(Object object) {
                 ReturnResultEntity<?> entity = (ReturnResultEntity<?>) object;
                 if (entity.isSuccess(context)) {
-                    startActivity(new Intent(SetLoginPasswordActivity.this,LoginRegisterActivity.class));
+                    startActivity(new Intent(SetLoginPasswordActivity.this,SetLoginPasswordResultActivity.class));
                     AppManager.getAppManager().finishActivity(LoginOneActivity.class);
                     AppManager.getAppManager().finishActivity(ForgetPasswordActivity.class);
                     AppManager.getAppManager().finishActivity(SetLoginPasswordActivity.class);
@@ -247,13 +247,13 @@ public class SetLoginPasswordActivity extends BaseActivity {
                     EventMessage eventMessage2 = new EventMessage();
                     eventMessage2.setType(EventMessage.UPDATE_INDEX_LOGIN);
                     EventBus.getDefault().post(eventMessage2);
-                    Intent intent = new Intent(context, GesturePasswordEditActivity.class);
+                    Intent intent = new Intent(context, GesturePasswordActivity.class);
                     if (where == "register") {
                         intent.putExtra(ParamsKeys.GESTURE_FLAG, ParamsKeys.GESTURE_FLAG_FIRST_EDIT);
                     }
                     startActivity(intent);
                     SetLoginPasswordActivity.this.finish();
-
+                    AppManager.getAppManager().finishActivity(LoginRegisterActivity.class);
                 }
                 AppUtils.showToast(context, entity.getRemark());
             }

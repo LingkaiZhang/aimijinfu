@@ -1,6 +1,7 @@
 package com.yuanin.aimifinance.adapter;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.TextView;
 
 import com.yuanin.aimifinance.R;
@@ -26,27 +27,32 @@ public class AddUpEarningsListAdapter extends GeneralAdapter<AddUpEarningsEntity
     public void convert(GeneralViewHolder holder, AddUpEarningsEntity data) {
         holder.setTextForTextView(R.id.tvName, data.getProject_name());
         TextView tvStatus = holder.getView(R.id.tvStatus);
+        TextView tvIncomeAmount = holder.getView(R.id.tvIncomeAmount);
         switch (data.getStatus()) {
             case 0:
                 tvStatus.setText("已逾期");
                 tvStatus.setTextColor(context.getResources().getColor(R.color.text_gray));
+                tvIncomeAmount.setText("待收金额:");
                 break;
             case 1:
                 tvStatus.setText("待还款");
                 tvStatus.setTextColor(context.getResources().getColor(R.color.theme_color));
+                tvIncomeAmount.setText("待收金额:");
                 break;
             case 2:
                 tvStatus.setText("即将到期");
                 tvStatus.setTextColor(context.getResources().getColor(R.color.add_up_green));
+                tvIncomeAmount.setText("待收金额:");
                 break;
             case 3:
                 tvStatus.setText("已还款");
                 tvStatus.setTextColor(context.getResources().getColor(R.color.text_gray));
+                tvIncomeAmount.setText("已收金额:");
                 break;
-                //TODO  提前结清
             case 4:
                 tvStatus.setText("提前结清");
                 tvStatus.setTextColor(context.getResources().getColor(R.color.prepayment));
+                tvIncomeAmount.setText("已收金额:");
                 break;
         }
         if (data.getPeriodqty().length() != 0) {
@@ -54,7 +60,7 @@ public class AddUpEarningsListAdapter extends GeneralAdapter<AddUpEarningsEntity
         } else {
             holder.setTextForTextView(R.id.tvTime, "");
         }
-        holder.setTextForTextView(R.id.tvMoney, String.valueOf(data.getInterest()));
+        holder.setTextForTextView(R.id.tvMoney, String.valueOf(data.getInterest()) + "元");
         holder.setTextForTextView(R.id.tvDate, data.getRepay_time() + "到期");
     }
 }

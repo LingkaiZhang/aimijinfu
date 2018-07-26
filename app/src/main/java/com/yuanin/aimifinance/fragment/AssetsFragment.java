@@ -17,6 +17,7 @@ import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.base.BaseFragment;
 import com.yuanin.aimifinance.entity.ProductDetailEntity;
 import com.yuanin.aimifinance.inter.IWebViewListener;
+import com.yuanin.aimifinance.utils.LogUtils;
 import com.yuanin.aimifinance.utils.ParamsValues;
 import com.yuanin.aimifinance.view.ObservableWebView;
 
@@ -89,7 +90,7 @@ public class AssetsFragment extends BaseFragment {
                 }
             });
             wvHref.loadUrl(ParamsValues.NET_URL_WEIXIN + "safetyAuditing.html?myid=" + productDetailEntity.getId());
-            //http://csapi.yuanin.com/html/security_search.php?productid=12128
+            LogUtils.d("lingkai",ParamsValues.NET_URL_WEIXIN + "safetyAuditing.html?myid=" + productDetailEntity.getId());
         }
 
         wvHref.setWebViewListener(new IWebViewListener() {

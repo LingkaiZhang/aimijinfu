@@ -309,8 +309,8 @@
     <string name="total_regular">爱米定期</string>
     <string name="total_little_item">爱米优选</string>
     <string name="total_invest">待收本金(元)</string>
-    <string name="total_already">已收收益(元)</string>
-    <string name="total_wait">待收收益(元)</string>
+    <string name="total_already">已收明细(元)</string>
+    <string name="total_wait">待收明细(元)</string>
     <string name="total_balance">可用余额</string>
 
     <!--账户余额-->

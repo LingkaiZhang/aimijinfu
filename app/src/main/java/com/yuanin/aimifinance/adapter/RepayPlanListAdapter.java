@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.entity.RepayEntity;
+import com.yuanin.aimifinance.utils.FmtMicrometer;
 import com.yuanin.aimifinance.utils.GeneralAdapter;
 import com.yuanin.aimifinance.utils.GeneralViewHolder;
 
@@ -25,10 +26,10 @@ public class RepayPlanListAdapter extends GeneralAdapter<RepayEntity> {
 
     @Override
     public void convert(GeneralViewHolder holder, RepayEntity data) {
-        holder.setTextForTextView(R.id.tvAccount, data.getPaymentprice());
+        holder.setTextForTextView(R.id.tvAccount, FmtMicrometer.format6(data.getPaymentprice()));
         holder.setTextForTextView(R.id.tvDate, data.getPaymentdate());
         holder.setTextForTextView(R.id.tvStatus, data.getStatus());
-        holder.setTextForTextView(R.id.tvCount, data.getPeriodqty());
+        holder.setTextForTextView(R.id.tvCount,data.getPeriodqty());
         TextView tvStatus = holder.getView(R.id.tvStatus);
         tvStatus.setTextColor(Color.parseColor(data.getColor()));
     }

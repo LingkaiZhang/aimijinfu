@@ -36,6 +36,7 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.io.File;
+import java.text.NumberFormat;
 
 import static android.widget.Toast.*;
 
@@ -58,6 +59,7 @@ public class PDFActivity extends BaseActivity {
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private File file;
     private Callback.Cancelable cancelable;
+    private String tvProgress;
 
 
     @Override
@@ -66,9 +68,9 @@ public class PDFActivity extends BaseActivity {
         setContentView(R.layout.activity_pdf);
         x.view().inject(this);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+       /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             initTopBar(getResources().getString(R.string.viewer_ontract), toptitleView, true);
-        } else {
+        } else {*/
             toptitleView.setVisibility(View.GONE);
             toptitleView2.setVisibility(View.VISIBLE);
             initTopBarWithRightText(getResources().getString(R.string.viewer_ontract), toptitleView2, new View.OnClickListener() {
@@ -77,9 +79,7 @@ public class PDFActivity extends BaseActivity {
                     displayOther(file);
                 }
             },"打开方式");
-        }
-
-//        initTopBar(getResources().getString(R.string.viewer_ontract), toptitleView, true);
+      //  }
 
         pdfUrl = getIntent().getStringExtra("pdfURL");
         //获取动态权限
@@ -132,11 +132,15 @@ public class PDFActivity extends BaseActivity {
 
             @Override
             public void onLoading(int total, int current) {
+                NumberFormat numberFormat = NumberFormat.getInstance();
+                numberFormat.setMaximumFractionDigits(0);
+                tvProgress = numberFormat.format((float) current / (float) total * 100) + "%";
+
                 if (mToast != null){
-                    mToast.setText("加载中...");
+                    mToast.setText( "当前进度:" + tvProgress + ",加载中...");
                 }else {
                     mToast = Toast.makeText(getApplicationContext(),
-                            "加载中...", LENGTH_SHORT);
+                            "当前进度:" + tvProgress + ",加载中...", LENGTH_SHORT);
                 }
                 mToast.show();
             }

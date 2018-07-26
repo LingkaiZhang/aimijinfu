@@ -47,8 +47,6 @@
         android:background="@drawable/login_edittext_bg_gray"
         android:layout_marginLeft="@dimen/small_margin"
         android:layout_marginRight="@dimen/small_margin"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
         app:layout_constraintTop_toBottomOf="@+id/tv_phone">
 
         <EditText

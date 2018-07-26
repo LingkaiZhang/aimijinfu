@@ -530,7 +530,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
     //设置我的数据展现
     private void setMineDataShow(ReturnResultEntity<UserAccountEntity> entity) {
         tvTotalMoney.setText(entity.getData().get(0).getAmount());
-        tvEarnMoney.setText(entity.getData().get(0).getInterest());
+        tvEarnMoney.setText(entity.getData().get(0).getInterestAlready());
         tvBalance.setText(entity.getData().get(0).getBalance());
         tvUserName.setText(entity.getData().get(0).getNameTitle());
 

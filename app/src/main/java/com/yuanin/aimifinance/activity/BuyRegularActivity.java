@@ -32,6 +32,7 @@ import com.yuanin.aimifinance.entity.RedPacketsEntity;
 import com.yuanin.aimifinance.entity.ReturnResultEntity;
 import com.yuanin.aimifinance.inter.IHttpRequestCallBack;
 import com.yuanin.aimifinance.utils.AppUtils;
+import com.yuanin.aimifinance.utils.FmtMicrometer;
 import com.yuanin.aimifinance.utils.NetUtils;
 import com.yuanin.aimifinance.utils.ParamsKeys;
 import com.yuanin.aimifinance.utils.ParamsValues;
@@ -237,10 +238,10 @@ public class BuyRegularActivity extends BaseActivity {
         tvTime.setText(buyProductEntity.getTerm());
         tvTimeNew.setText(buyProductEntity.getTerm());
         tvSingle.setText(buyProductEntity.getAnnual());
-        tvLeaveMoneyNew.setText(String.valueOf(buyProductEntity.getAmount()));
+        tvLeaveMoneyNew.setText(FmtMicrometer.format5(buyProductEntity.getAmount()));
         tvUnit.setText(buyProductEntity.getUnit());
-        tvLeaveMoney.setText(String.valueOf(buyProductEntity.getAmount()));
-        tvBalance.setText(String.valueOf(buyProductEntity.getBalance()));
+        tvLeaveMoney.setText(FmtMicrometer.format5(buyProductEntity.getAmount()));
+        tvBalance.setText(FmtMicrometer.format5(buyProductEntity.getBalance()));
         etShare.setHint("请输入" + buyProductEntity.getEachamount() + "元的整数倍");
         if (buyProductEntity.getIs_new() == 1) {
             rlRedPackets.setVisibility(View.GONE);
@@ -292,7 +293,7 @@ public class BuyRegularActivity extends BaseActivity {
                         double earnMoney = AppUtils.multiply(fee, buyProductEntity.getInterest());
                         double trueEarnMoney = AppUtils.divide(earnMoney, 100);
                         tvPayMoney.setText(s);
-                        tvEarnMoney.setText(AppUtils.round(trueEarnMoney, 2) + "");
+                        tvEarnMoney.setText(FmtMicrometer.format5(AppUtils.round(trueEarnMoney, 2)));
                         if (buyProductEntity.getIs_new() != 1 && redPacketsList != null && redPacketsList.size() > 0) {
                             chooseRedpacket(fee);
                         }

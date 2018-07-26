@@ -3,7 +3,7 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/bg"
+              android:background="@color/white"
               android:orientation="vertical"
               tools:context="com.yuanin.aimifinance.activity.PayInputMoneyActivity">
 
@@ -172,16 +172,20 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_eight"
+                android:background="@color/bg"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/normal_height"
-                android:layout_marginTop="@dimen/margin_eight"
                 android:background="@color/white"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/small_margin"
-                android:paddingRight="@dimen/small_margin">
+                android:paddingRight="@dimen/small_margin"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -254,6 +258,10 @@
                     android:textSize="@dimen/normal_text"/>
 
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line"
+                android:background="@color/bg"/>
 
             <Button
                 android:id="@+id/btnPay"

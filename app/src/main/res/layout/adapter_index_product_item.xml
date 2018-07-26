@@ -19,7 +19,7 @@
             android:id="@+id/iv_type_logo"
             android:layout_width="15dp"
             android:layout_height="15dp"
-            android:src="@mipmap/credit_loan"
+            android:src="@mipmap/credit_loan_yellow"
             android:layout_marginLeft="@dimen/small_margin"
             app:layout_constraintTop_toTopOf="@id/tvName"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -60,7 +60,7 @@
             android:id="@+id/interestFirstThenCost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="@dimen/margin_twelve2"
             android:background="@drawable/textview_border_interest_first_then_cost"
             android:text="先息后本"
@@ -79,7 +79,7 @@
             android:textSize="10sp"
             android:layout_marginTop="@dimen/margin_twelve2"
             android:textColor="@color/login_register_blue"
-            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginLeft="20dp"
             android:background="@drawable/textview_border_equality_corpus_and_interest"
             app:layout_constraintTop_toTopOf="@id/topLL"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -103,7 +103,7 @@
         <LinearLayout
             android:layout_width="@dimen/weight"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             android:orientation="vertical">
 
 
@@ -114,16 +114,15 @@
 
                 <TextView
                     android:id="@+id/tvRate"
-                    android:text="10.0"
+                    android:text="10.00"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/theme_color"
-                    android:textSize="25sp"/>
+                    android:textSize="23sp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_four"
                     android:text="@string/percent_mark"
                     android:textColor="@color/theme_color"
                     android:textSize="@dimen/normal_text"/>
@@ -132,9 +131,9 @@
                     android:id="@+id/interestRates"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" +1.0%"
+                    android:text="+1.0%"
                     android:textColor="@color/theme_color"
-                    android:textSize="14sp"
+                    android:textSize="13sp"
                     android:visibility="gone"/>
             </LinearLayout>
 
@@ -192,8 +191,9 @@
             android:layout_width="@dimen/weight"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="right"
+            android:layout_marginRight="@dimen/small_margin">
 
             <TextView
                 android:id="@+id/btnStatus"

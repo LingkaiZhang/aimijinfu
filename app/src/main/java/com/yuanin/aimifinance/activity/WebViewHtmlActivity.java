@@ -194,6 +194,7 @@ public class WebViewHtmlActivity extends BaseActivity {
         public void onFinish() {    //完成计时调用的函数
             btn_risk_indication.setText("点击进行风险测评");
             btn_risk_indication.setEnabled(true);
+            btn_risk_indication.setBackground(getResources().getDrawable(R.color.theme_color));
         }
     }
 }

@@ -13,6 +13,9 @@ public class UserAccountEntity implements Serializable {
     private String interest;
     private String deposit;
     private String enjoy;
+
+
+    private String interestAlready;
     private int red_num;
     //是否已绑定银行卡
     private int is_bind_bankcard;
@@ -34,6 +37,13 @@ public class UserAccountEntity implements Serializable {
         this.nameTitle = nameTitle;
     }
 
+    public String getInterestAlready() {
+        return interestAlready;
+    }
+
+    public void setInterestAlready(String interestAlready) {
+        this.interestAlready = interestAlready;
+    }
 
 
 

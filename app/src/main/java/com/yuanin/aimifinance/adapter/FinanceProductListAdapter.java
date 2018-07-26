@@ -19,6 +19,7 @@ import com.yuanin.aimifinance.activity.LoginActivity;
 import com.yuanin.aimifinance.activity.LoginRegisterActivity;
 import com.yuanin.aimifinance.entity.FinanceProductEntity;
 import com.yuanin.aimifinance.utils.AppUtils;
+import com.yuanin.aimifinance.utils.FmtMicrometer;
 import com.yuanin.aimifinance.utils.StaticMembers;
 
 import java.util.List;
@@ -130,7 +131,7 @@ public class FinanceProductListAdapter extends BaseAdapter {
 //            mainViewHolder.tvRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(entity.getAnnual())));
             mainViewHolder.tvTime.setText(entity.getTerm());
             mainViewHolder.tvUnit.setText(entity.getUnit());
-            mainViewHolder.tvLeaveMoney.setText("剩余" + entity.getAmount() + "元");
+            mainViewHolder.tvLeaveMoney.setText("剩余" + FmtMicrometer.format6(entity.getAmount()) + "元");
             mainViewHolder.btnStatus.setText(entity.getStatusname());
 
             //TODO  显示还款方式代码
@@ -147,9 +148,9 @@ public class FinanceProductListAdapter extends BaseAdapter {
                 if (entity.getTypename().contains("车")) {
                     mainViewHolder.ivTypeLogo.setBackgroundDrawable(new BitmapDrawable(mContext.getResources(), AppUtils.getBitmap(mContext, R.mipmap.car_loan)) );
                 } else if (entity.getTypename().contains("经")) {
-                    mainViewHolder.ivTypeLogo.setBackgroundDrawable(new BitmapDrawable(mContext.getResources(), AppUtils.getBitmap(mContext, R.mipmap.manage_loan)) );
+                    mainViewHolder.ivTypeLogo.setBackgroundDrawable(new BitmapDrawable(mContext.getResources(), AppUtils.getBitmap(mContext, R.mipmap.manage_loan_blue)) );
                 } else if (entity.getTypename().contains("信")) {
-                    mainViewHolder.ivTypeLogo.setBackgroundDrawable(new BitmapDrawable(mContext.getResources(), AppUtils.getBitmap(mContext, R.mipmap.credit_loan)) );
+                    mainViewHolder.ivTypeLogo.setBackgroundDrawable(new BitmapDrawable(mContext.getResources(), AppUtils.getBitmap(mContext, R.mipmap.credit_loan_yellow)) );
                 }
             } else {
                 mainViewHolder.ivTypeLogo.setBackgroundDrawable(new BitmapDrawable(mContext.getResources(), AppUtils.getBitmap(mContext, R.mipmap.car_loan)) );
@@ -158,19 +159,19 @@ public class FinanceProductListAdapter extends BaseAdapter {
 
             //TODO  加息功能代码
             if (entity.getOrgannual() == null || entity.getExtannual() == null) {
-                mainViewHolder.tvRate.setText(AppUtils.formatDouble("#.0", Double.valueOf(entity.getAnnual())));
+                mainViewHolder.tvRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(entity.getAnnual())));
                 mainViewHolder.interestRates.setVisibility(View.GONE);
                 mainViewHolder.interestRatesLogo.setVisibility(View.GONE);
             } else {
 
                 if (Double.valueOf(entity.getExtannual()) > 0 && Double.valueOf(entity.getOrgannual()) > 0 ) {
 //                    mainViewHolder.interestRates.setText("+" + entity.getExtannual() + "%");
-                    mainViewHolder.interestRates.setText("+" + String.format("%.1f", Double.valueOf(entity.getExtannual())).toString() + "%");
-                    mainViewHolder.tvRate.setText(AppUtils.formatDouble("#.0", Double.valueOf(entity.getOrgannual())));
+                    mainViewHolder.interestRates.setText("+" + String.format("%.2f", Double.valueOf(entity.getExtannual())).toString() + "%");
+                    mainViewHolder.tvRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(entity.getOrgannual())));
                     mainViewHolder.interestRates.setVisibility(View.VISIBLE);
                     mainViewHolder.interestRatesLogo.setVisibility(View.GONE);
                 } else {
-                    mainViewHolder.tvRate.setText(AppUtils.formatDouble("#.0", Double.valueOf(entity.getAnnual())));
+                    mainViewHolder.tvRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(entity.getAnnual())));
                     mainViewHolder.interestRates.setVisibility(View.GONE);
                     mainViewHolder.interestRatesLogo.setVisibility(View.GONE);
                 }

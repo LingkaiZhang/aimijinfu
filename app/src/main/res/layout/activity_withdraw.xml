@@ -3,7 +3,7 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/bg"
+              android:background="@color/white"
               android:orientation="vertical"
               tools:context="com.yuanin.aimifinance.activity.WithdrawActivity">
 
@@ -186,10 +186,14 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_eight"
+                android:background="@color/bg"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_eight"
                 android:background="@color/white"
                 android:orientation="vertical">
 
@@ -251,7 +255,6 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line"
-                    android:layout_marginLeft="@dimen/small_margin"
                     android:background="@color/bg"/>
 
                 <RelativeLayout
@@ -312,6 +315,10 @@
                 </RelativeLayout>
 
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line"
+                android:background="@color/bg"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
