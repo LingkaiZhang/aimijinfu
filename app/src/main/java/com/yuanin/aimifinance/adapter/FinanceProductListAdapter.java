@@ -17,12 +17,15 @@ import com.yuanin.aimifinance.activity.BuyRegularActivity;
 import com.yuanin.aimifinance.activity.FinanceProductDetailActivity;
 import com.yuanin.aimifinance.activity.LoginActivity;
 import com.yuanin.aimifinance.activity.LoginRegisterActivity;
+import com.yuanin.aimifinance.entity.EventMessage;
 import com.yuanin.aimifinance.entity.FinanceProductEntity;
 import com.yuanin.aimifinance.utils.AppUtils;
 import com.yuanin.aimifinance.utils.FmtMicrometer;
 import com.yuanin.aimifinance.utils.StaticMembers;
 
 import java.util.List;
+
+import de.greenrobot.event.EventBus;
 
 import static com.yuanin.aimifinance.R.id.btnStatus;
 
@@ -187,6 +190,11 @@ public class FinanceProductListAdapter extends BaseAdapter {
                     public void onClick(View v) {
                         if (StaticMembers.IS_NEED_LOGIN) {
                             mContext.startActivity(new Intent(mContext, LoginRegisterActivity.class));
+                        } else if (StaticMembers.HK_STATUS != 1) {
+                            //刷新弹框状态
+                            EventMessage eventMessage2 = new EventMessage();
+                            eventMessage2.setType(EventMessage.POPUWINDOWN_FINANCE_PRODUCT);
+                            EventBus.getDefault().post(eventMessage2);
                         } else {
                             StaticMembers.isShowLastItem = false;
                             Intent intent = new Intent(mContext, BuyRegularActivity.class);

@@ -115,6 +115,8 @@ public class BuyRegularActivity extends BaseActivity {
     private TextView tvSingle;
     @ViewInject(R.id.tvLeaveMoneyNew)
     private TextView tvLeaveMoneyNew;
+    @ViewInject(R.id.tvExtannuel)
+    private TextView tvExtannuel;
 
     @ViewInject(R.id.interestRates)
     private TextView interestRates;
@@ -237,7 +239,7 @@ public class BuyRegularActivity extends BaseActivity {
  //       tvRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(buyProductEntity.getAnnual())));
         tvTime.setText(buyProductEntity.getTerm());
         tvTimeNew.setText(buyProductEntity.getTerm());
-        tvSingle.setText(buyProductEntity.getAnnual());
+        tvSingle.setText(buyProductEntity.getOrgannual());
         tvLeaveMoneyNew.setText(FmtMicrometer.format5(buyProductEntity.getAmount()));
         tvUnit.setText(buyProductEntity.getUnit());
         tvLeaveMoney.setText(FmtMicrometer.format5(buyProductEntity.getAmount()));
@@ -257,6 +259,8 @@ public class BuyRegularActivity extends BaseActivity {
                 interestRates.setText("+" + buyProductEntity.getExtannual() + "%");
                 tvRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(buyProductEntity.getOrgannual())));
                 interestRates.setVisibility(View.VISIBLE);
+                tvExtannuel.setText("+" + FmtMicrometer.format6(buyProductEntity.getExtannual()));
+                tvExtannuel.setVisibility(View.VISIBLE);
             } else {
                 tvRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(buyProductEntity.getAnnual())));
                 interestRates.setVisibility(View.GONE);

@@ -17,6 +17,8 @@ public class EventMessage implements Serializable {
     public final static int FINISH_BANK_ACTIVITY = 6;
     public final static int REFRESH_INDEX = 8;
     public final static int UPDATE_INDEX_TOTAL = 9;
+    public final static int POPUWINDOWN_INDEXT = 10;
+    public final static int POPUWINDOWN_FINANCE_PRODUCT = 11;
     private int type;
     private Object object;
 

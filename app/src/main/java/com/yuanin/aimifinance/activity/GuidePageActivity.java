@@ -56,7 +56,7 @@ public class GuidePageActivity extends BaseActivity implements View.OnClickListe
     private ArrayList<View> views;
 
     //引导图片资源
-    private static final int[] pics = {R.mipmap.guide_01, R.mipmap.guide_03, R.mipmap.guide_04};
+    private static final int[] pics = {R.mipmap.guide_01_600, R.mipmap.guide_02_600};
 
     //底部小点的图片
     private ImageView[] points;

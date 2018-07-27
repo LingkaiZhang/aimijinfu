@@ -17,12 +17,14 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.google.gson.reflect.TypeToken;
 import com.yuanin.aimifinance.R;
+import com.yuanin.aimifinance.activity.BuyRegularActivity;
 import com.yuanin.aimifinance.activity.CallBackWebActivity;
 import com.yuanin.aimifinance.activity.FinanceProductDetailActivity;
 import com.yuanin.aimifinance.activity.GetVerifyCodeActivity;
@@ -156,11 +158,13 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
     private boolean hasLoadedOnce = false;
     private boolean isNeedLoad = true;
     private IndexProductEntity indexProductEntity;
+    private View popView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.pull_scrollview_index, container, false);
         mainView = inflater.inflate(R.layout.fragment_new_index, container, false);
+        popView = inflater.inflate(R.layout.popupwindow_hk_register_new, container, false);
         x.view().inject(this, view);
         x.view().inject(this, mainView);
         init();
@@ -171,7 +175,7 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
 
 
     @Event(value = {R.id.btnRefresh, R.id.llSafe, R.id.llHelp, R.id.llInvite, R.id.llData, R.id.ivMoreNotice,
-            R.id.imgRedPackets, R.id.rlNoLogin, R.id.btnNewInvest, R.id.llBank_depository, R.id.btn_login_register, R.id.btnCheckNetwork})
+            R.id.imgRedPackets, R.id.rlNoLogin, R.id.btnNewInvest, R.id.llBank_depository, R.id.btn_login_register, R.id.btnCheckNetwork, R.id.llNewProduct})
     private void onViewClicked(View v) {
         switch (v.getId()) {
             case R.id.llBank_depository:
@@ -217,7 +221,11 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
             case R.id.btnNewInvest:
                 if (StaticMembers.IS_NEED_LOGIN) {
                     startActivity(new Intent(getActivity(), LoginRegisterActivity.class));
-                } else {
+                } else if (StaticMembers.HK_STATUS != 1) {
+                    //TODO    DFF
+                    PopupWindow mPop = AppUtils.createHKPop(popView, getActivity());
+                    mPop.showAtLocation(llMain, Gravity.CENTER, 0, 0);
+                }else {
                     StaticMembers.isShowLastItem = false;
                     if (indexProductEntity != null) {
                         if (indexProductEntity.getType() == 2 || indexProductEntity.getType() == 3) {
@@ -225,7 +233,7 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
                         } else {
                             StaticMembers.isShowLastItem = true;
                         }
-                        Intent intent = new Intent(getActivity(), FinanceProductDetailActivity.class);
+                        Intent intent = new Intent(getActivity(), BuyRegularActivity.class);
                         intent.putExtra("entityID", indexProductEntity.getId());
                         startActivity(intent);
                     }
@@ -264,6 +272,11 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
                     mainActivity.forSkip();
                 }
                 break;
+            case R.id.llNewProduct:
+                Intent intent6 = new Intent(getActivity(), FinanceProductDetailActivity.class);
+                intent6.putExtra("entityID", indexProductEntity.getId());
+                startActivity(intent6);
+                break;
         }
     }
 
@@ -297,6 +310,7 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
 
             //是否开户
             String userIsOpenAccount = AppUtils.getFromSharedPreferences(getActivity(), ParamsKeys.USER_INFO_FILE, ParamsKeys.USER_IS_OPEN_ACCOUNT);
+            StaticMembers.HK_STATUS = Integer.parseInt(userIsOpenAccount);
             String userIsAbleBuyNewProduct = AppUtils.getFromSharedPreferences(getActivity(), ParamsKeys.USER_INFO_FILE, ParamsKeys.USER_IS_ABLE_BUY_NEW_PRODUCT);
 
             if (userIsOpenAccount.equals("1") ) {
@@ -356,6 +370,10 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
             } else if (eventMessage.getType() == EventMessage.UPDATE_INDEX_TOTAL) {
                 tvTotalMoney.setText(String.valueOf(eventMessage.getObject()) + "元");
                 initIsLogin();
+            } else if (eventMessage.getType() == EventMessage.POPUWINDOWN_INDEXT) {
+                //TODO    DFF
+                PopupWindow mPop = AppUtils.createHKPop(popView, getActivity());
+                mPop.showAtLocation(llMain, Gravity.CENTER, 0, 0);
             }
         }
     }

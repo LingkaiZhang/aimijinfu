@@ -170,11 +170,13 @@ public class FinanceProductDetailActivity extends BaseFragmentActivity implement
     private Context context = FinanceProductDetailActivity.this;
     private View popuSafetyLevel;
     private PopupWindow slPop;
+    private View popView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finance_product_detail);
+        popView = getLayoutInflater().inflate(R.layout.popupwindow_hk_register_new, null, false);
         x.view().inject(this);
         if (textViews == null) {
             textViews = new ArrayList<TextView>();
@@ -265,7 +267,10 @@ public class FinanceProductDetailActivity extends BaseFragmentActivity implement
             case R.id.tvBuy:
                 if (StaticMembers.IS_NEED_LOGIN) {
                     startActivity(new Intent(this, LoginRegisterActivity.class));
-                } else {
+                } else if (StaticMembers.HK_STATUS != 1) {
+                    PopupWindow mPop = AppUtils.createHKPop(popView, context);
+                    mPop.showAtLocation(llMain, Gravity.CENTER, 0, 0);
+                }else {
                     Intent intent = new Intent(this, BuyRegularActivity.class);
                     intent.putExtra("entityID", entityID);
                     startActivity(intent);

@@ -3,6 +3,7 @@ package com.yuanin.aimifinance.fragment;
 
 import android.graphics.drawable.Animatable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.AbsListView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.google.gson.reflect.TypeToken;
@@ -85,10 +87,12 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
      * 是否已被加载过一次，第二次就不再去请求数据了
      */
     private boolean hasLoadedOnce = false;
+    private View popView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_finance_product, container, false);
+        popView = inflater.inflate(R.layout.popupwindow_hk_register_new, container, false);
         x.view().inject(this, view);
         initTopBar("项目", toptitleView, false);
         //透明状态栏
@@ -185,6 +189,10 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
             hasLoadedOnce = false;
             isNeedLoadBar = true;
             requestDatas();
+        } else if (eventMessage != null && eventMessage.getType() == EventMessage.POPUWINDOWN_FINANCE_PRODUCT) {
+            //TODO    DFF
+            PopupWindow mPop = AppUtils.createHKPop(popView, getActivity());
+            mPop.showAtLocation(flMain, Gravity.CENTER, 0, 0);
         }
     }
 

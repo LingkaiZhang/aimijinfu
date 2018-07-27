@@ -3,7 +3,9 @@ package com.yuanin.aimifinance.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,6 +14,8 @@ import com.yuanin.aimifinance.activity.BuyRegularActivity;
 import com.yuanin.aimifinance.activity.FinanceProductDetailActivity;
 import com.yuanin.aimifinance.activity.LoginActivity;
 import com.yuanin.aimifinance.activity.LoginRegisterActivity;
+import com.yuanin.aimifinance.activity.OpenAccountActivity;
+import com.yuanin.aimifinance.entity.EventMessage;
 import com.yuanin.aimifinance.entity.IndexProductEntity;
 import com.yuanin.aimifinance.utils.AppUtils;
 import com.yuanin.aimifinance.utils.FmtMicrometer;
@@ -21,6 +25,8 @@ import com.yuanin.aimifinance.utils.StaticMembers;
 
 import java.util.List;
 
+import de.greenrobot.event.EventBus;
+
 /**
  * @author huangxin
  * @date 2015/10/16
@@ -29,8 +35,14 @@ import java.util.List;
  */
 public class IndexProductListAdapter extends GeneralAdapter<IndexProductEntity> {
 
+
     public IndexProductListAdapter(List<IndexProductEntity> list, Context context) {
         super(context, list, R.layout.adapter_index_product_item);
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        return super.getView(position, convertView, parent);
     }
 
     @Override
@@ -112,6 +124,13 @@ public class IndexProductListAdapter extends GeneralAdapter<IndexProductEntity> 
                 public void onClick(View v) {
                     if (StaticMembers.IS_NEED_LOGIN) {
                         context.startActivity(new Intent(context, LoginRegisterActivity.class));
+                    }else if (StaticMembers.HK_STATUS != 1){
+                        //刷新首页弹框状态
+                        EventMessage eventMessage2 = new EventMessage();
+                        eventMessage2.setType(EventMessage.POPUWINDOWN_INDEXT);
+                        EventBus.getDefault().post(eventMessage2);
+
+                    //    context.startActivity(new Intent(context, OpenAccountActivity.class));
                     } else {
                         StaticMembers.isShowLastItem = false;
                         Intent intent = new Intent(context, BuyRegularActivity.class);

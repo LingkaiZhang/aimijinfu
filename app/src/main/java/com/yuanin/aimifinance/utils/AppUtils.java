@@ -177,55 +177,54 @@ public class AppUtils {
         } else if (StaticMembers.HK_STATUS == 2) {
             btnGo.setText("立即激活");
             btnGo.setOnClickListener(new View.OnClickListener() {
-                                         @Override
-                                         public void onClick(View v) {
-                                             JSONObject obj = AppUtils.getPublicJsonObject(true);
-                                             try {
-                                                 obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_SAFE);
-                                                 obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_ACTIVATE_UESR);
-                                                 String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
-                                                 obj.put(ParamsKeys.TOKEN, token);
-                                                 obj.remove(ParamsKeys.KEY);
-                                             } catch (JSONException e) {
-                                                 e.printStackTrace();
+                     @Override
+                     public void onClick(View v) {
+                         JSONObject obj = AppUtils.getPublicJsonObject(true);
+                         try {
+                             obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_SAFE);
+                             obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_ACTIVATE_UESR);
+                             String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
+                             obj.put(ParamsKeys.TOKEN, token);
+                             obj.remove(ParamsKeys.KEY);
+                         } catch (JSONException e) {
+                             e.printStackTrace();
+                         }
+                         Type mType = new TypeToken<ReturnResultEntity<HKRegisterEntity>>() {
+                         }.getType();
+                         NetUtils.request(context, obj, mType, new IHttpRequestCallBack() {
+                                     @Override
+                                     public void onStart() {
+
+                                     }
+
+                                     @Override
+                                     public void onFinish() {
+
+                                     }
+
+                                     @Override
+                                     public void onSuccess(Object object) {
+                                         ReturnResultEntity<HKRegisterEntity> entity = (ReturnResultEntity<HKRegisterEntity>) object;
+                                         if (entity.isSuccess(context)) {
+                                             if (entity.isNotNull()) {
+                                                 Intent intent = new Intent(context, HKRegisterWebActivity.class);
+                                                 intent.putExtra("url", entity.getData().get(0).getRedirect_url());
+                                                 context.startActivity(intent);
+                                                 mPop.dismiss();
                                              }
-                                             Type mType = new TypeToken<ReturnResultEntity<HKRegisterEntity>>() {
-                                             }.getType();
-                                             NetUtils.request(context, obj, mType, new IHttpRequestCallBack() {
-                                                         @Override
-                                                         public void onStart() {
-
-                                                         }
-
-                                                         @Override
-                                                         public void onFinish() {
-
-                                                         }
-
-                                                         @Override
-                                                         public void onSuccess(Object object) {
-                                                             ReturnResultEntity<HKRegisterEntity> entity = (ReturnResultEntity<HKRegisterEntity>) object;
-                                                             if (entity.isSuccess(context)) {
-                                                                 if (entity.isNotNull()) {
-                                                                     Intent intent = new Intent(context, HKRegisterWebActivity.class);
-                                                                     intent.putExtra("url", entity.getData().get(0).getRedirect_url());
-                                                                     context.startActivity(intent);
-                                                                     mPop.dismiss();
-                                                                 }
-                                                             } else {
-                                                                 AppUtils.showToast(context, entity.getRemark());
-                                                             }
-                                                         }
-
-                                                         @Override
-                                                         public void onFailure() {
-                                                             AppUtils.showConectFail(context);
-                                                         }
-                                                     }
-                                             );
+                                         } else {
+                                             AppUtils.showToast(context, entity.getRemark());
                                          }
                                      }
 
+                                     @Override
+                                     public void onFailure() {
+                                         AppUtils.showConectFail(context);
+                                     }
+                                 }
+                         );
+                     }
+                 }
             );
         }
         return mPop;
