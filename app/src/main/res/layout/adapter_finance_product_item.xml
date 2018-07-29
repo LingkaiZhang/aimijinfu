@@ -34,7 +34,7 @@
                 android:layout_height="15dp"
                 android:layout_gravity="center"
                 android:layout_marginRight="@dimen/margin_five"
-                />
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@id/tvName"
@@ -43,7 +43,7 @@
                 android:singleLine="true"
                 android:text="爱米定期"
                 android:maxLines="1"
-                android:maxEms="7"
+                android:maxEms="9"
                 android:ellipsize="end"
                 android:textColor="@color/text_black"
                 android:textSize="@dimen/normal_text"/>
@@ -72,7 +72,7 @@
             android:id="@+id/interestFirstThenCost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_eight"
+            android:layout_marginLeft="@dimen/margin_twelve2"
             android:text="先息后本"
             android:textSize="10sp"
             android:layout_marginTop="@dimen/margin_twelve2"
@@ -85,7 +85,7 @@
             android:id="@+id/equalityCorpusAndInterest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_eight"
+            android:layout_marginLeft="@dimen/margin_twelve2"
             android:text="等额本息"
             android:textSize="10sp"
             android:layout_marginTop="@dimen/margin_twelve2"
