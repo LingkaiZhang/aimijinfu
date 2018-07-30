@@ -30,5 +30,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="margin_sixty">60dp</dimen>
     <dimen name="account_balance_button">40dp</dimen>
+    <dimen name="bigger_text">18sp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
 </resources>

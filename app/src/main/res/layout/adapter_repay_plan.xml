@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_four"
                     android:gravity="center"
-                    android:text="期数"
+                    android:text="还款期数"
                     android:textColor="@color/text_light_gray"
                     android:textSize="@dimen/small_text"/>
             </LinearLayout>
@@ -96,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_four"
                     android:gravity="center"
-                    android:text="金额"
+                    android:text="还款金额(元)"
                     android:textColor="@color/text_light_gray"
                     android:textSize="@dimen/small_text"/>
             </LinearLayout>
@@ -121,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_four"
                     android:gravity="center"
-                    android:text="状态"
+                    android:text="还款状态"
                     android:textColor="@color/text_light_gray"
                     android:textSize="@dimen/small_text"/>
             </LinearLayout>

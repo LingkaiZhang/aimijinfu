@@ -30,7 +30,7 @@
     <string name="login_problem">登录遇到问题?</string>
     <string name="register_middle">《爱米金服服务协议》</string>
     <string name="balance">可用余额 (元)</string>
-    <string name="earn_money">收益明细 (元)</string>
+    <string name="earn_money">已收收益 (元)</string>
     <string name="pay">充值</string>
     <string name="withdraw">提现</string>
     <string name="red_packets_money">现金红包</string>
@@ -309,8 +309,8 @@
     <string name="total_regular">爱米定期</string>
     <string name="total_little_item">爱米优选</string>
     <string name="total_invest">待收本金(元)</string>
-    <string name="total_already">已收明细(元)</string>
-    <string name="total_wait">待收明细(元)</string>
+    <string name="total_already">已收收益(元)</string>
+    <string name="total_wait">待收收益(元)</string>
     <string name="total_balance">可用余额</string>
 
     <!--账户余额-->
@@ -321,8 +321,8 @@
     <string name="try_money">体验金</string>
     <string name="choose_redpackets">选择红包</string>
 
-    <string name="earn_wait">待收明细(元)</string>
-    <string name="earn_already">已收明细(元)</string>
+    <string name="earn_wait">待收收益(元)</string>
+    <string name="earn_already">已收收益(元)</string>
 
     <string name="invite_friend">邀请好友</string>
     <string name="my_invite_friend">我邀请的人</string>

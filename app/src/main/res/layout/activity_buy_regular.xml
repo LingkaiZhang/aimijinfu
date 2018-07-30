@@ -171,7 +171,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="50dp"
-                    android:paddingTop="80dp"
+                    android:paddingTop="50dp"
                     android:baselineAligned="false"
                     android:background="@color/theme_color"
                     android:orientation="horizontal">
@@ -179,7 +179,7 @@
                     <LinearLayout
                         android:layout_width="@dimen/weight"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="1.2"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -188,7 +188,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/big_text"/>
+                            android:textSize="@dimen/bigger_text"/>
 
 
                         <TextView
@@ -204,8 +204,6 @@
                     <View
                         android:layout_width="@dimen/line_one_dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="@dimen/margin_eight"
-                        android:layout_marginTop="@dimen/margin_eight"
                         android:background="@color/white"/>
 
                     <LinearLayout
@@ -224,7 +222,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/big_text"/>
+                                android:textSize="@dimen/bigger_text"/>
 
                             <TextView
                                 android:id="@+id/tvExtannuel"
@@ -232,7 +230,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="4dp"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/small_text"
+                                android:textSize="@dimen/normal_text"
                                 android:visibility="gone"/>
 
                         </LinearLayout>
@@ -249,14 +247,12 @@
                     <View
                         android:layout_width="@dimen/line_one_dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="@dimen/margin_eight"
-                        android:layout_marginTop="@dimen/margin_eight"
                         android:background="@color/white"/>
 
                     <LinearLayout
                         android:layout_width="@dimen/weight"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="1.2"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -266,7 +262,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/big_text"/>
+                            android:textSize="@dimen/bigger_text"/>
 
 
                         <TextView
