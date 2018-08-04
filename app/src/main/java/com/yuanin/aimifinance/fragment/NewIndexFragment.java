@@ -295,6 +295,8 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
 
     //初始化是否登录
     private void initIsLogin() {
+
+
         if (StaticMembers.IS_NEED_LOGIN) {
             rlNoLogin.setVisibility(View.GONE);
             llLogin.setVisibility(View.VISIBLE);
@@ -308,9 +310,14 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
             llLogin.setVisibility(View.VISIBLE);
             tvTotalMoney.setText(StaticMembers.TOTAL_MONEY + "元");
 
+
             //是否开户
             String userIsOpenAccount = AppUtils.getFromSharedPreferences(getActivity(), ParamsKeys.USER_INFO_FILE, ParamsKeys.USER_IS_OPEN_ACCOUNT);
-            StaticMembers.HK_STATUS = Integer.parseInt(userIsOpenAccount);
+            if (userIsOpenAccount != "") {
+                StaticMembers.HK_STATUS = Integer.parseInt(userIsOpenAccount);
+            } else {
+                llNewGuidelines.setVisibility(View.GONE);
+            }
             String userIsAbleBuyNewProduct = AppUtils.getFromSharedPreferences(getActivity(), ParamsKeys.USER_INFO_FILE, ParamsKeys.USER_IS_ABLE_BUY_NEW_PRODUCT);
 
             if (userIsOpenAccount.equals("1") ) {
