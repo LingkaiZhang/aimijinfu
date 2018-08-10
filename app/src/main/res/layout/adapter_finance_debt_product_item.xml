@@ -2,10 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/llItem"
-    android:layout_width="match_parent"
-    android:layout_height="94dp"
-    android:background="@drawable/selector_gray_click"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="94dp"
+              android:background="@drawable/selector_gray_click"
+              android:orientation="vertical">
 
 
     <View
@@ -48,18 +48,18 @@
                 android:textColor="@color/text_black"
                 android:textSize="@dimen/normal_text"/>
 
-            <TextView
-                android:layout_marginLeft="5dp"
-                android:id="@+id/interestRatesLogo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/interestRatesLogo"
-                android:textColor="@color/theme_color"
-                android:textSize="10sp"
-                android:layout_marginTop="@dimen/margin_twelve2"
-                android:background="@drawable/textview_border_interest_rates"
-                android:visibility="gone"
-                />
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:id="@+id/interestRatesLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/interestRatesLogo"
+            android:textColor="@color/theme_color"
+            android:textSize="10sp"
+            android:layout_marginTop="@dimen/margin_twelve2"
+            android:background="@drawable/textview_border_interest_rates"
+            android:visibility="gone"
+            />
 
         </LinearLayout>
 
@@ -68,30 +68,30 @@
             android:layout_weight="1"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/interestFirstThenCost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_eight"
-                android:text="先息后本"
-                android:textSize="10sp"
-                android:layout_marginTop="@dimen/margin_twelve2"
-                android:textColor="@color/theme_color"
-                android:background="@drawable/textview_border_interest_first_then_cost"
-                android:visibility="gone"/>
+        <TextView
+            android:id="@+id/interestFirstThenCost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_eight"
+            android:text="先息后本"
+            android:textSize="10sp"
+            android:layout_marginTop="@dimen/margin_twelve2"
+            android:textColor="@color/theme_color"
+            android:background="@drawable/textview_border_interest_first_then_cost"
+            android:visibility="gone"/>
 
 
-            <TextView
-                android:id="@+id/equalityCorpusAndInterest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_eight"
-                android:text="等额本息"
-                android:textSize="10sp"
-                android:layout_marginTop="@dimen/margin_twelve2"
-                android:textColor="@color/login_register_blue"
-                android:background="@drawable/textview_border_equality_corpus_and_interest"
-                android:visibility="gone"/>
+        <TextView
+            android:id="@+id/equalityCorpusAndInterest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_eight"
+            android:text="等额本息"
+            android:textSize="10sp"
+            android:layout_marginTop="@dimen/margin_twelve2"
+            android:textColor="@color/login_register_blue"
+            android:background="@drawable/textview_border_equality_corpus_and_interest"
+            android:visibility="gone"/>
 
         </LinearLayout>
         <LinearLayout
@@ -119,7 +119,7 @@
         <LinearLayout
             android:layout_width="@dimen/weight"
             android:layout_height="wrap_content"
-            android:layout_weight="1.2"
+            android:layout_weight="1"
             android:orientation="vertical">
 
 
@@ -158,19 +158,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="@string/Expected_annualized_rate_of_return"
+                android:text="原年化利率"
                 android:textColor="@color/text_light_gray"
                 android:textSize="@dimen/small_text"/>
 
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="@dimen/weight"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="3dp"
+            >
 
 
             <LinearLayout
@@ -179,18 +180,20 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tvTime"
+                    android:id="@+id/tvZheRangXiShuo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_black"
-                    android:textSize="24sp"/>
+                    android:text="5"
+                    android:textSize="@dimen/bigger_text"/>
 
                 <TextView
-                    android:id="@+id/tvUnit"
+                    android:id="@+id/tvUnit2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_four"
                     android:textColor="@color/text_black"
+                    android:text="%"
                     android:textSize="@dimen/normal_text"/>
 
             </LinearLayout>
@@ -199,7 +202,50 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="期限"
+                android:text="折让系数"
+                android:textColor="@color/text_light_gray"
+                android:textSize="@dimen/small_text"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/weight"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginTop="3dp">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tvTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_black"
+                    android:text="72"
+                    android:textSize="@dimen/bigger_text"/>
+
+                <TextView
+                    android:id="@+id/tvUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_four"
+                    android:textColor="@color/text_black"
+                    android:text="天"
+                    android:textSize="@dimen/normal_text"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="剩余期限"
                 android:textColor="@color/text_light_gray"
                 android:textSize="@dimen/small_text"/>
         </LinearLayout>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llMain"
+    android:layout_width="match_parent"
+    android:layout_height="225dp"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/small_margin"
+        android:layout_marginRight="@dimen/small_margin"
+        android:background="@drawable/dialog_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:textColor="@color/text_black"
+            android:textSize="15sp"
+            android:text="确认支付"/>
+
+        <View
+            android:id="@+id/view_line_one"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line"
+            android:background="@color/bg"
+            android:visibility="visible"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_twelve2"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginRight="@dimen/small_margin"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="债权价值(元)"
+                    android:textSize="@dimen/thirteen_text"
+                    android:textColor="@color/text_light_gray"
+                    />
+
+                <TextView
+                    android:id="@+id/tvBalance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10000"
+                    android:textSize="@dimen/thirteen_text"
+                    android:textColor="@color/text_black"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="折让金额(元)"
+                    android:textSize="@dimen/thirteen_text"
+                    android:textColor="@color/text_light_gray"
+                    />
+
+                <TextView
+                    android:id="@+id/tvPrincipal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10000"
+                    android:textSize="@dimen/thirteen_text"
+                    android:textColor="@color/text_black"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="转让服务费(元)"
+                    android:textSize="@dimen/thirteen_text"
+                    android:textColor="@color/text_light_gray"
+                    />
+
+                <TextView
+                    android:id="@+id/tvAmountPayable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10000"
+                    android:textSize="@dimen/thirteen_text"
+                    android:textColor="@color/theme_color"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="预期到账金额(元)"
+                    android:textSize="@dimen/thirteen_text"
+                    android:textColor="@color/text_light_gray"
+                    />
+
+                <TextView
+                    android:id="@+id/tvProspectiveEarnings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10000"
+                    android:textSize="@dimen/thirteen_text"
+                    android:textColor="@color/text_black"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:paddingBottom="15dp">
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="@dimen/weight"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/selector_dialog_cancel_button_click"
+                android:textColor="@color/theme_color"
+                android:textSize="16sp"
+                android:text="取消"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="@dimen/small_margin"/>
+
+            <Button
+                android:id="@+id/btnConfirm"
+                android:layout_width="@dimen/weight"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/selector_dialog_confirm_button_click"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:text="确认"
+                android:layout_marginLeft="@dimen/small_margin"
+                android:layout_marginRight="30dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

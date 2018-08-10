@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.activity.BuyRegularActivity;
 import com.yuanin.aimifinance.activity.DebtProductDetailActivity;
-import com.yuanin.aimifinance.activity.FinanceProductDetailActivity;
 import com.yuanin.aimifinance.activity.LoginRegisterActivity;
 import com.yuanin.aimifinance.entity.EventMessage;
 import com.yuanin.aimifinance.entity.FinanceProductEntity;
@@ -35,12 +34,12 @@ import static com.yuanin.aimifinance.R.id.btnStatus;
  * @time 14:47
  * @desc 资金流水list
  */
-public class FinanceProductListAdapter extends BaseAdapter {
+public class DebtFinanceProductListAdapter extends BaseAdapter {
     private List<FinanceProductEntity> dataList;
     private Context mContext;
     private static final int TYPE_COUNT = 2;//item类型的总数
 
-    public FinanceProductListAdapter(Context mContext, List<FinanceProductEntity> dataList) {
+    public DebtFinanceProductListAdapter(Context mContext, List<FinanceProductEntity> dataList) {
         super();
         this.dataList = dataList;
         this.mContext = mContext;
@@ -102,7 +101,7 @@ public class FinanceProductListAdapter extends BaseAdapter {
             if (convertView == null) {
                 mainViewHolder = new MainViewHolder();
                 convertView = LayoutInflater.from(mContext).inflate(
-                        R.layout.adapter_finance_product_item, null);
+                        R.layout.adapter_finance_debt_product_item, null);
                 mainViewHolder.tvName = (TextView) convertView
                         .findViewById(R.id.tvName);
                 mainViewHolder.tvRate = (TextView) convertView
@@ -133,7 +132,7 @@ public class FinanceProductListAdapter extends BaseAdapter {
             mainViewHolder.tvName.setText(entity.getTitle());
 //            mainViewHolder.tvRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(entity.getAnnual())));
             mainViewHolder.tvTime.setText(entity.getTerm());
-            mainViewHolder.tvUnit.setText(entity.getUnit());
+            //mainViewHolder.tvUnit.setText(entity.getUnit());
             mainViewHolder.tvLeaveMoney.setText("剩余" + FmtMicrometer.format6(entity.getAmount()) + "元");
             mainViewHolder.btnStatus.setText(entity.getStatusname());
 
@@ -216,8 +215,9 @@ public class FinanceProductListAdapter extends BaseAdapter {
                     } else {
                         StaticMembers.isShowLastItem = true;
                     }
-                    Intent intent = new Intent(mContext, FinanceProductDetailActivity.class);
+                    Intent intent = new Intent(mContext, DebtProductDetailActivity.class);
                     intent.putExtra("entityID", entity.getId());
+                    intent.putExtra("productName",entity.getTitle());
                     mContext.startActivity(intent);
                 }
             });

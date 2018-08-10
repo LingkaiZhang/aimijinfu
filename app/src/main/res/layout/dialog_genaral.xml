@@ -21,7 +21,7 @@
             android:gravity="center"
             android:textColor="@color/text_black"
             android:textSize="15sp"
-            android:text="确认投资"/>
+            android:text="确认出借"/>
 
         <View
             android:id="@+id/view_line_one"

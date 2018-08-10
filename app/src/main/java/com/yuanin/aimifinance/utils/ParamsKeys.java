@@ -126,7 +126,9 @@ public class ParamsKeys {
     public static final String BANNER_ENTITY = "bannner_entity";
     public static final String INDEX__ENTITY = "index_entity";
     public static final String PRODUCT_ENTITY = "product_entity";
+    public static final String PRODUCT_ENTITY_DEBT = "product_entity_debt";
     public static final String MINE_INFO = "mine_info";
+
     /*
      * 个人主页保存信息
      */

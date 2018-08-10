@@ -1,6 +1,7 @@
 package com.yuanin.aimifinance.fragment;
 
 
+import android.graphics.Typeface;
 import android.graphics.drawable.Animatable;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 
 import com.google.gson.reflect.TypeToken;
 import com.yuanin.aimifinance.R;
+import com.yuanin.aimifinance.adapter.DebtFinanceProductListAdapter;
 import com.yuanin.aimifinance.adapter.FinanceProductListAdapter;
 import com.yuanin.aimifinance.base.BaseFragment;
 import com.yuanin.aimifinance.entity.EventMessage;
@@ -73,12 +75,19 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
     @ViewInject(R.id.ivToTop)
     private ImageView ivToTop;
 
+    @ViewInject(R.id.tv_sanbiaolist)
+    private TextView tvSanbiaolist;
+    @ViewInject(R.id.tv_zhuanranglist)
+    private TextView tvZhanranglist;
+
 
     private boolean isNeedLoadBar = true;
     private List<FinanceProductEntity> mList;
     private FinanceProductListAdapter mAdp;
     // 页码
     private int PageIndex = 1;
+    //是否散标
+    private boolean isSanBiao = true;
     /**
      * 标志位，标志已经初始化完成
      */
@@ -88,6 +97,7 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
      */
     private boolean hasLoadedOnce = false;
     private View popView;
+    private DebtFinanceProductListAdapter debtFinanceProductListAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -105,6 +115,8 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
         lvProduct.setPullRefreshEnable(true);
         lvProduct.setPullLoadEnable(true);
         lvProduct.setXListViewListener(this);
+        tvSanbiaolist.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+        tvZhanranglist.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
         EventBus.getDefault().register(this);
         lvProduct.setOnScrollListener(new AbsListView.OnScrollListener() {
 
@@ -135,9 +147,35 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
         return view;
     }
 
-    @Event(value = {R.id.btnRefresh, R.id.ivToTop, R.id.btnCheckNetwork})
+    @Event(value = {R.id.btnRefresh, R.id.ivToTop, R.id.btnCheckNetwork, R.id.tv_sanbiaolist, R.id.tv_zhuanranglist})
     private void onViewClicked(View v) {
         switch (v.getId()) {
+            case R.id.tv_sanbiaolist:
+                tvZhanranglist.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+                tvSanbiaolist.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                isSanBiao = true;
+                if (mList != null) {
+                    mList = null;
+                }
+                //lvProduct.autoRefresh();
+                PageIndex = 1;
+                hasLoadedOnce = false;
+                isNeedLoadBar = true;
+                requestDatas();
+                break;
+            case R.id.tv_zhuanranglist:
+                tvSanbiaolist.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+                tvZhanranglist.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                isSanBiao = false;
+                if (mList != null) {
+                    mList = null;
+                }
+                //lvProduct.autoRefresh();
+                PageIndex = 2;
+                hasLoadedOnce = false;
+                isNeedLoadBar = true;
+                requestDatasZhaizhuan();
+                break;
             //刷新
             case R.id.btnRefresh:
                 if (mList != null) {
@@ -146,7 +184,12 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
                 PageIndex = 1;
                 hasLoadedOnce = false;
                 isNeedLoadBar = true;
-                requestDatas();
+                if (isSanBiao) {
+                    requestDatas();
+                } else {
+                    PageIndex = 2;
+                    requestDatasZhaizhuan();
+                }
                 break;
             //检查网络
             case R.id.btnCheckNetwork:
@@ -160,6 +203,163 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
             default:
                 break;
         }
+    }
+
+    private void requestDatasZhaizhuan() {
+        if (!isPrepared || hasLoadedOnce || !isVisible) {
+            return;
+        }
+        JSONObject obj = AppUtils.getPublicJsonObject(false);
+        try {
+            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_PRODUCT);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_GET_PRODUCT_LIST);
+            obj.put(ParamsKeys.PAGE_QTY, String.valueOf(StaticMembers.PAGE_SIZE));
+            obj.put(ParamsKeys.CURRENT_PAGE, String.valueOf(PageIndex));
+            String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
+            obj.put(ParamsKeys.TOKEN, token);
+            obj.remove(ParamsKeys.KEY);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Type mType = new TypeToken<ReturnResultEntity<FinanceProductEntity>>() {
+        }.getType();
+        NetUtils.request(obj, mType, new IHttpRequestCallBack() {
+                    @Override
+                    public void onStart() {
+                        if (isNeedLoadBar) {
+                            ((Animatable) loadingImage.getDrawable()).start();
+                            viewRemind.setVisibility(View.GONE);
+                            viewLoading.setVisibility(View.VISIBLE);
+                        }
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        if (AppUtils.isNetworkConnected(getActivity())) {
+                            tvNoNet.setText(getActivity().getResources().getString(R.string.connect_fail));
+                        } else {
+                            tvNoNet.setText(getActivity().getResources().getString(R.string.network_fail));
+                        }
+                        if (isNeedLoadBar) {
+                            ((Animatable) loadingImage.getDrawable()).stop();
+                            viewRemind.setVisibility(View.VISIBLE);
+                            viewLoading.setVisibility(View.GONE);
+                        } else {
+                            loadComplete();
+                        }
+                        ReturnResultEntity<FinanceProductEntity> entity = (ReturnResultEntity<FinanceProductEntity>) AppUtils.fail2SetData(ParamsKeys.PRODUCT_ENTITY_DEBT);
+                        if (entity != null) {
+                            if (mList == null) {
+                                mList = entity.getData();
+                                // setTitleData();
+                                debtFinanceProductListAdapter = new DebtFinanceProductListAdapter(getActivity(), mList);
+                                lvProduct.setAdapter(debtFinanceProductListAdapter);
+                                flMain.setVisibility(View.VISIBLE);
+                                tvNoContent.setVisibility(View.GONE);
+                                llNoNet.setVisibility(View.GONE);
+                            }
+                        } else {
+                            if (isNeedLoadBar) {
+                                flMain.setVisibility(View.GONE);
+                                tvNoContent.setVisibility(View.GONE);
+                                llNoNet.setVisibility(View.VISIBLE);
+                            } else {
+                                AppUtils.showRequestFail(getActivity());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onSuccess(Object object) {
+                        ReturnResultEntity<FinanceProductEntity> entity = (ReturnResultEntity<FinanceProductEntity>) object;
+                        if (entity.isSuccess(getActivity())) {
+                            if (entity.isNotNull()) {
+                                hasLoadedOnce = true;
+                                if (mList == null) {
+                                    StaticMembers.aCache.put(ParamsKeys.PRODUCT_ENTITY_DEBT, entity);
+                                    mList = entity.getData();
+                                    //    setTitleData();
+                                    debtFinanceProductListAdapter = new DebtFinanceProductListAdapter(getActivity(), mList);
+                                    lvProduct.setAdapter(debtFinanceProductListAdapter);
+                                } else {
+                                    mList.addAll(entity.getData());
+                                    debtFinanceProductListAdapter.notifyDataSetChanged();
+                                }
+                                if (entity.getData().size() < StaticMembers.PAGE_SIZE) {
+                                    lvProduct.setPullLoadEnable(false);
+                                } else {
+                                    lvProduct.setPullLoadEnable(true);
+                                }
+                                flMain.setVisibility(View.VISIBLE);
+                                tvNoContent.setVisibility(View.GONE);
+                                llNoNet.setVisibility(View.GONE);
+                            } else {
+                                if (mList == null) {
+                                    flMain.setVisibility(View.GONE);
+                                    tvNoContent.setVisibility(View.VISIBLE);
+                                    llNoNet.setVisibility(View.GONE);
+                                } else {
+                                    AppUtils.showNoMore(getActivity());
+                                }
+                                lvProduct.setPullLoadEnable(false);
+                            }
+                        } else {
+                            if (PageIndex > 1) {
+                                PageIndex -= 1;
+                            }
+                            AppUtils.showToast(getActivity(), entity.getRemark());
+                            entity = (ReturnResultEntity<FinanceProductEntity>) AppUtils.fail2SetData(ParamsKeys.PRODUCT_ENTITY_DEBT);
+                            if (entity != null) {
+                                if (mList == null) {
+                                    mList = entity.getData();
+                                    // setTitleData();
+                                    debtFinanceProductListAdapter = new DebtFinanceProductListAdapter(getActivity(), mList);
+                                    lvProduct.setAdapter(debtFinanceProductListAdapter);
+                                    flMain.setVisibility(View.VISIBLE);
+                                    tvNoContent.setVisibility(View.GONE);
+                                    llNoNet.setVisibility(View.GONE);
+                                }
+                            } else {
+                                if (isNeedLoadBar) {
+                                    flMain.setVisibility(View.GONE);
+                                    tvNoContent.setVisibility(View.GONE);
+                                    llNoNet.setVisibility(View.VISIBLE);
+                                } else {
+                                    AppUtils.showRequestFail(getActivity());
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure() {
+                        if (PageIndex > 1) {
+                            PageIndex -= 1;
+                        }
+                        ReturnResultEntity<FinanceProductEntity> entity = (ReturnResultEntity<FinanceProductEntity>) AppUtils.fail2SetData(ParamsKeys.PRODUCT_ENTITY_DEBT);
+                        if (entity != null) {
+                            if (mList == null) {
+                                mList = entity.getData();
+                                //    setTitleData();
+                                debtFinanceProductListAdapter = new DebtFinanceProductListAdapter(getActivity(), mList);
+                                lvProduct.setAdapter(debtFinanceProductListAdapter);
+                                flMain.setVisibility(View.VISIBLE);
+                                tvNoContent.setVisibility(View.GONE);
+                                llNoNet.setVisibility(View.GONE);
+                            }
+                            AppUtils.showConectFail(getActivity());
+                        } else {
+                            if (isNeedLoadBar) {
+                                flMain.setVisibility(View.GONE);
+                                llNoNet.setVisibility(View.VISIBLE);
+                                tvNoContent.setVisibility(View.GONE);
+                            } else {
+                                AppUtils.showConectFail(getActivity());
+                            }
+                        }
+                    }
+                }
+        );
     }
 
     @Override
@@ -363,7 +563,11 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
         PageIndex += 1;
         hasLoadedOnce = false;
         isNeedLoadBar = false;
-        requestDatas();
+        if (isSanBiao) {
+            requestDatas();
+        } else {
+            requestDatasZhaizhuan();
+        }
     }
 
     @Override
@@ -387,6 +591,11 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
         }
         PageIndex = 1;
         hasLoadedOnce = false;
-        requestDatas();
+        if (isSanBiao) {
+            requestDatas();
+        } else {
+            PageIndex = 2;
+            requestDatasZhaizhuan();
+        }
     }
 }

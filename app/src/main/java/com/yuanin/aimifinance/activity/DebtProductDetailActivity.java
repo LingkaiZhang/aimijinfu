@@ -4,15 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Matrix;
 import android.graphics.drawable.Animatable;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
@@ -28,6 +25,7 @@ import com.google.gson.reflect.TypeToken;
 import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.adapter.ViewPagerFragmentAdapter;
 import com.yuanin.aimifinance.base.BaseFragmentActivity;
+import com.yuanin.aimifinance.dialog.DebtConfirmPayDialog;
 import com.yuanin.aimifinance.entity.ProductDetailEntity;
 import com.yuanin.aimifinance.entity.ReturnResultEntity;
 import com.yuanin.aimifinance.entity.TabIndicatorEntity;
@@ -40,7 +38,6 @@ import com.yuanin.aimifinance.inter.INotifyCallBack;
 import com.yuanin.aimifinance.inter.ISlideCallback;
 import com.yuanin.aimifinance.service.ProductTimerCount;
 import com.yuanin.aimifinance.utils.AppUtils;
-import com.yuanin.aimifinance.utils.FmtMicrometer;
 import com.yuanin.aimifinance.utils.NetUtils;
 import com.yuanin.aimifinance.utils.ParamsKeys;
 import com.yuanin.aimifinance.utils.ParamsValues;
@@ -58,7 +55,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FinanceProductDetailActivity extends BaseFragmentActivity implements ISlideCallback {
+public class DebtProductDetailActivity extends BaseFragmentActivity implements ISlideCallback {
     @ViewInject(R.id.llMain)
     private View llMain;
     @ViewInject(R.id.includeTop)
@@ -155,53 +152,50 @@ public class FinanceProductDetailActivity extends BaseFragmentActivity implement
     @ViewInject(R.id.tv_product_type)
     private TextView tvProductType;
 
-
+    private String entityID;
     private List<TextView> textViews;
     public static int fragmentPosition = 0;
     private int offset = 0;// 动画图片偏移量
     private int currIndex = 0;// 当前页卡编号
     private int bmpW;// 动画图片宽度
-    private String entityID;
     private ProductIntroduceFragment productIntroduceFragment;
     private InvestRecordFragment investRecordFragment;
     private AssetsFragment assetsFragment;
     private RepayPlanFragment repayPlanFragment;
+    private Context context = DebtProductDetailActivity.this;
     private ProductDetailEntity productDetailEntity;
-    private Context context = FinanceProductDetailActivity.this;
-    private View popuSafetyLevel;
-    private PopupWindow slPop;
     private View popView;
+    private DebtConfirmPayDialog debtConfirmPayDialog;
+    private String productName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_finance_product_detail);
+        setContentView(R.layout.activity_debt_product_detail);
         popView = getLayoutInflater().inflate(R.layout.popupwindow_hk_register_new, null, false);
         x.view().inject(this);
         if (textViews == null) {
             textViews = new ArrayList<TextView>();
         }
+
         entityID = getIntent().getStringExtra("entityID");
-        initTopBarWithRightText("项目详情", toptitleView, new View.OnClickListener() {
+        productName = getIntent().getStringExtra("productName");
+
+        initTopBarWithRightText(productName, toptitleView, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent2 = new Intent(FinanceProductDetailActivity.this, HistoryItemActivity.class);
+                Intent intent2 = new Intent(DebtProductDetailActivity.this, HistoryItemActivity.class);
                 intent2.putExtra("entityID", entityID);
                 startActivity(intent2);
             }
         }, "");
         textViews.add(tvProductDetail);
-        textViews.add(tvQuestion);
+        //textViews.add(tvQuestion);
         textViews.add(tvRecord);
         textViews.add(tvPlan);
         InitImageView();
         initViewPager();
         requestData();
-        if (StaticMembers.isShowLastItem) {
-            imgview_right.setVisibility(View.VISIBLE);
-        } else {
-            imgview_right.setVisibility(View.GONE);
-        }
         mSlideDetailsLayout.setOnSlideDetailsListener(new SlideDetailsLayout.OnSlideDetailsListener() {
             @Override
             public void onStatucChanged(SlideDetailsLayout.Status status) {
@@ -214,83 +208,7 @@ public class FinanceProductDetailActivity extends BaseFragmentActivity implement
                 }
             }
         });
-    }
 
-
-    // 点击事件
-    @Event(value = {R.id.tvProductDetail,
-            R.id.tvRecord, R.id.tvQuestion, R.id.tvPlan, R.id.tvBuy, R.id.btnRefresh, R.id.tvModel_loan_contract,
-            R.id.tvInstruction, R.id.iv_safety_level, R.id.btnCheckNetwork })
-    private void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.iv_safety_level:
-                showPopupWindow();
-                break;
-            case R.id.tvInstruction:
-                Intent intent2 = new Intent(this, WebViewHtmlActivity.class);
-                startActivity(intent2);
-                break;
-            case R.id.tvModel_loan_contract:
-                Intent intent1 = new Intent(this, WebViewActivity.class);
-                intent1.putExtra(ParamsKeys.TYPE,ParamsValues.MODEL_LOAN_CONTRACT);
-                startActivity(intent1);
-                break;
-            case R.id.tvProductDetail:
-                fragmentPosition = 0;
-                mViewPager.setCurrentItem(fragmentPosition, false);
-                ViewPagerUtils.changeTextViewStyle_FINANCE(this, 0, textViews);
-                break;
-            case R.id.tvQuestion:
-                fragmentPosition = 1;
-                mViewPager.setCurrentItem(fragmentPosition, false);
-                ViewPagerUtils.changeTextViewStyle_FINANCE(this, 1, textViews);
-                break;
-            case R.id.tvRecord:
-                fragmentPosition = 2;
-                mViewPager.setCurrentItem(fragmentPosition, false);
-                ViewPagerUtils.changeTextViewStyle_FINANCE(this, 2, textViews);
-                break;
-            case R.id.tvPlan:
-                fragmentPosition = 3;
-                mViewPager.setCurrentItem(fragmentPosition, false);
-                ViewPagerUtils.changeTextViewStyle_FINANCE(this, 3, textViews);
-                break;
-//            case R.id.ivCalc:
-//                if (productDetailEntity != null) {
-//                    Intent intent3 = new Intent(this, CalculatorActivity.class);
-//                    Bundle bundle = new Bundle();
-//                    bundle.putSerializable("productDetailEntity", productDetailEntity);
-//                    intent3.putExtras(bundle);
-//                    startActivity(intent3);
-//                }
-//                break;
-            case R.id.tvBuy:
-                if (StaticMembers.IS_NEED_LOGIN) {
-                    startActivity(new Intent(this, LoginRegisterActivity.class));
-                } else if (StaticMembers.HK_STATUS != 1) {
-                    PopupWindow mPop = AppUtils.createHKPop(popView, context);
-                    mPop.showAtLocation(llMain, Gravity.CENTER, 0, 0);
-                }else {
-                    Intent intent = new Intent(this, BuyRegularActivity.class);
-                    intent.putExtra("entityID", entityID);
-                    startActivity(intent);
-                }
-                break;
-            case R.id.btnRefresh:
-                requestData();
-                break;
-            case R.id.btnCheckNetwork:
-                AppUtils.checkNetwork(context);
-                break;
-            default:
-                break;
-        }
-    }
-
-    private void showPopupWindow() {
-        popuSafetyLevel = LayoutInflater.from(this).inflate(R.layout.popupwindow_safety_level, null);
-        slPop = AppUtils.createSLPop(popuSafetyLevel, context);
-        slPop.showAtLocation(llMain, Gravity.CENTER, 0, 0);
     }
 
     private void requestData() {
@@ -363,181 +281,29 @@ public class FinanceProductDetailActivity extends BaseFragmentActivity implement
     }
 
     private void setUpView(ProductDetailEntity productDetailEntity) {
-        tvStartDate.setText(productDetailEntity.getBuystarttime());
-        tvManDate.setText(productDetailEntity.getManbiao_time());
-        tvQixiDate.setText(productDetailEntity.getInterestdate());
-        tvEndDate.setText(productDetailEntity.getExpire_time());
 
-        switch (productDetailEntity.getStep()) {
-            case 0:
-                //此方法更节省内存 防止OOM
-                ivProgress.setBackgroundDrawable(new BitmapDrawable(getResources(),
-                        AppUtils.getBitmap(this, R.mipmap.product_detail_item0)));
-                break;
-            case 1:
-                //此方法更节省内存 防止OOM
-                ivProgress.setBackgroundDrawable(new BitmapDrawable(getResources(),
-                        AppUtils.getBitmap(this, R.mipmap.product_detail_item1)));
-                break;
-            case 2:
-                //此方法更节省内存 防止OOM
-                ivProgress.setBackgroundDrawable(new BitmapDrawable(getResources(),
-                        AppUtils.getBitmap(this, R.mipmap.product_detail_item2)));
-                break;
-            case 3:
-                //此方法更节省内存 防止OOM
-                ivProgress.setBackgroundDrawable(new BitmapDrawable(getResources(),
-                        AppUtils.getBitmap(this, R.mipmap.product_detail_item3)));
-                break;
-            case 4:
-                //此方法更节省内存 防止OOM
-                ivProgress.setBackgroundDrawable(new BitmapDrawable(getResources(),
-                        AppUtils.getBitmap(this, R.mipmap.product_detail_item4)));
-                break;
-        }
-
-        int repay_method = 0;
-        if (productDetailEntity.getRepay_method().equals("先息后本")) {
-            repay_method = 1;
-        } else if (productDetailEntity.getRepay_method().equals("等额本息")) {
-            repay_method = 2;
-        } else if (productDetailEntity.getRepay_method().equals("到期还本付息")) {
-            repay_method = 3;
-        }
-        double earn = AppUtils.calcInterest(10000.00, Double.parseDouble(productDetailEntity.getAnnual()), Integer.parseInt(productDetailEntity.getTerm()), productDetailEntity.getUnit(), repay_method);
-        tvEarn.setText(earn + "");
-       // tvTitle.setText(productDetailEntity.getProject_name());
-        tvTitle.setText("");
-        tvTotalMoney.setText(FmtMicrometer.format6(productDetailEntity.getAmount()));
- //       tvRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(productDetailEntity.getAnnual())));
-        tvTime.setText(productDetailEntity.getTerm());
-        tvUnit.setText("期限(" + productDetailEntity.getUnit() + ")");
-        tvLeaveMoney.setText(FmtMicrometer.format6(productDetailEntity.getBuyamount()));
-        if (productDetailEntity.getIsbuy() == 1) {
-            tvBuy.setBackgroundResource(R.drawable.selector_theme_button);
-            tvBuy.setEnabled(true);
-            if (Long.parseLong(productDetailEntity.getBuylasttime()) > 0) {
-                //倒计时功能
-                ProductTimerCount productTimerCount = new ProductTimerCount(Long.parseLong(productDetailEntity.getBuylasttime()) * 1000, 1000, tvDate, new INotifyCallBack() {
-                    @Override
-                    public void onNotify() {
-                        requestData();
-                    }
-                });
-                productTimerCount.start();
-            } else {
-                llLeaveTime.setVisibility(View.GONE);
+        //倒计时功能
+        ProductTimerCount productTimerCount = new ProductTimerCount(Long.parseLong("2534554") * 1000, 1000, tvDate, new INotifyCallBack() {
+            @Override
+            public void onNotify() {
+                requestData();
             }
-        } else {
-            tvBuy.setBackgroundResource(R.color.gray_cancel_click);
-            tvBuy.setEnabled(false);
-            llLeaveTime.setVisibility(View.GONE);
-        }
-        tvBuy.setText(productDetailEntity.getStatusname());
-        tvSingle.setText(productDetailEntity.getEachamount());
-        tvRepay.setText(productDetailEntity.getRepay_method());
-        tvCompany.setText(productDetailEntity.getGuaranteecompany());
-        tvProductName.setText(productDetailEntity.getProject_name().trim());
-        tvProductType.setText(productDetailEntity.getDebtstype());
+        });
+        productTimerCount.start();
 
-        if (productDetailEntity.getOrgannual() == null || productDetailEntity.getExtannual() == null) {
-            tvRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(productDetailEntity.getAnnual())));
-            interestRates.setVisibility(View.GONE);
-        } else {
-            if (Double.valueOf(productDetailEntity.getExtannual()) > 0 && Double.valueOf(productDetailEntity.getOrgannual()) > 0 ) {
-                interestRates.setText("+" + FmtMicrometer.format6(productDetailEntity.getExtannual()) + "%");
-                tvRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(productDetailEntity.getOrgannual())));
-                interestRates.setVisibility(View.VISIBLE);
-            } else {
-                tvRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(productDetailEntity.getAnnual())));
-                interestRates.setVisibility(View.GONE);
-            }
-        }
-        if (productDetailEntity.getSafegrade() != null) {
-            ratingStart.setRating(Float.parseFloat(productDetailEntity.getSafegrade()));
-        } else {
-            ratingStart.setRating((float) 4.5);
-        }
-
-        if (productDetailEntity.getRecruitmentperiod() != null) {
-            tvRecruitmentPeriod.setText(productDetailEntity.getRecruitmentperiod() + "天");
-        } else {
-            tvRecruitmentPeriod.setText("6天");
-        }
-
-//        tvSafe.setText(productDetailEntity.getGuarantee_method());
-
-//        if (productDetailEntity.getPercentage() > 5) {
-//            ValueAnimator animator = ValueAnimator.ofInt(0, productDetailEntity.getPercentage());
-//            animator.setDuration(2000);
-//            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-//                public void onAnimationUpdate(ValueAnimator animation) {
-//                    int num = (Integer) animation.getAnimatedValue();
-//                    pbJoin.setProgress(num);
-//                    tvJoinMoney.setText(num + "%");
-//                }
-//            });
-//            animator.addListener(new Animator.AnimatorListener() {
-//                @Override
-//                public void onAnimationStart(Animator animation) {
-//
-//                }
-//
-//                @Override
-//                public void onAnimationEnd(Animator animation) {
-//                }
-//
-//                @Override
-//                public void onAnimationCancel(Animator animation) {
-//
-//                }
-//
-//                @Override
-//                public void onAnimationRepeat(Animator animation) {
-//
-//                }
-//            });
-//            animator.setInterpolator(new LinearInterpolator());
-//            animator.start();
-//        } else {
-//            pbJoin.setProgress(productDetailEntity.getPercentage());
-//            tvJoinMoney.setText(productDetailEntity.getPercentage() + "%");
-//        }
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-
-    }
-
-
-    /**
-     * 初始化动画
-     */
-    private void InitImageView() {
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-        int screenW = dm.widthPixels;// 获取分辨率宽度
-        bmpW = screenW / 4;
-        LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) cursor.getLayoutParams();
-        lp.width = bmpW;
-        offset = (screenW / 4 - bmpW) / 2;// 计算偏移量
-        Matrix matrix = new Matrix();
-        matrix.postTranslate(offset, 0);
-        cursor.setImageMatrix(matrix);// 设置动画初始位置
     }
 
     private void initViewPager() {
         mViewPager.setOnPageChangeListener(new MyOnPageChangeListener());
-        mViewPager.setOffscreenPageLimit(4);
+        mViewPager.setOffscreenPageLimit(3);
         // 包含3个fragment界面
-        List<TabIndicatorEntity> list = ViewPagerUtils.getTabIndicator(4);
+        List<TabIndicatorEntity> list = ViewPagerUtils.getTabIndicator(3);
         // 3个fragment界面封装
         List<Fragment> fragmentList = new ArrayList<Fragment>();
         productIntroduceFragment = new ProductIntroduceFragment();
         fragmentList.add(productIntroduceFragment);
         assetsFragment = new AssetsFragment();
-        fragmentList.add(assetsFragment);
+        //fragmentList.add(assetsFragment);
         investRecordFragment = new InvestRecordFragment();
         fragmentList.add(investRecordFragment);
         repayPlanFragment = new RepayPlanFragment();
@@ -549,17 +315,25 @@ public class FinanceProductDetailActivity extends BaseFragmentActivity implement
         ViewPagerUtils.changeTextViewStyle_FINANCE(this, fragmentPosition, textViews);
     }
 
+    /**
+     * 初始化动画
+     */
+    private void InitImageView() {
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int screenW = dm.widthPixels;// 获取分辨率宽度
+        bmpW = screenW / 3;
+        LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) cursor.getLayoutParams();
+        lp.width = bmpW;
+        offset = (screenW / 3 - bmpW) / 2;// 计算偏移量
+        Matrix matrix = new Matrix();
+        matrix.postTranslate(offset, 0);
+        cursor.setImageMatrix(matrix);// 设置动画初始位置
+    }
+
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        //返回键关闭pop
-        if (keyCode == KeyEvent.KEYCODE_BACK
-                && event.getRepeatCount() == 0) {
-            if (slPop != null && slPop.isShowing()) {
-                slPop.dismiss();
-                return true;
-            }
-        }
-        return super.onKeyDown(keyCode, event);
+    public void onPageSelected(int position) {
+
     }
 
     @Override
@@ -568,6 +342,93 @@ public class FinanceProductDetailActivity extends BaseFragmentActivity implement
         fragmentPosition = 0;
         ProductIntroduceFragment.isTop = true;
     }
+
+    // 点击事件
+    @Event(value = {R.id.tvProductDetail,
+            R.id.tvRecord, R.id.tvQuestion, R.id.tvPlan, R.id.tvBuy, R.id.btnRefresh, R.id.tvModel_loan_contract,
+            R.id.tvInstruction, R.id.btnCheckNetwork, R.id.tv_project_detail })
+    private void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv_project_detail:
+                Intent intent = new Intent(this, FinanceProductDetailActivity.class);
+                intent.putExtra("entityID",entityID);
+                startActivity(intent);
+                break;
+            case R.id.tvInstruction:
+                Intent intent2 = new Intent(this, WebViewHtmlActivity.class);
+                startActivity(intent2);
+                break;
+            case R.id.tvModel_loan_contract:
+                Intent intent1 = new Intent(this, WebViewActivity.class);
+                intent1.putExtra(ParamsKeys.TYPE,ParamsValues.MODEL_LOAN_CONTRACT);
+                startActivity(intent1);
+                break;
+            case R.id.tvProductDetail:
+                fragmentPosition = 0;
+                mViewPager.setCurrentItem(fragmentPosition, false);
+                ViewPagerUtils.changeTextViewStyle_FINANCE(this, 0, textViews);
+                break;
+            case R.id.tvQuestion:
+                fragmentPosition = 1;
+                mViewPager.setCurrentItem(fragmentPosition, false);
+                ViewPagerUtils.changeTextViewStyle_FINANCE(this, 1, textViews);
+                break;
+            case R.id.tvRecord:
+                fragmentPosition = 1;
+                mViewPager.setCurrentItem(fragmentPosition, false);
+                ViewPagerUtils.changeTextViewStyle_FINANCE(this, 1, textViews);
+                break;
+            case R.id.tvPlan:
+                fragmentPosition = 2;
+                mViewPager.setCurrentItem(fragmentPosition, false);
+                ViewPagerUtils.changeTextViewStyle_FINANCE(this, 2, textViews);
+                break;
+//            case R.id.ivCalc:
+//                if (productDetailEntity != null) {
+//                    Intent intent3 = new Intent(this, CalculatorActivity.class);
+//                    Bundle bundle = new Bundle();
+//                    bundle.putSerializable("productDetailEntity", productDetailEntity);
+//                    intent3.putExtras(bundle);
+//                    startActivity(intent3);
+//                }
+//                break;
+            case R.id.tvBuy:
+                if (StaticMembers.IS_NEED_LOGIN) {
+                    startActivity(new Intent(this, LoginRegisterActivity.class));
+                } else if (StaticMembers.HK_STATUS != 1) {
+                    PopupWindow mPop = AppUtils.createHKPop(popView, context);
+                    mPop.showAtLocation(llMain, Gravity.CENTER, 0, 0);
+                }else {
+                    /*Intent intent = new Intent(this, BuyRegularActivity.class);
+                    intent.putExtra("entityID", entityID);
+                    startActivity(intent);*/
+                    debtConfirmPayDialog = new DebtConfirmPayDialog(this, false, "确认支付", "2000.00", "10000",
+                            "123.0", "100", "取消", "确认", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            debtConfirmPayDialog.dismiss();
+                        }
+                    }, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            //TODO  确认购买
+                            AppUtils.showMiddleToast(DebtProductDetailActivity.this,"购买中。。。。");
+                        }
+                    });
+                }
+                break;
+            case R.id.btnRefresh:
+                requestData();
+                break;
+            case R.id.btnCheckNetwork:
+                AppUtils.checkNetwork(context);
+                break;
+            default:
+                break;
+        }
+    }
+
 
     /**
      * 页卡切换监听

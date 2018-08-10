@@ -388,6 +388,10 @@
             android:name=".activity.GesturePasswordActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name=".activity.DebtProductDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" />
     </application>
 
 </manifest>

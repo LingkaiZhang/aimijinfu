@@ -4,7 +4,7 @@
     <!-- 背景  gradient是渐变,corners定义的是圆角 -->
     <item android:id="@android:id/background">
         <shape>
-            <solid android:color="#eee" />
+            <solid android:color="#999" />
             <corners android:radius="10dp" />
         </shape>
     </item>
@@ -12,7 +12,7 @@
     <item android:id="@android:id/progress">
         <clip>
             <shape>
-                <solid android:color="@color/product_progress_blue" />
+                <solid android:color="@color/theme_color" />
                 <corners android:radius="10dp" />
             </shape>
         </clip>

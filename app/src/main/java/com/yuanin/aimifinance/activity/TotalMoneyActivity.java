@@ -213,8 +213,8 @@ public class TotalMoneyActivity extends BaseActivity {
     }
 
     private void initViews(final TotalAccountEntity entity) {
-        tvRegularInvest.setText(FmtMicrometer.format5(entity.getDeposit() + entity.getEnjoy()));
-        tvRegularWaitEarn.setText(FmtMicrometer.format5(entity.getWait_deposit_interest() + entity.getWait_enjoy_interest()));
+        tvRegularInvest.setText(FmtMicrometer.format5(entity.getWaitCapital()));
+        tvRegularWaitEarn.setText(FmtMicrometer.format5(entity.getWaitInterest()));
         tvAlreadyBonus.setText(FmtMicrometer.format5(entity.getReward_amount()));
         tvWaitBonus.setText(FmtMicrometer.format5(entity.getWait_reward_amount()));
 
@@ -232,7 +232,7 @@ public class TotalMoneyActivity extends BaseActivity {
             @Override
             public void run() {
                 super.run();
-                double total = entity.getEnjoy() + entity.getBalance() + entity.getDeposit()
+                double total = entity.getWaitCapital()+ entity.getBalance()
                         + entity.getAppoint() - entity.getWithdraw_amount();
                 double keyong = entity.getBalance() + entity.getAppoint() - entity.getWithdraw_amount();
                 double dongjie = entity.getAppoint() - entity.getWithdraw_amount();
