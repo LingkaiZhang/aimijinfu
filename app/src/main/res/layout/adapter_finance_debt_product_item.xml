@@ -28,14 +28,6 @@
             android:layout_marginBottom="2dp"
             android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/iv_type_logo"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_gravity="center"
-                android:layout_marginRight="@dimen/margin_five"
-                android:visibility="gone"/>
-
             <TextView
                 android:id="@id/tvName"
                 android:layout_width="wrap_content"
@@ -48,18 +40,18 @@
                 android:textColor="@color/text_black"
                 android:textSize="@dimen/normal_text"/>
 
-        <TextView
-            android:layout_marginLeft="5dp"
-            android:id="@+id/interestRatesLogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/interestRatesLogo"
-            android:textColor="@color/theme_color"
-            android:textSize="10sp"
-            android:layout_marginTop="@dimen/margin_twelve2"
-            android:background="@drawable/textview_border_interest_rates"
-            android:visibility="gone"
-            />
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:id="@+id/interestRatesLogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/interestRatesLogo"
+                android:textColor="@color/theme_color"
+                android:textSize="10sp"
+                android:layout_marginTop="@dimen/margin_twelve2"
+                android:background="@drawable/textview_border_interest_rates"
+                android:visibility="gone"
+                />
 
         </LinearLayout>
 

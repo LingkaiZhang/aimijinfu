@@ -47,7 +47,6 @@ public class DebtFinanceProductListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        dataList.size();
         return dataList.size();
     }
 
@@ -89,8 +88,6 @@ public class DebtFinanceProductListAdapter extends BaseAdapter {
                         .findViewById(R.id.interestFirstThenCost);
                 mainViewHolder.equalityCorpusAndInterest = (TextView) convertView
                         .findViewById(R.id.equalityCorpusAndInterest);
-                mainViewHolder.ivTypeLogo = (ImageView) convertView
-                        .findViewById(R.id.iv_type_logo);
 
                 convertView.setTag(mainViewHolder);
             } else {
