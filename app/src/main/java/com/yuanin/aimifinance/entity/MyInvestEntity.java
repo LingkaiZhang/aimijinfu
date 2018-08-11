@@ -27,6 +27,16 @@ public class MyInvestEntity implements Serializable {
     private String days_num;
     private int status;
 
+    public int getIsTransferBid() {
+        return isTransferBid;
+    }
+
+    public void setIsTransferBid(int isTransferBid) {
+        this.isTransferBid = isTransferBid;
+    }
+
+    private int isTransferBid;
+
     public String getInvest_id() {
         return invest_id;
     }

@@ -40,6 +40,10 @@ public class ParamsValues {
     public final static String MODULE_OTHER = "other";
     //投资
     public final static String MODULE_INVEST = "invest";
+    //债转（受让方）
+    public final static String MODULE_DEBT = "receivePart";
+
+
 
     /**
      * 网络请求方法参数
@@ -184,6 +188,14 @@ public class ParamsValues {
     public final static String MOTHED_VIP_LOGIN_NEW = "viplogin";
     //我的消息
     public final static String MOTHED_MY_MESSAGE = "mymessage";
+
+
+    /**
+     * 债权转让
+     * */
+    //债权转让商品列表
+    public final static  String MOTHED_GET_BUY_ENTRANSFER_BORROW_LIST = "getBuyTransferBorrowList";
+    public final static  String MOTHED_GET_BUY_ENTRANSFER_Detail = "getBuyTransferDetail";
 
 
     /**

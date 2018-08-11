@@ -234,7 +234,7 @@
     <string name="title_activity_modify_gesture_password">GesturePasswordModifyActivity</string>
     <string name="ModifyGesturePassword">修改手势密码</string>
 
-    <string name="connect_server_fail">连接服务器失败</string>
+    <string name="connect_server_fail">系统繁忙，请稍后重试。</string>
     <string name="connect_no_more">没有更多了呢</string>
     <string name="connect_request_fail">请求失败了呢</string>
     <!--登录-->
@@ -467,8 +467,6 @@
     <string name="openbankaccount">开通银行存管</string>
     <string name="activateAcount">激活账户</string>
     <string name="loan_calendar">回款日历</string>
-
-
 
 
 </resources>

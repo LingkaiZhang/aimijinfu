@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -100,6 +101,12 @@ public class OrderFormActivity extends BaseActivity {
     private RelativeLayout rlFinishAward;
     @ViewInject(R.id.imageView)
     private ImageView imageView;
+    @ViewInject(R.id.rlDebtAssignment)
+    private RelativeLayout rlDebtAssignment;
+    @ViewInject(R.id.tv_product_detail)
+    private Button tvProductDetail;
+    @ViewInject(R.id.tv_debt_protocol)
+    private Button tvDebtProtocol;
 
 
     private String entityID;
@@ -116,9 +123,20 @@ public class OrderFormActivity extends BaseActivity {
         requestData();
     }
 
-    @Event(value = {R.id.btnRefresh, R.id.imgRedPackets, R.id.viewer_contract, R.id.btnCheckNetwork})
+    @Event(value = {R.id.btnRefresh, R.id.imgRedPackets, R.id.viewer_contract, R.id.btnCheckNetwork, R.id.tv_product_detail, R.id.tv_debt_protocol})
     private void onViewClicked(View v) {
         switch (v.getId()) {
+            case R.id.tv_product_detail:
+                //TODO
+                Intent intent2 = new Intent(context, FinanceProductDetailActivity.class);
+                intent2.putExtra("entityID", orderFormEntity.getBorrowAmountId());
+                context.startActivity(intent2);
+                break;
+            case R.id.tv_debt_protocol:
+                Intent intentPDF2 = new Intent(context, PDFActivity.class);
+                intentPDF2.putExtra("pdfURL",orderFormEntity.getTransferProtocolLink());
+                startActivity(intentPDF2);
+                break;
             //电子合同
             case R.id.viewer_contract:
 //                 Toast.makeText(context,orderFormEntity.getEle_contact_link(),Toast.LENGTH_SHORT).show();
@@ -297,6 +315,14 @@ public class OrderFormActivity extends BaseActivity {
             tvNoAward.setText(FmtMicrometer.format5(orderFormEntity.getWait_interest()) + "元");
             tvFinishAward.setText(FmtMicrometer.format5(orderFormEntity.getYes_interest()) + "元");
         }
+
+        //债转标的两个底部按钮
+        if (orderFormEntity.getIsTransferBid() == 0) {
+            rlDebtAssignment.setVisibility(View.GONE);
+        } else {
+            rlDebtAssignment.setVisibility(View.VISIBLE);
+        }
+
     }
 
     private void setImgAnimation() {

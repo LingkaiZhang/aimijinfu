@@ -392,6 +392,11 @@
             android:name=".activity.DebtProductDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name=".activity.DebtAssignmentActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity android:name=".activity.DebtApplyActivity"></activity>
     </application>
 
 </manifest>

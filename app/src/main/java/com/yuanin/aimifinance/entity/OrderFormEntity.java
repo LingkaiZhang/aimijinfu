@@ -34,6 +34,38 @@ public class OrderFormEntity implements Serializable {
     private double wait_interest;
     //已收奖励
     private double yes_interest;
+    //是否是债转订单
+    private int isTransferBid;
+    //购买项目的ID（原项目）
+    private String borrowAmountId;
+    //债转协议地址
+    private String transferProtocolLink;
+
+    public int getIsTransferBid() {
+        return isTransferBid;
+    }
+
+    public void setIsTransferBid(int isTransferBid) {
+        this.isTransferBid = isTransferBid;
+    }
+
+    public String getBorrowAmountId() {
+        return borrowAmountId;
+    }
+
+    public void setBorrowAmountId(String borrowAmountId) {
+        this.borrowAmountId = borrowAmountId;
+    }
+
+    public String getTransferProtocolLink() {
+        return transferProtocolLink;
+    }
+
+    public void setTransferProtocolLink(String transferProtocolLink) {
+        this.transferProtocolLink = transferProtocolLink;
+    }
+
+
 
     public double getWait_interest() {
         return wait_interest;

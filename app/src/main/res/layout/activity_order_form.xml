@@ -41,16 +41,16 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:textColor="@color/text_black"
-                        android:textSize="@dimen/big_text"/>
+                        android:textSize="@dimen/big_text" />
 
                     <ImageView
                         android:id="@+id/imageView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/yellow_print"
+                        android:layout_marginRight="@dimen/margin_four"
                         android:layout_toLeftOf="@+id/tvStatus"
-                        android:layout_marginRight="@dimen/margin_four"/>
+                        android:src="@drawable/yellow_print" />
 
                     <TextView
                         android:id="@+id/tvStatus"
@@ -60,14 +60,14 @@
                         android:layout_centerVertical="true"
                         android:drawablePadding="@dimen/margin_four"
                         android:textColor="@color/text_gray"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
                 </RelativeLayout>
 
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/margin_eight"
-                    android:background="@color/bg"/>
+                    android:background="@color/bg" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -81,7 +81,7 @@
                         android:layout_centerVertical="true"
                         android:text="@string/order_invest_money"
                         android:textColor="@color/text_light_gray"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                     <TextView
                         android:id="@+id/tvMoney"
@@ -90,7 +90,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:textColor="@color/theme_color"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                 </RelativeLayout>
 
@@ -98,7 +98,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line"
                     android:layout_marginLeft="@dimen/small_margin"
-                    android:background="@color/bg"/>
+                    android:background="@color/bg" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -112,31 +112,30 @@
                         android:layout_centerVertical="true"
                         android:text="@string/order_rate"
                         android:textColor="@color/text_light_gray"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentRight="true">
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true">
 
                         <TextView
                             android:id="@+id/tvRate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="10.00%"
                             android:textColor="@color/theme_color"
-                            android:textSize="@dimen/normal_text"
-                            android:text="10.00%"/>
+                            android:textSize="@dimen/normal_text" />
 
                         <TextView
                             android:id="@+id/interestRates"
-                            android:layout_marginLeft="4dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
                             android:textColor="@color/theme_color"
                             android:textSize="@dimen/normal_text"
-                            android:visibility="gone"
-                            />
+                            android:visibility="gone" />
 
                     </LinearLayout>
 
@@ -146,7 +145,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line"
                     android:layout_marginLeft="@dimen/small_margin"
-                    android:background="@color/bg"/>
+                    android:background="@color/bg" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -160,7 +159,7 @@
                         android:layout_centerVertical="true"
                         android:text="@string/order_earn_money"
                         android:textColor="@color/text_light_gray"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                     <TextView
                         android:id="@+id/tvEarn"
@@ -169,7 +168,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:textColor="@color/theme_color"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                 </RelativeLayout>
 
@@ -177,7 +176,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line"
                     android:layout_marginLeft="@dimen/small_margin"
-                    android:background="@color/bg"/>
+                    android:background="@color/bg" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -191,7 +190,7 @@
                         android:layout_centerVertical="true"
                         android:text="@string/order_time"
                         android:textColor="@color/text_light_gray"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                     <TextView
                         android:id="@+id/tvTime"
@@ -200,7 +199,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:textColor="@color/text_black"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                 </RelativeLayout>
 
@@ -208,7 +207,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line"
                     android:layout_marginLeft="@dimen/small_margin"
-                    android:background="@color/bg"/>
+                    android:background="@color/bg" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -222,7 +221,7 @@
                         android:layout_centerVertical="true"
                         android:text="@string/order_type"
                         android:textColor="@color/text_light_gray"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                     <TextView
                         android:id="@+id/tvType"
@@ -231,7 +230,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:textColor="@color/text_black"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                 </RelativeLayout>
 
@@ -239,7 +238,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/margin_eight"
-                    android:background="@color/bg"/>
+                    android:background="@color/bg" />
 
 
                 <RelativeLayout
@@ -259,7 +258,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/order_invest_time"
                             android:textColor="@color/text_light_gray"
-                            android:textSize="@dimen/normal_text"/>
+                            android:textSize="@dimen/normal_text" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -268,7 +267,7 @@
                             android:text="@string/order_invest_time_bottom"
                             android:textColor="@color/text_light_gray"
                             android:textSize="@dimen/small_text"
-                            android:visibility="gone"/>
+                            android:visibility="gone" />
                     </LinearLayout>
 
 
@@ -279,7 +278,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:textColor="@color/text_black"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                 </RelativeLayout>
 
@@ -287,7 +286,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line"
                     android:layout_marginLeft="@dimen/small_margin"
-                    android:background="@color/bg"/>
+                    android:background="@color/bg" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -306,7 +305,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/order_earn_time"
                             android:textColor="@color/text_light_gray"
-                            android:textSize="@dimen/normal_text"/>
+                            android:textSize="@dimen/normal_text" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -315,7 +314,7 @@
                             android:text="@string/order_earn_time_bottom"
                             android:textColor="@color/text_light_gray"
                             android:textSize="@dimen/small_text"
-                            android:visibility="gone"/>
+                            android:visibility="gone" />
                     </LinearLayout>
 
 
@@ -326,7 +325,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:textColor="@color/text_black"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                 </RelativeLayout>
 
@@ -334,7 +333,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line"
                     android:layout_marginLeft="@dimen/small_margin"
-                    android:background="@color/bg"/>
+                    android:background="@color/bg" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -353,7 +352,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/order_end_time"
                             android:textColor="@color/text_light_gray"
-                            android:textSize="@dimen/normal_text"/>
+                            android:textSize="@dimen/normal_text" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -362,7 +361,7 @@
                             android:text="@string/order_end_time_bottom"
                             android:textColor="@color/text_light_gray"
                             android:textSize="@dimen/small_text"
-                            android:visibility="gone"/>
+                            android:visibility="gone" />
                     </LinearLayout>
 
 
@@ -373,7 +372,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:textColor="@color/text_black"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                 </RelativeLayout>
 
@@ -381,7 +380,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/margin_eight"
-                    android:background="@color/bg"/>
+                    android:background="@color/bg" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -395,7 +394,7 @@
                         android:layout_centerVertical="true"
                         android:text="@string/order_no_finish_money"
                         android:textColor="@color/text_light_gray"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                     <TextView
                         android:id="@+id/tvNoFinishMoney"
@@ -404,14 +403,14 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:textColor="@color/theme_color"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                 </RelativeLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line_one_dp"
-                    android:background="@color/bg"/>
+                    android:background="@color/bg" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -425,7 +424,7 @@
                         android:layout_centerVertical="true"
                         android:text="@string/order_finish_money"
                         android:textColor="@color/text_light_gray"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                     <TextView
                         android:id="@+id/tvFinishMoney"
@@ -434,14 +433,14 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:textColor="@color/text_black"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                 </RelativeLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line_one_dp"
-                    android:background="@color/bg"/>
+                    android:background="@color/bg" />
 
 
                 <RelativeLayout
@@ -456,7 +455,7 @@
                         android:layout_centerVertical="true"
                         android:text="@string/order_no_finish_earn"
                         android:textColor="@color/text_light_gray"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                     <TextView
                         android:id="@+id/tvNoFinishEarn"
@@ -465,14 +464,14 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:textColor="@color/theme_color"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                 </RelativeLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line_one_dp"
-                    android:background="@color/bg"/>
+                    android:background="@color/bg" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -486,7 +485,7 @@
                         android:layout_centerVertical="true"
                         android:text="@string/order_finish_earn"
                         android:textColor="@color/text_light_gray"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                     <TextView
                         android:id="@+id/tvFinishEarn"
@@ -495,14 +494,14 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:textColor="@color/text_black"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                 </RelativeLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line_one_dp"
-                    android:background="@color/bg"/>
+                    android:background="@color/bg" />
 
                 <RelativeLayout
                     android:id="@+id/rlNoAward"
@@ -517,7 +516,7 @@
                         android:layout_centerVertical="true"
                         android:text="待收奖励"
                         android:textColor="@color/text_light_gray"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                     <TextView
                         android:id="@+id/tvNoAward"
@@ -527,14 +526,14 @@
                         android:layout_centerVertical="true"
                         android:text="0"
                         android:textColor="@color/theme_color"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                 </RelativeLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line_one_dp"
-                    android:background="@color/bg"/>
+                    android:background="@color/bg" />
 
                 <RelativeLayout
                     android:id="@+id/rlFinishAward"
@@ -549,7 +548,7 @@
                         android:layout_centerVertical="true"
                         android:text="已收奖励"
                         android:textColor="@color/text_light_gray"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                     <TextView
                         android:id="@+id/tvFinishAward"
@@ -559,14 +558,45 @@
                         android:layout_centerVertical="true"
                         android:text="0"
                         android:textColor="@color/text_black"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text" />
 
                 </RelativeLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/margin_eight"
-                    android:background="@color/bg"/>
+                    android:background="@color/bg" />
+
+                <RelativeLayout
+                    android:id="@+id/rlDebtAssignment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    >
+
+                    <Button
+                        android:id="@+id/tv_product_detail"
+                        android:layout_width="120dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="30dp"
+                        android:layout_marginTop="30dp"
+                        android:text="查看原标详情"
+                        android:textColor="@color/theme_color"
+                        android:background="@drawable/selector_contract_button_click"/>
+
+                    <Button
+                        android:id="@+id/tv_debt_protocol"
+                        android:layout_width="120dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="30dp"
+                        android:layout_marginTop="30dp"
+                        android:text="查看债转协议"
+                        android:textColor="@color/theme_color"
+                        android:background="@drawable/selector_contract_button_click"
+                        android:layout_marginLeft="@dimen/margin_sixty"
+                        android:layout_toRightOf="@+id/tv_product_detail"/>
+
+                </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/mine_contract_mode"
@@ -578,17 +608,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal">
+
                         <Button
                             android:id="@+id/viewer_contract"
+                            style="@style/Widget.AppCompat.Button"
                             android:layout_width="250dp"
                             android:layout_height="40dp"
+                            android:layout_marginBottom="30dp"
+                            android:layout_marginTop="30dp"
+                            android:background="@drawable/selector_contract_button_click"
                             android:text="查看出借合同"
                             android:textColor="@color/theme_color"
-                            android:textSize="@dimen/big_text"
-                            android:layout_marginTop="30dp"
-                            android:layout_marginBottom="30dp"
-                            android:background="@drawable/selector_contract_button_click"
-                            style="@style/Widget.AppCompat.Button"/>
+                            android:textSize="@dimen/big_text" />
 
                     </LinearLayout>
 
@@ -600,7 +631,7 @@
                     android:layout_height="37dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="@dimen/big_margin"
-                    android:layout_marginTop="@dimen/big_margin"/>
+                    android:layout_marginTop="@dimen/big_margin" />
             </LinearLayout>
         </ScrollView>
 
@@ -612,7 +643,7 @@
             android:layout_marginBottom="@dimen/big_margin"
             android:layout_marginRight="@dimen/small_margin"
             android:src="@mipmap/send_redpacket"
-            android:visibility="visible"/>
+            android:visibility="gone" />
     </FrameLayout>
 
     <include

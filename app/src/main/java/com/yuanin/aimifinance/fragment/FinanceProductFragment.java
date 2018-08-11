@@ -20,6 +20,7 @@ import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.adapter.DebtFinanceProductListAdapter;
 import com.yuanin.aimifinance.adapter.FinanceProductListAdapter;
 import com.yuanin.aimifinance.base.BaseFragment;
+import com.yuanin.aimifinance.entity.DebtFinanceProductEntity;
 import com.yuanin.aimifinance.entity.EventMessage;
 import com.yuanin.aimifinance.entity.FinanceProductEntity;
 import com.yuanin.aimifinance.entity.ReturnResultEntity;
@@ -83,6 +84,7 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
 
     private boolean isNeedLoadBar = true;
     private List<FinanceProductEntity> mList;
+    private List<DebtFinanceProductEntity> mListDebt;
     private FinanceProductListAdapter mAdp;
     // 页码
     private int PageIndex = 1;
@@ -167,11 +169,11 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
                 tvSanbiaolist.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
                 tvZhanranglist.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                 isSanBiao = false;
-                if (mList != null) {
-                    mList = null;
+                if (mListDebt != null) {
+                    mListDebt = null;
                 }
                 //lvProduct.autoRefresh();
-                PageIndex = 2;
+                PageIndex = 1;
                 hasLoadedOnce = false;
                 isNeedLoadBar = true;
                 requestDatasZhaizhuan();
@@ -181,13 +183,16 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
                 if (mList != null) {
                     mList = null;
                 }
+                if (mListDebt != null) {
+                    mListDebt = null;
+                }
                 PageIndex = 1;
                 hasLoadedOnce = false;
                 isNeedLoadBar = true;
                 if (isSanBiao) {
                     requestDatas();
                 } else {
-                    PageIndex = 2;
+                    PageIndex = 1;
                     requestDatasZhaizhuan();
                 }
                 break;
@@ -211,17 +216,18 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
         }
         JSONObject obj = AppUtils.getPublicJsonObject(false);
         try {
-            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_PRODUCT);
-            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_GET_PRODUCT_LIST);
+            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_DEBT);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_GET_BUY_ENTRANSFER_BORROW_LIST);
             obj.put(ParamsKeys.PAGE_QTY, String.valueOf(StaticMembers.PAGE_SIZE));
             obj.put(ParamsKeys.CURRENT_PAGE, String.valueOf(PageIndex));
+            obj.put(ParamsKeys.STATUS,"1");
             String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
             obj.put(ParamsKeys.TOKEN, token);
             obj.remove(ParamsKeys.KEY);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Type mType = new TypeToken<ReturnResultEntity<FinanceProductEntity>>() {
+        Type mType = new TypeToken<ReturnResultEntity<DebtFinanceProductEntity>>() {
         }.getType();
         NetUtils.request(obj, mType, new IHttpRequestCallBack() {
                     @Override
@@ -247,12 +253,12 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
                         } else {
                             loadComplete();
                         }
-                        ReturnResultEntity<FinanceProductEntity> entity = (ReturnResultEntity<FinanceProductEntity>) AppUtils.fail2SetData(ParamsKeys.PRODUCT_ENTITY_DEBT);
+                        ReturnResultEntity<DebtFinanceProductEntity> entity = (ReturnResultEntity<DebtFinanceProductEntity>) AppUtils.fail2SetData(ParamsKeys.PRODUCT_ENTITY_DEBT);
                         if (entity != null) {
-                            if (mList == null) {
-                                mList = entity.getData();
+                            if (mListDebt == null) {
+                                mListDebt = entity.getData();
                                 // setTitleData();
-                                debtFinanceProductListAdapter = new DebtFinanceProductListAdapter(getActivity(), mList);
+                                debtFinanceProductListAdapter = new DebtFinanceProductListAdapter(getActivity(), mListDebt);
                                 lvProduct.setAdapter(debtFinanceProductListAdapter);
                                 flMain.setVisibility(View.VISIBLE);
                                 tvNoContent.setVisibility(View.GONE);
@@ -271,18 +277,18 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
 
                     @Override
                     public void onSuccess(Object object) {
-                        ReturnResultEntity<FinanceProductEntity> entity = (ReturnResultEntity<FinanceProductEntity>) object;
+                        ReturnResultEntity<DebtFinanceProductEntity> entity = (ReturnResultEntity<DebtFinanceProductEntity>) object;
                         if (entity.isSuccess(getActivity())) {
                             if (entity.isNotNull()) {
                                 hasLoadedOnce = true;
-                                if (mList == null) {
+                                if (mListDebt == null) {
                                     StaticMembers.aCache.put(ParamsKeys.PRODUCT_ENTITY_DEBT, entity);
-                                    mList = entity.getData();
+                                    mListDebt = entity.getData();
                                     //    setTitleData();
-                                    debtFinanceProductListAdapter = new DebtFinanceProductListAdapter(getActivity(), mList);
+                                    debtFinanceProductListAdapter = new DebtFinanceProductListAdapter( getActivity(), mListDebt);
                                     lvProduct.setAdapter(debtFinanceProductListAdapter);
                                 } else {
-                                    mList.addAll(entity.getData());
+                                    mListDebt.addAll(entity.getData());
                                     debtFinanceProductListAdapter.notifyDataSetChanged();
                                 }
                                 if (entity.getData().size() < StaticMembers.PAGE_SIZE) {
@@ -294,7 +300,7 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
                                 tvNoContent.setVisibility(View.GONE);
                                 llNoNet.setVisibility(View.GONE);
                             } else {
-                                if (mList == null) {
+                                if (mListDebt == null) {
                                     flMain.setVisibility(View.GONE);
                                     tvNoContent.setVisibility(View.VISIBLE);
                                     llNoNet.setVisibility(View.GONE);
@@ -308,12 +314,12 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
                                 PageIndex -= 1;
                             }
                             AppUtils.showToast(getActivity(), entity.getRemark());
-                            entity = (ReturnResultEntity<FinanceProductEntity>) AppUtils.fail2SetData(ParamsKeys.PRODUCT_ENTITY_DEBT);
+                            entity = (ReturnResultEntity<DebtFinanceProductEntity>) AppUtils.fail2SetData(ParamsKeys.PRODUCT_ENTITY_DEBT);
                             if (entity != null) {
-                                if (mList == null) {
-                                    mList = entity.getData();
+                                if (mListDebt == null) {
+                                    mListDebt = entity.getData();
                                     // setTitleData();
-                                    debtFinanceProductListAdapter = new DebtFinanceProductListAdapter(getActivity(), mList);
+                                    debtFinanceProductListAdapter = new DebtFinanceProductListAdapter(getActivity(), mListDebt);
                                     lvProduct.setAdapter(debtFinanceProductListAdapter);
                                     flMain.setVisibility(View.VISIBLE);
                                     tvNoContent.setVisibility(View.GONE);
@@ -329,19 +335,19 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
                                 }
                             }
                         }
-                    }
+                     }
 
                     @Override
                     public void onFailure() {
                         if (PageIndex > 1) {
                             PageIndex -= 1;
                         }
-                        ReturnResultEntity<FinanceProductEntity> entity = (ReturnResultEntity<FinanceProductEntity>) AppUtils.fail2SetData(ParamsKeys.PRODUCT_ENTITY_DEBT);
+                        ReturnResultEntity<DebtFinanceProductEntity> entity = (ReturnResultEntity<DebtFinanceProductEntity>) AppUtils.fail2SetData(ParamsKeys.PRODUCT_ENTITY_DEBT);
                         if (entity != null) {
-                            if (mList == null) {
-                                mList = entity.getData();
+                            if (mListDebt == null) {
+                                mListDebt = entity.getData();
                                 //    setTitleData();
-                                debtFinanceProductListAdapter = new DebtFinanceProductListAdapter(getActivity(), mList);
+                                debtFinanceProductListAdapter = new DebtFinanceProductListAdapter(getActivity(), mListDebt);
                                 lvProduct.setAdapter(debtFinanceProductListAdapter);
                                 flMain.setVisibility(View.VISIBLE);
                                 tvNoContent.setVisibility(View.GONE);
@@ -594,7 +600,6 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
         if (isSanBiao) {
             requestDatas();
         } else {
-            PageIndex = 2;
             requestDatasZhaizhuan();
         }
     }

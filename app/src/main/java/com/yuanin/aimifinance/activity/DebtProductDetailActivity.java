@@ -26,6 +26,7 @@ import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.adapter.ViewPagerFragmentAdapter;
 import com.yuanin.aimifinance.base.BaseFragmentActivity;
 import com.yuanin.aimifinance.dialog.DebtConfirmPayDialog;
+import com.yuanin.aimifinance.entity.DebtProductDetailEntity;
 import com.yuanin.aimifinance.entity.ProductDetailEntity;
 import com.yuanin.aimifinance.entity.ReturnResultEntity;
 import com.yuanin.aimifinance.entity.TabIndicatorEntity;
@@ -163,7 +164,7 @@ public class DebtProductDetailActivity extends BaseFragmentActivity implements I
     private AssetsFragment assetsFragment;
     private RepayPlanFragment repayPlanFragment;
     private Context context = DebtProductDetailActivity.this;
-    private ProductDetailEntity productDetailEntity;
+    private DebtProductDetailEntity debtProductDetailEntity;
     private View popView;
     private DebtConfirmPayDialog debtConfirmPayDialog;
     private String productName;
@@ -214,8 +215,8 @@ public class DebtProductDetailActivity extends BaseFragmentActivity implements I
     private void requestData() {
         JSONObject obj = AppUtils.getPublicJsonObject(false);
         try {
-            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_PRODUCT);
-            obj.put(ParamsKeys.MOTHED, ParamsValues.GET_PRODUCT_DETAIL);
+            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_DEBT);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_GET_BUY_ENTRANSFER_Detail);
             obj.put(ParamsKeys.PRODUCT_ID, entityID);
             String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
             obj.put(ParamsKeys.TOKEN, token);
@@ -223,7 +224,7 @@ public class DebtProductDetailActivity extends BaseFragmentActivity implements I
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Type mType = new TypeToken<ReturnResultEntity<ProductDetailEntity>>() {
+        Type mType = new TypeToken<ReturnResultEntity<DebtProductDetailEntity>>() {
         }.getType();
         NetUtils.request(obj, mType, new IHttpRequestCallBack() {
             @Override
@@ -247,15 +248,15 @@ public class DebtProductDetailActivity extends BaseFragmentActivity implements I
 
             @Override
             public void onSuccess(Object object) {
-                ReturnResultEntity<ProductDetailEntity> entity = (ReturnResultEntity<ProductDetailEntity>) object;
+                ReturnResultEntity<DebtProductDetailEntity> entity = (ReturnResultEntity<DebtProductDetailEntity>) object;
                 if (entity.isSuccess(context)) {
                     if (entity.isNotNull()) {
-                        productDetailEntity = entity.getData().get(0);
-                        setUpView(productDetailEntity);
-                        productIntroduceFragment.setDatas(productDetailEntity);
-                        investRecordFragment.setDatas(productDetailEntity);
-                        repayPlanFragment.setDatas(productDetailEntity);
-                        assetsFragment.setDatas(productDetailEntity);
+                        debtProductDetailEntity = entity.getData().get(0);
+                        setUpView(debtProductDetailEntity);
+                       /* productIntroduceFragment.setDatas(debtProductDetailEntity);
+                        investRecordFragment.setDatas(debtProductDetailEntity);
+                        repayPlanFragment.setDatas(debtProductDetailEntity);
+                        assetsFragment.setDatas(productDetailEntity);*/
                         svMain.setVisibility(View.VISIBLE);
                         tvNoContent.setVisibility(View.GONE);
                         llNoNet.setVisibility(View.GONE);
@@ -280,7 +281,7 @@ public class DebtProductDetailActivity extends BaseFragmentActivity implements I
         });
     }
 
-    private void setUpView(ProductDetailEntity productDetailEntity) {
+    private void setUpView(DebtProductDetailEntity productDetailEntity) {
 
         //倒计时功能
         ProductTimerCount productTimerCount = new ProductTimerCount(Long.parseLong("2534554") * 1000, 1000, tvDate, new INotifyCallBack() {

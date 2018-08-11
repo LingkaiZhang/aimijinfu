@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.yuanin.aimifinance.R;
+import com.yuanin.aimifinance.activity.DebtProductDetailActivity;
 import com.yuanin.aimifinance.activity.FinanceProductDetailActivity;
 import com.yuanin.aimifinance.activity.OrderFormActivity;
 import com.yuanin.aimifinance.entity.MyInvestEntity;
@@ -136,10 +137,18 @@ public class MyInvestListAdapter extends GeneralAdapter<MyInvestEntity> {
                     @Override
                     public void onClick(View v) {
                         StaticMembers.isShowLastItem = false;
-                        Intent intent = new Intent(context, FinanceProductDetailActivity.class);
-                        intent.putExtra("where", 1);
-                        intent.putExtra("entityID", data.getId());
-                        context.startActivity(intent);
+                        if (data.getIsTransferBid() == 0) {
+                            Intent intent = new Intent(context, FinanceProductDetailActivity.class);
+                            intent.putExtra("where", 1);
+                            intent.putExtra("entityID", data.getId());
+                            context.startActivity(intent);
+                        } else {
+                            Intent intent = new Intent(context, DebtProductDetailActivity.class);
+                            intent.putExtra("where", 1);
+                            intent.putExtra("entityID", data.getId());
+                            context.startActivity(intent);
+                        }
+
                         dialog.dismiss();
                     }
                 });

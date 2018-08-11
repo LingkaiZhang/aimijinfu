@@ -31,6 +31,7 @@ import com.yuanin.aimifinance.activity.AddUpEarningsActivity;
 import com.yuanin.aimifinance.activity.AutoInvestActivity;
 import com.yuanin.aimifinance.activity.CalendarViewActivity;
 import com.yuanin.aimifinance.activity.CallBackWebActivity;
+import com.yuanin.aimifinance.activity.DebtAssignmentActivity;
 import com.yuanin.aimifinance.activity.FundsWaterActivity;
 import com.yuanin.aimifinance.activity.GetVerifyCodeActivity;
 import com.yuanin.aimifinance.activity.HomePageActivity;
@@ -170,7 +171,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
 
     @Event(value = { R.id.isShowBalance,R.id.ivMine, R.id.rlEarnMoney, R.id.rlBalance, R.id.tvTotalMoneyTitle, R.id.tvTotalMoney, R.id.rlRegular,
             R.id.rlLittleItem, R.id.btnWithdraw, R.id.btnPay, R.id.rlRedPackets, R.id.btnRefresh,R.id.llLoanCalendar,
-            R.id.rlFundsWater, R.id.llAboutWe, R.id.ivMessage, R.id.tvUserName})
+            R.id.rlFundsWater, R.id.llAboutWe, R.id.ivMessage, R.id.tvUserName, R.id.llAssignmentOfDebt})
     private void loginClicked(View v) {
         if (StaticMembers.IS_NEED_LOGIN) {
             startActivity(new Intent(getActivity(), LoginRegisterActivity.class));
@@ -296,6 +297,10 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
                     break;*/
                 case R.id.btnRefresh:
                     requestDatas();
+                    break;
+                //债权转让
+                case R.id.llAssignmentOfDebt:
+                    startActivity(new Intent(getActivity(), DebtAssignmentActivity.class));
                     break;
             }
         }
