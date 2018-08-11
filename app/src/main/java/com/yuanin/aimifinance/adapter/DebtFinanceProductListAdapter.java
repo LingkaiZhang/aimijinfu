@@ -38,7 +38,6 @@ import static com.yuanin.aimifinance.R.id.btnStatus;
 public class DebtFinanceProductListAdapter extends BaseAdapter {
     private List<DebtFinanceProductEntity> dataList;
     private Context mContext;
-    private static final int TYPE_COUNT = 2;//item类型的总数
 
     public DebtFinanceProductListAdapter(Context mContext, List<DebtFinanceProductEntity> dataList) {
         super();
@@ -48,6 +47,7 @@ public class DebtFinanceProductListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
+        dataList.size();
         return dataList.size();
     }
 
@@ -61,38 +61,10 @@ public class DebtFinanceProductListAdapter extends BaseAdapter {
         return position;
     }
 
-
-
-    @Override
-    public int getViewTypeCount() {
-        return TYPE_COUNT;
-    }
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final DebtFinanceProductEntity entity = dataList.get(position);
-        if (false) {
-            HeadViewHolder headViewHolder = null;
-            if (convertView == null) {
-                headViewHolder = new HeadViewHolder();
-                convertView = LayoutInflater.from(mContext).inflate(
-                        R.layout.adapter_finance_product_head, null);
-                headViewHolder.tvType = (TextView) convertView
-                        .findViewById(R.id.tvType);
-                headViewHolder.topLL = (LinearLayout) convertView
-                        .findViewById(R.id.topLL);
-                convertView.setTag(headViewHolder);
-            } else {
-                headViewHolder = (HeadViewHolder) convertView.getTag();
-            }
-            if (position == 0) {
-                headViewHolder.topLL.setVisibility(View.GONE);
-            } else {
-                headViewHolder.topLL.setVisibility(View.VISIBLE);
-            }
-
-        } else {
-            MainViewHolder mainViewHolder = null;
+            MainViewHolder mainViewHolder;
             if (convertView == null) {
                 mainViewHolder = new MainViewHolder();
                 convertView = LayoutInflater.from(mContext).inflate(
@@ -140,13 +112,6 @@ public class DebtFinanceProductListAdapter extends BaseAdapter {
                 mainViewHolder.equalityCorpusAndInterest.setVisibility(View.VISIBLE);
             }
 
-
-
-
-
-
-
-
             if (entity.getIsbuy().equals("1") ) {
                 mainViewHolder.btnStatus.setBackgroundResource(R.drawable.selector_index_button);
                 mainViewHolder.btnStatus.setOnClickListener(new View.OnClickListener() {
@@ -178,13 +143,8 @@ public class DebtFinanceProductListAdapter extends BaseAdapter {
                     mContext.startActivity(intent);
                 }
             });
-        }
-        return convertView;
-    }
 
-    class HeadViewHolder {
-        TextView tvType;
-        LinearLayout topLL;
+        return convertView;
     }
 
     class MainViewHolder {

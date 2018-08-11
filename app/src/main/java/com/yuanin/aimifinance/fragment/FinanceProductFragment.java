@@ -86,6 +86,7 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
     private List<FinanceProductEntity> mList;
     private List<DebtFinanceProductEntity> mListDebt;
     private FinanceProductListAdapter mAdp;
+    private DebtFinanceProductListAdapter debtFinanceProductListAdapter;
     // 页码
     private int PageIndex = 1;
     //是否散标
@@ -99,7 +100,7 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
      */
     private boolean hasLoadedOnce = false;
     private View popView;
-    private DebtFinanceProductListAdapter debtFinanceProductListAdapter;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -285,7 +286,7 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
                                     StaticMembers.aCache.put(ParamsKeys.PRODUCT_ENTITY_DEBT, entity);
                                     mListDebt = entity.getData();
                                     //    setTitleData();
-                                    debtFinanceProductListAdapter = new DebtFinanceProductListAdapter( getActivity(), mListDebt);
+                                    debtFinanceProductListAdapter = new DebtFinanceProductListAdapter(getActivity(), mListDebt);
                                     lvProduct.setAdapter(debtFinanceProductListAdapter);
                                 } else {
                                     mListDebt.addAll(entity.getData());
