@@ -35,7 +35,6 @@
                 android:singleLine="true"
                 android:text="爱米定期"
                 android:maxLines="1"
-                android:maxEms="9"
                 android:ellipsize="end"
                 android:textColor="@color/text_black"
                 android:textSize="@dimen/normal_text"/>
@@ -57,14 +56,14 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/interestFirstThenCost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_eight"
+            android:layout_marginLeft="@dimen/margin_five"
             android:text="先息后本"
             android:textSize="10sp"
             android:layout_marginTop="@dimen/margin_twelve2"
@@ -77,19 +76,13 @@
             android:id="@+id/equalityCorpusAndInterest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_eight"
+            android:layout_marginLeft="@dimen/margin_five"
             android:text="等额本息"
             android:textSize="10sp"
             android:layout_marginTop="@dimen/margin_twelve2"
-            android:textColor="@color/login_register_blue"
-            android:background="@drawable/textview_border_equality_corpus_and_interest"
+            android:textColor="@color/theme_color"
+            android:background="@drawable/textview_border_interest_first_then_cost"
             android:visibility="gone"/>
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content">
 
         </LinearLayout>
 
@@ -205,6 +198,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
+            android:layout_marginLeft="@dimen/margin_eight"
             android:layout_marginTop="3dp">
 
 
@@ -245,7 +239,7 @@
         <LinearLayout
             android:layout_width="@dimen/weight"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.3"
             android:gravity="right"
             android:layout_marginRight="@dimen/small_margin"
             android:orientation="vertical">
@@ -265,7 +259,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_six"
-                android:text="剩余0元"
+                android:text="剩余10000000元"
                 android:textColor="@color/text_light_gray"
                 android:textSize="@dimen/small_text"/>
         </LinearLayout>

@@ -34,6 +34,7 @@ public class BuySuccessNewActivity extends BaseActivity {
     private SimpleDraweeView bannerView;
 
     private BuySuccessEntity buySuccessEntity;
+    private String transferOrderId;
 
 
     @Override
@@ -43,13 +44,14 @@ public class BuySuccessNewActivity extends BaseActivity {
         x.view().inject(this);
         initTopBar(getResources().getString(R.string.BuySuccess), toptitleView, true);
         buySuccessEntity = (BuySuccessEntity) getIntent().getSerializableExtra("buySuccessEntity");
-        iniView();
+        transferOrderId = getIntent().getStringExtra("transferOrderId");
+       // iniView();
     }
 
-    private void iniView() {
+   /* private void iniView() {
         bannerView.setImageURI(Uri.parse(buySuccessEntity.getBanner()));
         bannerView.setAspectRatio(2.27f);
-    }
+    }*/
 
     @Event(value = {R.id.btn_check_order, R.id.btn_continue_loan, R.id.bannerView})
     private void onViewClicked(View v){
@@ -64,14 +66,20 @@ public class BuySuccessNewActivity extends BaseActivity {
                 break;
             case R.id.btn_check_order:
                 Intent intent1 = new Intent(this, OrderFormActivity.class);
-                intent1.putExtra("entityID",buySuccessEntity.getInvest_id());
+                if (transferOrderId != null) {
+                    intent1.putExtra("entityID",transferOrderId);
+                } else {
+                    intent1.putExtra("entityID",buySuccessEntity.getInvest_id());
+                }
                 startActivity(intent1);
                 break;
             case R.id.btn_continue_loan:
-                Intent intent2 = new Intent(this, HomePageActivity.class);
-                //通知homepage跳到产品
-                intent2.putExtra("currentIndex",1);
-                startActivity(intent2);
+                if (transferOrderId == null) {
+                    Intent intent2 = new Intent(this, HomePageActivity.class);
+                    //通知homepage跳到产品
+                    intent2.putExtra("currentIndex",1);
+                    startActivity(intent2);
+                }
                 this.finish();
                 break;
         }

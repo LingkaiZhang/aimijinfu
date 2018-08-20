@@ -108,19 +108,19 @@ public class TotalMoneyActivity extends BaseActivity {
             //待收本金
             case R.id.llWaitPrincipal:
                 Intent intent = new Intent(context, MyInvestActivity.class);
-                intent.putExtra("fragmentPosition",1);
+                intent.putExtra("fragmentPosition",0);
                 startActivity(intent);
                 break;
             //待收收益
             case R.id.llWaitEarn:
                 Intent intent1 = new Intent(context, AddUpEarningsActivity.class);
-                intent1.putExtra("fragmentPosition",0);
+                intent1.putExtra("fragmentPosition",1);
                 startActivity(intent1);
                 break;
             //冻结金额
             case R.id.llIceBalance:
                 Intent intent2 = new Intent(context, MyInvestActivity.class);
-                intent2.putExtra("fragmentPosition",0);
+                intent2.putExtra("fragmentPosition",1);
                 startActivity(intent2);
                 break;
             //已收本金
@@ -132,7 +132,7 @@ public class TotalMoneyActivity extends BaseActivity {
             //已收收益
             case R.id.llFinishEarn:
                 Intent intent4 = new Intent(context, AddUpEarningsActivity.class);
-                intent4.putExtra("fragmentPosition",2);
+                intent4.putExtra("fragmentPosition",0);
                 startActivity(intent4);
                 break;
             //已收奖励

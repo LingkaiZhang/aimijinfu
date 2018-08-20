@@ -9,7 +9,8 @@
         android:id="@+id/includeTop"
         layout="@layout/top_title"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/normal_height"/>
+        android:layout_height="@dimen/normal_height"
+        />
 
     <com.yuanin.aimifinance.view.ObservableWebView
         android:id="@+id/wvHref"

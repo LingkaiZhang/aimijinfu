@@ -36,6 +36,86 @@ public class FinanceProductEntity implements Serializable {
     private int type;
     private int style;
 
+
+    private String borrowTransferId;
+    private String borrowAmountId;
+    private String borrowAmountName;
+    private String days;
+    private String status;
+    private String discountRate;
+    private String dueCapital;
+    private String repayMethod;
+
+
+    public String getBorrowTransferId() {
+        return borrowTransferId;
+    }
+
+    public void setBorrowTransferId(String borrowTransferId) {
+        this.borrowTransferId = borrowTransferId;
+    }
+
+    public String getBorrowAmountId() {
+        return borrowAmountId;
+    }
+
+    public void setBorrowAmountId(String borrowAmountId) {
+        this.borrowAmountId = borrowAmountId;
+    }
+
+
+
+    public String getBorrowAmountName() {
+        return borrowAmountName;
+    }
+
+    public void setBorrowAmountName(String borrowAmountName) {
+        this.borrowAmountName = borrowAmountName;
+    }
+
+    public String getDays() {
+        return days;
+    }
+
+    public void setDays(String days) {
+        this.days = days;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getDiscountRate() {
+        return discountRate;
+    }
+
+    public void setDiscountRate(String discountRate) {
+        this.discountRate = discountRate;
+    }
+
+    public String getDueCapital() {
+        return dueCapital;
+    }
+
+    public void setDueCapital(String dueCapital) {
+        this.dueCapital = dueCapital;
+    }
+
+    public String getRepayMethod() {
+        return repayMethod;
+    }
+
+    public void setRepayMethod(String repayMethod) {
+        this.repayMethod = repayMethod;
+    }
+
+
+
+
     private String extannual;
     private String organnual;
 

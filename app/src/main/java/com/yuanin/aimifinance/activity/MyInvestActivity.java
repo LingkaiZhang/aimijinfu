@@ -91,8 +91,9 @@ public class MyInvestActivity extends BaseFragmentActivity {
         if (textViews == null) {
             textViews = new ArrayList<TextView>();
         }
-        textViews.add(tvCollecting);
+
         textViews.add(tvDoing);
+        textViews.add(tvCollecting);
         textViews.add(tvFinish);
         textViews.add(tvFail);
 
@@ -112,14 +113,14 @@ public class MyInvestActivity extends BaseFragmentActivity {
     private void onViewClicked(View v) {
         switch (v.getId()) {
             case R.id.tvDoing:
-                fragmentPosition = 1;
-                mViewPager.setCurrentItem(fragmentPosition, false);
-                ViewPagerUtils.changeTextViewStyle_FINANCE(this, 1, textViews);
-                break;
-            case R.id.tvCollecting:
                 fragmentPosition = 0;
                 mViewPager.setCurrentItem(fragmentPosition, false);
                 ViewPagerUtils.changeTextViewStyle_FINANCE(this, 0, textViews);
+                break;
+            case R.id.tvCollecting:
+                fragmentPosition = 1;
+                mViewPager.setCurrentItem(fragmentPosition, false);
+                ViewPagerUtils.changeTextViewStyle_FINANCE(this, 1, textViews);
                 break;
             case R.id.tvFail:
                 fragmentPosition = 3;
@@ -175,8 +176,8 @@ public class MyInvestActivity extends BaseFragmentActivity {
         List<TabIndicatorEntity> list = ViewPagerUtils.getTabIndicator(4);
         // 3个fragment界面封装
         fragmentList = new ArrayList<Fragment>();
-        fragmentList.add(new MyInvestCollectFragment());
         fragmentList.add(new MyInvestDoingFragment());
+        fragmentList.add(new MyInvestCollectFragment());
         fragmentList.add(new MyInvestFinishFragment());
         fragmentList.add(new MyInvestFailFragment());
 

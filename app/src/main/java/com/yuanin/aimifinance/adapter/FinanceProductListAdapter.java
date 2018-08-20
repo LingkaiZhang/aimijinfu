@@ -74,29 +74,93 @@ public class FinanceProductListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final FinanceProductEntity entity = dataList.get(position);
-        if (entity.getStyle() == 1) {
+
+        if (entity.getBorrowAmountName() != null) {
             HeadViewHolder headViewHolder = null;
             if (convertView == null) {
                 headViewHolder = new HeadViewHolder();
                 convertView = LayoutInflater.from(mContext).inflate(
-                        R.layout.adapter_finance_product_head, null);
-                headViewHolder.tvType = (TextView) convertView
-                        .findViewById(R.id.tvType);
-                headViewHolder.topLL = (LinearLayout) convertView
-                        .findViewById(R.id.topLL);
+                        R.layout.adapter_finance_debt_product_item, null);
+                headViewHolder.tvName = (TextView) convertView
+                        .findViewById(R.id.tvName);
+                headViewHolder.tvRate = (TextView) convertView
+                        .findViewById(R.id.tvRate);
+                headViewHolder.tvTime = (TextView) convertView
+                        .findViewById(R.id.tvTime);
+                headViewHolder.btnStatus = (TextView) convertView
+                        .findViewById(btnStatus);
+                headViewHolder.tvUnit = (TextView) convertView
+                        .findViewById(R.id.tvUnit);
+                headViewHolder.tvLeaveMoney = (TextView) convertView
+                        .findViewById(R.id.tvLeaveMoney);
+                headViewHolder.interestRates = (TextView) convertView
+                        .findViewById(R.id.interestRates);
+                headViewHolder.interestRatesLogo = (TextView) convertView
+                        .findViewById(R.id.interestRatesLogo);
+                headViewHolder.interestFirstThenCost = (TextView) convertView
+                        .findViewById(R.id.interestFirstThenCost);
+                headViewHolder.equalityCorpusAndInterest = (TextView) convertView
+                        .findViewById(R.id.equalityCorpusAndInterest);
+                headViewHolder.tvZheRangXiShuo = (TextView) convertView
+                        .findViewById(R.id.tvZheRangXiShuo);
+
                 convertView.setTag(headViewHolder);
             } else {
                 headViewHolder = (HeadViewHolder) convertView.getTag();
             }
-            if (position == 0) {
-                headViewHolder.topLL.setVisibility(View.GONE);
-            } else {
-                headViewHolder.topLL.setVisibility(View.VISIBLE);
+
+            headViewHolder.tvName.setText(entity.getBorrowAmountName());
+            headViewHolder.tvRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(entity.getAnnual())));
+            headViewHolder.tvTime.setText(entity.getDays());
+            //mainViewHolder.tvUnit.setText(entity.getUnit());
+            headViewHolder.tvLeaveMoney.setText("剩余" + FmtMicrometer.format6(entity.getDueCapital()) + "元");
+            headViewHolder.btnStatus.setText(entity.getStatus());
+            headViewHolder.tvZheRangXiShuo.setText(entity.getDiscountRate());
+
+            //TODO  显示还款方式代码
+            if (entity.getRepayMethod().contains("先息后本")) {
+                headViewHolder.equalityCorpusAndInterest.setVisibility(View.GONE);
+                headViewHolder.interestFirstThenCost.setVisibility(View.VISIBLE);
+            } else if (entity.getRepayMethod().contains("等额本息")) {
+                headViewHolder.interestFirstThenCost.setVisibility(View.GONE);
+                headViewHolder.equalityCorpusAndInterest.setVisibility(View.VISIBLE);
             }
-            Drawable drawable = mContext.getResources().getDrawable(entity.getType());
-            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-            headViewHolder.tvType.setCompoundDrawables(drawable, null, null, null);
-            headViewHolder.tvType.setText(entity.getTerm());
+
+            if (entity.getIsbuy() == 1) {
+                headViewHolder.btnStatus.setBackgroundResource(R.drawable.selector_index_button);
+                headViewHolder.btnStatus.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (StaticMembers.IS_NEED_LOGIN) {
+                            mContext.startActivity(new Intent(mContext, LoginRegisterActivity.class));
+                        } else if (StaticMembers.HK_STATUS != 1) {
+                            //刷新弹框状态
+                            EventMessage eventMessage2 = new EventMessage();
+                            eventMessage2.setType(EventMessage.POPUWINDOWN_FINANCE_PRODUCT);
+                            EventBus.getDefault().post(eventMessage2);
+                        } else {
+                            Intent intent = new Intent(mContext, DebtProductDetailActivity.class);
+                            intent.putExtra("entityID", entity.getBorrowTransferId());
+                            intent.putExtra("productName",entity.getBorrowAmountName());
+                            mContext.startActivity(intent);
+                        }
+                    }
+                });
+            } else {
+                headViewHolder.btnStatus.setBackgroundResource(R.mipmap.index_buy_btn_noclick);
+                headViewHolder.btnStatus.setOnClickListener(null);
+            }
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(mContext, DebtProductDetailActivity.class);
+                    intent.putExtra("entityID", entity.getBorrowTransferId());
+                    intent.putExtra("productName",entity.getBorrowAmountName());
+                    mContext.startActivity(intent);
+                }
+            });
+
         } else {
             MainViewHolder mainViewHolder = null;
             if (convertView == null) {
@@ -134,6 +198,7 @@ public class FinanceProductListAdapter extends BaseAdapter {
 //            mainViewHolder.tvRate.setText(AppUtils.formatDouble("#.00", Double.valueOf(entity.getAnnual())));
             mainViewHolder.tvTime.setText(entity.getTerm());
             mainViewHolder.tvUnit.setText(entity.getUnit());
+
             mainViewHolder.tvLeaveMoney.setText("剩余" + FmtMicrometer.format6(entity.getAmount()) + "元");
             mainViewHolder.btnStatus.setText(entity.getStatusname());
 
@@ -226,8 +291,19 @@ public class FinanceProductListAdapter extends BaseAdapter {
     }
 
     class HeadViewHolder {
-        TextView tvType;
-        LinearLayout topLL;
+        TextView tvName;
+        TextView tvRate;
+        TextView tvTime;
+        TextView btnStatus;
+        TextView tvUnit;
+        TextView tvLeaveMoney;
+        TextView tvZheRangXiShuo;
+
+        TextView interestRatesLogo;
+        TextView interestRates;
+
+        TextView interestFirstThenCost;
+        TextView equalityCorpusAndInterest;
     }
 
     class MainViewHolder {

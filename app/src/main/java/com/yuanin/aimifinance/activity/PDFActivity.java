@@ -60,6 +60,7 @@ public class PDFActivity extends BaseActivity {
     private File file;
     private Callback.Cancelable cancelable;
     private String tvProgress;
+    private String titleName;
 
 
     @Override
@@ -67,21 +68,25 @@ public class PDFActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pdf);
         x.view().inject(this);
-
-       /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            initTopBar(getResources().getString(R.string.viewer_ontract), toptitleView, true);
-        } else {*/
-            toptitleView.setVisibility(View.GONE);
-            toptitleView2.setVisibility(View.VISIBLE);
-            initTopBarWithRightText(getResources().getString(R.string.viewer_ontract), toptitleView2, new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    displayOther(file);
-                }
-            },"打开方式");
-      //  }
-
         pdfUrl = getIntent().getStringExtra("pdfURL");
+        boolean isTranfer = getIntent().getBooleanExtra("isTranfer",false);
+        if (isTranfer) {
+            titleName = "债权转让协议";
+        } else {
+            titleName = "出借合同";
+        }
+
+        toptitleView.setVisibility(View.GONE);
+        toptitleView2.setVisibility(View.VISIBLE);
+        initTopBarWithRightText(titleName, toptitleView2, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayOther(file);
+            }
+        },"打开方式");
+
+
+
         //获取动态权限
         getPermission();
 

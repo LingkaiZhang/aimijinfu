@@ -17,7 +17,7 @@
         android:id="@+id/flMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -590,7 +590,7 @@
                         android:layout_height="40dp"
                         android:layout_marginBottom="30dp"
                         android:layout_marginTop="30dp"
-                        android:text="查看债转协议"
+                        android:text="债权转让协议"
                         android:textColor="@color/theme_color"
                         android:background="@drawable/selector_contract_button_click"
                         android:layout_marginLeft="@dimen/margin_sixty"

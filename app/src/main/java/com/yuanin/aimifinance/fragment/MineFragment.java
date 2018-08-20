@@ -300,7 +300,9 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
                     break;
                 //债权转让
                 case R.id.llAssignmentOfDebt:
-                    startActivity(new Intent(getActivity(), DebtAssignmentActivity.class));
+                    Intent intent3 = new Intent(getActivity(), WebViewHtmlActivity.class);
+                    intent3.putExtra(ParamsKeys.TYPE,ParamsValues.DEBT_ASSIGNMENT);
+                    startActivity(intent3);
                     break;
             }
         }
@@ -807,6 +809,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         StaticMembers.HK_STATUS = entity.getData().get(0).getIs_activate_hkaccount();
         StaticMembers.BANK_CARD_STATUS = entity.getData().get(0).getIs_bind_bankcard();
         StaticMembers.QUESTION_NAIRE_STATUS = entity.getData().get(0).getSurveyresult();
+        StaticMembers.USER_BALANCE = entity.getData().get(0).getBalance();
         if (String.valueOf(entity.getData().get(0).getBuyNewAble()) != null) {
             StaticMembers.IS_ABLE_BUY_NEW_PRODUCT = entity.getData().get(0).getBuyNewAble();
         }
@@ -816,6 +819,8 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
                 String.valueOf(entity.getData().get(0).getIs_activate_hkaccount()));
         AppUtils.save2SharedPreferences(getActivity(),ParamsKeys.USER_INFO_FILE,ParamsKeys.USER_IS_ABLE_BUY_NEW_PRODUCT,
                 String.valueOf(entity.getData().get(0).getBuyNewAble()));
+        AppUtils.save2SharedPreferences(getActivity(),ParamsKeys.USER_INFO_FILE,ParamsKeys.USER_BALANCE,
+                String.valueOf(entity.getData().get(0).getBalance()));
     }
 
     @Override

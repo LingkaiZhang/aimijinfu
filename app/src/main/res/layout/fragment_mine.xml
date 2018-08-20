@@ -634,7 +634,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/small_text"
-                    android:text="敬请期待..."
+                    android:text="持有资产,灵活转让"
                     android:textColor="@color/text_gray"/>
             </LinearLayout>
 

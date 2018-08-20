@@ -26,19 +26,30 @@ import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.adapter.ViewPagerFragmentAdapter;
 import com.yuanin.aimifinance.base.BaseFragmentActivity;
 import com.yuanin.aimifinance.dialog.DebtConfirmPayDialog;
+import com.yuanin.aimifinance.entity.BuyDebtSuccessEntity;
+
+
 import com.yuanin.aimifinance.entity.DebtProductDetailEntity;
-import com.yuanin.aimifinance.entity.ProductDetailEntity;
+import com.yuanin.aimifinance.entity.EventMessage;
+
+
 import com.yuanin.aimifinance.entity.ReturnResultEntity;
 import com.yuanin.aimifinance.entity.TabIndicatorEntity;
-import com.yuanin.aimifinance.fragment.AssetsFragment;
-import com.yuanin.aimifinance.fragment.InvestRecordFragment;
-import com.yuanin.aimifinance.fragment.ProductIntroduceFragment;
-import com.yuanin.aimifinance.fragment.RepayPlanFragment;
+
+
+import com.yuanin.aimifinance.fragment.DebtAssetsFragment;
+import com.yuanin.aimifinance.fragment.DebtInvestRecordFragment;
+import com.yuanin.aimifinance.fragment.DebtProductIntroduceFragment;
+import com.yuanin.aimifinance.fragment.DebtRepayPlanFragment;
+
+
 import com.yuanin.aimifinance.inter.IHttpRequestCallBack;
 import com.yuanin.aimifinance.inter.INotifyCallBack;
 import com.yuanin.aimifinance.inter.ISlideCallback;
 import com.yuanin.aimifinance.service.ProductTimerCount;
 import com.yuanin.aimifinance.utils.AppUtils;
+
+
 import com.yuanin.aimifinance.utils.NetUtils;
 import com.yuanin.aimifinance.utils.ParamsKeys;
 import com.yuanin.aimifinance.utils.ParamsValues;
@@ -55,6 +66,8 @@ import org.xutils.x;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+
+import de.greenrobot.event.EventBus;
 
 public class DebtProductDetailActivity extends BaseFragmentActivity implements ISlideCallback {
     @ViewInject(R.id.llMain)
@@ -153,21 +166,34 @@ public class DebtProductDetailActivity extends BaseFragmentActivity implements I
     @ViewInject(R.id.tv_product_type)
     private TextView tvProductType;
 
+    @ViewInject(R.id.tvDiscountCoefficient)
+    private TextView tvDiscountCoefficient;
+    @ViewInject(R.id.tvLeaveDay)
+    private TextView tvLeaveDay;
+    @ViewInject(R.id.tv_creditor_value)
+    private TextView tv_creditor_value;
+    @ViewInject(R.id.tv_transfer_capital)
+    private TextView tv_transfer_capital;
+    @ViewInject(R.id.tv_pay_capital)
+    private TextView tv_pay_capital;
+
+
     private String entityID;
     private List<TextView> textViews;
     public static int fragmentPosition = 0;
     private int offset = 0;// 动画图片偏移量
     private int currIndex = 0;// 当前页卡编号
     private int bmpW;// 动画图片宽度
-    private ProductIntroduceFragment productIntroduceFragment;
-    private InvestRecordFragment investRecordFragment;
-    private AssetsFragment assetsFragment;
-    private RepayPlanFragment repayPlanFragment;
+    private DebtProductIntroduceFragment debtProductIntroduceFragment;
+    private DebtInvestRecordFragment debtInvestRecordFragment;
+    private DebtAssetsFragment debtAssetsFragment;
+    private DebtRepayPlanFragment debtRepayPlanFragment;
     private Context context = DebtProductDetailActivity.this;
     private DebtProductDetailEntity debtProductDetailEntity;
     private View popView;
     private DebtConfirmPayDialog debtConfirmPayDialog;
     private String productName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -191,8 +217,8 @@ public class DebtProductDetailActivity extends BaseFragmentActivity implements I
             }
         }, "");
         textViews.add(tvProductDetail);
-        //textViews.add(tvQuestion);
-        textViews.add(tvRecord);
+        textViews.add(tvQuestion);
+        //textViews.add(tvRecord);
         textViews.add(tvPlan);
         InitImageView();
         initViewPager();
@@ -212,12 +238,18 @@ public class DebtProductDetailActivity extends BaseFragmentActivity implements I
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        requestData();
+    }
+
     private void requestData() {
-        JSONObject obj = AppUtils.getPublicJsonObject(false);
+        JSONObject obj = AppUtils.getPublicJsonObject(true);
         try {
             obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_DEBT);
             obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_GET_BUY_ENTRANSFER_Detail);
-            obj.put(ParamsKeys.PRODUCT_ID, entityID);
+            obj.put(ParamsKeys.BORROW_TRANSFER_ID, entityID);
             String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
             obj.put(ParamsKeys.TOKEN, token);
             obj.remove(ParamsKeys.KEY);
@@ -253,10 +285,10 @@ public class DebtProductDetailActivity extends BaseFragmentActivity implements I
                     if (entity.isNotNull()) {
                         debtProductDetailEntity = entity.getData().get(0);
                         setUpView(debtProductDetailEntity);
-                       /* productIntroduceFragment.setDatas(debtProductDetailEntity);
-                        investRecordFragment.setDatas(debtProductDetailEntity);
-                        repayPlanFragment.setDatas(debtProductDetailEntity);
-                        assetsFragment.setDatas(productDetailEntity);*/
+                        debtProductIntroduceFragment.setDatas(debtProductDetailEntity);
+                       // debtInvestRecordFragment.setDatas(debtProductDetailEntity);
+                        debtRepayPlanFragment.setDatas(debtProductDetailEntity);
+                        debtAssetsFragment.setDatas(debtProductDetailEntity);
                         svMain.setVisibility(View.VISIBLE);
                         tvNoContent.setVisibility(View.GONE);
                         llNoNet.setVisibility(View.GONE);
@@ -282,9 +314,19 @@ public class DebtProductDetailActivity extends BaseFragmentActivity implements I
     }
 
     private void setUpView(DebtProductDetailEntity productDetailEntity) {
+        tvRate.setText(productDetailEntity.getAnnual());
+        tvDiscountCoefficient.setText(productDetailEntity.getDiscountRate());
+        tvLeaveMoney.setText(productDetailEntity.getDueCapital());
+        tvLeaveDay.setText(productDetailEntity.getDays());
+        tv_creditor_value.setText(productDetailEntity.getDueAmount() + "元");
+        tvProductType.setText(productDetailEntity.getDiscount() + "元");
+        tv_transfer_capital.setText(productDetailEntity.getDueCapital() + "元");
+        tv_pay_capital.setText(productDetailEntity.getPayAmount() + "元");
+        tvRepay.setText(productDetailEntity.getRepayMethod());
+
 
         //倒计时功能
-        ProductTimerCount productTimerCount = new ProductTimerCount(Long.parseLong("2534554") * 1000, 1000, tvDate, new INotifyCallBack() {
+        ProductTimerCount productTimerCount = new ProductTimerCount(Long.parseLong(productDetailEntity.getSurplusTime()) * 1000, 1000, tvDate, new INotifyCallBack() {
             @Override
             public void onNotify() {
                 requestData();
@@ -301,14 +343,14 @@ public class DebtProductDetailActivity extends BaseFragmentActivity implements I
         List<TabIndicatorEntity> list = ViewPagerUtils.getTabIndicator(3);
         // 3个fragment界面封装
         List<Fragment> fragmentList = new ArrayList<Fragment>();
-        productIntroduceFragment = new ProductIntroduceFragment();
-        fragmentList.add(productIntroduceFragment);
-        assetsFragment = new AssetsFragment();
-        //fragmentList.add(assetsFragment);
-        investRecordFragment = new InvestRecordFragment();
-        fragmentList.add(investRecordFragment);
-        repayPlanFragment = new RepayPlanFragment();
-        fragmentList.add(repayPlanFragment);
+        debtProductIntroduceFragment = new DebtProductIntroduceFragment();
+        fragmentList.add(debtProductIntroduceFragment);
+        debtAssetsFragment = new DebtAssetsFragment();
+        fragmentList.add(debtAssetsFragment);
+        //debtInvestRecordFragment = new DebtInvestRecordFragment();
+        //fragmentList.add(debtInvestRecordFragment);
+        debtRepayPlanFragment = new DebtRepayPlanFragment();
+        fragmentList.add(debtRepayPlanFragment);
         // 设置ViewPager适配器
         ViewPagerFragmentAdapter viewPagerFragmentAdapter = new ViewPagerFragmentAdapter(getSupportFragmentManager(), list, fragmentList);
         mViewPager.setAdapter(viewPagerFragmentAdapter);
@@ -341,18 +383,23 @@ public class DebtProductDetailActivity extends BaseFragmentActivity implements I
     protected void onDestroy() {
         super.onDestroy();
         fragmentPosition = 0;
-        ProductIntroduceFragment.isTop = true;
+        DebtProductIntroduceFragment.isTop = true;
     }
 
     // 点击事件
     @Event(value = {R.id.tvProductDetail,
             R.id.tvRecord, R.id.tvQuestion, R.id.tvPlan, R.id.tvBuy, R.id.btnRefresh, R.id.tvModel_loan_contract,
-            R.id.tvInstruction, R.id.btnCheckNetwork, R.id.tv_project_detail })
+            R.id.tvInstruction, R.id.btnCheckNetwork, R.id.tv_project_detail, R.id.tvAssignmentAgreement })
     private void onViewClicked(View view) {
         switch (view.getId()) {
+            case  R.id.tvAssignmentAgreement:
+                Intent intent5 = new Intent(this, WebViewActivity.class);
+                intent5.putExtra(ParamsKeys.TYPE,ParamsValues.DEBT_ASSIGNMENT_MODE);
+                startActivity(intent5);
+                 break;
             case R.id.tv_project_detail:
                 Intent intent = new Intent(this, FinanceProductDetailActivity.class);
-                intent.putExtra("entityID",entityID);
+                intent.putExtra("entityID",debtProductDetailEntity.getBorrowAmountId());
                 startActivity(intent);
                 break;
             case R.id.tvInstruction:
@@ -375,9 +422,9 @@ public class DebtProductDetailActivity extends BaseFragmentActivity implements I
                 ViewPagerUtils.changeTextViewStyle_FINANCE(this, 1, textViews);
                 break;
             case R.id.tvRecord:
-                fragmentPosition = 1;
+                fragmentPosition = 2;
                 mViewPager.setCurrentItem(fragmentPosition, false);
-                ViewPagerUtils.changeTextViewStyle_FINANCE(this, 1, textViews);
+                ViewPagerUtils.changeTextViewStyle_FINANCE(this, 2, textViews);
                 break;
             case R.id.tvPlan:
                 fragmentPosition = 2;
@@ -399,12 +446,9 @@ public class DebtProductDetailActivity extends BaseFragmentActivity implements I
                 } else if (StaticMembers.HK_STATUS != 1) {
                     PopupWindow mPop = AppUtils.createHKPop(popView, context);
                     mPop.showAtLocation(llMain, Gravity.CENTER, 0, 0);
-                }else {
-                    /*Intent intent = new Intent(this, BuyRegularActivity.class);
-                    intent.putExtra("entityID", entityID);
-                    startActivity(intent);*/
-                    debtConfirmPayDialog = new DebtConfirmPayDialog(this, false, "确认支付", "2000.00", "10000",
-                            "123.0", "100", "取消", "确认", new View.OnClickListener() {
+                } else {
+                    debtConfirmPayDialog = new DebtConfirmPayDialog(this, false, "确认支付", debtProductDetailEntity.getBalance(), debtProductDetailEntity.getDueCapital(),
+                            debtProductDetailEntity.getPayAmount(),debtProductDetailEntity.getWillInterest(), "取消", "确认", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             debtConfirmPayDialog.dismiss();
@@ -412,9 +456,14 @@ public class DebtProductDetailActivity extends BaseFragmentActivity implements I
                     }, new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-
-                            //TODO  确认购买
-                            AppUtils.showMiddleToast(DebtProductDetailActivity.this,"购买中。。。。");
+                            if (Double.valueOf(debtProductDetailEntity.getBalance()) < Double.valueOf(debtProductDetailEntity.getPayAmount())) {
+                                AppUtils.showMiddleToast(DebtProductDetailActivity.this,getResources().getString(R.string.buy_regular_balance_not));
+                                startActivity(new Intent(DebtProductDetailActivity.this, PayInputMoneyActivity.class));
+                            } else {
+                                //购买债转标的
+                                requestDebtProductBuy();
+                            }
+                            debtConfirmPayDialog.dismiss();
                         }
                     });
                 }
@@ -428,6 +477,66 @@ public class DebtProductDetailActivity extends BaseFragmentActivity implements I
             default:
                 break;
         }
+    }
+
+    private void requestDebtProductBuy() {
+        JSONObject obj = AppUtils.getPublicJsonObject(true);
+        try {
+            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_DEBT);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_BUY_TRANSFER_BORROW);
+            obj.put(ParamsKeys.BORROW_TRANSFER_ID, debtProductDetailEntity.getBorrowTransferId());
+            String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
+            obj.put(ParamsKeys.TOKEN, token);
+            obj.remove(ParamsKeys.KEY);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Type mType = new TypeToken<ReturnResultEntity<BuyDebtSuccessEntity>>() {
+        }.getType();
+        NetUtils.request(context, obj, mType, new IHttpRequestCallBack() {
+                    @Override
+                    public void onStart() {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+
+                    }
+
+                    @Override
+                    public void onSuccess(Object object) {
+                        ReturnResultEntity<BuyDebtSuccessEntity> entity = (ReturnResultEntity<BuyDebtSuccessEntity>) object;
+                        if (entity.isSuccess(context)) {
+                            if (entity.isNotNull()) {
+                                BuyDebtSuccessEntity buySuccessEntity = entity.getData().get(0);
+                                //购买成功
+                                Intent intent = new Intent(context, BuySuccessNewActivity.class);
+                                intent.putExtra("transferOrderId", buySuccessEntity.getTransferOrderId());
+                                startActivity(intent);
+                                this.onFinish();
+                            }
+
+                            //刷新个人中心数据
+                            EventMessage eventMessage = new EventMessage();
+                            eventMessage.setType(EventMessage.REFRESH_MINE);
+                            EventBus.getDefault().post(eventMessage);
+                            //刷新商品界面数据
+                            EventMessage eventMessage2 = new EventMessage();
+                            eventMessage2.setType(EventMessage.REFRESH_FINANCE_PRODUCT);
+                            EventBus.getDefault().post(eventMessage2);
+                            DebtProductDetailActivity.this.finish();
+                        } else {
+                            AppUtils.showToast(context, entity.getRemark());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure() {
+                        AppUtils.showConectFail(context);
+                    }
+                }
+        );
     }
 
 

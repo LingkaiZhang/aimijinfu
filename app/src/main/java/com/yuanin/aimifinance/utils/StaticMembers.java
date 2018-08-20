@@ -53,6 +53,8 @@ public class StaticMembers {
     public static boolean IS_NEED_GUDIE = false;
     //登录用户userid
     public static String USER_ID;
+    //用户可用余额
+    public static String USER_BALANCE;
     //登录用户电话号码
     public static String MOBILE;
     //登录rsa加密后的用户电话号码

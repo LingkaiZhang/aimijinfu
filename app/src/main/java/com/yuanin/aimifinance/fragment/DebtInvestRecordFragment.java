@@ -1,20 +1,23 @@
 package com.yuanin.aimifinance.fragment;
 
-
 import android.graphics.drawable.Animatable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.reflect.TypeToken;
 import com.yuanin.aimifinance.R;
-import com.yuanin.aimifinance.adapter.AddUpEarningsListAdapter;
+import com.yuanin.aimifinance.adapter.InvestRecordListAdapter;
+
 import com.yuanin.aimifinance.base.BaseFragment;
-import com.yuanin.aimifinance.entity.AddUpEarningsEntity;
+import com.yuanin.aimifinance.entity.DebtProductDetailEntity;
+import com.yuanin.aimifinance.entity.InvestRecordEntity;
+import com.yuanin.aimifinance.entity.ProductDetailEntity;
 import com.yuanin.aimifinance.entity.ReturnResultEntity;
 import com.yuanin.aimifinance.inter.IHttpRequestCallBack;
 import com.yuanin.aimifinance.utils.AppUtils;
@@ -37,11 +40,11 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * 已收利息
+ * 投资记录
  */
-public class AlreadyEarnsFragment extends BaseFragment implements XListView.IXListViewListener {
-    @ViewInject(R.id.lvAddUpEarnings)
-    private XListView lvAddUpEarnings;
+public class DebtInvestRecordFragment extends BaseFragment implements XListView.IXListViewListener {
+    @ViewInject(R.id.innerscrollview)
+    private XListView lvRecord;
     @ViewInject(R.id.tvNoContent)
     private TextView tvNoContent;
     @ViewInject(R.id.llNoNet)
@@ -56,9 +59,8 @@ public class AlreadyEarnsFragment extends BaseFragment implements XListView.IXLi
     private TextView tvNoNet;
 
     private boolean isNeedLoadBar = true;
-    private List<AddUpEarningsEntity> mList;
-    private AddUpEarningsListAdapter mAdp;
-    private TextView tvWait, tvAlready;
+    private List<InvestRecordEntity> mList;
+    private InvestRecordListAdapter mAdp;
     // 页码
     private int PageIndex = 1;
     /**
@@ -69,20 +71,37 @@ public class AlreadyEarnsFragment extends BaseFragment implements XListView.IXLi
      * 是否已被加载过一次，第二次就不再去请求数据了
      */
     private boolean hasLoadedOnce = false;
+    private DebtProductDetailEntity productDetailEntity;
+    public static boolean isTop = true;
     private boolean isFresh = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_add_up_earns, container, false);
+        View view = inflater.inflate(R.layout.fragment_invest_record, container, false);
         x.view().inject(this, view);
         isPrepared = true;
-        lvAddUpEarnings.setPullRefreshEnable(true);
-        lvAddUpEarnings.setPullLoadEnable(true);
-        lvAddUpEarnings.setXListViewListener(this);
+        lvRecord.setPullRefreshEnable(false);
+        lvRecord.setPullLoadEnable(true);
+        lvRecord.setXListViewListener(this);
+        lvRecord.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+            }
+
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if (firstVisibleItem == 0) {
+                    isTop = true;
+                } else {
+                    isTop = false;
+                }
+            }
+        });
         return view;
     }
 
-    @Event(value = {R.id.btnRefresh})
+    @Event(value = {R.id.btnRefresh, R.id.btnCheckNetwork})
     private void onViewClicked(View v) {
         switch (v.getId()) {
             //刷新
@@ -95,20 +114,13 @@ public class AlreadyEarnsFragment extends BaseFragment implements XListView.IXLi
                 isNeedLoadBar = true;
                 requestDatas();
                 break;
+            //检查网络
+            case R.id.btnCheckNetwork:
+                AppUtils.checkNetwork(getActivity());
+                break;
             default:
                 break;
         }
-    }
-
-    public void setTextView(TextView tvWait, TextView tvAlready) {
-        this.tvWait = tvWait;
-        this.tvAlready = tvAlready;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        requestDatas();
     }
 
     @Override
@@ -119,24 +131,28 @@ public class AlreadyEarnsFragment extends BaseFragment implements XListView.IXLi
         }
     }
 
+    public void setDatas(DebtProductDetailEntity productDetailEntity) {
+        this.productDetailEntity = productDetailEntity;
+    }
+
     private void requestDatas() {
-        if (!isPrepared || !isVisible || hasLoadedOnce) {
+        if (!isPrepared || hasLoadedOnce || productDetailEntity == null) {
             return;
         }
-        JSONObject obj = AppUtils.getPublicJsonObject(true);
+        JSONObject obj = AppUtils.getPublicJsonObject(false);
         try {
-            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_FUND);
-            obj.put(ParamsKeys.MOTHED, ParamsValues.GET_USER_ACCUMULATED_INCOME);
+            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_PRODUCT);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.GET_PRODUCT_INVSET_LOG);
+            obj.put(ParamsKeys.PRODUCT_ID, productDetailEntity.getBorrowAmountId());
             obj.put(ParamsKeys.PAGE_QTY, String.valueOf(StaticMembers.PAGE_SIZE));
             obj.put(ParamsKeys.CURRENT_PAGE, String.valueOf(PageIndex));
-            obj.put(ParamsKeys.TYPE, "0");
             String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
             obj.put(ParamsKeys.TOKEN, token);
             obj.remove(ParamsKeys.KEY);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Type mType = new TypeToken<ReturnResultEntity<AddUpEarningsEntity>>() {
+        Type mType = new TypeToken<ReturnResultEntity<InvestRecordEntity>>() {
         }.getType();
         NetUtils.request(obj, mType, new IHttpRequestCallBack() {
                     @Override
@@ -146,7 +162,6 @@ public class AlreadyEarnsFragment extends BaseFragment implements XListView.IXLi
                             viewRemind.setVisibility(View.GONE);
                             viewLoading.setVisibility(View.VISIBLE);
                         }
-
                     }
 
                     @Override
@@ -167,44 +182,42 @@ public class AlreadyEarnsFragment extends BaseFragment implements XListView.IXLi
 
                     @Override
                     public void onSuccess(Object object) {
-                        ReturnResultEntity<AddUpEarningsEntity> entity = (ReturnResultEntity<AddUpEarningsEntity>) object;
+                        ReturnResultEntity<InvestRecordEntity> entity = (ReturnResultEntity<InvestRecordEntity>) object;
                         if (entity.isSuccess(getActivity())) {
                             if (entity.isNotNull()) {
                                 hasLoadedOnce = true;
                                 if (mList == null) {
                                     mList = entity.getData();
-                                    mAdp = new AddUpEarningsListAdapter(mList, getActivity());
-                                    lvAddUpEarnings.setAdapter(mAdp);
-                                    tvAlready.setText(String.valueOf(mList.get(0).getWaitinterest()));
-                                    tvWait.setText(String.valueOf(mList.get(0).getReceivedinterest()));
+                                    mAdp = new InvestRecordListAdapter(mList, getActivity());
+                                    lvRecord.setAdapter(mAdp);
                                 } else {
                                     mList.addAll(entity.getData());
                                     mAdp.notifyDataSetChanged();
                                 }
                                 if (entity.getData().size() < StaticMembers.PAGE_SIZE) {
-                                    lvAddUpEarnings.setPullLoadEnable(false);
+                                    lvRecord.setPullLoadEnable(false);
                                 } else {
-                                    lvAddUpEarnings.setPullLoadEnable(true);
+                                    lvRecord.setPullLoadEnable(true);
                                 }
-                                lvAddUpEarnings.setVisibility(View.VISIBLE);
+                                lvRecord.setVisibility(View.VISIBLE);
                                 tvNoContent.setVisibility(View.GONE);
                                 llNoNet.setVisibility(View.GONE);
                             } else {
                                 if (mList == null) {
-                                    lvAddUpEarnings.setVisibility(View.GONE);
+                                    lvRecord.setVisibility(View.GONE);
                                     tvNoContent.setVisibility(View.VISIBLE);
                                     llNoNet.setVisibility(View.GONE);
                                 } else {
                                     AppUtils.showNoMore(getActivity());
                                 }
-                                lvAddUpEarnings.setPullLoadEnable(false);
+                                lvRecord.setPullLoadEnable(false);
                             }
                         } else {
                             if (PageIndex > 1) {
                                 PageIndex -= 1;
                             }
                             if (mList == null && !isFresh) {
-                                lvAddUpEarnings.setVisibility(View.GONE);
+                                lvRecord.setVisibility(View.GONE);
                                 tvNoContent.setVisibility(View.GONE);
                                 llNoNet.setVisibility(View.VISIBLE);
                             } else {
@@ -219,7 +232,7 @@ public class AlreadyEarnsFragment extends BaseFragment implements XListView.IXLi
                             PageIndex -= 1;
                         }
                         if (mList == null && !isFresh) {
-                            lvAddUpEarnings.setVisibility(View.GONE);
+                            lvRecord.setVisibility(View.GONE);
                             llNoNet.setVisibility(View.VISIBLE);
                             tvNoContent.setVisibility(View.GONE);
                         } else {
@@ -231,9 +244,9 @@ public class AlreadyEarnsFragment extends BaseFragment implements XListView.IXLi
     }
 
     private void loadComplete() {
-        lvAddUpEarnings.stopRefresh();
-        lvAddUpEarnings.stopLoadMore();
-        lvAddUpEarnings.setRefreshTime(new SimpleDateFormat(StaticMembers.DATE_FORMAT_STR, Locale.CHINA).format(new Date()));
+        lvRecord.stopRefresh();
+        lvRecord.stopLoadMore();
+        lvRecord.setRefreshTime(new SimpleDateFormat(StaticMembers.DATE_FORMAT_STR, Locale.CHINA).format(new Date()));
     }
 
     @Override
@@ -252,8 +265,9 @@ public class AlreadyEarnsFragment extends BaseFragment implements XListView.IXLi
         }
         PageIndex = 1;
         isNeedLoadBar = false;
-        hasLoadedOnce = false;
         isFresh = true;
+        hasLoadedOnce = false;
         requestDatas();
     }
 }
+

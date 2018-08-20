@@ -156,6 +156,10 @@ public class WebViewActivity extends BaseActivity {
                 initTopBarWithRightText("银行存管", toptitleView, null, "");
                 url = ParamsValues.NET_URL_WEIXIN + "bankDepository.html";
                 setUrl(url,new FrameLayout.LayoutParams(-1, -1));
+            } else if (type.equals(ParamsValues.DEBT_ASSIGNMENT_MODE)) {
+                initTopBarWithRightText("债权转让协议", toptitleView, null, "");
+                url = ParamsValues.NET_URL_WEIXIN + "generic/web/viewer.html?file=pdf/zhaiquanhetong.pdf";
+                setUrl(url,new FrameLayout.LayoutParams(-1, -1));
             }
         }
     }

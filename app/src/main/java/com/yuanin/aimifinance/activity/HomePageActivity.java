@@ -93,7 +93,7 @@ public class HomePageActivity extends BaseFragmentActivity {
         // 初始化ViewPager
         initViewPager();
         //适配Android 8.0 版本更新
-        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             boolean haveInstallPermission = HomePageActivity.this.getPackageManager().canRequestPackageInstalls();
             if(!haveInstallPermission){
                 //权限没有打开则提示用户去手动打开
@@ -104,8 +104,7 @@ public class HomePageActivity extends BaseFragmentActivity {
             }
         } else{
             requestUpdate();
-        }*/
-        requestUpdate();
+        }
     }
 
     /**

@@ -2,6 +2,7 @@ package com.yuanin.aimifinance.entity;
 
 public class DebtProductDetailEntity {
 
+
     /**
      * borrowTransferId : 1002
      * borrowAmountId : 1001
@@ -16,7 +17,12 @@ public class DebtProductDetailEntity {
      * discount : 200
      * payAmount : 800
      * surplusTime : 1533893787
-     * isBuy : 0
+     * dueInterest : 100
+     * fee : 200
+     * amount : 1800
+     * created : 2018-08-11
+     * willInterest:22.22
+     * balance:8000
      */
 
     private String borrowTransferId;
@@ -32,7 +38,28 @@ public class DebtProductDetailEntity {
     private String discount;
     private String payAmount;
     private String surplusTime;
-    private String isBuy;
+    private String dueInterest;
+    private String fee;
+    private String amount;
+    private String created;
+    private String willInterest;
+    private String balance;
+
+    public String getWillInterest() {
+        return willInterest;
+    }
+
+    public void setWillInterest(String willInterest) {
+        this.willInterest = willInterest;
+    }
+
+    public String getBalance() {
+        return balance;
+    }
+
+    public void setBalance(String balance) {
+        this.balance = balance;
+    }
 
     public String getBorrowTransferId() {
         return borrowTransferId;
@@ -138,11 +165,35 @@ public class DebtProductDetailEntity {
         this.surplusTime = surplusTime;
     }
 
-    public String getIsBuy() {
-        return isBuy;
+    public String getDueInterest() {
+        return dueInterest;
     }
 
-    public void setIsBuy(String isBuy) {
-        this.isBuy = isBuy;
+    public void setDueInterest(String dueInterest) {
+        this.dueInterest = dueInterest;
+    }
+
+    public String getFee() {
+        return fee;
+    }
+
+    public void setFee(String fee) {
+        this.fee = fee;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
     }
 }

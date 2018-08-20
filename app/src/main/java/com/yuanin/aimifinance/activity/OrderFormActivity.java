@@ -127,15 +127,19 @@ public class OrderFormActivity extends BaseActivity {
     private void onViewClicked(View v) {
         switch (v.getId()) {
             case R.id.tv_product_detail:
-                //TODO
                 Intent intent2 = new Intent(context, FinanceProductDetailActivity.class);
                 intent2.putExtra("entityID", orderFormEntity.getBorrowAmountId());
                 context.startActivity(intent2);
                 break;
             case R.id.tv_debt_protocol:
-                Intent intentPDF2 = new Intent(context, PDFActivity.class);
-                intentPDF2.putExtra("pdfURL",orderFormEntity.getTransferProtocolLink());
-                startActivity(intentPDF2);
+                if (orderFormEntity.getTransferProtocolLink() == null) {
+                    AppUtils.showMiddleToast(context,"债权转让协议暂未生成，请耐心等待。。。");
+                } else {
+                    Intent intentPDF2 = new Intent(context, PDFActivity.class);
+                    intentPDF2.putExtra("pdfURL",orderFormEntity.getTransferProtocolLink());
+                    intentPDF2.putExtra("isTranfer",true);
+                    startActivity(intentPDF2);
+                }
                 break;
             //电子合同
             case R.id.viewer_contract:

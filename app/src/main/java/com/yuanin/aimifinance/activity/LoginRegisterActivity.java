@@ -235,6 +235,7 @@ public class LoginRegisterActivity extends BaseActivity {
                     Intent intent2 = new Intent(context, LoginOneActivity.class);
                     intent2.putExtra("phone", etPhone.getText().toString().trim());
                     startActivity(intent2);
+                    LoginRegisterActivity.this.finish();
                     }
                 } else {
                    if (entity.getRemark().equals("抱歉，您输入的手机号不存在！")) {

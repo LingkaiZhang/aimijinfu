@@ -139,9 +139,18 @@ public class ParamsKeys {
 
     public static final String SMS_VERIFY_CODE = "verifycode";
     public static final String USER_IS_ABLE_BUY_NEW_PRODUCT = "buyNewAble";
+    public static final String USER_BALANCE = "user_balance";
 
-    /*
+    /**
      * 提现
      * */
     public static final String CASH_TYPE ="cash_type";
+
+    /**
+    * 债转
+    * */
+    public static final String BORROW_TRANSFER_ID ="borrowTransferId";
+    public static final String ORDER_TYPE ="orderType";
+    public static final String ORDER_STATUS ="orderStatus";
+
 }

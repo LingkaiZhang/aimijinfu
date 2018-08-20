@@ -18,8 +18,13 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 
 import com.yuanin.aimifinance.R;
+import com.yuanin.aimifinance.activity.DebtProductDetailActivity;
 import com.yuanin.aimifinance.activity.FinanceProductDetailActivity;
 import com.yuanin.aimifinance.fragment.AssetsFragment;
+import com.yuanin.aimifinance.fragment.DebtAssetsFragment;
+import com.yuanin.aimifinance.fragment.DebtInvestRecordFragment;
+import com.yuanin.aimifinance.fragment.DebtProductIntroduceFragment;
+import com.yuanin.aimifinance.fragment.DebtRepayPlanFragment;
 import com.yuanin.aimifinance.fragment.InvestRecordFragment;
 import com.yuanin.aimifinance.fragment.ProductIntroduceFragment;
 import com.yuanin.aimifinance.fragment.RepayPlanFragment;
@@ -252,10 +257,14 @@ public class SlideDetailsLayout extends ViewGroup {
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         boolean shouldIntercept = false;
-        if ((FinanceProductDetailActivity.fragmentPosition == 0 && ProductIntroduceFragment.isTop)
+        if (((FinanceProductDetailActivity.fragmentPosition == 0 && ProductIntroduceFragment.isTop)
                 || (FinanceProductDetailActivity.fragmentPosition == 1 && AssetsFragment.isTop)
                 || (FinanceProductDetailActivity.fragmentPosition == 2 && InvestRecordFragment.isTop)
-                || (FinanceProductDetailActivity.fragmentPosition == 3 && RepayPlanFragment.isTop)) {
+                || (FinanceProductDetailActivity.fragmentPosition == 3 && RepayPlanFragment.isTop))
+                && ((DebtProductDetailActivity.fragmentPosition == 0 && DebtProductIntroduceFragment.isTop)
+                || (DebtProductDetailActivity.fragmentPosition == 1 && DebtAssetsFragment.isTop)
+                || (DebtProductDetailActivity.fragmentPosition == 2 && DebtInvestRecordFragment.isTop)
+                || (DebtProductDetailActivity.fragmentPosition == 3 && DebtRepayPlanFragment.isTop))) {
             ensureTarget();
             if (null == mTarget) {
                 return false;

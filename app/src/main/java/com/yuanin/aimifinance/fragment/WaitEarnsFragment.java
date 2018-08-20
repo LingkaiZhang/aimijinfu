@@ -126,7 +126,7 @@ public class WaitEarnsFragment extends BaseFragment implements XListView.IXListV
             obj.put(ParamsKeys.MOTHED, ParamsValues.GET_USER_ACCUMULATED_INCOME);
             obj.put(ParamsKeys.PAGE_QTY, String.valueOf(StaticMembers.PAGE_SIZE));
             obj.put(ParamsKeys.CURRENT_PAGE, String.valueOf(PageIndex));
-            obj.put(ParamsKeys.TYPE, "0");
+            obj.put(ParamsKeys.TYPE, "1");
             String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
             obj.put(ParamsKeys.TOKEN, token);
             obj.remove(ParamsKeys.KEY);
@@ -171,8 +171,8 @@ public class WaitEarnsFragment extends BaseFragment implements XListView.IXListV
                                     mList = entity.getData();
                                     mAdp = new AddUpEarningsListAdapter(mList, getActivity());
                                     lvAddUpEarnings.setAdapter(mAdp);
-                                    tvAlready.setText(String.valueOf(mList.get(0).getReceivedinterest()));
-                                    tvWait.setText(String.valueOf(mList.get(0).getWaitinterest()));
+                                    tvAlready.setText(String.valueOf(mList.get(0).getWaitinterest()));
+                                    tvWait.setText(String.valueOf(mList.get(0).getReceivedinterest()));
                                 } else {
                                     mList.addAll(entity.getData());
                                     mAdp.notifyDataSetChanged();

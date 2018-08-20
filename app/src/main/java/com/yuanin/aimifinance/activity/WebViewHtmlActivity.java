@@ -56,6 +56,12 @@ public class WebViewHtmlActivity extends BaseActivity {
             String url = ParamsValues.NET_URL_WEIXIN + "instruction.html";
             setView();
             initWebView(url);
+        } else if (type.equals(ParamsValues.DEBT_ASSIGNMENT) ) {
+            initTopBar("债权转让", toptitleView, true);
+            String url = ParamsValues.NET_URL_WEIXIN + "creditor_assets.html?userid=" + StaticMembers.USER_ID +"&mobile=" + AppUtils.rsaEncode(this,StaticMembers.MOBILE);
+           // String url = "http://javadjshwechat.yuanin.com/itemsparticularups1.html?myid=19459&buy=0&type=%E8%BF%98%E6%AC%BE%E4%B8%AD";
+            initWebViewTitle(url);
+
         }
 
     }
@@ -80,6 +86,7 @@ public class WebViewHtmlActivity extends BaseActivity {
             settings.setSupportZoom(true);          //支持缩放
             settings.setBuiltInZoomControls(true);  //启用内置缩放装置
             settings.setJavaScriptEnabled(true);    //启用JS脚本
+            settings.setDomStorageEnabled(true);
             wvHref.setWebViewClient(new WebViewClient() {
                 @Override
                 public void onReceivedSslError(WebView view,
@@ -132,6 +139,7 @@ public class WebViewHtmlActivity extends BaseActivity {
         settings.setSupportZoom(true);          //支持缩放
         settings.setBuiltInZoomControls(true);  //启用内置缩放装置
         settings.setJavaScriptEnabled(true);    //启用JS脚本
+        settings.setDomStorageEnabled(true);
         wvHref.setWebViewClient(new WebViewClient() {
             @Override
             public void onReceivedSslError(WebView view,

@@ -137,18 +137,18 @@ public class MyInvestListAdapter extends GeneralAdapter<MyInvestEntity> {
                     @Override
                     public void onClick(View v) {
                         StaticMembers.isShowLastItem = false;
-                        if (data.getIsTransferBid() == 0) {
+                        //if (data.getIsTransferBid() == 0) {
                             Intent intent = new Intent(context, FinanceProductDetailActivity.class);
                             intent.putExtra("where", 1);
                             intent.putExtra("entityID", data.getId());
                             context.startActivity(intent);
-                        } else {
+                       /* } else {
                             Intent intent = new Intent(context, DebtProductDetailActivity.class);
                             intent.putExtra("where", 1);
                             intent.putExtra("entityID", data.getId());
                             context.startActivity(intent);
                         }
-
+*/
                         dialog.dismiss();
                     }
                 });

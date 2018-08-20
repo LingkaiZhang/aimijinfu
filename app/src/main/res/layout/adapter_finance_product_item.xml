@@ -89,8 +89,8 @@
                 android:text="等额本息"
                 android:textSize="10sp"
                 android:layout_marginTop="@dimen/margin_twelve2"
-                android:textColor="@color/login_register_blue"
-                android:background="@drawable/textview_border_equality_corpus_and_interest"
+                android:textColor="@color/theme_color"
+                android:background="@drawable/textview_border_interest_first_then_cost"
                 android:visibility="gone"/>
 
         </LinearLayout>

@@ -32,7 +32,7 @@
                 android:id="@+id/tvWaitEarnTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/earn_wait"
+                android:text="@string/earn_already"
                 android:textColor="@color/text_black"
                 android:textSize="@dimen/normal_text"
                 />
@@ -66,7 +66,7 @@
                 android:id="@+id/tvAlreadyEarnTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/earn_already"
+                android:text="@string/earn_wait"
                 android:textColor="@color/text_black"
                 android:textSize="@dimen/normal_text"/>
 

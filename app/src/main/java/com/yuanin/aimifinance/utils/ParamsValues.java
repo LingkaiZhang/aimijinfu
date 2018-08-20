@@ -15,10 +15,10 @@ public class ParamsValues {
     public final static String KEY = "5bbf31b975954ffb90a19e69ef274c0f";
     //正式环境
 
-   // public final static String NET_URL = "https://prop2papi.aimilicai.com/";
+    //public final static String NET_URL = "https://prop2papi.aimilicai.com/";
     //public final static String NET_URL_WEIXIN = "https://prowechat.aimilicai.com/";
     //key
-    public final static String VERSION_CODE = "6.0.1";
+    public final static String VERSION_CODE = "6.0.2";
     //测试
     public final static String NET_URL = "http://javadjshcsp2p.yuanin.com/";
     public final static String NET_URL_WEIXIN = "http://javadjshwechat.yuanin.com/";
@@ -196,6 +196,8 @@ public class ParamsValues {
     //债权转让商品列表
     public final static  String MOTHED_GET_BUY_ENTRANSFER_BORROW_LIST = "getBuyTransferBorrowList";
     public final static  String MOTHED_GET_BUY_ENTRANSFER_Detail = "getBuyTransferDetail";
+    public final static  String MOTHED_BUY_TRANSFER_BORROW = "buyTransferBorrow";
+
 
 
     /**
@@ -238,4 +240,8 @@ public class ParamsValues {
     public final static String MY_BORROW = "my_borrow";
     //银行存管
     public final static String BANK_DEPOSITORY = "bank_depository";
+    //债权转让
+    public final static String DEBT_ASSIGNMENT = "debt_assignment";
+    //债权转让协议
+    public final static String DEBT_ASSIGNMENT_MODE = "debt_assignment_mode";
 }
