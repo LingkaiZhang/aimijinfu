@@ -107,7 +107,7 @@
                 <Button
                     android:id="@+id/btnCancel"
                     android:layout_width="@dimen/weight"
-                    android:layout_height="match_parent"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
                     android:layout_margin="@dimen/small_margin"
                     android:background="@drawable/selector_dialog_cancel_button_click"
@@ -117,7 +117,7 @@
                 <Button
                     android:id="@+id/btnConfirm"
                     android:layout_width="@dimen/weight"
-                    android:layout_height="match_parent"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
                     android:layout_margin="@dimen/small_margin"
                     android:background="@drawable/selector_dialog_confirm_button_click"

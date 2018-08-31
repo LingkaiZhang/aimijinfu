@@ -273,9 +273,11 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
                 }
                 break;
             case R.id.llNewProduct:
-                Intent intent6 = new Intent(getActivity(), FinanceProductDetailActivity.class);
-                intent6.putExtra("entityID", indexProductEntity.getId());
-                startActivity(intent6);
+                if (indexProductEntity != null) {
+                    Intent intent6 = new Intent(getActivity(), FinanceProductDetailActivity.class);
+                    intent6.putExtra("entityID", indexProductEntity.getId());
+                    startActivity(intent6);
+                }
                 break;
         }
     }

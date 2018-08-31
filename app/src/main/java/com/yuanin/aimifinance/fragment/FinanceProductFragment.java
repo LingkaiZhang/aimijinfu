@@ -134,11 +134,10 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
     private Drawable image_up_red;
     private Drawable image_down_red;
 
-    //是否正序
-    private boolean issueTime = true;
+    //第一次点击是否正序
     private boolean discountRate = true;
     private boolean surplusTime = true;
-
+    private boolean issueTime = true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -272,14 +271,13 @@ public class FinanceProductFragment extends BaseFragment implements XListView.IX
                 orderType = 3;
 
                 if (surplusTime) {
-                    ivSurplusTimeUp.setImageDrawable(image_up_gray);
-                    ivSurplusTimeDown.setImageDrawable(image_down_red);
-                    ordereStatus = 2;
-
-                } else {
                     ivSurplusTimeUp.setImageDrawable(image_up_red);
                     ivSurplusTimeDown.setImageDrawable(image_down_gray);
                     ordereStatus = 1;
+                } else {
+                    ivSurplusTimeUp.setImageDrawable(image_up_gray);
+                    ivSurplusTimeDown.setImageDrawable(image_down_red);
+                    ordereStatus = 2;
                 }
                 surplusTime = !surplusTime;
                 ivIssueTimeUp.setImageDrawable(image_up_gray);
