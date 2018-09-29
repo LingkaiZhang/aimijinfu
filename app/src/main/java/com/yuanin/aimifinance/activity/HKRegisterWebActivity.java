@@ -125,10 +125,17 @@ public class HKRegisterWebActivity extends BaseActivity {
                 if (param.equals("9")) {
                     startActivity(new Intent(context,PayInputMoneyActivity.class));
                 } else if (param.equals("2")) {
-                    Intent intent2 = new Intent(context, HomePageActivity.class);
+                   /* Intent intent2 = new Intent(context, HomePageActivity.class);
                     //通知homepage跳到产品
                     intent2.putExtra("currentIndex",1);
-                    startActivity(intent2);
+                    startActivity(intent2);*/
+
+                    //通知homepage跳到产品
+                    EventMessage eventMessage2 = new EventMessage();
+                    eventMessage2.setType(EventMessage.HOMEPAGE_JUMP_TAB);
+                    eventMessage2.setObject(1);
+                    EventBus.getDefault().post(eventMessage2);
+
                 } else if (param.equals("3")) {
                     contactCustomerService();
                 } else if (param.equals("4")) {
@@ -148,6 +155,10 @@ public class HKRegisterWebActivity extends BaseActivity {
                     AppUtils.showToast(context, "操作失败，请重试");
                 } else if (param.equals("1")) {
                     AppUtils.showToast(context, "操作成功");
+                    Intent intent2 = new Intent(context, HomePageActivity.class);
+                    //通知homepage跳到产品
+                    intent2.putExtra("currentIndex",2);
+                    startActivity(intent2);
                 }
                 HKRegisterWebActivity.this.finish();
             }

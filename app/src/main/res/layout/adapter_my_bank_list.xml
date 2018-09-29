@@ -112,7 +112,8 @@
                 android:padding="@dimen/margin_four"
                 android:text="修改手机号"
                 android:textColor="@color/white"
-                android:textSize="@dimen/small_text"/>
+                android:textSize="@dimen/small_text"
+                android:visibility="gone"/>
         </LinearLayout>
     </LinearLayout>
 
