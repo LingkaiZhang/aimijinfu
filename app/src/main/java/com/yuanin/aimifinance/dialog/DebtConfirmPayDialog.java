@@ -24,14 +24,14 @@ import com.yuanin.aimifinance.utils.StaticMembers;
 public class DebtConfirmPayDialog {
     private AlertDialog dialog;
     private View view;
-    private TextView tvTitle, tvBalance, tvPrincipal, tvAmountPayable, tvProspectiveEarnings;
+    private TextView tvTitle, tvBalance, tvPrincipal, tvAmountPayable, tvProspectiveEarnings, tvReceptServiceCharge;
     private Button btnCancel, btnConfirm;
     private LinearLayout llMain;
     private View viewLineOne;
 
 
     public DebtConfirmPayDialog(Context context, boolean isCancelable, String title,
-                                String balabce, String principal, String amountPayable, String prospectiveEarnings,
+                                String balabce, String principal,String receptServiceCharge, String amountPayable, String prospectiveEarnings,
                                 String leftStr, String rigthStr, View.OnClickListener leftListener, View.OnClickListener rightListener) {
         view = LayoutInflater.from(context).inflate(R.layout.dialog_debt_buy_comfirm, null);
         dialog = new AlertDialog.Builder(context).create();
@@ -54,6 +54,7 @@ public class DebtConfirmPayDialog {
         btnConfirm.setText(rigthStr);
         tvBalance.setText(balabce);
         tvPrincipal.setText(principal);
+        tvReceptServiceCharge.setText(receptServiceCharge);
         tvAmountPayable.setText(amountPayable);
         tvProspectiveEarnings.setText(prospectiveEarnings);
         btnCancel.setOnClickListener(leftListener);
@@ -69,6 +70,7 @@ public class DebtConfirmPayDialog {
         viewLineOne = view.findViewById(R.id.view_line_one);
         tvBalance = view.findViewById(R.id.tvBalance);
         tvPrincipal = view.findViewById(R.id.tvPrincipal);
+        tvReceptServiceCharge = view.findViewById(R.id.tvReceptServiceCharge);
         tvAmountPayable = view.findViewById(R.id.tvAmountPayable);
         tvProspectiveEarnings = view.findViewById(R.id.tvProspectiveEarnings);
 

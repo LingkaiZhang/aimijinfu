@@ -33,6 +33,7 @@ import com.yuanin.aimifinance.entity.DebtProductDetailEntity;
 import com.yuanin.aimifinance.entity.EventMessage;
 
 
+import com.yuanin.aimifinance.entity.ProductDetailEntity;
 import com.yuanin.aimifinance.entity.ReturnResultEntity;
 import com.yuanin.aimifinance.entity.TabIndicatorEntity;
 
@@ -176,6 +177,8 @@ public class DebtProductDetailActivity extends BaseFragmentActivity implements I
     private TextView tv_transfer_capital;
     @ViewInject(R.id.tv_pay_capital)
     private TextView tv_pay_capital;
+    @ViewInject(R.id.tv_recept_service_charge)
+    private TextView tv_recept_service_charge;
 
 
     private String entityID;
@@ -323,6 +326,7 @@ public class DebtProductDetailActivity extends BaseFragmentActivity implements I
         tv_transfer_capital.setText(productDetailEntity.getDueCapital() + "元");
         tv_pay_capital.setText(productDetailEntity.getPayAmount() + "元");
         tvRepay.setText(productDetailEntity.getRepayMethod());
+        tv_recept_service_charge.setText(productDetailEntity.getBuyFee() + "元");
 
 
         //倒计时功能
@@ -447,7 +451,8 @@ public class DebtProductDetailActivity extends BaseFragmentActivity implements I
                     PopupWindow mPop = AppUtils.createHKPop(popView, context);
                     mPop.showAtLocation(llMain, Gravity.CENTER, 0, 0);
                 } else {
-                    debtConfirmPayDialog = new DebtConfirmPayDialog(this, false, "确认支付", debtProductDetailEntity.getBalance(), debtProductDetailEntity.getDueCapital(),
+                    debtConfirmPayDialog = new DebtConfirmPayDialog(this, false, "确认支付",
+                            debtProductDetailEntity.getBalance(), debtProductDetailEntity.getDueCapital(),debtProductDetailEntity.getBuyFee(),
                             debtProductDetailEntity.getPayAmount(),debtProductDetailEntity.getWillInterest(), "取消", "确认", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

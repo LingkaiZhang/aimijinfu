@@ -23,6 +23,7 @@ public class DebtProductDetailEntity {
      * created : 2018-08-11
      * willInterest:22.22
      * balance:8000
+     * buyFee: "50"
      */
 
     private String borrowTransferId;
@@ -44,6 +45,15 @@ public class DebtProductDetailEntity {
     private String created;
     private String willInterest;
     private String balance;
+    private String buyFee;
+
+    public String getBuyFee() {
+        return buyFee;
+    }
+
+    public void setBuyFee(String buyFee) {
+        this.buyFee = buyFee;
+    }
 
     public String getWillInterest() {
         return willInterest;

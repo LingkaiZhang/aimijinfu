@@ -93,6 +93,30 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="承接服务费(元)"
+                    android:textSize="@dimen/thirteen_text"
+                    android:textColor="@color/text_light_gray"
+                    />
+
+                <TextView
+                    android:id="@+id/tvReceptServiceCharge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10000"
+                    android:textSize="@dimen/thirteen_text"
+                    android:textColor="@color/text_black"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="应付金额(元)"
                     android:textSize="@dimen/thirteen_text"
                     android:textColor="@color/text_light_gray"
