@@ -30,7 +30,8 @@ public class GeneralDialog {
     private View viewLineOne;
 
 
-    public GeneralDialog(Context context, boolean isCancelable, String title, String tips, String leftStr, String rigthStr, View.OnClickListener leftListener, View.OnClickListener rightListener) {
+    public GeneralDialog(Context context, boolean isCancelable, String title, String tips, String leftStr, String rigthStr,
+                         View.OnClickListener leftListener, View.OnClickListener rightListener) {
         view = LayoutInflater.from(context).inflate(R.layout.dialog_genaral, null);
         dialog = new AlertDialog.Builder(context).create();
         dialog.setCancelable(isCancelable);

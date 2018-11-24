@@ -114,6 +114,7 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 26 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Gradle: com.android.support.constraint:constraint-layout-solver:1.0.2@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.ToxicBakery.viewpager.transforms:view-pager-transforms-1.2.32" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-v13-22.1.1" level="project" />
     <orderEntry type="library" name="Gradle: com.github.barteksc:pdfium-android-1.7.1" level="project" />
@@ -154,13 +155,12 @@
     <orderEntry type="library" name="Gradle: __local_aars__:C.\AndroidCode\Java\aimijinfu\app\libs\ShareSDK-Core-2.7.4.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:C.\AndroidCode\Java\aimijinfu\app\libs\MobCommons-2016.0707.1708.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.nineoldandroids:library:2.4.0@jar" level="project" />
-    <orderEntry type="library" name="Gradle: com.android.support.constraint:constraint-layout-1.0.1" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support.constraint:constraint-layout-1.0.2" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:C.\AndroidCode\Java\aimijinfu\app\libs\MobTools-2016.0707.1708.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:C.\AndroidCode\Java\aimijinfu\PushSDK\libs\utdid4all-1.1.5.3_proguard.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.fresco:imagepipeline-base-0.9.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:design-25.2.0" level="project" />
     <orderEntry type="library" name="Gradle: org.xutils:xutils-3.3.32" level="project" />
-    <orderEntry type="library" name="Gradle: com.android.support.constraint:constraint-layout-solver:1.0.1@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.fresco:imagepipeline-0.9.0" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:C.\AndroidCode\Java\aimijinfu\app\libs\ShareSDK-Wechat-2.7.4.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:C.\AndroidCode\Java\aimijinfu\PushSDK\libs\alicloud-android-sdk-httpdns-1.0.7.jar:unspecified@jar" level="project" />

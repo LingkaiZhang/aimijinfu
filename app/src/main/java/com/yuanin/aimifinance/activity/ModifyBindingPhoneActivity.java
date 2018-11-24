@@ -37,6 +37,8 @@ public class ModifyBindingPhoneActivity extends BaseActivity {
     private EditText etPhone;
     @ViewInject(R.id.tvGetCode)
     private TextView tvGetCode;
+    @ViewInject(R.id.tvTip)
+    private TextView tvTip;
     @ViewInject(R.id.etCode)
     private EditText etCode;
 
@@ -90,7 +92,7 @@ public class ModifyBindingPhoneActivity extends BaseActivity {
                     public void onSuccess(Object object) {
                         ReturnResultEntity<?> entity = (ReturnResultEntity<?>) object;
                         if (entity.isSuccess(context)) {
-                            time = new TimerCount(StaticMembers.TIME_TOTAL, StaticMembers.TIME_PER, 3, tvGetCode,tvGetCode);
+                            time = new TimerCount(StaticMembers.TIME_TOTAL, StaticMembers.TIME_PER, 3, tvGetCode,tvTip);
                             time.start();
                         }
                         AppUtils.showToast(context, entity.getRemark());
@@ -180,7 +182,7 @@ public class ModifyBindingPhoneActivity extends BaseActivity {
                 time.cancel();
                 time = null;
             }
-            time = new TimerCount(timeLimit, StaticMembers.TIME_PER, 3, tvGetCode,tvGetCode);
+            time = new TimerCount(timeLimit, StaticMembers.TIME_PER, 3, tvGetCode,tvTip);
             time.start();
         }
     }

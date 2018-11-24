@@ -113,6 +113,16 @@
                 android:textColor="@drawable/selector_login_rigister_click"
                 android:textSize="@dimen/small_text"/>
 
+            <TextView
+                android:id="@+id/tvTip"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:gravity="right|center_vertical"
+                android:text="@string/get_code"
+                android:textColor="@drawable/selector_login_rigister_click"
+                android:textSize="@dimen/small_text"/>
+
 
             <EditText
                 android:id="@+id/etCode"

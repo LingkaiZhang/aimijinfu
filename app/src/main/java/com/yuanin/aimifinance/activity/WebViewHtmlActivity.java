@@ -59,7 +59,7 @@ public class WebViewHtmlActivity extends BaseActivity {
         } else if (type.equals(ParamsValues.DEBT_ASSIGNMENT) ) {
             initTopBar("债权转让", toptitleView, true);
             String url = ParamsValues.NET_URL_WEIXIN + "creditor_assets.html?userid=" + StaticMembers.USER_ID +"&mobile=" + AppUtils.rsaEncode(this,StaticMembers.MOBILE);
-           // String url = "http://javadjshwechat.yuanin.com/itemsparticularups1.html?myid=19459&buy=0&type=%E8%BF%98%E6%AC%BE%E4%B8%AD";
+           // String url = "https://prowechat.aimilicai.com/creditor_assets.html?userid=60920&mobile=";
             initWebViewTitle(url);
 
         }

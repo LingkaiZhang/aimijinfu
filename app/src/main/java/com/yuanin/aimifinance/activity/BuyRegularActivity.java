@@ -338,6 +338,7 @@ public class BuyRegularActivity extends BaseActivity {
                 tvRedPackets.setText("");
             }
         } else {
+
             setRedPacketData();
         }
     }

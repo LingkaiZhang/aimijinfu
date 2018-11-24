@@ -81,9 +81,9 @@ dependencies {
     api 'com.android.support:recyclerview-v7:26.1.0'
     api 'com.mylhyl:acp:1.1.7'
     api 'com.just.agentweb:agentweb:1.2.1'
-    api 'com.android.support.constraint:constraint-layout:1.0.1'
     api 'com.github.barteksc:android-pdf-viewer:2.8.2'
     api 'com.lzy.net:okhttputils:1.6.5'
     //日历
     api 'com.haibin:calendarview:3.2.9'
+    api 'com.android.support.constraint:constraint-layout:1.0.2'
 }
