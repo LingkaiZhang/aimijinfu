@@ -66,6 +66,16 @@ public class MyInvestListAdapter extends GeneralAdapter<MyInvestEntity> {
                     holder.setTextForTextView(R.id.tvStatus, "已满标");
                     tvStatus.setTextColor(context.getResources().getColor(R.color.man_biao));
                     ivPrintMark.setImageDrawable(context.getResources().getDrawable(R.drawable.blue_print));
+                }else if (data.getStatus() == 13) {
+                // holder.setTextForTextView(R.id.tvStatus, "提前结清");
+                    holder.setTextForTextView(R.id.tvStatus, "续借");
+                    tvStatus.setTextColor(context.getResources().getColor(R.color.prepayment));
+                    ivPrintMark.setImageDrawable(context.getResources().getDrawable(R.drawable.prepayment_print));
+                } else if (data.getStatus() == 8) {
+                    // holder.setTextForTextView(R.id.tvStatus, "提前结清");
+                    holder.setTextForTextView(R.id.tvStatus, "催收中");
+                    tvStatus.setTextColor(context.getResources().getColor(R.color.prepayment));
+                    ivPrintMark.setImageDrawable(context.getResources().getDrawable(R.drawable.prepayment_print));
                 } else {
                     holder.setTextForTextView(R.id.tvStatus, "还款中");
                     tvStatus.setTextColor(context.getResources().getColor(R.color.jin_xing));
@@ -99,10 +109,16 @@ public class MyInvestListAdapter extends GeneralAdapter<MyInvestEntity> {
                 tvEndDateTitle.setText("到期时间:");
                 llLeave.setVisibility(View.GONE);
                 //提前结清
-                if (data.getStatus() == 9) {
-                    holder.setTextForTextView(R.id.tvStatus, "提前结清");
+                if (data.getStatus() == 13) {
+                   // holder.setTextForTextView(R.id.tvStatus, "提前结清");
+                    holder.setTextForTextView(R.id.tvStatus, "续借");
                     tvStatus.setTextColor(context.getResources().getColor(R.color.prepayment));
                     ivPrintMark.setImageDrawable(context.getResources().getDrawable(R.drawable.prepayment_print));
+                } else if (data.getStatus() == 8) {
+                // holder.setTextForTextView(R.id.tvStatus, "提前结清");
+                holder.setTextForTextView(R.id.tvStatus, "催收中");
+                tvStatus.setTextColor(context.getResources().getColor(R.color.prepayment));
+                ivPrintMark.setImageDrawable(context.getResources().getDrawable(R.drawable.prepayment_print));
                 } else {
                     holder.setTextForTextView(R.id.tvStatus, "已还款");
                     tvStatus.setTextColor(context.getResources().getColor(R.color.huan_kuan));

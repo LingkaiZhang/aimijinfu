@@ -284,6 +284,11 @@ public class OrderFormActivity extends BaseActivity {
                 tvStatus.setTextColor(getResources().getColor(R.color.jin_xing));
                 imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.yellow_print));
                 break;
+            case 13:
+                tvStatus.setText("续借");
+                tvStatus.setTextColor(getResources().getColor(R.color.jin_xing));
+                imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.yellow_print));
+                break;
         }
         tvName.setText(orderFormEntity.getProject_name());
         tvMoney.setText(orderFormEntity.getAmount() + "元");
