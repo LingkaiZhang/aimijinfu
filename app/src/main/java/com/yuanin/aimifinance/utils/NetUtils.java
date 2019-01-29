@@ -45,6 +45,7 @@ public class NetUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        LogUtils.d("入参", params.toString());
         return params;
     }
 
@@ -61,6 +62,7 @@ public class NetUtils {
             @Override
             public void onSuccess(final String result) {
                 try {
+                    LogUtils.d("出参", result);
                     Object object = new Gson().fromJson(result, mType);
                     httpRequestCallBack.onSuccess(object);
                 } catch (JsonSyntaxException e) {
@@ -130,6 +132,7 @@ public class NetUtils {
             @Override
             public void onSuccess(final String result) {
                 try {
+                    LogUtils.d("出参", result);
                     Object object = new Gson().fromJson(result, mType);
                     httpRequestCallBack.onSuccess(object);
                 } catch (JsonSyntaxException e) {
@@ -172,6 +175,7 @@ public class NetUtils {
             @Override
             public void onSuccess(final String result) {
                 try {
+                    LogUtils.d("出参", result);
                     Object object = new Gson().fromJson(result, mType);
                     httpRequestCallBack.onSuccess(object);
                 } catch (JsonSyntaxException e) {

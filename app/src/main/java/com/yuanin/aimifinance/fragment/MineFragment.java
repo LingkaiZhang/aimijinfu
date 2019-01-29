@@ -393,6 +393,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
     }
 
     private void setActivityInfo(final ReturnResultEntity<ActivityInfoEntity> entity) {
+
         sdvWonderFulActivity1.setImageURI(Uri.parse(entity.getData().get(0).getCover_img()));
         sdvWonderFulActivity2.setImageURI(Uri.parse(entity.getData().get(1).getCover_img()));
         sdvWonderFulActivity1.setOnClickListener(new View.OnClickListener() {
