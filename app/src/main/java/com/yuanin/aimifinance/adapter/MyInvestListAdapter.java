@@ -66,7 +66,7 @@ public class MyInvestListAdapter extends GeneralAdapter<MyInvestEntity> {
                     holder.setTextForTextView(R.id.tvStatus, "已满标");
                     tvStatus.setTextColor(context.getResources().getColor(R.color.man_biao));
                     ivPrintMark.setImageDrawable(context.getResources().getDrawable(R.drawable.blue_print));
-                }else if (data.getStatus() == 13) {
+                }else if (data.getStatus() == 13 || data.getStatus() == 14) {
                 // holder.setTextForTextView(R.id.tvStatus, "提前结清");
                     holder.setTextForTextView(R.id.tvStatus, "续借");
                     tvStatus.setTextColor(context.getResources().getColor(R.color.prepayment));

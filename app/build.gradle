@@ -8,8 +8,8 @@ android {
         applicationId "com.yuanin.aimifinance"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 610
-        versionName "6.1.0"
+        versionCode 611
+        versionName "6.1.1"
 
         ndk {
             //选择要添加的对应cpu类型的.so库。

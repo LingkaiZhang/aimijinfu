@@ -285,6 +285,7 @@ public class OrderFormActivity extends BaseActivity {
                 imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.yellow_print));
                 break;
             case 13:
+            case 14:
                 tvStatus.setText("续借");
                 tvStatus.setTextColor(getResources().getColor(R.color.jin_xing));
                 imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.yellow_print));
