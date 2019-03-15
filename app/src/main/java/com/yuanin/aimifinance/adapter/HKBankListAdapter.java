@@ -3,6 +3,7 @@ package com.yuanin.aimifinance.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -48,7 +49,9 @@ public class HKBankListAdapter extends GeneralAdapter<BankEntity> {
         holder.setTextForTextView(R.id.tvBankCard, data.getCard_no());
         holder.setTextForTextView(R.id.tvPhone, data.getMobile());
         SimpleDraweeView imgView = holder.getView(R.id.imageIcon);
-        imgView.setImageURI(Uri.parse(data.getLogo()));
+        if (!TextUtils.isEmpty(data.getLogo())) {
+            imgView.setImageURI(Uri.parse(data.getLogo()));
+        }
         TextView btnUnbinding = holder.getView(R.id.btnUnbinding);
         btnUnbinding.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -2,11 +2,15 @@ package com.yuanin.aimifinance.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Animatable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.CheckBox;
@@ -57,6 +61,8 @@ public class WithdrawActivity extends BaseActivity {
     private TextView tvCount;
     @ViewInject(R.id.tvBankName)
     private TextView tvBankName;
+    @ViewInject(R.id.tvEveryFee)
+    private TextView tvEveryFee;
     @ViewInject(R.id.tvBankCard)
     private TextView tvBankCard;
     @ViewInject(R.id.tvNoContent)
@@ -88,6 +94,8 @@ public class WithdrawActivity extends BaseActivity {
     private CheckBox cb_normalwithdraw;
     @ViewInject(R.id.cb_quickWithdraw)
     private CheckBox cb_quickWithdraw;
+    @ViewInject(R.id.tvNormalWithdraw)
+    private TextView tvNormalWithdraw;
 
 
     private String balance, fee;
@@ -117,7 +125,7 @@ public class WithdrawActivity extends BaseActivity {
                     tvFee.setText(fee);
                     initEdittext(etMoney.getText().toString());
                 } else {
-                    // cb_quickWithdraw.setChecked(true);
+                    cb_quickWithdraw.setChecked(true);
                 }
             }
         });
@@ -129,7 +137,7 @@ public class WithdrawActivity extends BaseActivity {
                     tvFee.setText(cash_fee);
                     initEdittext(etMoney.getText().toString());
                 } else {
-                    // cb_normalwithdraw.setChecked(true);
+                     cb_normalwithdraw.setChecked(true);
                 }
             }
         });
@@ -325,14 +333,22 @@ public class WithdrawActivity extends BaseActivity {
                 llTips.addView(textView);
             }
         }
-        fee = entity.getData().get(0).getFee();
+        fee = entity.getData().get(0).getNormalFee();
+        cash_fee = entity.getData().get(0).getQuickFee();
         balance = entity.getData().get(0).getBalance();
         tvBalance.setText(balance);
         tvFee.setText(fee);
+        tvEveryFee.setText( "( " + Integer.parseInt(fee.split("\\.")[0]) + "元/次 )");
         tvCount.setText(entity.getData().get(0).getQty());
         tv_freeCount.setText(entity.getData().get(0).getQty());
         etMoney.requestFocus();
         AppUtils.openKeyboard(etMoney);
+
+
+        SpannableString spannableString = new SpannableString("预计下一个工作日到账,遇双休日和法定节假日顺延,无金额限制.");
+        ForegroundColorSpan colorSpan = new ForegroundColorSpan(getResources().getColor(R.color.theme_color));
+        spannableString.setSpan(colorSpan, 2, 8, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+        tvNormalWithdraw.setText(spannableString);
     }
 
     private void initListener() {

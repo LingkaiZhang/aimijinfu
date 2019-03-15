@@ -250,8 +250,8 @@ public class OrderFormActivity extends BaseActivity {
                 break;
             case 3:
                 tvStatus.setText("已满标");
-                tvStatus.setTextColor(getResources().getColor(R.color.man_biao));
-                imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.blue_print));
+                tvStatus.setTextColor(getResources().getColor(R.color.huan_kuan));
+                imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.red_print));
                 break;
             case 4:
                 tvStatus.setText("已流标");

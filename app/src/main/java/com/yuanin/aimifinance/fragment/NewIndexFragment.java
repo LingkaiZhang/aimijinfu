@@ -28,6 +28,7 @@ import com.yuanin.aimifinance.activity.BuyRegularActivity;
 import com.yuanin.aimifinance.activity.CallBackWebActivity;
 import com.yuanin.aimifinance.activity.FinanceProductDetailActivity;
 import com.yuanin.aimifinance.activity.GetVerifyCodeActivity;
+import com.yuanin.aimifinance.activity.HKRegisterWebActivity;
 import com.yuanin.aimifinance.activity.HomePageActivity;
 import com.yuanin.aimifinance.activity.HrefActivity;
 import com.yuanin.aimifinance.activity.LoginActivity;
@@ -40,6 +41,7 @@ import com.yuanin.aimifinance.adapter.IndexProductListAdapter;
 import com.yuanin.aimifinance.base.BaseFragment;
 import com.yuanin.aimifinance.entity.BannerEntity;
 import com.yuanin.aimifinance.entity.EventMessage;
+import com.yuanin.aimifinance.entity.HKRegisterEntity;
 import com.yuanin.aimifinance.entity.IndexProductEntity;
 import com.yuanin.aimifinance.entity.ReturnResultEntity;
 import com.yuanin.aimifinance.inter.CBViewHolderCreator;
@@ -260,7 +262,8 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
                 } else if (btnLoginRegister.getText().toString().equals(getString(R.string.openbankaccount))) {
                     getActivity().startActivity(new Intent(getActivity(), OpenAccountActivity.class));
                 } else if (btnLoginRegister.getText().toString().equals(getString(R.string.activateAcount))) {
-                    //TODO
+                    //TODO 激活账户
+                    activateAccount();
                 } else if (btnLoginRegister.getText().toString().equals(getString(R.string.Immediately_lend))) {
                     final HomePageActivity mainActivity = (HomePageActivity) getActivity();
                     mainActivity.setFragment2Fragment(new HomePageActivity.Fragment2Fragment() {
@@ -280,6 +283,51 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
                 }
                 break;
         }
+    }
+
+    private void activateAccount() {
+        JSONObject obj = AppUtils.getPublicJsonObject(true);
+        try {
+            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_SAFE);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_ACTIVATE_UESR);
+            String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
+            obj.put(ParamsKeys.TOKEN, token);
+            obj.remove(ParamsKeys.KEY);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Type mType = new TypeToken<ReturnResultEntity<HKRegisterEntity>>() {
+        }.getType();
+        NetUtils.request(getActivity(), obj, mType, new IHttpRequestCallBack() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onSuccess(Object object) {
+                ReturnResultEntity<HKRegisterEntity> entity = (ReturnResultEntity<HKRegisterEntity>) object;
+                if (entity.isSuccess(getActivity())) {
+                    if (entity.isNotNull()) {
+                        Intent intent = new Intent(getActivity(), HKRegisterWebActivity.class);
+                        intent.putExtra("url", entity.getData().get(0).getRedirect_url());
+                        getActivity().startActivity(intent);
+                    }
+                } else {
+                    AppUtils.showToast(getActivity(), entity.getRemark());
+                }
+            }
+
+            @Override
+            public void onFailure() {
+                AppUtils.showConectFail(getActivity());
+            }
+        });
     }
 
     private void init() {
@@ -341,6 +389,8 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
                     ivNewGuideLines.setImageBitmap(newGuidleTwo);
                     btnLoginRegister.setText(getString(R.string.openbankaccount));
                 }else if (userIsOpenAccount.equals("2")){
+                    Bitmap newGuidleTwo = AppUtils.getBitmap(getActivity(), R.mipmap.new_guide_two);
+                    ivNewGuideLines.setImageBitmap(newGuidleTwo);
                     btnLoginRegister.setText(getString(R.string.activateAcount));
                 }
             }

@@ -16,10 +16,13 @@ public class ParamsValues {
     public final static String NET_URL = "https://prop2papi.aimilicai.com/";
     public final static String NET_URL_WEIXIN = "https://prowechat.aimilicai.com/";
     //key
-    public final static String VERSION_CODE = "6.1.1";
+    public final static String VERSION_CODE = "6.1.2";
     //测试
     /*public final static String NET_URL = "http://javadjshcsp2p.aimilicai.com";
     public final static String NET_URL_WEIXIN = "http://javadjshwechat.aimilicai.com/";*/
+    //灰度
+    /*public final static String NET_URL = "https://javadjxwcsapi.aimilicai.com/";
+    public final static String NET_URL_WEIXIN = "https://javadjxwwechat.aimilicai.com/";*/
 
     public final static String TEL = "400-666-2082";
     /**

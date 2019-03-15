@@ -64,7 +64,7 @@ public class MyInvestListAdapter extends GeneralAdapter<MyInvestEntity> {
                 holder.setTextForTextView(R.id.tvLeaveDay, data.getDays_num());
                 if (data.getStatus() == 3) {
                     holder.setTextForTextView(R.id.tvStatus, "已满标");
-                    tvStatus.setTextColor(context.getResources().getColor(R.color.man_biao));
+                    tvStatus.setTextColor(context.getResources().getColor(R.color.theme_color));
                     ivPrintMark.setImageDrawable(context.getResources().getDrawable(R.drawable.blue_print));
                 }else if (data.getStatus() == 13 || data.getStatus() == 14) {
                 // holder.setTextForTextView(R.id.tvStatus, "提前结清");
@@ -89,7 +89,7 @@ public class MyInvestListAdapter extends GeneralAdapter<MyInvestEntity> {
 
                 if (data.getStatus() == 3) {
                     holder.setTextForTextView(R.id.tvStatus, "已满标");
-                    tvStatus.setTextColor(context.getResources().getColor(R.color.man_biao));
+                    tvStatus.setTextColor(context.getResources().getColor(R.color.theme_color));
                     ivPrintMark.setImageDrawable(context.getResources().getDrawable(R.drawable.blue_print));
                 } else {
                     holder.setTextForTextView(R.id.tvStatus, "募集中");

@@ -11,6 +11,8 @@ import java.util.List;
 public class AimiCashEntity implements Serializable {
     private String qty;
     private String fee;
+    private String normalFee;
+    private String quickFee;
     private String balance;
     private List<BindingCardEntity> bank;
     private List<StrEntity> cue;
@@ -54,5 +56,21 @@ public class AimiCashEntity implements Serializable {
 
     public void setFee(String fee) {
         this.fee = fee;
+    }
+
+    public String getNormalFee() {
+        return normalFee;
+    }
+
+    public void setNormalFee(String normalFee) {
+        this.normalFee = normalFee;
+    }
+
+    public String getQuickFee() {
+        return quickFee;
+    }
+
+    public void setQuickFee(String quickFee) {
+        this.quickFee = quickFee;
     }
 }

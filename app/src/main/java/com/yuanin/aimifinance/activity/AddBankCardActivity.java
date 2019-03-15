@@ -4,6 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Animatable;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -57,6 +61,8 @@ public class AddBankCardActivity extends BaseActivity {
     private EditText etBankcard;
     @ViewInject(R.id.etPhone)
     private EditText etPhone;
+    @ViewInject(R.id.tvSupportBank)
+    private TextView tvSupportBank;
 
     private Context context = AddBankCardActivity.this;
     private GeneralDialog dialog;
@@ -68,6 +74,13 @@ public class AddBankCardActivity extends BaseActivity {
         x.view().inject(this);
         initTopBarWithPhone("绑定银行卡", toptitleView);
         requestData();
+
+        SpannableString spannableString = new SpannableString(getString(R.string.support_bank));
+        ForegroundColorSpan colorSpan = new ForegroundColorSpan(getResources().getColor(R.color.text_gray));
+        RelativeSizeSpan sizeSpan = new RelativeSizeSpan(1.1f);
+        spannableString.setSpan(colorSpan, 0, 5, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+        spannableString.setSpan(sizeSpan, 0, 5, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+        tvSupportBank.setText(spannableString);
     }
 
     private void requestData() {

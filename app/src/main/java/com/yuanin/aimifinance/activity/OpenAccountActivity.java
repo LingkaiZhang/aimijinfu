@@ -2,8 +2,13 @@ package com.yuanin.aimifinance.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.gson.reflect.TypeToken;
 import com.yuanin.aimifinance.R;
@@ -39,6 +44,8 @@ public class OpenAccountActivity extends BaseActivity {
     private EditText etBankcard;
     @ViewInject(R.id.etPhone)
     private EditText etPhone;
+    @ViewInject(R.id.tvSupportBank)
+    private TextView tvSupportBank;
 
     private GeneralDialog dialog;
 
@@ -49,6 +56,13 @@ public class OpenAccountActivity extends BaseActivity {
         setContentView(R.layout.activity_open_account);
         x.view().inject(this);
         initTopBarWithPhone("开户", toptitleView);
+
+        SpannableString spannableString = new SpannableString(getString(R.string.support_bank));
+        ForegroundColorSpan colorSpan = new ForegroundColorSpan(getResources().getColor(R.color.text_gray));
+        RelativeSizeSpan sizeSpan = new RelativeSizeSpan(1.1f);
+        spannableString.setSpan(colorSpan, 0, 5, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+        spannableString.setSpan(sizeSpan, 0, 5, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+        tvSupportBank.setText(spannableString);
     }
 
     @Event(value = {R.id.btnConfirm})
