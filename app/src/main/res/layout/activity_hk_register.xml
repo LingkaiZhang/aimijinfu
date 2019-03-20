@@ -4,7 +4,7 @@
               android:id="@+id/llMain"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/bg"
+              android:background="#f5f5f9"
               android:orientation="vertical"
               tools:context="com.yuanin.aimifinance.activity.HKRegisterWebActivity">
 
@@ -18,5 +18,19 @@
         <!--android:id="@+id/wvHref"-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="match_parent"/>-->
+    <LinearLayout
+        android:id="@+id/llGotoBank"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ivGotoBank"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:src="@mipmap/goto_bank"
+            android:scaleType="fitCenter"/>
+
+    </LinearLayout>
+
 
 </LinearLayout>

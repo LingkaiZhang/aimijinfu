@@ -11,7 +11,9 @@ import android.webkit.JavascriptInterface;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.just.library.AgentWeb;
 import com.just.library.ChromeClientCallbackManager;
@@ -38,6 +40,9 @@ public class HKRegisterWebActivity extends BaseActivity {
     private View toptitleView;
     @ViewInject(R.id.llMain)
     private LinearLayout llMain;
+    @ViewInject(R.id.llGotoBank)
+    private LinearLayout llGotoBank;
+
 
     private Context context = HKRegisterWebActivity.this;
     private GeneralDialog dialog;
@@ -48,7 +53,7 @@ public class HKRegisterWebActivity extends BaseActivity {
         setContentView(R.layout.activity_hk_register);
         x.view().inject(this);
         String url = getIntent().getStringExtra("url");
-        initTopBar("加载中...", toptitleView, true);
+        initTopBar("正在前往银行", toptitleView, true);
         if (url != null && url.length() > 0) {
             AgentWeb mAgentWeb = AgentWeb.with(this)//传入Activity
                     .setAgentWebParent(llMain, new LinearLayout.LayoutParams(-1, -1))//传入AgentWeb 的父控件 ，如果父控件为 RelativeLayout ， 那么第二参数需要传入 RelativeLayout.LayoutParams
@@ -58,6 +63,13 @@ public class HKRegisterWebActivity extends BaseActivity {
                         @Override
                         public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
                             handler.proceed(); // 接受证书
+                        }
+
+                        @Override
+                        public void onPageFinished(WebView view, String url) {
+                            super.onPageFinished(view, url);
+                            //TODO 加载完成监听
+                            llGotoBank.setVisibility(View.GONE);
                         }
                     })
                     .setReceivedTitleCallback(new ChromeClientCallbackManager.ReceivedTitleCallback() {

@@ -166,9 +166,5 @@
     <orderEntry type="library" name="Gradle: __local_aars__:C.\AndroidCode\Java\aimijinfu\PushSDK\libs\alicloud-android-sdk-httpdns-1.0.7.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.barteksc:android-pdf-viewer:2.8.2@aar" level="project" />
     <orderEntry type="module" module-name="PushSDK" />
-    <orderEntry type="module" module-name="PushSDK" />
-    <orderEntry type="module" module-name="PushSDK" />
-    <orderEntry type="module" module-name="PushSDK" />
-    <orderEntry type="module" module-name="PushSDK" />
   </component>
 </module>
