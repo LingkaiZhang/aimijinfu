@@ -36,6 +36,7 @@ import com.yuanin.aimifinance.activity.LoginRegisterActivity;
 import com.yuanin.aimifinance.activity.MessageCenterActivity;
 import com.yuanin.aimifinance.activity.NoticeListActivity;
 import com.yuanin.aimifinance.activity.OpenAccountActivity;
+import com.yuanin.aimifinance.activity.SmartChoseDetailActivity;
 import com.yuanin.aimifinance.activity.WebViewActivity;
 import com.yuanin.aimifinance.adapter.IndexProductListAdapter;
 import com.yuanin.aimifinance.base.BaseFragment;
@@ -177,7 +178,8 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
 
 
     @Event(value = {R.id.btnRefresh, R.id.llSafe, R.id.llHelp, R.id.llInvite, R.id.llData, R.id.ivMoreNotice,
-            R.id.imgRedPackets, R.id.rlNoLogin, R.id.btnNewInvest, R.id.llBank_depository, R.id.btn_login_register, R.id.btnCheckNetwork, R.id.llNewProduct})
+            R.id.imgRedPackets, R.id.rlNoLogin, R.id.btnNewInvest, R.id.llBank_depository, R.id.btn_login_register,
+            R.id.btnCheckNetwork, R.id.llNewProduct, R.id.btnAuthorizationToLend})
     private void onViewClicked(View v) {
         switch (v.getId()) {
             case R.id.llBank_depository:
@@ -266,12 +268,7 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
                     activateAccount();
                 } else if (btnLoginRegister.getText().toString().equals(getString(R.string.Immediately_lend))) {
                     final HomePageActivity mainActivity = (HomePageActivity) getActivity();
-                    mainActivity.setFragment2Fragment(new HomePageActivity.Fragment2Fragment() {
-                        @Override
-                        public void switchFragment(ViewPager viewPager) {
-                            viewPager.setCurrentItem(1);
-                        }
-                    });
+                    mainActivity.setFragment2Fragment(viewPager -> viewPager.setCurrentItem(1));
                     mainActivity.forSkip();
                 }
                 break;
@@ -282,6 +279,14 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
                     startActivity(intent6);
                 }
                 break;
+            case R.id.btnAuthorizationToLend:
+                //TODO  点击进入智投授权页面
+                if (StaticMembers.IS_NEED_LOGIN) {
+                    startActivity(new Intent(getActivity(), LoginRegisterActivity.class));
+                } else {
+                    AppUtils.showMiddleToast(getActivity(),"点击进入智投授权页面");
+                    startActivity(new Intent(getActivity(), SmartChoseDetailActivity.class));
+                }
         }
     }
 
@@ -438,18 +443,16 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
     }
 
     private void initImageData() {
-        Comparator comp = new Comparator() {
-            public int compare(Object o1, Object o2) {
-                BannerEntity p1 = (BannerEntity) o1;
-                BannerEntity p2 = (BannerEntity) o2;
-                if (p1.getSort() < p2.getSort())
-                    return -1;
-                else if (p1.getSort() == p2.getSort())
-                    return 0;
-                else if (p1.getSort() > p2.getSort())
-                    return 1;
+        Comparator comp = (o1, o2) -> {
+            BannerEntity p1 = (BannerEntity) o1;
+            BannerEntity p2 = (BannerEntity) o2;
+            if (p1.getSort() < p2.getSort())
+                return -1;
+            else if (p1.getSort() == p2.getSort())
                 return 0;
-            }
+            else if (p1.getSort() > p2.getSort())
+                return 1;
+            return 0;
         };
         Collections.sort(list, comp);
         List<String> imgList = new ArrayList<String>();
@@ -457,12 +460,7 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
             imgList.add(list.get(i).getSrc());
         }
         convenientBanner.setPages(
-                new CBViewHolderCreator<ImageHolderView>() {
-                    @Override
-                    public ImageHolderView createHolder() {
-                        return new ImageHolderView();
-                    }
-                }, imgList);
+                (CBViewHolderCreator<ImageHolderView>) () -> new ImageHolderView(), imgList);
         if (imgList.size() > 1) {
             //设置两个点图片作为翻页指示器，不设置则没有指示器，可以根据自己需求自行配合自己的指示器,不需要圆点指示器可用不设
             convenientBanner.setPageIndicator(new int[]{R.mipmap.small_indicator, R.mipmap.small_indicator_focused})
@@ -472,41 +470,38 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
         } else {
             convenientBanner.setManualPageable(false);//设置不能手动影响
         }
-        convenientBanner.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                if (list.get(position).getHref().contains("http")) {
-                    if (list.get(position).getIs_red() == 1) {
-                        StringBuffer sb = new StringBuffer();
-                        sb.append(list.get(position).getHref());
-                        sb.append("?appid=" + ParamsValues.APP_ID);
-                        if (!StaticMembers.IS_NEED_LOGIN) {
-                            sb.append("&uid=" + StaticMembers.USER_ID);
-                            sb.append("&token=" + AppUtils.getMd5Value(StaticMembers.USER_ID + StaticMembers.MOBILE));
-                        }
-                        Intent intent = new Intent(getActivity(), CallBackWebActivity.class);
-                        intent.putExtra("url", sb.toString());
-                        intent.putExtra("baseUrl", list.get(position).getHref());
-                        startActivity(intent);
-                    } else {
-                        Intent intent = new Intent(getActivity(), HrefActivity.class);
-                        intent.putExtra("url", list.get(position).getHref());
-                        startActivity(intent);
+        convenientBanner.setOnItemClickListener(position -> {
+            if (list.get(position).getHref().contains("http")) {
+                if (list.get(position).getIs_red() == 1) {
+                    StringBuffer sb = new StringBuffer();
+                    sb.append(list.get(position).getHref());
+                    sb.append("?appid=" + ParamsValues.APP_ID);
+                    if (!StaticMembers.IS_NEED_LOGIN) {
+                        sb.append("&uid=" + StaticMembers.USER_ID);
+                        sb.append("&token=" + AppUtils.getMd5Value(StaticMembers.USER_ID + StaticMembers.MOBILE));
                     }
+                    Intent intent = new Intent(getActivity(), CallBackWebActivity.class);
+                    intent.putExtra("url", sb.toString());
+                    intent.putExtra("baseUrl", list.get(position).getHref());
+                    startActivity(intent);
                 } else {
-                    switch (Integer.parseInt(list.get(position).getHref())) {
-                        case 1:
-                            //通知homepage跳到产品
-                            EventMessage eventMessage = new EventMessage();
-                            eventMessage.setType(EventMessage.HOMEPAGE_JUMP_TAB);
-                            eventMessage.setObject(1);
-                            EventBus.getDefault().post(eventMessage);
-                            break;
-                        case 2:
-                            break;
-                        case 3:
-                            break;
-                    }
+                    Intent intent = new Intent(getActivity(), HrefActivity.class);
+                    intent.putExtra("url", list.get(position).getHref());
+                    startActivity(intent);
+                }
+            } else {
+                switch (Integer.parseInt(list.get(position).getHref())) {
+                    case 1:
+                        //通知homepage跳到产品
+                        EventMessage eventMessage = new EventMessage();
+                        eventMessage.setType(EventMessage.HOMEPAGE_JUMP_TAB);
+                        eventMessage.setObject(1);
+                        EventBus.getDefault().post(eventMessage);
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
                 }
             }
         });

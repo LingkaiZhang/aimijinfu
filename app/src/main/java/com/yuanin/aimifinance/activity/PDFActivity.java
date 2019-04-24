@@ -78,12 +78,7 @@ public class PDFActivity extends BaseActivity {
 
         toptitleView.setVisibility(View.GONE);
         toptitleView2.setVisibility(View.VISIBLE);
-        initTopBarWithRightText(titleName, toptitleView2, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                displayOther(file);
-            }
-        },"打开方式");
+        initTopBarWithRightText(titleName, toptitleView2, v -> displayOther(file),"打开方式");
 
 
 
@@ -92,7 +87,7 @@ public class PDFActivity extends BaseActivity {
 
 //        pdfUrl = "http://csres.yuanin.com/contract/2018_03/11927/20180312351500066578.pdf";
         int idx = pdfUrl.lastIndexOf("/");
-        pdfName = pdfUrl.substring(idx + 1, pdfUrl.length());
+        pdfName = pdfUrl.substring(idx + 1);
         file = new File(StaticMembers.ROOT_PATH + "/" + StaticMembers.DOWN_PATH + "/" + pdfName);
         if (!file.exists()){
             /*OkHttpUtils.get(pdfUrl)
@@ -203,35 +198,18 @@ public class PDFActivity extends BaseActivity {
                 .swipeHorizontal(false)
                 .enableDoubletap(true)
                 .defaultPage(0)
-                .onDraw(new OnDrawListener() {
-                    @Override
-                    public void onLayerDrawn(Canvas canvas, float pageWidth, float pageHeight, int displayedPage) {
+                .onDraw((canvas, pageWidth, pageHeight, displayedPage) -> {
 
-                    }
                 })
-                .onLoad(new OnLoadCompleteListener() {
-                    @Override
-                    public void loadComplete(int nbPages) {
-                        makeText(getApplicationContext(), "加载完成", LENGTH_SHORT).show();
-                    }
-                })
-                .onPageChange(new OnPageChangeListener() {
-                    @Override
-                    public void onPageChanged(int page, int pageCount) {
+                .onLoad(nbPages -> makeText(getApplicationContext(), "加载完成", LENGTH_SHORT).show())
+                .onPageChange((page, pageCount) -> {
 
-                    }
                 })
-                .onPageScroll(new OnPageScrollListener() {
-                    @Override
-                    public void onPageScrolled(int page, float positionOffset) {
+                .onPageScroll((page, positionOffset) -> {
 
-                    }
                 })
-                .onError(new OnErrorListener() {
-                    @Override
-                    public void onError(Throwable t) {
+                .onError(t -> {
 //                        Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
-                    }
                 })
                 .enableAnnotationRendering(false)
                 .password(null)

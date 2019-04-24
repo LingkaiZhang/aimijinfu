@@ -182,13 +182,10 @@ public class FinanceProductDetailActivity extends BaseFragmentActivity implement
             textViews = new ArrayList<TextView>();
         }
         entityID = getIntent().getStringExtra("entityID");
-        initTopBarWithRightText("项目详情", toptitleView, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent2 = new Intent(FinanceProductDetailActivity.this, HistoryItemActivity.class);
-                intent2.putExtra("entityID", entityID);
-                startActivity(intent2);
-            }
+        initTopBarWithRightText("项目详情", toptitleView, v -> {
+            Intent intent2 = new Intent(FinanceProductDetailActivity.this, HistoryItemActivity.class);
+            intent2.putExtra("entityID", entityID);
+            startActivity(intent2);
         }, "");
         textViews.add(tvProductDetail);
         textViews.add(tvQuestion);
@@ -202,16 +199,13 @@ public class FinanceProductDetailActivity extends BaseFragmentActivity implement
         } else {
             imgview_right.setVisibility(View.GONE);
         }
-        mSlideDetailsLayout.setOnSlideDetailsListener(new SlideDetailsLayout.OnSlideDetailsListener() {
-            @Override
-            public void onStatucChanged(SlideDetailsLayout.Status status) {
-                if (status.equals(SlideDetailsLayout.Status.OPEN)) {
-                    tvBottom.setText("下拉拖动返回");
-                    ivBottom.setImageResource(R.mipmap.product_detail_down_arrow);
-                } else if (status.equals(SlideDetailsLayout.Status.CLOSE)) {
-                    tvBottom.setText("上划加载更多详情");
-                    ivBottom.setImageResource(R.mipmap.product_detail_up_arrow);
-                }
+        mSlideDetailsLayout.setOnSlideDetailsListener(status -> {
+            if (status.equals(SlideDetailsLayout.Status.OPEN)) {
+                tvBottom.setText("下拉拖动返回");
+                ivBottom.setImageResource(R.mipmap.product_detail_down_arrow);
+            } else if (status.equals(SlideDetailsLayout.Status.CLOSE)) {
+                tvBottom.setText("上划加载更多详情");
+                ivBottom.setImageResource(R.mipmap.product_detail_up_arrow);
             }
         });
     }

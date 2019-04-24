@@ -13,13 +13,13 @@ public class ParamsValues {
     //key
     public final static String KEY = "5bbf31b975954ffb90a19e69ef274c0f";
     //正式环境
-    public final static String NET_URL = "https://prop2papi.aimilicai.com/";
-    public final static String NET_URL_WEIXIN = "https://prowechat.aimilicai.com/";
+    //public final static String NET_URL = "https://prop2papi.aimilicai.com/";
+    //public final static String NET_URL_WEIXIN = "https://prowechat.aimilicai.com/";
     //key
     public final static String VERSION_CODE = "6.1.3";
     //测试
-    /*public final static String NET_URL = "http://javadjshcsp2p.aimilicai.com";
-    public final static String NET_URL_WEIXIN = "http://javadjshwechat.aimilicai.com/";*/
+    public final static String NET_URL = "http://javadjshcsp2p.aimilicai.com";
+    public final static String NET_URL_WEIXIN = "http://javadjshwechat.aimilicai.com/";
     //灰度
     /*public final static String NET_URL = "https://javadjxwcsapi.aimilicai.com/";
     public final static String NET_URL_WEIXIN = "https://javadjxwwechat.aimilicai.com/";*/

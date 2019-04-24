@@ -70,14 +70,11 @@ public class WebViewHtmlActivity extends BaseActivity {
         btn_risk_indication.setVisibility(View.VISIBLE);
         CountTime  mc = new CountTime(10000, 1000);//第一个参数总计时时间，第二个是间隔时间，单位都是毫秒值
         mc.start();
-        btn_risk_indication.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent4 = new Intent(WebViewHtmlActivity.this, WebViewActivity.class);
-                intent4.putExtra(ParamsKeys.TYPE, ParamsValues.QUESTION_NAIRE);
-                intent4.putExtra(ParamsKeys.USER_ID, StaticMembers.USER_ID);
-                startActivity(intent4);
-            }
+        btn_risk_indication.setOnClickListener(v -> {
+            Intent intent4 = new Intent(WebViewHtmlActivity.this, WebViewActivity.class);
+            intent4.putExtra(ParamsKeys.TYPE, ParamsValues.QUESTION_NAIRE);
+            intent4.putExtra(ParamsKeys.USER_ID, StaticMembers.USER_ID);
+            startActivity(intent4);
         });
     }
 
@@ -106,17 +103,14 @@ public class WebViewHtmlActivity extends BaseActivity {
             });
 
             //点击后退按钮,让WebView后退一页(也可以覆写Activity的onKeyDown方法)
-            wvHref.setOnKeyListener(new View.OnKeyListener() {
-                @Override
-                public boolean onKey(View v, int keyCode, KeyEvent event) {
-                    if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                        if (keyCode == KeyEvent.KEYCODE_BACK && wvHref.canGoBack()) {
-                            wvHref.goBack();   //后退
-                            return true;    //已处理
-                        }
+            wvHref.setOnKeyListener((v, keyCode, event) -> {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_BACK && wvHref.canGoBack()) {
+                        wvHref.goBack();   //后退
+                        return true;    //已处理
                     }
-                    return false;
                 }
+                return false;
             });
             wvHref.setWebChromeClient(new WebChromeClient() {
                 //当WebView进度改变时更新窗口进度
@@ -159,17 +153,14 @@ public class WebViewHtmlActivity extends BaseActivity {
         });
 
         //点击后退按钮,让WebView后退一页(也可以覆写Activity的onKeyDown方法)
-        wvHref.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    if (keyCode == KeyEvent.KEYCODE_BACK && wvHref.canGoBack()) {
-                        wvHref.goBack();   //后退
-                        return true;    //已处理
-                    }
+        wvHref.setOnKeyListener((v, keyCode, event) -> {
+            if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                if (keyCode == KeyEvent.KEYCODE_BACK && wvHref.canGoBack()) {
+                    wvHref.goBack();   //后退
+                    return true;    //已处理
                 }
-                return false;
             }
+            return false;
         });
         wvHref.setWebChromeClient(new WebChromeClient() {
             //当WebView进度改变时更新窗口进度
