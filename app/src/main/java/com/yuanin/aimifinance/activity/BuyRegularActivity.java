@@ -315,12 +315,7 @@ public class BuyRegularActivity extends BaseActivity {
             }
         });
 
-        cbChoose.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                isAgree = isChecked;
-            }
-        });
+        cbChoose.setOnCheckedChangeListener((buttonView, isChecked) -> isAgree = isChecked);
     }
 
     private void chooseRedpacket(double fee) {
@@ -338,7 +333,6 @@ public class BuyRegularActivity extends BaseActivity {
                 tvRedPackets.setText("");
             }
         } else {
-
             setRedPacketData();
         }
     }

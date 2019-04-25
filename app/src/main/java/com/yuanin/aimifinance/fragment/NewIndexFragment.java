@@ -280,11 +280,9 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
                 }
                 break;
             case R.id.btnAuthorizationToLend:
-                //TODO  点击进入智投授权页面
                 if (StaticMembers.IS_NEED_LOGIN) {
                     startActivity(new Intent(getActivity(), LoginRegisterActivity.class));
                 } else {
-                    AppUtils.showMiddleToast(getActivity(),"点击进入智投授权页面");
                     startActivity(new Intent(getActivity(), SmartChoseDetailActivity.class));
                 }
         }

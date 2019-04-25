@@ -149,40 +149,29 @@ public class MyInvestListAdapter extends GeneralAdapter<MyInvestEntity> {
                 } else {
                     dialog.show();
                 }
-                tvProjectDetail.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        StaticMembers.isShowLastItem = false;
-                        //if (data.getIsTransferBid() == 0) {
-                            Intent intent = new Intent(context, FinanceProductDetailActivity.class);
-                            intent.putExtra("where", 1);
-                            intent.putExtra("entityID", data.getId());
-                            context.startActivity(intent);
-                       /* } else {
-                            Intent intent = new Intent(context, DebtProductDetailActivity.class);
-                            intent.putExtra("where", 1);
-                            intent.putExtra("entityID", data.getId());
-                            context.startActivity(intent);
-                        }
-*/
-                        dialog.dismiss();
-                    }
-                });
-                tvOrderDetail.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(context, OrderFormActivity.class);
-                        intent.putExtra("entityID", data.getInvest_id());
+                tvProjectDetail.setOnClickListener(v1 -> {
+                    StaticMembers.isShowLastItem = false;
+                    //if (data.getIsTransferBid() == 0) {
+                        Intent intent = new Intent(context, FinanceProductDetailActivity.class);
+                        intent.putExtra("where", 1);
+                        intent.putExtra("entityID", data.getId());
                         context.startActivity(intent);
-                        dialog.dismiss();
+                   /* } else {
+                        Intent intent = new Intent(context, DebtProductDetailActivity.class);
+                        intent.putExtra("where", 1);
+                        intent.putExtra("entityID", data.getId());
+                        context.startActivity(intent);
                     }
+*/
+                    dialog.dismiss();
                 });
-                tvClose.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
+                tvOrderDetail.setOnClickListener(v12 -> {
+                    Intent intent = new Intent(context, OrderFormActivity.class);
+                    intent.putExtra("entityID", data.getInvest_id());
+                    context.startActivity(intent);
+                    dialog.dismiss();
                 });
+                tvClose.setOnClickListener(v13 -> dialog.dismiss());
             }
         });
     }

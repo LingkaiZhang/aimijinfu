@@ -9,15 +9,19 @@ import android.content.Context;
         import android.support.v4.app.Fragment;
         import android.support.v4.view.ViewPager;
 
-        import android.util.DisplayMetrics;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.DisplayMetrics;
         import android.view.Gravity;
         import android.view.KeyEvent;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.animation.Animation;
-        import android.view.animation.TranslateAnimation;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
         import android.widget.CheckBox;
-        import android.widget.FrameLayout;
+import android.widget.EditText;
+import android.widget.FrameLayout;
         import android.widget.ImageView;
         import android.widget.LinearLayout;
         import android.widget.PopupWindow;
@@ -28,14 +32,17 @@ import android.content.Context;
         import com.yuanin.aimifinance.R;
         import com.yuanin.aimifinance.adapter.ViewPagerFragmentAdapter;
         import com.yuanin.aimifinance.base.BaseFragmentActivity;
-        import com.yuanin.aimifinance.entity.ProductDetailEntity;
-        import com.yuanin.aimifinance.entity.ReturnResultEntity;
+import com.yuanin.aimifinance.entity.BuyProductEntity;
+import com.yuanin.aimifinance.entity.ProductDetailEntity;
+import com.yuanin.aimifinance.entity.RedPacketsEntity;
+import com.yuanin.aimifinance.entity.ReturnResultEntity;
         import com.yuanin.aimifinance.entity.TabIndicatorEntity;
         import com.yuanin.aimifinance.fragment.AssetsFragment;
         import com.yuanin.aimifinance.fragment.InvestRecordFragment;
         import com.yuanin.aimifinance.fragment.ProductIntroduceFragment;
         import com.yuanin.aimifinance.fragment.RepayPlanFragment;
 import com.yuanin.aimifinance.fragment.SmartChoseExplainFragment;
+import com.yuanin.aimifinance.fragment.SmartInvestProductListFragment;
 import com.yuanin.aimifinance.fragment.SmartInvestRecordFragment;
 import com.yuanin.aimifinance.inter.IHttpRequestCallBack;
         import com.yuanin.aimifinance.inter.INotifyCallBack;
@@ -84,8 +91,25 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
     private ImageView ivBottom;
     @ViewInject(R.id.tvBottom)
     private TextView tvBottom;
+    @ViewInject(R.id.etShare)
+    private EditText etShare;
+    @ViewInject(R.id.ivRight)
+    private ImageView ivRight;
+    @ViewInject(R.id.tvRedPackets)
+    private TextView tvRedPackets;
+    @ViewInject(R.id.tvRedPacketsEarnMoney)
+    private TextView tvRedPacketsEarnMoney;
+    @ViewInject(R.id.cbChoose)
+    private CheckBox cbChoose;
 
 
+
+
+    private RedPacketsEntity redPacketsEntity;
+    private boolean isAnimationEnd = true;
+    private List<RedPacketsEntity> redPacketsList;
+    private BuyProductEntity buyProductEntity;
+    private boolean isAgree = true;
 
     private List<TextView> textViews;
     public static int fragmentPosition = 0;
@@ -94,7 +118,7 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
     private int bmpW;// 动画图片宽度
     private SmartInvestRecordFragment investRecordFragment;
     private SmartChoseExplainFragment assetsFragment;
-    private RepayPlanFragment repayPlanFragment;
+    private SmartInvestProductListFragment repayPlanFragment;
     private Context context = SmartChoseDetailActivity.this;
     private View popView;
 
@@ -112,6 +136,8 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
         textViews.add(tvQuestion);
         textViews.add(tvRecord);
         textViews.add(tvPlan);
+        initView();
+        initListener();
         InitImageView();
         initViewPager();
         //requestData();
@@ -131,11 +157,89 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
         });
     }
 
+    private void initView() {
+
+    }
+
+
+    private void initListener() {
+        etShare.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.length() > 0) {
+                    if (s.toString().substring(0, 1).equals("0")) {
+                        etShare.setText("");
+                    } else {
+                       /* double fee = (Double.valueOf(s.toString()));
+                        double earnMoney = AppUtils.multiply(fee, buyProductEntity.getInterest());
+                        double trueEarnMoney = AppUtils.divide(earnMoney, 100);
+                        if (buyProductEntity.getIs_new() != 1 && redPacketsList != null && redPacketsList.size() > 0) {
+                            chooseRedpacket(fee);
+                        }*/
+                    }
+                } else {
+
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        cbChoose.setOnCheckedChangeListener((buttonView, isChecked) -> isAgree = isChecked);
+    }
+
+    private void chooseRedpacket(double fee) {
+        redPacketsEntity = null;
+        for (int i = 0; i < redPacketsList.size(); i++) {
+            if (fee >= redPacketsList.get(i).getMin_invest_amount()) {
+                redPacketsEntity = redPacketsList.get(i);
+                break;
+            }
+        }
+        if (redPacketsEntity == null) {
+            if (isAnimationEnd) {
+                tvRedPacketsEarnMoney.setVisibility(View.GONE);
+                ivRight.setImageResource(R.mipmap.buy_right_arrow);
+                tvRedPackets.setText("");
+            }
+        } else {
+            setRedPacketData();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (resultCode) {
+            case 1:
+                if (data != null) {
+                    redPacketsEntity = (RedPacketsEntity) data.getExtras().getSerializable("entity");
+                    setRedPacketData();
+                }
+                break;
+        }
+    }
+
+    private void setRedPacketData() {
+        tvRedPackets.setText(redPacketsEntity.getName());
+        ivRight.setImageResource(R.mipmap.redpacket_close);
+        tvRedPacketsEarnMoney.setVisibility(View.VISIBLE);
+        tvRedPacketsEarnMoney.setText("+" + redPacketsEntity.getAmount());
+    }
 
     // 点击事件
     @Event(value = {
             R.id.tvRecord, R.id.tvQuestion, R.id.tvPlan, R.id.tvBuy, R.id.btnRefresh,
-            R.id.btnCheckNetwork })
+            R.id.btnCheckNetwork, R.id.rlRedPackets, R.id.ivRight })
     private void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tvQuestion:
@@ -162,6 +266,40 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
 //                    startActivity(intent3);
 //                }
 //                break;
+
+            //选择红包
+            case R.id.rlRedPackets:
+                String money2 = "";
+                if (etShare.getText().toString().trim().length() == 0 || Integer.parseInt(etShare.getText().toString().trim()) < 1) {
+                    money2 = "0";
+                } else {
+                    money2 = etShare.getText().toString().trim();
+                }
+                Intent intent4 = new Intent(this, ChooseRedpacketActivity.class);
+                intent4.putExtra("money", money2);
+                startActivityForResult(intent4, 1);
+                break;
+            //删除红包
+            case R.id.ivRight:
+                if (redPacketsEntity != null) {
+                    if (isAnimationEnd) {
+                        redPacketsEntity = null;
+                        tvRedPacketsEarnMoney.setVisibility(View.GONE);
+                        ivRight.setImageResource(R.mipmap.buy_right_arrow);
+                        tvRedPackets.setText("");
+                    }
+                } else {
+                    String money3 = "";
+                    if (etShare.getText().toString().trim().length() == 0 || Integer.parseInt(etShare.getText().toString().trim()) < 1) {
+                        money3 = "0";
+                    } else {
+                        money3 = etShare.getText().toString().trim();
+                    }
+                    Intent intent5 = new Intent(this, ChooseRedpacketActivity.class);
+                    intent5.putExtra("money", money3);
+                    startActivityForResult(intent5, 1);
+                }
+                break;
             case R.id.tvBuy:
                 if (StaticMembers.IS_NEED_LOGIN) {
                     startActivity(new Intent(this, LoginRegisterActivity.class));
@@ -217,7 +355,7 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
         fragmentList.add(assetsFragment);
         investRecordFragment = new SmartInvestRecordFragment();
         fragmentList.add(investRecordFragment);
-        repayPlanFragment = new RepayPlanFragment();
+        repayPlanFragment = new SmartInvestProductListFragment();
         fragmentList.add(repayPlanFragment);
         // 设置ViewPager适配器
         ViewPagerFragmentAdapter viewPagerFragmentAdapter = new ViewPagerFragmentAdapter(getSupportFragmentManager(), list, fragmentList);
