@@ -1,6 +1,6 @@
 package com.yuanin.aimifinance.activity;
 
-        import android.content.Context;
+import android.content.Context;
         import android.content.Intent;
         import android.graphics.Matrix;
         import android.graphics.drawable.Animatable;
@@ -35,7 +35,9 @@ package com.yuanin.aimifinance.activity;
         import com.yuanin.aimifinance.fragment.InvestRecordFragment;
         import com.yuanin.aimifinance.fragment.ProductIntroduceFragment;
         import com.yuanin.aimifinance.fragment.RepayPlanFragment;
-        import com.yuanin.aimifinance.inter.IHttpRequestCallBack;
+import com.yuanin.aimifinance.fragment.SmartChoseExplainFragment;
+import com.yuanin.aimifinance.fragment.SmartInvestRecordFragment;
+import com.yuanin.aimifinance.inter.IHttpRequestCallBack;
         import com.yuanin.aimifinance.inter.INotifyCallBack;
         import com.yuanin.aimifinance.inter.ISlideCallback;
         import com.yuanin.aimifinance.service.ProductTimerCount;
@@ -90,8 +92,8 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
     private int offset = 0;// 动画图片偏移量
     private int currIndex = 0;// 当前页卡编号
     private int bmpW;// 动画图片宽度
-    private InvestRecordFragment investRecordFragment;
-    private AssetsFragment assetsFragment;
+    private SmartInvestRecordFragment investRecordFragment;
+    private SmartChoseExplainFragment assetsFragment;
     private RepayPlanFragment repayPlanFragment;
     private Context context = SmartChoseDetailActivity.this;
     private View popView;
@@ -211,9 +213,9 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
         List<TabIndicatorEntity> list = ViewPagerUtils.getTabIndicator(3);
         // 3个fragment界面封装
         List<Fragment> fragmentList = new ArrayList<Fragment>();
-        assetsFragment = new AssetsFragment();
+        assetsFragment = new SmartChoseExplainFragment();
         fragmentList.add(assetsFragment);
-        investRecordFragment = new InvestRecordFragment();
+        investRecordFragment = new SmartInvestRecordFragment();
         fragmentList.add(investRecordFragment);
         repayPlanFragment = new RepayPlanFragment();
         fragmentList.add(repayPlanFragment);

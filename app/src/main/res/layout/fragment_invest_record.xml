@@ -52,7 +52,6 @@
         android:divider="@color/bg"
         android:dividerHeight="@dimen/line"
         android:listSelector="@color/transparent"
-        android:paddingLeft="@dimen/small_margin"
         android:scrollbars="none"
         android:visibility="gone"/>
 

@@ -1,6 +1,7 @@
 package com.yuanin.aimifinance.utils;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -75,6 +76,13 @@ public class GeneralViewHolder {
 	public GeneralViewHolder setTextForTextView(int viewId, String text) {
 		TextView tv = getView(viewId);
 		tv.setText(text);
+		return this;
+	}
+
+	public GeneralViewHolder setTextAndTypefaceForTextView(int viewId, String text, Typeface typeface) {
+		TextView tv = getView(viewId);
+		tv.setText(text);
+		tv.setTypeface(typeface);
 		return this;
 	}
 

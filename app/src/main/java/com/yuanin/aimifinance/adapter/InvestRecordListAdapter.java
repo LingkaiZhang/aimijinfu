@@ -1,6 +1,7 @@
 package com.yuanin.aimifinance.adapter;
 
 import android.content.Context;
+import android.graphics.Typeface;
 
 import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.entity.InvestRecordEntity;
@@ -18,14 +19,17 @@ import java.util.List;
  */
 public class InvestRecordListAdapter extends GeneralAdapter<InvestRecordEntity> {
 
+    Typeface PingFangSC_Regular;
+
     public InvestRecordListAdapter(List<InvestRecordEntity> list, Context context) {
         super(context, list, R.layout.adapter_invest_record);
+        PingFangSC_Regular= Typeface.createFromAsset(context.getAssets(),"苹方黑体-准-简.ttf");
     }
 
     @Override
     public void convert(GeneralViewHolder holder, InvestRecordEntity data) {
-        holder.setTextForTextView(R.id.tvInvestAccount, data.getMobile());
-        holder.setTextForTextView(R.id.tvInvestMoney, FmtMicrometer.format6(data.getAmount()));
-        holder.setTextForTextView(R.id.tvInvestTime, data.getCreated());
+        holder.setTextAndTypefaceForTextView(R.id.tvInvestAccount, data.getMobile(),PingFangSC_Regular);
+        holder.setTextAndTypefaceForTextView(R.id.tvInvestMoney, FmtMicrometer.format6(data.getAmount()),PingFangSC_Regular);
+        holder.setTextAndTypefaceForTextView(R.id.tvInvestTime, data.getCreated(),PingFangSC_Regular);
     }
 }

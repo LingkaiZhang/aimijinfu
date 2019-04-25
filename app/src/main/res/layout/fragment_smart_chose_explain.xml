@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvServiceIntroduce"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/normal_height"
+        android:gravity="center_vertical"
+        android:text="服务介绍"
+        android:textColor="@color/text_black"
+        android:textSize="@dimen/normal_text"
+        android:paddingLeft="@dimen/small_margin"
+        tools:ignore="MissingConstraints" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bg"/>
+
+    <TextView
+        android:id="@+id/tvServiceIntroduceBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/small_margin"
+        android:paddingRight="@dimen/small_margin"
+        android:layout_marginTop="20dp"
+        android:textSize="@dimen/thirteen_text"
+        android:textColor="@color/text_black"
+        android:lineSpacingMultiplier="1.5"
+        android:text="智投服务是爱米金服为出借人提供的智能投标工具。出借人加入智投服务后，系统将甄选优质标的并为出借人自动匹配，实现更合理的资产配置。用户可以随时查看自己匹配的债权，真正做到每一笔资金对应债权清晰透明。回款本金自动复投，资金无需站岗。持有30天后可以通过债权转让的方式退出。"/>
+
+
+    <TextView
+        android:id="@+id/tvRiskReminder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="风险提示"
+        android:layout_marginTop="37dp"
+        android:textColor="@color/text_black"
+        android:textSize="@dimen/normal_text"
+        android:paddingLeft="@dimen/small_margin"/>
+
+    <TextView
+        android:id="@+id/tvRiskReminderBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/small_margin"
+        android:paddingRight="@dimen/small_margin"
+        android:layout_marginTop="20dp"
+        android:textSize="@dimen/thirteen_text"
+        android:textColor="@color/text_black"
+        android:lineSpacingMultiplier="1.5"
+        android:text="请您在出借前，仔细阅读《智投服务授权服务》、《风险提示书》、《借款合同》、《债权转让及受让协议》"/>
+</LinearLayout>

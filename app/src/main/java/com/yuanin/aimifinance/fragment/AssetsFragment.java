@@ -30,6 +30,7 @@ import org.xutils.x;
 public class AssetsFragment extends BaseFragment {
     @ViewInject(R.id.wvHref)
     private ObservableWebView wvHref;
+
     private ProductDetailEntity productDetailEntity;
     public static boolean isTop = true;
 
@@ -44,7 +45,7 @@ public class AssetsFragment extends BaseFragment {
         if (productDetailEntity != null) {
             WebSettings settings = wvHref.getSettings();
             settings.setSupportZoom(true);          //支持缩放
-            settings.setBuiltInZoomControls(true);  //启用内置缩放装置
+            settings.setBuiltInZoomControls(true);  //启用内置缩放装
             settings.setJavaScriptEnabled(true);    //启用JS脚本
             //settings.setDomStorageEnabled(true);
             //不显示webview缩放按钮
@@ -66,17 +67,14 @@ public class AssetsFragment extends BaseFragment {
             });
 
             //点击后退按钮,让WebView后退一页(也可以覆写Activity的onKeyDown方法)
-            wvHref.setOnKeyListener(new View.OnKeyListener() {
-                @Override
-                public boolean onKey(View v, int keyCode, KeyEvent event) {
-                    if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                        if (keyCode == KeyEvent.KEYCODE_BACK && wvHref.canGoBack()) {
-                            wvHref.goBack();   //后退
-                            return true;    //已处理
-                        }
+            wvHref.setOnKeyListener((v, keyCode, event) -> {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_BACK && wvHref.canGoBack()) {
+                        wvHref.goBack();   //后退
+                        return true;    //已处理
                     }
-                    return false;
                 }
+                return false;
             });
             wvHref.setWebChromeClient(new WebChromeClient() {
                 //当WebView进度改变时更新窗口进度
@@ -90,17 +88,13 @@ public class AssetsFragment extends BaseFragment {
                 }
             });
             wvHref.loadUrl(ParamsValues.NET_URL_WEIXIN + "safetyAuditing.html?myid=" + productDetailEntity.getId());
-            LogUtils.d("lingkai",ParamsValues.NET_URL_WEIXIN + "safetyAuditing.html?myid=" + productDetailEntity.getId());
         }
 
-        wvHref.setWebViewListener(new IWebViewListener() {
-            @Override
-            public void onScrollChanged(ObservableWebView scrollView, int x, int y, int oldx, int oldy) {
-                if (wvHref.getScrollY() == 0) {
-                    isTop = true;
-                } else {
-                    isTop = false;
-                }
+        wvHref.setWebViewListener((scrollView, x, y, oldx, oldy) -> {
+            if (wvHref.getScrollY() == 0) {
+                isTop = true;
+            } else {
+                isTop = false;
             }
         });
         return view;

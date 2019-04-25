@@ -1,6 +1,7 @@
 package com.yuanin.aimifinance.utils;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.widget.TextView;
 
@@ -87,13 +88,19 @@ public class ViewPagerUtils {
      * @param textViews
      */
     public static void changeTextViewStyle_FINANCE(Context context, int index, List<TextView> textViews) {
+
+        Typeface PingFangSC_Medium= Typeface.createFromAsset(context.getAssets(),"苹方黑体-中粗-简.ttf");
+        Typeface PingFangSC_Regular= Typeface.createFromAsset(context.getAssets(),"苹方黑体-准-简.ttf");
+
         for (int i = 0; i < textViews.size(); i++) {
             if (index == i) {
                 TextView tv_text = textViews.get(i);
                 tv_text.setTextColor(context.getResources().getColor(R.color.theme_color));
+                tv_text.setTypeface(PingFangSC_Medium);
             } else {
                 TextView tv_text = textViews.get(i);
                 tv_text.setTextColor(context.getResources().getColor(R.color.text_black));
+                tv_text.setTypeface(PingFangSC_Regular);
             }
         }
     }
