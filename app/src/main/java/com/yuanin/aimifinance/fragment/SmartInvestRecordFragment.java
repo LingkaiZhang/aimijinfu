@@ -13,10 +13,12 @@ import android.widget.TextView;
 import com.google.gson.reflect.TypeToken;
 import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.adapter.InvestRecordListAdapter;
+import com.yuanin.aimifinance.adapter.SmartInvestRecordAdapter;
 import com.yuanin.aimifinance.base.BaseFragment;
 import com.yuanin.aimifinance.entity.InvestRecordEntity;
 import com.yuanin.aimifinance.entity.ProductDetailEntity;
 import com.yuanin.aimifinance.entity.ReturnResultEntity;
+import com.yuanin.aimifinance.entity.SmartInvestRecordEntity;
 import com.yuanin.aimifinance.inter.IHttpRequestCallBack;
 import com.yuanin.aimifinance.utils.AppUtils;
 import com.yuanin.aimifinance.utils.NetUtils;
@@ -61,8 +63,8 @@ public class SmartInvestRecordFragment extends BaseFragment implements XListView
     private TextView tvNoNet;
 
     private boolean isNeedLoadBar = true;
-    private List<InvestRecordEntity> mList;
-    private InvestRecordListAdapter mAdp;
+    private List<SmartInvestRecordEntity> mList;
+    private SmartInvestRecordAdapter mAdp;
     // 页码
     private int PageIndex = 1;
     /**
@@ -139,9 +141,9 @@ public class SmartInvestRecordFragment extends BaseFragment implements XListView
         }
         JSONObject obj = AppUtils.getPublicJsonObject(false);
         try {
-            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_PRODUCT);
-            obj.put(ParamsKeys.MOTHED, ParamsValues.GET_PRODUCT_INVSET_LOG);
-            obj.put(ParamsKeys.PRODUCT_ID, "19564");
+            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_SMART_INVEST);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.SMART_INVSET_BORROW_LOG);
+            obj.put(ParamsKeys.UID, StaticMembers.USER_ID);
             obj.put(ParamsKeys.PAGE_QTY, String.valueOf(StaticMembers.PAGE_SIZE));
             obj.put(ParamsKeys.CURRENT_PAGE, String.valueOf(PageIndex));
             String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
@@ -150,7 +152,7 @@ public class SmartInvestRecordFragment extends BaseFragment implements XListView
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Type mType = new TypeToken<ReturnResultEntity<InvestRecordEntity>>() {
+        Type mType = new TypeToken<ReturnResultEntity<SmartInvestRecordEntity>>() {
         }.getType();
         NetUtils.request(obj, mType, new IHttpRequestCallBack() {
                     @Override
@@ -180,13 +182,13 @@ public class SmartInvestRecordFragment extends BaseFragment implements XListView
 
                     @Override
                     public void onSuccess(Object object) {
-                        ReturnResultEntity<InvestRecordEntity> entity = (ReturnResultEntity<InvestRecordEntity>) object;
+                        ReturnResultEntity<SmartInvestRecordEntity> entity = (ReturnResultEntity<SmartInvestRecordEntity>) object;
                         if (entity.isSuccess(getActivity())) {
                             if (entity.isNotNull()) {
                                 hasLoadedOnce = true;
                                 if (mList == null) {
                                     mList = entity.getData();
-                                    mAdp = new InvestRecordListAdapter(mList, getActivity());
+                                    mAdp = new SmartInvestRecordAdapter(mList, getActivity());
                                     lvRecord.setAdapter(mAdp);
                                 } else {
                                     mList.addAll(entity.getData());

@@ -59,9 +59,10 @@
                                android:textSize="@dimen/normal_text"/>
 
                            <TextView
+                               android:id="@+id/tvSurplusAmount"
                                android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
-                               android:text="14856.00元"
+                               android:text="0000.00元"
                                android:layout_alignParentRight="true"
                                android:textSize="@dimen/normal_text"
                                android:textColor="@color/text_black"/>
@@ -86,9 +87,10 @@
                                 android:textSize="@dimen/normal_text"/>
 
                             <TextView
+                                android:id="@+id/tvBalance"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="1000.00元"
+                                android:text="0.00元"
                                 android:layout_alignParentRight="true"
                                 android:textSize="@dimen/normal_text"
                                 android:textColor="@color/text_black"/>

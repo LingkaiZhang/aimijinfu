@@ -32,11 +32,15 @@ import android.widget.FrameLayout;
         import com.yuanin.aimifinance.R;
         import com.yuanin.aimifinance.adapter.ViewPagerFragmentAdapter;
         import com.yuanin.aimifinance.base.BaseFragmentActivity;
+import com.yuanin.aimifinance.dialog.GeneralDialog;
 import com.yuanin.aimifinance.entity.BuyProductEntity;
+import com.yuanin.aimifinance.entity.BuySuccessEntity;
+import com.yuanin.aimifinance.entity.EventMessage;
 import com.yuanin.aimifinance.entity.ProductDetailEntity;
 import com.yuanin.aimifinance.entity.RedPacketsEntity;
 import com.yuanin.aimifinance.entity.ReturnResultEntity;
-        import com.yuanin.aimifinance.entity.TabIndicatorEntity;
+import com.yuanin.aimifinance.entity.SmartInvestDetailsEntity;
+import com.yuanin.aimifinance.entity.TabIndicatorEntity;
         import com.yuanin.aimifinance.fragment.AssetsFragment;
         import com.yuanin.aimifinance.fragment.InvestRecordFragment;
         import com.yuanin.aimifinance.fragment.ProductIntroduceFragment;
@@ -53,7 +57,8 @@ import com.yuanin.aimifinance.inter.IHttpRequestCallBack;
         import com.yuanin.aimifinance.utils.NetUtils;
         import com.yuanin.aimifinance.utils.ParamsKeys;
         import com.yuanin.aimifinance.utils.ParamsValues;
-        import com.yuanin.aimifinance.utils.StaticMembers;
+import com.yuanin.aimifinance.utils.RSAUtils;
+import com.yuanin.aimifinance.utils.StaticMembers;
         import com.yuanin.aimifinance.utils.ViewPagerUtils;
         import com.yuanin.aimifinance.view.SlideDetailsLayout;
 
@@ -66,6 +71,8 @@ import com.yuanin.aimifinance.inter.IHttpRequestCallBack;
         import java.lang.reflect.Type;
         import java.util.ArrayList;
         import java.util.List;
+
+import de.greenrobot.event.EventBus;
 
 public class SmartChoseDetailActivity extends BaseFragmentActivity implements ISlideCallback {
     @ViewInject(R.id.llMain)
@@ -102,6 +109,11 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
     @ViewInject(R.id.cbChoose)
     private CheckBox cbChoose;
 
+    @ViewInject(R.id.tvSurplusAmount)
+    private TextView tvSurplusAmount;
+    @ViewInject(R.id.tvBalance)
+    private TextView tvBalance;
+
 
 
 
@@ -120,7 +132,9 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
     private SmartChoseExplainFragment assetsFragment;
     private SmartInvestProductListFragment repayPlanFragment;
     private Context context = SmartChoseDetailActivity.this;
+    private SmartInvestDetailsEntity smartInvestDetails;
     private View popView;
+    private GeneralDialog generalDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,7 +143,7 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
         popView = getLayoutInflater().inflate(R.layout.popupwindow_hk_register_new, null, false);
         x.view().inject(this);
         if (textViews == null) {
-            textViews = new ArrayList<TextView>();
+            textViews = new ArrayList<>();
         }
         initTopBarWithRightText("项目详情", toptitleView, v -> {
         }, "");
@@ -140,7 +154,7 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
         initListener();
         InitImageView();
         initViewPager();
-        //requestData();
+        requestData();
         if (StaticMembers.isShowLastItem) {
             imgview_right.setVisibility(View.VISIBLE);
         } else {
@@ -157,10 +171,59 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
         });
     }
 
+    private void requestData() {
+        JSONObject obj = AppUtils.getPublicJsonObject(true);
+        try {
+            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_SMART_INVEST);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_SMART_INVEST_BUY_INFO);
+            obj.put(ParamsKeys.UID, StaticMembers.USER_ID);
+            String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
+            obj.put(ParamsKeys.TOKEN, token);
+            obj.remove(ParamsKeys.KEY);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Type mType = new TypeToken<ReturnResultEntity<SmartInvestDetailsEntity>>() {
+        }.getType();
+        NetUtils.request(obj, mType, new IHttpRequestCallBack() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onSuccess(Object object) {
+                ReturnResultEntity<SmartInvestDetailsEntity> smartInvestDetailsEntity = (ReturnResultEntity<SmartInvestDetailsEntity>) object;
+                if (smartInvestDetailsEntity.isSuccess(context)) {
+                    if (smartInvestDetailsEntity.isNotNull()) {
+                        smartInvestDetails = smartInvestDetailsEntity.getData().get(0);
+                        tvBalance.setText(smartInvestDetailsEntity.getData().get(0).getBalance());
+                        tvSurplusAmount.setText(smartInvestDetailsEntity.getData().get(0).getSurplusAmount());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        });
+    }
+
     private void initView() {
 
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        requestData();
+    }
 
     private void initListener() {
         etShare.addTextChangedListener(new TextWatcher() {
@@ -239,7 +302,8 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
     // 点击事件
     @Event(value = {
             R.id.tvRecord, R.id.tvQuestion, R.id.tvPlan, R.id.tvBuy, R.id.btnRefresh,
-            R.id.btnCheckNetwork, R.id.rlRedPackets, R.id.ivRight })
+            R.id.btnCheckNetwork, R.id.rlRedPackets, R.id.ivRight,
+            R.id.tvSmartChoseProtocol, R.id.tvLoanContract, R.id.tvRiskStatement, R.id.tvAssignmentAgreement})
     private void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tvQuestion:
@@ -301,14 +365,98 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
                 }
                 break;
             case R.id.tvBuy:
-                if (StaticMembers.IS_NEED_LOGIN) {
-                    startActivity(new Intent(this, LoginRegisterActivity.class));
-                } else if (StaticMembers.HK_STATUS != 1) {
+                final String buyqty = etShare.getText().toString().trim();
+                if (smartInvestDetails.getIs_activate_hkaccount() == 1) {
+                    if (smartInvestDetails.getIs_bind_bankcard() == 0) {
+                        AppUtils.showToast(this, "请先绑定银行卡");
+                        startActivity(new Intent(context, AddBankCardActivity.class));
+                        return;
+                    }
+                } else {
                     PopupWindow mPop = AppUtils.createHKPop(popView, context);
                     mPop.showAtLocation(llMain, Gravity.CENTER, 0, 0);
-                }else {
-                    //TODO 点击了立即出借按钮
-                    AppUtils.showToast(this, "点击了立即出借按钮");
+                    return;
+                }
+                if (buyqty.length() == 0 || Integer.parseInt(buyqty) < 1) {
+                    AppUtils.showToast(this, getResources().getString(R.string.buy_regular_input_right_share));
+                    return;
+                }
+                if (Integer.parseInt(buyqty) % Integer.parseInt("100") != 0) {
+                    AppUtils.showToast(this, "请按" + "100" + "元的整数倍出借");
+                    return;
+                }
+                if (Integer.parseInt(buyqty) > Double.parseDouble(smartInvestDetails.getSurplusAmount())) {
+                    AppUtils.showToast(this, getResources().getString(R.string.buy_regular_input__share_too_big));
+                    return;
+                }
+                if (redPacketsEntity != null) {
+                    if (Integer.parseInt(buyqty) < redPacketsEntity.getMin_invest_amount()) {
+                        AppUtils.showToast(this, getResources().getString(R.string.buy_regular_use_redpacket));
+                        return;
+                    }
+                }
+                if (!isAgree) {
+                    AppUtils.showToast(this, getResources().getString(R.string.buy_regular_agree));
+                    return;
+                }
+                if (Integer.parseInt(buyqty) > Double.parseDouble(smartInvestDetails.getBalance())) {
+                    AppUtils.showToast(this, getResources().getString(R.string.buy_regular_balance_not));
+                    double money = Integer.parseInt(buyqty) - Double.parseDouble(smartInvestDetails.getBalance());
+                    Intent intent = new Intent(context, PayInputMoneyActivity.class);
+                    intent.putExtra("money", String.valueOf(money));
+                    startActivity(intent);
+                } else {
+                    String tips;
+                    if (redPacketsEntity != null) {
+                        tips = "您确定要出借" + buyqty + "元并使用" + redPacketsEntity.getAmount() + "元红包吗？";
+                    } else {
+                        tips = "您确定要出借" + buyqty + "元吗？";
+                    }
+                    generalDialog = new GeneralDialog(context, false, "确认支付",
+                            tips, "取消", "确定", v -> generalDialog.dismiss(), v -> {
+                        generalDialog.dismiss();
+
+                        /*JSONObject obj = AppUtils.getPublicJsonObject(true);
+                        try {
+                            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_PRODUCT);
+                            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_BUY_PRODUCT);
+                            obj.put(ParamsKeys.BUY_QTY, buyqty);
+                            if (redPacketsEntity == null) {
+                                obj.put(ParamsKeys.GIFT_ID, "0");
+                            } else {
+                                obj.put(ParamsKeys.GIFT_ID, redPacketsEntity.getId());
+                            }
+                            String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
+                            obj.put(ParamsKeys.TOKEN, token);
+                            obj.remove(ParamsKeys.KEY);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        Type mType = new TypeToken<ReturnResultEntity<BuySuccessEntity>>() {
+                        }.getType();
+                        NetUtils.request(context, obj, mType, new IHttpRequestCallBack() {
+                                    @Override
+                                    public void onStart() {
+
+                                    }
+
+                                    @Override
+                                    public void onFinish() {
+
+                                    }
+
+                                    @Override
+                                    public void onSuccess(Object object) {
+
+                                    }
+
+                                    @Override
+                                    public void onFailure() {
+                                        AppUtils.showConectFail(context);
+                                    }
+                                }
+                        );*/
+                    });
                 }
                 break;
             case R.id.btnRefresh:
@@ -316,6 +464,26 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
                 break;
             case R.id.btnCheckNetwork:
                 AppUtils.checkNetwork(context);
+                break;
+            //智投协议
+            case R.id.tvSmartChoseProtocol:
+
+                break;
+            //出借合同
+            case R.id.tvLoanContract:
+                Intent intent1 = new Intent(this, WebViewActivity.class);
+                intent1.putExtra(ParamsKeys.TYPE,ParamsValues.MODEL_LOAN_CONTRACT);
+                startActivity(intent1);
+                break;
+            //风险提示
+            case R.id.tvRiskStatement:
+                Intent intent3 = new Intent(this, WebViewHtmlActivity.class);
+                intent3.putExtra(ParamsKeys.TYPE, ParamsValues.LOAN_RISK_STATEMENT);
+                startActivity(intent3);
+                break;
+            //债转协议
+            case R.id.tvAssignmentAgreement:
+
                 break;
             default:
                 break;

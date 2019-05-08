@@ -29,6 +29,7 @@ public class ParamsKeys {
 
     //开户
     public final static String USER_ID = "userid";
+    public final static String UID = "uid";
     public final static String REAL_NAME = "realname";
     public final static String ID_NUMBER = "idnumber";
     public final static String CARD_NO = "card_no";

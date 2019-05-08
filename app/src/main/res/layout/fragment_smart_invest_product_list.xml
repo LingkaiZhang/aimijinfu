@@ -11,22 +11,22 @@
         android:layout_height="40dp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingLeft="@dimen/small_margin"
-        android:paddingRight="@dimen/small_margin"
         android:background="@color/white"
+        android:paddingRight="@dimen/margin_twelve2"
+        android:paddingLeft="@dimen/margin_twelve2"
         >
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:gravity="center"
             android:text="标的名称"
             android:textColor="@color/text_light_gray"
             android:textSize="@dimen/small_text"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
@@ -35,7 +35,7 @@
             android:textSize="@dimen/small_text"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"

@@ -45,6 +45,7 @@ import com.yuanin.aimifinance.entity.EventMessage;
 import com.yuanin.aimifinance.entity.HKRegisterEntity;
 import com.yuanin.aimifinance.entity.IndexProductEntity;
 import com.yuanin.aimifinance.entity.ReturnResultEntity;
+import com.yuanin.aimifinance.entity.SmartInvestHomeInfoEntity;
 import com.yuanin.aimifinance.inter.CBViewHolderCreator;
 import com.yuanin.aimifinance.inter.IHttpRequestCallBack;
 import com.yuanin.aimifinance.inter.IScrollCallBack;
@@ -140,6 +141,13 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
     private ImageView ivNewGuideLines;
     @ViewInject(R.id.llNewProduct)
     private LinearLayout llNewProduct;
+
+    @ViewInject(R.id.tvMinInterest)
+    private TextView tvMinInterest;
+    @ViewInject(R.id.tvMaxInterest)
+    private TextView tvMaxInterest;
+    @ViewInject(R.id.tvSmartInvestBalance)
+    private TextView tvSmartInvestBalance;
 
     /**
      * 标志位，标志已经初始化完成
@@ -849,10 +857,54 @@ public class NewIndexFragment extends BaseFragment implements XScrollView.IXScro
             mList = null;
         }
         requestIndexProductDatas();
+        requestSmartInvestData();
         if (!hasLoadedOnce2) {
             requestBannerData();
         }
         mPullDownScrollView.setScrollY(0);
+    }
+
+    private void requestSmartInvestData() {
+        JSONObject obj = AppUtils.getPublicJsonObject(false);
+        try {
+            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_SMART_INVEST);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_SMART_INVEST_HOME_INFO);
+            String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
+            obj.put(ParamsKeys.TOKEN, token);
+            obj.remove(ParamsKeys.KEY);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Type mType = new TypeToken<ReturnResultEntity<SmartInvestHomeInfoEntity>>() {
+        }.getType();
+        NetUtils.request(obj, mType, new IHttpRequestCallBack() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onSuccess(Object object) {
+                ReturnResultEntity<SmartInvestHomeInfoEntity> smartInvestHomeInfoEntity = (ReturnResultEntity<SmartInvestHomeInfoEntity>) object;
+                if (smartInvestHomeInfoEntity.isSuccess(getActivity())) {
+                    if (smartInvestHomeInfoEntity.isNotNull()) {
+                        tvMinInterest.setText(smartInvestHomeInfoEntity.getData().get(0).getMin_interest());
+                        tvMaxInterest.setText(smartInvestHomeInfoEntity.getData().get(0).getMax_interest());
+                        tvSmartInvestBalance.setText(smartInvestHomeInfoEntity.getData().get(0).getSurplusAmount());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        });
     }
 
     @Override

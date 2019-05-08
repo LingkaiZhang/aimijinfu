@@ -44,6 +44,8 @@ public class ParamsValues {
     public final static String MODULE_INVEST = "invest";
     //债转（受让方）
     public final static String MODULE_DEBT = "receivePart";
+    //智能投标
+    public final static String MODULE_SMART_INVEST = "intelligentBidding";
 
 
 
@@ -190,6 +192,14 @@ public class ParamsValues {
     public final static String MOTHED_VIP_LOGIN_NEW = "viplogin";
     //我的消息
     public final static String MOTHED_MY_MESSAGE = "mymessage";
+    //智投首页数据
+    public final static String MOTHED_SMART_INVEST_HOME_INFO = "homeInfo";
+    //智投详情页面
+    public final static String MOTHED_SMART_INVEST_BUY_INFO = "buyInfo";
+    //智投投资记录
+    public final static String SMART_INVSET_BORROW_LOG = "loanedRecord";
+    //智投投资标的明细
+    public final static String SMART_INVSET_PRODUCT_INFO = "borrowAmountInfo";
 
 
     /**

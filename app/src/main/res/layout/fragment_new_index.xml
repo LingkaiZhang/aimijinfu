@@ -507,9 +507,10 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/tvMinInterest"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="7.00"
+                            android:text="0.00"
                             android:textColor="@color/theme_color"
                             android:textSize="25sp" />
 
@@ -521,9 +522,10 @@
                             android:textSize="@dimen/small_text" />
 
                         <TextView
+                            android:id="@+id/tvMaxInterest"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="12.00"
+                            android:text="0.00"
                             android:textColor="@color/theme_color"
                             android:textSize="25sp" />
 
@@ -554,6 +556,7 @@
                     android:orientation="vertical">
 
                    <TextView
+                       android:id="@+id/tvSmartInvestBalance"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:text="105600"

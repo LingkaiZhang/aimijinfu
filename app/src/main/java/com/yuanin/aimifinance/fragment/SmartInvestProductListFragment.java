@@ -17,6 +17,7 @@ import com.yuanin.aimifinance.adapter.SmartInvestProductListAdapter;
 import com.yuanin.aimifinance.base.BaseFragment;
 import com.yuanin.aimifinance.entity.InvestRecordEntity;
 import com.yuanin.aimifinance.entity.ReturnResultEntity;
+import com.yuanin.aimifinance.entity.SmartInvestProductListEntity;
 import com.yuanin.aimifinance.inter.IHttpRequestCallBack;
 import com.yuanin.aimifinance.utils.AppUtils;
 import com.yuanin.aimifinance.utils.NetUtils;
@@ -61,7 +62,7 @@ public class SmartInvestProductListFragment extends BaseFragment implements XLis
     private TextView tvNoNet;
 
     private boolean isNeedLoadBar = true;
-    private List<InvestRecordEntity> mList;
+    private List<SmartInvestProductListEntity> mList;
     private SmartInvestProductListAdapter mAdp;
     // 页码
     private int PageIndex = 1;
@@ -139,9 +140,10 @@ public class SmartInvestProductListFragment extends BaseFragment implements XLis
         }
         JSONObject obj = AppUtils.getPublicJsonObject(false);
         try {
-            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_PRODUCT);
-            obj.put(ParamsKeys.MOTHED, ParamsValues.GET_PRODUCT_INVSET_LOG);
-            obj.put(ParamsKeys.PRODUCT_ID, "19564");
+            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_SMART_INVEST);
+            obj.put(ParamsKeys.MOTHED, ParamsValues.SMART_INVSET_PRODUCT_INFO);
+            //obj.put(ParamsKeys.UID, StaticMembers.USER_ID);
+            obj.put(ParamsKeys.UID, "7785");
             obj.put(ParamsKeys.PAGE_QTY, String.valueOf(StaticMembers.PAGE_SIZE));
             obj.put(ParamsKeys.CURRENT_PAGE, String.valueOf(PageIndex));
             String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
@@ -150,7 +152,7 @@ public class SmartInvestProductListFragment extends BaseFragment implements XLis
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Type mType = new TypeToken<ReturnResultEntity<InvestRecordEntity>>() {
+        Type mType = new TypeToken<ReturnResultEntity<SmartInvestProductListEntity>>() {
         }.getType();
         NetUtils.request(obj, mType, new IHttpRequestCallBack() {
                     @Override
@@ -180,7 +182,7 @@ public class SmartInvestProductListFragment extends BaseFragment implements XLis
 
                     @Override
                     public void onSuccess(Object object) {
-                        ReturnResultEntity<InvestRecordEntity> entity = (ReturnResultEntity<InvestRecordEntity>) object;
+                        ReturnResultEntity<SmartInvestProductListEntity> entity = (ReturnResultEntity<SmartInvestProductListEntity>) object;
                         if (entity.isSuccess(getActivity())) {
                             if (entity.isNotNull()) {
                                 hasLoadedOnce = true;

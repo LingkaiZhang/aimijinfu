@@ -80,7 +80,7 @@ public class PayInputMoneyActivity extends BaseActivity {
     private Context context = PayInputMoneyActivity.this;
 
     private double minMoney, balance = 0;
-    private int money;
+    private String money;
     private boolean isFirst = true;
 
     @Override
@@ -89,9 +89,9 @@ public class PayInputMoneyActivity extends BaseActivity {
         setContentView(R.layout.activity_pay_input_money);
         x.view().inject(this);
         initTopBarWithPhone(getResources().getString(R.string.Pay), toptitleView);
-        money = getIntent().getIntExtra("money", 0);
-        if (money != 0) {
-            etMoney.setText(String.valueOf(money));
+        money = getIntent().getStringExtra("money");
+        if (Double.parseDouble(money) != 0) {
+            etMoney.setText(money);
             Editable etext = etMoney.getText();
             Selection.setSelection(etext, etext.length());
         }
@@ -249,7 +249,7 @@ public class PayInputMoneyActivity extends BaseActivity {
         tvOnceMoney.setText(entity.getSinglepay());
         tvDayLimit.setText(entity.getDaymaxpay());
         imageIcon.setImageURI(Uri.parse(entity.getLogo()));
-        double afterMoney = balance + money;
+        double afterMoney = balance + Double.parseDouble(money);
         java.text.NumberFormat nf = java.text.NumberFormat.getInstance();
         nf.setGroupingUsed(false);
         tvAfterMoney.setText(nf.format(afterMoney) + "");

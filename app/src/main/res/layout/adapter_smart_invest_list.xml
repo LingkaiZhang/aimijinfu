@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:id="@+id/llItem"
+    android:paddingRight="@dimen/margin_twelve2"
+    android:paddingLeft="@dimen/margin_twelve2"
+    android:paddingBottom="@dimen/margin_twelve2"
+    android:paddingTop="@dimen/margin_twelve2">
+
+    <TextView
+        android:id="@+id/tvInvestAccount"
+        android:layout_width="@dimen/weight"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:textColor="@color/text_black"
+        android:textSize="@dimen/thirteen_text"/>
+
+    <TextView
+        android:id="@+id/tvInvestMoney"
+        android:layout_width="@dimen/weight"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="@color/text_black"
+        android:textSize="@dimen/thirteen_text"/>
+
+    <TextView
+        android:id="@+id/tvInvestTime"
+        android:layout_width="@dimen/weight"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="@color/text_black"
+        android:textSize="@dimen/thirteen_text"/>
+
+</LinearLayout>
