@@ -41,38 +41,31 @@ import com.yuanin.aimifinance.entity.RedPacketsEntity;
 import com.yuanin.aimifinance.entity.ReturnResultEntity;
 import com.yuanin.aimifinance.entity.SmartInvestDetailsEntity;
 import com.yuanin.aimifinance.entity.TabIndicatorEntity;
-        import com.yuanin.aimifinance.fragment.AssetsFragment;
-        import com.yuanin.aimifinance.fragment.InvestRecordFragment;
-        import com.yuanin.aimifinance.fragment.ProductIntroduceFragment;
-        import com.yuanin.aimifinance.fragment.RepayPlanFragment;
 import com.yuanin.aimifinance.fragment.SmartChoseExplainFragment;
 import com.yuanin.aimifinance.fragment.SmartInvestProductListFragment;
 import com.yuanin.aimifinance.fragment.SmartInvestRecordFragment;
 import com.yuanin.aimifinance.inter.IHttpRequestCallBack;
-        import com.yuanin.aimifinance.inter.INotifyCallBack;
-        import com.yuanin.aimifinance.inter.ISlideCallback;
-        import com.yuanin.aimifinance.service.ProductTimerCount;
-        import com.yuanin.aimifinance.utils.AppUtils;
-        import com.yuanin.aimifinance.utils.FmtMicrometer;
-        import com.yuanin.aimifinance.utils.NetUtils;
-        import com.yuanin.aimifinance.utils.ParamsKeys;
-        import com.yuanin.aimifinance.utils.ParamsValues;
-import com.yuanin.aimifinance.utils.RSAUtils;
+
+import com.yuanin.aimifinance.inter.ISlideCallback;
+import com.yuanin.aimifinance.utils.AppUtils;
+import com.yuanin.aimifinance.utils.NetUtils;
+import com.yuanin.aimifinance.utils.ParamsKeys;
+import com.yuanin.aimifinance.utils.ParamsValues;
 import com.yuanin.aimifinance.utils.StaticMembers;
-        import com.yuanin.aimifinance.utils.ViewPagerUtils;
-        import com.yuanin.aimifinance.view.SlideDetailsLayout;
+import com.yuanin.aimifinance.utils.ViewPagerUtils;
+import com.yuanin.aimifinance.view.SlideDetailsLayout;
 
-        import org.json.JSONException;
-        import org.json.JSONObject;
-        import org.xutils.view.annotation.Event;
-        import org.xutils.view.annotation.ViewInject;
-        import org.xutils.x;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.xutils.view.annotation.Event;
+import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
 
-        import java.lang.reflect.Type;
-        import java.util.ArrayList;
-        import java.util.List;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
-import de.greenrobot.event.EventBus;
+
 
 public class SmartChoseDetailActivity extends BaseFragmentActivity implements ISlideCallback {
     @ViewInject(R.id.llMain)
@@ -204,6 +197,7 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
                         smartInvestDetails = smartInvestDetailsEntity.getData().get(0);
                         tvBalance.setText(smartInvestDetailsEntity.getData().get(0).getBalance());
                         tvSurplusAmount.setText(smartInvestDetailsEntity.getData().get(0).getSurplusAmount());
+                        etShare.setText("");
                     }
                 }
             }
@@ -416,16 +410,16 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
                             tips, "取消", "确定", v -> generalDialog.dismiss(), v -> {
                         generalDialog.dismiss();
 
-                        /*JSONObject obj = AppUtils.getPublicJsonObject(true);
+                        JSONObject obj = AppUtils.getPublicJsonObject(true);
                         try {
-                            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_PRODUCT);
-                            obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_BUY_PRODUCT);
-                            obj.put(ParamsKeys.BUY_QTY, buyqty);
-                            if (redPacketsEntity == null) {
+                            obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_SMART_INVEST);
+                            obj.put(ParamsKeys.MOTHED, ParamsValues.SMART_INVSET_BUY);
+                            obj.put(ParamsKeys.BUY_AMOUNT, buyqty);
+                           /* if (redPacketsEntity == null) {
                                 obj.put(ParamsKeys.GIFT_ID, "0");
                             } else {
                                 obj.put(ParamsKeys.GIFT_ID, redPacketsEntity.getId());
-                            }
+                            }*/
                             String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
                             obj.put(ParamsKeys.TOKEN, token);
                             obj.remove(ParamsKeys.KEY);
@@ -447,7 +441,14 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
 
                                     @Override
                                     public void onSuccess(Object object) {
-
+                                        ReturnResultEntity<BuySuccessEntity> resultEntity = (ReturnResultEntity<BuySuccessEntity>) object;
+                                        if (resultEntity.isSuccess(context)) {
+                                            //todo 出借成功
+                                            AppUtils.showToast(context, resultEntity.getRemark());
+                                            requestData();
+                                        } else {
+                                            AppUtils.showToast(context, resultEntity.getRemark());
+                                        }
                                     }
 
                                     @Override
@@ -455,7 +456,7 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
                                         AppUtils.showConectFail(context);
                                     }
                                 }
-                        );*/
+                        );
                     });
                 }
                 break;
@@ -545,7 +546,7 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
     protected void onDestroy() {
         super.onDestroy();
         fragmentPosition = 0;
-        ProductIntroduceFragment.isTop = true;
+        SmartChoseExplainFragment.isTop = true;
     }
 
     /**

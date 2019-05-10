@@ -20,6 +20,7 @@ import android.widget.AbsListView;
 import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.activity.DebtProductDetailActivity;
 import com.yuanin.aimifinance.activity.FinanceProductDetailActivity;
+import com.yuanin.aimifinance.activity.SmartChoseDetailActivity;
 import com.yuanin.aimifinance.fragment.AssetsFragment;
 import com.yuanin.aimifinance.fragment.DebtAssetsFragment;
 import com.yuanin.aimifinance.fragment.DebtInvestRecordFragment;
@@ -28,6 +29,9 @@ import com.yuanin.aimifinance.fragment.DebtRepayPlanFragment;
 import com.yuanin.aimifinance.fragment.InvestRecordFragment;
 import com.yuanin.aimifinance.fragment.ProductIntroduceFragment;
 import com.yuanin.aimifinance.fragment.RepayPlanFragment;
+import com.yuanin.aimifinance.fragment.SmartChoseExplainFragment;
+import com.yuanin.aimifinance.fragment.SmartInvestProductListFragment;
+import com.yuanin.aimifinance.fragment.SmartInvestRecordFragment;
 
 
 /**
@@ -264,7 +268,11 @@ public class SlideDetailsLayout extends ViewGroup {
                 && ((DebtProductDetailActivity.fragmentPosition == 0 && DebtProductIntroduceFragment.isTop)
                 || (DebtProductDetailActivity.fragmentPosition == 1 && DebtAssetsFragment.isTop)
                 || (DebtProductDetailActivity.fragmentPosition == 2 && DebtInvestRecordFragment.isTop)
-                || (DebtProductDetailActivity.fragmentPosition == 3 && DebtRepayPlanFragment.isTop))) {
+                || (DebtProductDetailActivity.fragmentPosition == 3 && DebtRepayPlanFragment.isTop))
+                && ((SmartChoseDetailActivity.fragmentPosition == 0 && SmartChoseExplainFragment.isTop)
+                || (SmartChoseDetailActivity.fragmentPosition == 1 && SmartInvestRecordFragment.isTop)
+                || (SmartChoseDetailActivity.fragmentPosition == 2 && SmartInvestProductListFragment.isTop))
+        ) {
             ensureTarget();
             if (null == mTarget) {
                 return false;

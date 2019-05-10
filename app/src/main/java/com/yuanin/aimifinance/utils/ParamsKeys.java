@@ -42,6 +42,7 @@ public class ParamsKeys {
     //购买商品
     public final static String PRODUCT_ID = "productid";
     public final static String BUY_QTY = "buyqty";
+    public final static String BUY_AMOUNT = "amount";
     public final static String GIFT_ID = "giftid";
 
     public final static String INVEST_ID = "invest_id";

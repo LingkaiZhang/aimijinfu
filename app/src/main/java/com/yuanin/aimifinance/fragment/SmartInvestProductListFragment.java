@@ -82,7 +82,7 @@ public class SmartInvestProductListFragment extends BaseFragment implements XLis
         View view = inflater.inflate(R.layout.fragment_smart_invest_product_list, container, false);
         x.view().inject(this, view);
         isPrepared = true;
-        lvRecord.setPullRefreshEnable(false);
+        lvRecord.setPullRefreshEnable(true);
         lvRecord.setPullLoadEnable(true);
         lvRecord.setXListViewListener(this);
         lvRecord.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -142,8 +142,7 @@ public class SmartInvestProductListFragment extends BaseFragment implements XLis
         try {
             obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_SMART_INVEST);
             obj.put(ParamsKeys.MOTHED, ParamsValues.SMART_INVSET_PRODUCT_INFO);
-            //obj.put(ParamsKeys.UID, StaticMembers.USER_ID);
-            obj.put(ParamsKeys.UID, "7785");
+            obj.put(ParamsKeys.UID, StaticMembers.USER_ID);
             obj.put(ParamsKeys.PAGE_QTY, String.valueOf(StaticMembers.PAGE_SIZE));
             obj.put(ParamsKeys.CURRENT_PAGE, String.valueOf(PageIndex));
             String token = AppUtils.getMd5Value(AppUtils.getToken(obj));

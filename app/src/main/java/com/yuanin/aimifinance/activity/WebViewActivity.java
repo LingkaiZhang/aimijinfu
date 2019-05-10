@@ -210,20 +210,17 @@ public class WebViewActivity extends BaseActivity {
                         setUrl(url, lp);
                         btnBottom.setVisibility(View.VISIBLE);
                         btnBottom.setText("立即分享");
-                        btnBottom.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                List<ShareGridEntity> shareList = new ArrayList<ShareGridEntity>();
-                                shareList.add(StaticMembers.SHARE_LIST.get(0));
-                                shareList.add(StaticMembers.SHARE_LIST.get(1));
-                                InviteFriendTopEntity inviteFriendTopEntity = new InviteFriendTopEntity();
-                                inviteFriendTopEntity.setImg(entity.getData().get(0).getImg());
-                                inviteFriendTopEntity.setSharedescript(entity.getData().get(0).getSharedescript());
-                                inviteFriendTopEntity.setSharelogo(entity.getData().get(0).getSharelogo());
-                                inviteFriendTopEntity.setSharetitle(entity.getData().get(0).getSharetitle());
-                                inviteFriendTopEntity.setShareurlurl(entity.getData().get(0).getShareurlurl());
-                                AppUtils.shareInviteFrient(inviteFriendTopEntity, context, shareList, 2);
-                            }
+                        btnBottom.setOnClickListener(v -> {
+                            List<ShareGridEntity> shareList = new ArrayList<>();
+                            shareList.add(StaticMembers.SHARE_LIST.get(0));
+                            shareList.add(StaticMembers.SHARE_LIST.get(1));
+                            InviteFriendTopEntity inviteFriendTopEntity = new InviteFriendTopEntity();
+                            inviteFriendTopEntity.setImg(entity.getData().get(0).getImg());
+                            inviteFriendTopEntity.setSharedescript(entity.getData().get(0).getSharedescript());
+                            inviteFriendTopEntity.setSharelogo(entity.getData().get(0).getSharelogo());
+                            inviteFriendTopEntity.setSharetitle(entity.getData().get(0).getSharetitle());
+                            inviteFriendTopEntity.setShareurlurl(entity.getData().get(0).getShareurlurl());
+                            AppUtils.shareInviteFrient(inviteFriendTopEntity, context, shareList, 2);
                         });
                         mainFL.setVisibility(View.VISIBLE);
                         tvNoContent.setVisibility(View.GONE);
@@ -295,42 +292,23 @@ public class WebViewActivity extends BaseActivity {
                         switch (shareRedPacketEntity.getStatus()) {
                             case 0:
                                 btnBottom.setText(getString(R.string.Immediately_lend));
-                                btnBottom.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        WebViewActivity.this.finish();
-                                    }
-                                });
+                                btnBottom.setOnClickListener(v -> WebViewActivity.this.finish());
                                 break;
                             case 1:
                                 btnBottom.setText("生成红包");
-                                btnBottom.setOnClickListener(new View.OnClickListener() {
+                                btnBottom.setOnClickListener(v -> dialog = new GeneralDialog(context, true, "提示", "在投金额越多，生成的红包金额越多，您确定现在就要生成红包吗？", "取消", "生成", new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        dialog = new GeneralDialog(context, true, "提示", "在投金额越多，生成的红包金额越多，您确定现在就要生成红包吗？", "取消", "生成", new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                dialog.dismiss();
-                                            }
-                                        }, new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                requestPacketInfoData();
-                                                dialog.dismiss();
-                                            }
-                                        });
-
+                                        dialog.dismiss();
                                     }
-                                });
+                                }, v1 -> {
+                                    requestPacketInfoData();
+                                    dialog.dismiss();
+                                }));
                                 break;
                             case 2:
                                 btnBottom.setText("立即分享");
-                                btnBottom.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        requestPacketInfoData();
-                                    }
-                                });
+                                btnBottom.setOnClickListener(v -> requestPacketInfoData());
                                 break;
                         }
                         mainFL.setVisibility(View.VISIBLE);
@@ -466,12 +444,7 @@ public class WebViewActivity extends BaseActivity {
                         inviteFriendTopEntity = entity.getData().get(0);
                         btnBottom.setText("邀请好友");
                         btnBottom.setVisibility(View.VISIBLE);
-                        btnBottom.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                AppUtils.shareInviteFrient(inviteFriendTopEntity, context, StaticMembers.SHARE_LIST, 4);
-                            }
-                        });
+                        btnBottom.setOnClickListener(v -> AppUtils.shareInviteFrient(inviteFriendTopEntity, context, StaticMembers.SHARE_LIST, 4));
                         mainFL.setVisibility(View.VISIBLE);
                         tvNoContent.setVisibility(View.GONE);
                         llNoNet.setVisibility(View.GONE);

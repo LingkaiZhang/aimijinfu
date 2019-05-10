@@ -26,6 +26,8 @@ public class SmartChoseExplainFragment extends BaseFragment {
     @ViewInject(R.id.tvRiskReminderBody)
     private TextView tvRiskReminderBody;
 
+    public static boolean isTop = true;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

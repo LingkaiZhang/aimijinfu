@@ -79,7 +79,7 @@ public class InvestRecordFragment extends BaseFragment implements XListView.IXLi
         View view = inflater.inflate(R.layout.fragment_invest_record, container, false);
         x.view().inject(this, view);
         isPrepared = true;
-        lvRecord.setPullRefreshEnable(false);
+        lvRecord.setPullRefreshEnable(true);
         lvRecord.setPullLoadEnable(true);
         lvRecord.setXListViewListener(this);
         lvRecord.setOnScrollListener(new AbsListView.OnScrollListener() {

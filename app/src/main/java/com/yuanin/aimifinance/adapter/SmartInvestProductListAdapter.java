@@ -39,7 +39,7 @@ public class SmartInvestProductListAdapter extends GeneralAdapter<SmartInvestPro
     public void convert(GeneralViewHolder holder, SmartInvestProductListEntity data) {
         holder.setTextAndTypefaceForTextView(R.id.tvInvestAccount, data.getProjectName(),PingFangSC_Medium);
         holder.setTextAndTypefaceForTextView(R.id.tvInvestMoney, FmtMicrometer.format6(data.getAmount()),PingFangSC_Regular);
-        holder.setTextAndTypefaceForTextView(R.id.tvInvestTime, data.getTerm(),PingFangSC_Regular);
+        holder.setTextAndTypefaceForTextView(R.id.tvInvestTime, data.getTerm() + "个月",PingFangSC_Regular);
 
         LinearLayout itemView = holder.getView(R.id.llItem);
         itemView.setOnClickListener(v -> {

@@ -200,7 +200,8 @@ public class ParamsValues {
     public final static String SMART_INVSET_BORROW_LOG = "loanedRecord";
     //智投投资标的明细
     public final static String SMART_INVSET_PRODUCT_INFO = "borrowAmountInfo";
-
+    //智投投资出借
+    public final static String SMART_INVSET_BUY = "intellectinvest";
 
     /**
      * 债权转让
