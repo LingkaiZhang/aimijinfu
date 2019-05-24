@@ -13,14 +13,12 @@
         android:orientation="vertical">
 
         <FrameLayout
-            android:id="@+id/redMain"
             android:layout_width="300dp"
             android:layout_height="250dp"
             android:background="@mipmap/open_bank_account">
 
 
             <Button
-                android:id="@+id/btnGo1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center_horizontal"
@@ -70,7 +68,6 @@
         </FrameLayout>
 
         <ImageButton
-            android:id="@+id/ivClose1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/big_margin"

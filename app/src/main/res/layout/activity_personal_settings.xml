@@ -78,7 +78,6 @@
                             android:visibility="gone"/>
 
                         <TextView
-                            android:id="@+id/tvRealNameCertificationTitle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/normal_height"
                             android:layout_marginLeft="@dimen/small_margin"
@@ -177,7 +176,6 @@
                             android:visibility="gone"/>
 
                         <TextView
-                            android:id="@+id/tvBankCardTitle"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/normal_height"
                             android:layout_marginLeft="@dimen/small_margin"
@@ -235,7 +233,6 @@
                         android:visibility="gone"/>
 
                     <TextView
-                        android:id="@+id/tvPasswordManagement"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/normal_height"
                         android:layout_marginLeft="@dimen/small_margin"
@@ -246,7 +243,6 @@
                         android:textSize="@dimen/normal_text"/>
 
                     <TextView
-                        android:id="@+id/tvPassword"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -280,7 +276,6 @@
                         android:visibility="gone"/>
 
                     <TextView
-                        android:id="@+id/tvRiskToleranceAssessment"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/normal_height"
                         android:layout_marginLeft="@dimen/small_margin"
@@ -339,7 +334,6 @@
                     />
 
                 <RelativeLayout
-                    android:id="@+id/llBottom"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/normal_height"
                     android:orientation="vertical">

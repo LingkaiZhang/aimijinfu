@@ -14,7 +14,6 @@
     <color name="title_bg">#ff0036</color>
     <color name="input_text">#999</color>
     <color name="transparent">#00000000</color>
-    <color name="withdraw_green">#00b396</color>
     <!--<color name="gesture_red">#f95172</color>-->
     <color name="share_btn_bg">#eee</color>
     <color name="share_btn_bg_click">#bbb</color>
@@ -23,12 +22,10 @@
     <color name="text_black">#333</color>
     <color name="text_gray">#666</color>
     <color name="text_light_gray">#999</color>
-    <color name="product_progress_blue">#7ac6f3</color>
     <color name="login_register_blue">#088eff</color>
     <color name="login_register_blue_click">#9cd1fe</color>
     <color name="add_up_green">#30c4d1</color>
     <color name="history_blue">#6ed3fd</color>
-    <color name="mine_middle_bg">#f32f31</color>
     <color name="mine_middle_bg_click">#ff4e50</color>
     <color name="orange">#ff6905</color>
     <color name="try_money_yellow">#fc8800</color>

@@ -16,7 +16,6 @@
         android:background="@color/bg"/>
 
     <LinearLayout
-        android:id="@+id/lin_bottom_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/normal_height"
         android:background="@color/white"

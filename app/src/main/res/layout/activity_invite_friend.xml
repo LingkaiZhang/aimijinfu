@@ -21,7 +21,6 @@
         android:layout_height="match_parent">
 
         <com.yuanin.aimifinance.view.StickyNavLayout
-            android:id="@+id/snMain"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="40dp"

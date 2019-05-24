@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Selection;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
@@ -90,10 +91,12 @@ public class PayInputMoneyActivity extends BaseActivity {
         x.view().inject(this);
         initTopBarWithPhone(getResources().getString(R.string.Pay), toptitleView);
         money = getIntent().getStringExtra("money");
-        if (Double.parseDouble(money) != 0) {
-            etMoney.setText(money);
-            Editable etext = etMoney.getText();
-            Selection.setSelection(etext, etext.length());
+        if (!TextUtils.isEmpty(money)) {
+            if (Double.parseDouble(money) != 0) {
+                etMoney.setText(money);
+                Editable etext = etMoney.getText();
+                Selection.setSelection(etext, etext.length());
+            }
         }
         etMoney.addTextChangedListener(new TextWatcher() {
             @Override
@@ -249,7 +252,10 @@ public class PayInputMoneyActivity extends BaseActivity {
         tvOnceMoney.setText(entity.getSinglepay());
         tvDayLimit.setText(entity.getDaymaxpay());
         imageIcon.setImageURI(Uri.parse(entity.getLogo()));
-        double afterMoney = balance + Double.parseDouble(money);
+        double afterMoney = balance;
+        if (!TextUtils.isEmpty(money)) {
+             afterMoney = balance + Double.parseDouble(money);
+        }
         java.text.NumberFormat nf = java.text.NumberFormat.getInstance();
         nf.setGroupingUsed(false);
         tvAfterMoney.setText(nf.format(afterMoney) + "");

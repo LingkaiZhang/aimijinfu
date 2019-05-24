@@ -1,5 +1,6 @@
 package com.yuanin.aimifinance.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
         import android.content.Intent;
         import android.graphics.Matrix;
@@ -189,14 +190,15 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
 
             }
 
+            @SuppressLint("SetTextI18n")
             @Override
             public void onSuccess(Object object) {
                 ReturnResultEntity<SmartInvestDetailsEntity> smartInvestDetailsEntity = (ReturnResultEntity<SmartInvestDetailsEntity>) object;
                 if (smartInvestDetailsEntity.isSuccess(context)) {
                     if (smartInvestDetailsEntity.isNotNull()) {
                         smartInvestDetails = smartInvestDetailsEntity.getData().get(0);
-                        tvBalance.setText(smartInvestDetailsEntity.getData().get(0).getBalance());
-                        tvSurplusAmount.setText(smartInvestDetailsEntity.getData().get(0).getSurplusAmount());
+                        tvBalance.setText(smartInvestDetailsEntity.getData().get(0).getBalance() + "元");
+                        tvSurplusAmount.setText(smartInvestDetailsEntity.getData().get(0).getSurplusAmount() + "元");
                         etShare.setText("");
                     }
                 }
@@ -468,7 +470,9 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
                 break;
             //智投协议
             case R.id.tvSmartChoseProtocol:
-
+                Intent intent = new Intent(this, WebViewActivity.class);
+                intent.putExtra(ParamsKeys.TYPE,ParamsValues.SMART_INVEST_ASSIGNMENT);
+                startActivity(intent);
                 break;
             //出借合同
             case R.id.tvLoanContract:
@@ -484,7 +488,9 @@ public class SmartChoseDetailActivity extends BaseFragmentActivity implements IS
                 break;
             //债转协议
             case R.id.tvAssignmentAgreement:
-
+                Intent intent5 = new Intent(this, WebViewActivity.class);
+                intent5.putExtra(ParamsKeys.TYPE,ParamsValues.DEBT_ASSIGNMENT_MODE);
+                startActivity(intent5);
                 break;
             default:
                 break;

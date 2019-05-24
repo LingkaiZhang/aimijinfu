@@ -158,7 +158,12 @@ public class WebViewActivity extends BaseActivity {
                 setUrl(url,new FrameLayout.LayoutParams(-1, -1));
             } else if (type.equals(ParamsValues.DEBT_ASSIGNMENT_MODE)) {
                 initTopBarWithRightText("债权转让协议", toptitleView, null, "");
-                url = ParamsValues.NET_URL_WEIXIN + "generic/web/viewer.html?file=pdf/zhaiquanhetong.pdf";
+                //url = ParamsValues.NET_URL_WEIXIN + "generic/web/viewer.html?file=pdf/zhaiquanhetong.pdf";
+                url = ParamsValues.NET_URL_WEIXIN + "instruction_agreement.html";
+                setUrl(url,new FrameLayout.LayoutParams(-1, -1));
+            }else if (type.equals(ParamsValues.SMART_INVEST_ASSIGNMENT)) {
+                initTopBarWithRightText("智投服务授权协议", toptitleView, null, "");
+                url = ParamsValues.NET_URL_WEIXIN + "authorization_agreement.html";
                 setUrl(url,new FrameLayout.LayoutParams(-1, -1));
             }
         }

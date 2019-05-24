@@ -15,7 +15,6 @@
     <dimen name="margin_six">6dp</dimen>
     <dimen name="margin_eight">8dp</dimen>
     <dimen name="margin_twenty_four">24dp</dimen>
-    <dimen name="top_img_height">230dp</dimen>
     <!--<dimen name="margin_twelve">12dp</dimen>-->
     <dimen name="margin_twelve2">12dp</dimen>
     <dimen name="margin_ten">10dp</dimen>
@@ -26,10 +25,7 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="margin_fifty_two">52dp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="margin_sixty">60dp</dimen>
-    <dimen name="account_balance_button">40dp</dimen>
     <dimen name="bigger_text">18sp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
 </resources>

@@ -102,7 +102,6 @@
                 android:background="@color/bg"/>
 
             <LinearLayout
-                android:id="@+id/llRegular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/selector_gray_click"
@@ -340,7 +339,6 @@
 
 
             <LinearLayout
-                android:id="@+id/llBonus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
