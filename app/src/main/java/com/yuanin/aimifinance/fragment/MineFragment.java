@@ -123,6 +123,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
     private List<UserAccountEntity> mList;
     private View mainView;
     private View popView;
+    private View DebtPopView;
     /**
      * 是否已被加载过一次，第二次就不再去请求数据了
      */
@@ -137,6 +138,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         View view = inflater.inflate(R.layout.pull_scrollview_mine, container, false);
         mainView = inflater.inflate(R.layout.fragment_mine, container, false);
         popView = inflater.inflate(R.layout.popupwindow_hk_register_new, container, false);
+        DebtPopView = inflater.inflate(R.layout.popupwindow_debt_zhuangrang, container, false);
         popViewQuestion = inflater.inflate(R.layout.popupwindow_question_naire, container, false);
         x.view().inject(this, view);
         x.view().inject(this, mainView);
@@ -169,8 +171,8 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         }
     }
 
-    @Event(value = { R.id.isShowBalance,R.id.ivMine, R.id.rlEarnMoney, R.id.rlBalance, R.id.tvTotalMoneyTitle, R.id.tvTotalMoney, R.id.rlRegular,
-            R.id.rlLittleItem, R.id.btnWithdraw, R.id.btnPay, R.id.rlRedPackets, R.id.btnRefresh,R.id.llLoanCalendar,
+    @Event(value = {R.id.isShowBalance, R.id.ivMine, R.id.rlEarnMoney, R.id.rlBalance, R.id.tvTotalMoneyTitle, R.id.tvTotalMoney, R.id.rlRegular,
+            R.id.rlLittleItem, R.id.btnWithdraw, R.id.btnPay, R.id.rlRedPackets, R.id.btnRefresh, R.id.llLoanCalendar,
             R.id.rlFundsWater, R.id.llAboutWe, R.id.ivMessage, R.id.tvUserName, R.id.llAssignmentOfDebt})
     private void loginClicked(View v) {
         if (StaticMembers.IS_NEED_LOGIN) {
@@ -178,27 +180,27 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         } else {
             switch (v.getId()) {
                 case R.id.isShowBalance:
-                    String  money = AppUtils.getFromSharedPreferences(getActivity(), ParamsKeys.LOGIN_FILE, ParamsKeys.LOGIN_KEY_TOTAL);
+                    String money = AppUtils.getFromSharedPreferences(getActivity(), ParamsKeys.LOGIN_FILE, ParamsKeys.LOGIN_KEY_TOTAL);
                     ReturnResultEntity<UserAccountEntity> entity = (ReturnResultEntity<UserAccountEntity>) AppUtils.fail2SetData(ParamsKeys.MINE_INFO);
-                    if (StaticMembers.IS_SHOW_BALANCE){
+                    if (StaticMembers.IS_SHOW_BALANCE) {
                         setMineDataHide(entity);
                         StaticMembers.IS_SHOW_BALANCE = false;
-                    }else{
+                    } else {
                         setMineDataShow(entity);
                         StaticMembers.IS_SHOW_BALANCE = true;
                     }
 
                     //向sp中保存状态信息
-                    SharedPreferenceUtils.save2SharedPreferences(getActivity(),ParamsKeys.MINE_FILE,ParamsKeys.IS_SHOW_BALANCE,StaticMembers.IS_SHOW_BALANCE);
+                    SharedPreferenceUtils.save2SharedPreferences(getActivity(), ParamsKeys.MINE_FILE, ParamsKeys.IS_SHOW_BALANCE, StaticMembers.IS_SHOW_BALANCE);
 
                     break;
                 //个人中心
                 case R.id.ivMine:
                 case R.id.tvUserName:
-                   // if (mList != null && mList.size() > 0) {
-                        Intent intent2 = new Intent(getActivity(), PersonalSettingsActivity.class);
-                        startActivity(intent2);
-                   // }
+                    // if (mList != null && mList.size() > 0) {
+                    Intent intent2 = new Intent(getActivity(), PersonalSettingsActivity.class);
+                    startActivity(intent2);
+                    // }
                     break;
                 //消息中心
                 case R.id.ivMessage:
@@ -301,7 +303,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
                 //债权转让
                 case R.id.llAssignmentOfDebt:
                     Intent intent3 = new Intent(getActivity(), WebViewHtmlActivity.class);
-                    intent3.putExtra(ParamsKeys.TYPE,ParamsValues.DEBT_ASSIGNMENT);
+                    intent3.putExtra(ParamsKeys.TYPE, ParamsValues.DEBT_ASSIGNMENT);
                     startActivity(intent3);
                     break;
             }
@@ -314,7 +316,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
             //我要借款
             case R.id.rlMyBorrow:
                 Intent intent = new Intent(getActivity(), WebViewHtmlActivity.class);
-                intent.putExtra(ParamsKeys.TYPE,ParamsValues.MY_BORROW);
+                intent.putExtra(ParamsKeys.TYPE, ParamsValues.MY_BORROW);
                 startActivity(intent);
                 break;
             //关于我们
@@ -342,7 +344,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
             rlLogin.setVisibility(View.VISIBLE);
             rlMine.setVisibility(View.VISIBLE);
             mPullDownScrollView.setPullRefreshEnable(true);
-             if (isVisible) {
+            if (isVisible) {
                 refreshData();
             }
         }
@@ -400,7 +402,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), CallBackWebActivity.class);
-                intent.putExtra("url",entity.getData().get(0).getUrl_route() );
+                intent.putExtra("url", entity.getData().get(0).getUrl_route());
                 startActivity(intent);
             }
         });
@@ -488,9 +490,9 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
                     Float num = (Float) animation.getAnimatedValue();
                     DecimalFormat fnum = new DecimalFormat("##.00");
                     String money = fnum.format(num);
-                    if (StaticMembers.IS_SHOW_BALANCE){
+                    if (StaticMembers.IS_SHOW_BALANCE) {
                         setMineDataShow(entity);
-                    }else{
+                    } else {
                         setMineDataHide(entity);
                     }
 
@@ -524,6 +526,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
             setTotalBalanceShow(entity);
         }
     }
+
     //lingkai  展示总金额
     private void setTotalBalanceShow(ReturnResultEntity<UserAccountEntity> entity) {
         //获取保存的信息
@@ -535,6 +538,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
             setMineDataHide(entity);
         }
     }
+
     //设置我的数据展现
     private void setMineDataShow(ReturnResultEntity<UserAccountEntity> entity) {
         tvTotalMoney.setText(entity.getData().get(0).getAmount());
@@ -558,6 +562,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         Drawable showIcon = getResources().getDrawable(R.mipmap.mine_invest_open);
         isShowBalance.setImageDrawable(showIcon);
     }
+
     //设置我的数据隐藏
     private void setMineDataHide(ReturnResultEntity<UserAccountEntity> entity) {
         tvTotalMoney.setText("*****");
@@ -598,9 +603,11 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
     }
 
     private void requestDatas() {
-         if (StaticMembers.IS_NEED_LOGIN || hasLoadedOnce) {
+        if (StaticMembers.IS_NEED_LOGIN || hasLoadedOnce) {
             return;
         }
+
+
         JSONObject obj = AppUtils.getPublicJsonObject(true);
         try {
             obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_FUND);
@@ -650,24 +657,28 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
                         mPop.showAtLocation(llMain, Gravity.CENTER, 0, 0);
                     }*/
 
-                    if(hadShowPop){
+
+                    if (hadShowPop) {
                         hadShowPop = !hadShowPop;
                     } else {
-                        if(StaticMembers.HK_STATUS == 1){
-                            if (StaticMembers.QUESTION_NAIRE_STATUS == 0) {
+                        if (StaticMembers.HK_STATUS == 1) {
+                            if (true) {
                                 if (hadShowPop2) {
                                     hadShowPop2 = !hadShowPop2;
                                 } else {
-                                    PopupWindow mPop = AppUtils.createQNPop(popViewQuestion, getActivity());
+                                    PopupWindow mPop = AppUtils.createDebtZhuang(DebtPopView, getActivity());
                                     mPop.showAtLocation(llMain, Gravity.CENTER, 0, 0);
                                     hadShowPop2 = !hadShowPop2;
                                 }
+
                             }
-                        } else if (StaticMembers.QUESTION_NAIRE_STATUS == 0){
-                            if (hadShowPop2){
+
+
+                        } else if (true) {
+                            if (hadShowPop2) {
                                 hadShowPop2 = !hadShowPop2;
-                            }else{
-                                PopupWindow mPop = AppUtils.createQNPop(popViewQuestion, getActivity());
+                            } else {
+                                PopupWindow mPop = AppUtils.createDebtZhuang(DebtPopView, getActivity());
                                 mPop.showAtLocation(llMain, Gravity.CENTER, 0, 0);
                                 hadShowPop2 = !hadShowPop2;
                             }
@@ -701,6 +712,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         });
 
     }
+
     private void requestDatas2() {
         if (StaticMembers.IS_NEED_LOGIN || hasLoadedOnce) {
             return;
@@ -816,11 +828,11 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
         }
 
         //保存用户状态信息
-        AppUtils.save2SharedPreferences(getActivity(),ParamsKeys.USER_INFO_FILE,ParamsKeys.USER_IS_OPEN_ACCOUNT,
+        AppUtils.save2SharedPreferences(getActivity(), ParamsKeys.USER_INFO_FILE, ParamsKeys.USER_IS_OPEN_ACCOUNT,
                 String.valueOf(entity.getData().get(0).getIs_activate_hkaccount()));
-        AppUtils.save2SharedPreferences(getActivity(),ParamsKeys.USER_INFO_FILE,ParamsKeys.USER_IS_ABLE_BUY_NEW_PRODUCT,
+        AppUtils.save2SharedPreferences(getActivity(), ParamsKeys.USER_INFO_FILE, ParamsKeys.USER_IS_ABLE_BUY_NEW_PRODUCT,
                 String.valueOf(entity.getData().get(0).getBuyNewAble()));
-        AppUtils.save2SharedPreferences(getActivity(),ParamsKeys.USER_INFO_FILE,ParamsKeys.USER_BALANCE,
+        AppUtils.save2SharedPreferences(getActivity(), ParamsKeys.USER_INFO_FILE, ParamsKeys.USER_BALANCE,
                 String.valueOf(entity.getData().get(0).getBalance()));
     }
 
@@ -841,10 +853,11 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
     public void onLoadMore() {
 
     }
+
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        if(outState != null) {
+        if (outState != null) {
             String FRAGMENTS_TAG = "android:support:fragments";
             // remove掉保存的Fragment
             outState.remove(FRAGMENTS_TAG);

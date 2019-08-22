@@ -90,26 +90,18 @@ public class LoginOneActivity extends BaseActivity {
 
     private void initView() {
         tvPhone.setText(AppUtils.getProtectedMobile(phone));
-        imClearMark.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                etLoginPassword.setText("");
-            }
-        });
-        imPasswordMark.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isShowPassword) {
-                    imPasswordMark.setImageResource(R.mipmap.login_hide_pwd);
-                    etLoginPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    etLoginPassword.setSelection(etLoginPassword.getText().length());
-                    isShowPassword = false;
-                } else {
-                    imPasswordMark.setImageResource(R.mipmap.login_show_pwd);
-                    etLoginPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
-                    etLoginPassword.setSelection(etLoginPassword.getText().length());
-                    isShowPassword = true;
-                }
+        imClearMark.setOnClickListener(v -> etLoginPassword.setText(""));
+        imPasswordMark.setOnClickListener(v -> {
+            if (isShowPassword) {
+                imPasswordMark.setImageResource(R.mipmap.login_hide_pwd);
+                etLoginPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                etLoginPassword.setSelection(etLoginPassword.getText().length());
+                isShowPassword = false;
+            } else {
+                imPasswordMark.setImageResource(R.mipmap.login_show_pwd);
+                etLoginPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
+                etLoginPassword.setSelection(etLoginPassword.getText().length());
+                isShowPassword = true;
             }
         });
        /* //输入框获取焦点监听
@@ -262,14 +254,11 @@ public class LoginOneActivity extends BaseActivity {
                         generalDialog.dismiss();
                     }
 
-                }, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(LoginOneActivity.this, ForgetPasswordActivity.class);
-                        intent.putExtra("phone",phone);
-                        startActivity(intent);
-                        generalDialog.dismiss();
-                    }
+                }, v1 -> {
+                    Intent intent = new Intent(LoginOneActivity.this, ForgetPasswordActivity.class);
+                    intent.putExtra("phone",phone);
+                    startActivity(intent);
+                    generalDialog.dismiss();
                 });
                 break;
         }

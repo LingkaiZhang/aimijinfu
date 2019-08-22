@@ -137,7 +137,7 @@ public class WithdrawActivity extends BaseActivity {
                     tvFee.setText(cash_fee);
                     initEdittext(etMoney.getText().toString());
                 } else {
-                     cb_normalwithdraw.setChecked(true);
+                    cb_normalwithdraw.setChecked(true);
                 }
             }
         });
@@ -246,7 +246,7 @@ public class WithdrawActivity extends BaseActivity {
                 //提现方式选择
                 if (cb_normalwithdraw.isChecked() && cb_quickWithdraw.isChecked() == false) {
                     cash_type = 1;
-                } else if (cb_quickWithdraw.isChecked() && cb_normalwithdraw.isChecked() == false ) {
+                } else if (cb_quickWithdraw.isChecked() && cb_normalwithdraw.isChecked() == false) {
                     cash_type = 2;
                 } else {
                     AppUtils.showToast(this, "请选择提现方式.");
@@ -273,11 +273,11 @@ public class WithdrawActivity extends BaseActivity {
                     obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_FUND);
                     obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_HK_CASH);
                     obj.put(ParamsKeys.AMOUNT, etMoney.getText().toString().trim());
-                    obj.put(ParamsKeys.CASH_TYPE,String.valueOf(cash_type));
+                    obj.put(ParamsKeys.CASH_TYPE, String.valueOf(cash_type));
                     String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
                     obj.put(ParamsKeys.TOKEN, token);
                     obj.remove(ParamsKeys.KEY);
-                    LogUtils.d(this,"obj = " + obj);
+                    LogUtils.d(this, "obj = " + obj);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -338,7 +338,7 @@ public class WithdrawActivity extends BaseActivity {
         balance = entity.getData().get(0).getBalance();
         tvBalance.setText(balance);
         tvFee.setText(fee);
-        tvEveryFee.setText( "( " + Integer.parseInt(fee.split("\\.")[0]) + "元/次 )");
+        tvEveryFee.setText("( " + Integer.parseInt(fee.split("\\.")[0]) + "元/次 )");
         tvCount.setText(entity.getData().get(0).getQty());
         tv_freeCount.setText(entity.getData().get(0).getQty());
         etMoney.requestFocus();
@@ -392,8 +392,8 @@ public class WithdrawActivity extends BaseActivity {
                 etMoney.setSelection(s.length());
             }
         }
-        if(s.length() > 0){
-            if (s.toString().trim().substring(0,1).equals(".")) {
+        if (s.length() > 0) {
+            if (s.toString().trim().substring(0, 1).equals(".")) {
                 s = "0" + s;
                 etMoney.setText(s);
                 etMoney.setSelection(2);
@@ -418,13 +418,28 @@ public class WithdrawActivity extends BaseActivity {
                     tvGetMoney.setText(nf.format(getMoney));
                 }
             } else {
-                double getMoney = Double.parseDouble(s.toString()) - Double.parseDouble(fee);
+               /* double getMoney = Double.parseDouble(s.toString()) - Double.parseDouble(fee);
                 if (getMoney <= 0) {
                     tvGetMoney.setText("0.00");
                 } else {
                     java.text.NumberFormat nf = java.text.NumberFormat.getInstance();
                     nf.setGroupingUsed(false);
                     tvGetMoney.setText(nf.format(getMoney));
+                }*/
+                java.text.NumberFormat nf = java.text.NumberFormat.getInstance();
+                nf.setGroupingUsed(false);
+                double inputMoney = Double.parseDouble(s.toString());
+                if (inputMoney < 100) {
+                    double getMoney = inputMoney - Double.parseDouble(fee);
+                    if (getMoney <= 0) {
+                        tvGetMoney.setText("0.00");
+                    } else {
+                        tvGetMoney.setText(nf.format(getMoney));
+                    }
+                } else {
+                    double getMoney = inputMoney * (1 - 0.02);
+                    tvGetMoney.setText(nf.format(getMoney));
+                    tvFee.setText(nf.format(inputMoney*0.02));
                 }
             }
         } else {

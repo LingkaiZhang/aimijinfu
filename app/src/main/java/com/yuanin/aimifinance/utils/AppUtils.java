@@ -153,6 +153,30 @@ public class AppUtils {
         return mRightPop;
     }
 
+    public static PopupWindow createDebtZhuang(View popView, final Context context){
+        final PopupWindow mPop = new PopupWindow(popView, RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT, true);
+        mPop.setAnimationStyle(R.style.SignPopupWindowAnimation);
+        mPop.setFocusable(false);
+        Button ivClose = (Button) popView.findViewById(R.id.ivClose);
+        ivClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPop.dismiss();
+            }
+        });
+        Button btnGo = (Button) popView.findViewById(R.id.btnGo);
+        btnGo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent3 = new Intent(context, WebViewHtmlActivity.class);
+                intent3.putExtra(ParamsKeys.TYPE,ParamsValues.DEBT_ASSIGNMENT);
+                context.startActivity(intent3);
+            }
+        });
+        return mPop;
+    }
+
+
     public static PopupWindow createHKPop(View popView, final Context context) {
         final PopupWindow mPop = new PopupWindow(popView, RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT, true);
         mPop.setAnimationStyle(R.style.SignPopupWindowAnimation);

@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,11 +17,14 @@ import com.yuanin.aimifinance.R;
 import com.yuanin.aimifinance.activity.DebtProductDetailActivity;
 import com.yuanin.aimifinance.activity.FinanceProductDetailActivity;
 import com.yuanin.aimifinance.activity.OrderFormActivity;
+import com.yuanin.aimifinance.activity.WebViewHtmlActivity;
 import com.yuanin.aimifinance.entity.MyInvestEntity;
 import com.yuanin.aimifinance.utils.AppUtils;
 import com.yuanin.aimifinance.utils.FmtMicrometer;
 import com.yuanin.aimifinance.utils.GeneralAdapter;
 import com.yuanin.aimifinance.utils.GeneralViewHolder;
+import com.yuanin.aimifinance.utils.ParamsKeys;
+import com.yuanin.aimifinance.utils.ParamsValues;
 import com.yuanin.aimifinance.utils.StaticMembers;
 
 import java.util.List;
@@ -48,6 +52,7 @@ public class MyInvestListAdapter extends GeneralAdapter<MyInvestEntity> {
     @Override
     public void convert(GeneralViewHolder holder, final MyInvestEntity data) {
         LinearLayout llLeave = holder.getView(R.id.llLeave);
+        Button btnDebtZhuanrang = holder.getView(R.id.btn_debt_zhuanrang);
         TextView tvStatus = holder.getView(R.id.tvStatus);
         holder.setTextForTextView(R.id.tvName, data.getProject_name());
         holder.setTextForTextView(R.id.tvInvestMoney, FmtMicrometer.format6(data.getAmount()));
@@ -61,6 +66,14 @@ public class MyInvestListAdapter extends GeneralAdapter<MyInvestEntity> {
             case 1:
                 tvEndDateTitle.setText("到期时间:");
                 llLeave.setVisibility(View.VISIBLE);
+                btnDebtZhuanrang.setVisibility(View.VISIBLE);
+                btnDebtZhuanrang.setOnClickListener(v -> {
+                    Intent intent3 = new Intent(context, WebViewHtmlActivity.class);
+                    intent3.putExtra(ParamsKeys.TYPE, ParamsValues.DEBT_ASSIGNMENT);
+                    context.startActivity(intent3);
+                });
+
+
                 holder.setTextForTextView(R.id.tvLeaveDay, data.getDays_num());
                 if (data.getStatus() == 3) {
                     holder.setTextForTextView(R.id.tvStatus, "已满标");
