@@ -46,6 +46,7 @@
                         android:textSize="40sp"/>
 
                     <TextView
+                        android:id="@+id/tvBalanceDes"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -229,7 +230,8 @@
                             android:paddingTop="@dimen/margin_twelve2"
                             android:textColor="@color/text_black"
                             android:textColorHint="@color/text_light_gray"
-                            android:textSize="@dimen/normal_text"/>
+                            android:textSize="@dimen/normal_text"
+                            />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -249,7 +251,8 @@
                         android:gravity="center"
                         android:text="全部提现"
                         android:textColor="@drawable/selector_withdraw_all_click"
-                        android:textSize="@dimen/normal_text"/>
+                        android:textSize="@dimen/normal_text"
+                        android:visibility="gone"/>
                 </RelativeLayout>
 
                 <View

@@ -16,7 +16,7 @@ public class ParamsValues {
     public final static String NET_URL = "https://prop2papi.aimilicai.com/";
     public final static String NET_URL_WEIXIN = "https://prowechat.aimilicai.com/";
     //key
-    public final static String VERSION_CODE = "6.1.4";
+    public final static String VERSION_CODE = "6.2.0";
     //测试
 //    public final static String NET_URL = "http://javadjshcsp2p.aimilicai.com";
 //    public final static String NET_URL_WEIXIN = "http://javadjshwechat.aimilicai.com/";
@@ -135,6 +135,8 @@ public class ParamsValues {
     public final static String MOTHED_AIMI_CASH_FEE = "aimi_cash_fee";
     //HK提现
     public final static String MOTHED_HK_CASH = "haikou_cash";
+    //爱米提现
+    public static final String MOTHED_AIMI_CASH = "aimi_cash";
     //获取海口银行卡
     public final static String MOTHED_GET_HK_BANK = "get_haikou_bank";
 
@@ -259,4 +261,5 @@ public class ParamsValues {
     public final static String DEBT_ASSIGNMENT_MODE = "debt_assignment_mode";
     //智投协议
     public final static String SMART_INVEST_ASSIGNMENT = "authorization_agreement";
+
 }

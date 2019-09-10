@@ -46,6 +46,7 @@ import com.yuanin.aimifinance.activity.RedPacketsActivity;
 import com.yuanin.aimifinance.activity.TotalMoneyActivity;
 import com.yuanin.aimifinance.activity.WebViewActivity;
 import com.yuanin.aimifinance.activity.WebViewHtmlActivity;
+import com.yuanin.aimifinance.activity.WithdTotalActivity;
 import com.yuanin.aimifinance.activity.WithdrawActivity;
 import com.yuanin.aimifinance.base.BaseFragment;
 import com.yuanin.aimifinance.entity.ActivityInfoEntity;
@@ -243,7 +244,7 @@ public class MineFragment extends BaseFragment implements XMineScrollView.IXScro
                             if (StaticMembers.BANK_CARD_STATUS == 0) {
                                 startActivity(new Intent(getActivity(), AddBankCardActivity.class));
                             } else {
-                                startActivity(new Intent(getActivity(), WithdrawActivity.class));
+                                startActivity(new Intent(getActivity(), WithdTotalActivity.class));
                             }
                         } else {
                             PopupWindow mPop = AppUtils.createHKPop(popView, getActivity());

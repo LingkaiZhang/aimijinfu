@@ -25,6 +25,21 @@ public class TotalAccountEntity implements Serializable {
     private double waitInterest;
     private double alreadyInterest;
 
+    private String remote_amount;
+    private String local_amount;
+
+    public String getRemote_amount() {
+        return remote_amount;
+    }
+
+    public void setRemote_amount(String remote_amount) {
+        this.remote_amount = remote_amount;
+    }
+
+    public String getLocal_amount() {
+        return local_amount;
+    }
+
     public double getWaitInterest() {
         return waitInterest;
     }

@@ -100,7 +100,7 @@ public class AccountBalanceActivity extends BaseActivity {
                     if (StaticMembers.BANK_CARD_STATUS == 0) {
                         startActivity(new Intent(context, AddBankCardActivity.class));
                     } else {
-                        startActivity(new Intent(context, WithdrawActivity.class));
+                        startActivity(new Intent(context, WithdTotalActivity.class));
                     }
                 } else {
                     PopupWindow mPop = AppUtils.createHKPop(popView, context);

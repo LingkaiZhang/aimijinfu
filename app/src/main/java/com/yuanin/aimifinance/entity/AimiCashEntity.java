@@ -16,7 +16,9 @@ public class AimiCashEntity implements Serializable {
     private String balance;
     private List<BindingCardEntity> bank;
     private List<StrEntity> cue;
-    
+
+
+
     public List<StrEntity> getCue() {
         return cue;
     }

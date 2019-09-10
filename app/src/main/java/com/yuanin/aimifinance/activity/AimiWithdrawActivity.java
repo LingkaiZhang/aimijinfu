@@ -2,7 +2,6 @@ package com.yuanin.aimifinance.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.drawable.Animatable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -44,9 +43,9 @@ import org.xutils.x;
 import java.lang.reflect.Type;
 
 /**
- * 新网提现
+ * 爱米提现
  */
-public class WithdrawActivity extends BaseActivity {
+public class AimiWithdrawActivity extends BaseActivity {
     @ViewInject(R.id.includeTop)
     private View toptitleView;
     @ViewInject(R.id.etMoney)
@@ -96,13 +95,14 @@ public class WithdrawActivity extends BaseActivity {
     private CheckBox cb_quickWithdraw;
     @ViewInject(R.id.tvNormalWithdraw)
     private TextView tvNormalWithdraw;
+    @ViewInject(R.id.tvWithdrawAll)
+    private TextView tvWithdrawAll;
     @ViewInject(R.id.tvBalanceDes)
     private TextView tvBalanceDes;
 
 
-    private String balance;
-    private String fee = "2";
-    private Context context = WithdrawActivity.this;
+    private String balance, fee;
+    private Context context = AimiWithdrawActivity.this;
     private boolean isFirst = true;
     //提现类型 1 普通提现 2 快速提现
     private int cash_type = 1;
@@ -113,7 +113,7 @@ public class WithdrawActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_withdraw);
         x.view().inject(this);
-        initTopBarWithPhone(getResources().getString(R.string.Withdraw_xinwang), toptitleView);
+        initTopBarWithPhone(getResources().getString(R.string.Withdraw_aimi), toptitleView);
         initListener();
         //提现方式选择
         initView();
@@ -122,12 +122,11 @@ public class WithdrawActivity extends BaseActivity {
     private void initView() {
 
         Intent intent = getIntent();
-        String xinwangBlance = intent.getStringExtra("XinwangBlance");
+        String xinwangBlance = intent.getStringExtra("AimiBalance");
 
         tvBalance.setText(xinwangBlance);
-        etMoney.setText(xinwangBlance);
-        tvBalanceDes.setText("新网可用余额(元)");
-        initEdittext(etMoney.getText());
+        tvWithdrawAll.setVisibility(View.VISIBLE);
+        tvBalanceDes.setText("爱米可用余额(元)");
 
 
         cb_normalwithdraw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -284,7 +283,7 @@ public class WithdrawActivity extends BaseActivity {
                 JSONObject obj = AppUtils.getPublicJsonObject(true);
                 try {
                     obj.put(ParamsKeys.MODULE, ParamsValues.MODULE_FUND);
-                    obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_HK_CASH);
+                    obj.put(ParamsKeys.MOTHED, ParamsValues.MOTHED_AIMI_CASH);
                     obj.put(ParamsKeys.AMOUNT, etMoney.getText().toString().trim());
                     obj.put(ParamsKeys.CASH_TYPE, String.valueOf(cash_type));
                     String token = AppUtils.getMd5Value(AppUtils.getToken(obj));
@@ -310,15 +309,21 @@ public class WithdrawActivity extends BaseActivity {
                             @Override
                             public void onSuccess(Object object) {
                                 ReturnResultEntity<HKRegisterEntity> entity = (ReturnResultEntity<HKRegisterEntity>) object;
-                                if (entity.isSuccess(WithdrawActivity.this)) {
-                                    if (entity.isNotNull()) {
-                                        Intent intent = new Intent(WithdrawActivity.this, HKRegisterWebActivity.class);
+                                if (entity.isSuccess(AimiWithdrawActivity.this)) {
+                                   /* if (entity.isNotNull()) {
+                                        Intent intent = new Intent(AimiWithdrawActivity.this, HKRegisterWebActivity.class);
                                         intent.putExtra("url", entity.getData().get(0).getRedirect_url());
                                         startActivity(intent);
-                                    }
-                                    WithdrawActivity.this.finish();
+                                    }*/
+
+                                    //请求刷新数据
+                                    requestData();
+
+                                    AppUtils.showToast(AimiWithdrawActivity.this, entity.getRemark());
+                                    AimiWithdrawActivity.this.finish();
+
                                 } else {
-                                    AppUtils.showToast(WithdrawActivity.this, entity.getRemark());
+                                    AppUtils.showToast(AimiWithdrawActivity.this, entity.getRemark());
                                 }
                             }
 
@@ -348,16 +353,12 @@ public class WithdrawActivity extends BaseActivity {
         }
         fee = entity.getData().get(0).getNormalFee();
         cash_fee = entity.getData().get(0).getQuickFee();
-        balance = entity.getData().get(0).getBalance();
-        //tvBalance.setText(balance);
-        //tvFee.setText(fee);
+        tvFee.setText(fee);
         tvEveryFee.setText("( " + Integer.parseInt(fee.split("\\.")[0]) + "元/次 )");
         tvCount.setText(entity.getData().get(0).getQty());
         tv_freeCount.setText(entity.getData().get(0).getQty());
-        //提现金额不可编辑
-        etMoney.setFocusable(false);
-        etMoney.setFocusableInTouchMode(false);
-
+        balance = entity.getData().get(0).getBalance();
+        etMoney.requestFocus();
         AppUtils.openKeyboard(etMoney);
 
 
