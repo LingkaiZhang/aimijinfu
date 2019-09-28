@@ -269,10 +269,10 @@ public class WithdrawActivity extends BaseActivity {
                     AppUtils.showToast(this, getResources().getString(R.string.withdraw_input_more_zero));
                     return;
                 }
-                if (Double.parseDouble(etMoney.getText().toString().trim()) > Double.parseDouble(balance)) {
+                /*if (Double.parseDouble(etMoney.getText().toString().trim()) > Double.parseDouble(balance)) {
                     AppUtils.showToast(this, getResources().getString(R.string.withdraw_no_balance));
                     return;
-                }
+                }*/
                 if (Double.parseDouble(tvGetMoney.getText().toString()) <= 0) {
                     AppUtils.showToast(this, getResources().getString(R.string.withdraw_get_money_not_zero));
                     return;

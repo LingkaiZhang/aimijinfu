@@ -3,15 +3,16 @@
   <component name="AndroidLayouts">
     <shared>
       <config>
+        <device id="pixel_3_xl" />
+        <device id="pixel_2" />
+        <device id="Nexus 6P" />
+        <device id="pixel_3a" />
+        <device id="Nexus 9" />
+        <device id="pixel_3a_xl" />
         <device id="Nexus 6" />
         <device id="Nexus 5X" />
         <device id="pixel_3" />
-        <device id="pixel_3_xl" />
-        <device id="pixel_2" />
         <device id="pixel_xl" />
-        <device id="pixel_2_xl" />
-        <device id="Nexus 6P" />
-        <device id="pixel_c" />
         <target>android-24</target>
       </config>
     </shared>
@@ -50,33 +51,16 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e96b7193-2b8f-4017-abe5-5e74168eb43f" name="Default" comment="忽略文件修改">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/popupwindow_debt_zhuangrang.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/zhaizhuan_tips.png" afterDir="false" />
+    <list default="true" id="e96b7193-2b8f-4017-abe5-5e74168eb43f" name="Default" comment="1.债转提示。">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PushSDK/PushSDK.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PushSDK/PushSDK.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PushSDK/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/PushSDK/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PushSDK/build/intermediates/incremental/packageDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PushSDK/build/intermediates/incremental/packageDebugResources/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PushSDK/build/intermediates/packaged_res/debug/layout/upush_notification.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PushSDK/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" beforeDir="false" afterPath="$PROJECT_DIR$/PushSDK/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PushSDK/build/intermediates/symbols/debug/R.txt" beforeDir="false" afterPath="$PROJECT_DIR$/PushSDK/build/intermediates/symbols/debug/R.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PushSDK/res/layout/upush_notification.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/release/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/output.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/LoginOneActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/LoginOneActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/AimiWithdrawActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/AimiWithdrawActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/WithdrawActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/WithdrawActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/adapter/MyInvestListAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/adapter/MyInvestListAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/fragment/MineFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/fragment/MineFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/utils/AppUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/utils/AppUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/utils/ParamsValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/utils/ParamsValues.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/view/CodeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/view/CodeUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/adapter_my_invest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/adapter_my_invest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_smart_invest_product_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_smart_invest_product_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <ignored path=".idea/" />
     <ignored path=".gradle/" />
@@ -91,6 +75,10 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Copy_of_Pixel_3_XL_API_28" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -116,88 +104,33 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/fragment/MineFragment.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/AimiWithdrawActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="823" column="22" selection-start-line="823" selection-start-column="22" selection-end-line="823" selection-end-column="22" />
+            <state relative-caret-position="120">
+              <caret line="357" column="48" selection-start-line="357" selection-start-column="48" selection-end-line="357" selection-end-column="48" />
               <folding>
-                <element signature="e#35882#35883#0" expanded="true" />
-                <element signature="e#35911#35912#0" expanded="true" />
+                <element signature="e#3766#3814#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/utils/StaticMembers.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/utils/ParamsValues.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="66" column="35" selection-start-line="66" selection-start-column="35" selection-end-line="66" selection-end-column="35" />
+            <state relative-caret-position="396">
+              <caret line="18" column="52" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/utils/AppUtils.java">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-732">
-              <caret line="191" column="43" selection-start-line="191" selection-start-column="43" selection-end-line="191" selection-end-column="43" />
-              <folding>
-                <element signature="e#5704#5705#0" expanded="true" />
-                <element signature="e#5750#5751#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="22">
+              <caret line="1" selection-start-line="1" selection-end-line="11" selection-end-column="26" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/popupwindow_hk_register_new.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/popupwindow_debt_zhuangrang.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
-              <folding>
-                <element signature="e#866#887#0" expanded="true" />
-                <element signature="e#1119#1139#0" expanded="true" />
-                <element signature="e#1426#1447#0" expanded="true" />
-                <element signature="e#2831#2850#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/selector_gray_click_btn.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" column="43" selection-start-line="2" selection-start-column="43" selection-end-line="2" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/shape_gray_click_btn.xml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/open_bank_account.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/selector_hk_register_btn.xml">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -213,10 +146,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>type</find>
-      <find>0x7f040066</find>
-      <find>assetCookie</find>
-      <find>网络异常</find>
       <find>selector_checkbox</find>
       <find>tvFee</find>
       <find>tv_freeCount</find>
@@ -243,6 +172,10 @@
       <find>isTop</find>
       <find>money</find>
       <find>rerun</find>
+      <find>Delete</find>
+      <find>tvTotalMoney</find>
+      <find>tvWithdrawAll</find>
+      <find>etMoney</find>
     </findStrings>
     <replaceStrings>
       <replace>context</replace>
@@ -264,15 +197,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/PDFActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/FinanceProductDetailActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_finance_product_detail.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/fragment/NewFinanceProductFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/fragment/AFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_smart_chose_explain.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/fragment/AssetsFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_invest_record.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/utils/ViewPagerUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/utils/GeneralViewHolder.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/adapter_invest_record.xml" />
@@ -289,7 +213,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/adapter_smart_invest_list.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/entity/SmartInvestDetailsEntity.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_new_index.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/utils/ParamsKeys.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/adapter/SmartInvestProductListAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/fragment/SmartChoseExplainFragment.java" />
@@ -306,15 +229,25 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/include_remind.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_smart_invest_product_list.xml" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/view/CodeUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/utils/ParamsValues.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/WithdrawActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/adapter_my_invest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/adapter/MyInvestListAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/popupwindow_debt_zhuangrang.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/utils/AppUtils.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/popupwindow_debt_zhuangrang.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_withd_total.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/fragment/MineFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/entity/TotalAccountEntity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/entity/AimiCashEntity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/WithdTotalActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/AccountBalanceActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_withdraw.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/xml/network_security_config.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_new_index.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/WithdrawActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/utils/ParamsValues.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/AimiWithdrawActivity.java" />
       </list>
     </option>
   </component>
@@ -332,6 +265,17 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="aimijinfu" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -344,11 +288,55 @@
               <item name="aimijinfu" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
+            <path>
+              <item name="aimijinfu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aimijinfu" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aimijinfu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aimijinfu" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aimijinfu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aimijinfu" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aimijinfu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aimijinfu" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="aimifinance" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aimijinfu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aimijinfu" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="aimifinance" type="462c0819:PsiDirectoryNode" />
+              <item name="activity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aimijinfu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aimijinfu" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="projectFilesBackup" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -356,47 +344,52 @@
     <property name="DEBUGGABLE_DEVICE" value="emulator-5554" />
     <property name="DEBUGGABLE_PROCESS" value="com.yuanin.aimifinance" />
     <property name="DEBUGGER_ID" value="Auto" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="CLB7N18529003281" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-09-23T06:03:31.375Z" />
     <property name="ExportApk.ApkPath" value="C:\AndroidCode\Java\aimijinfu\app" />
     <property name="ExportApk.BuildType" value="release" />
     <property name="ExportApk.BuildVariants" value="release" />
     <property name="ExportApk.Flavors" value="" />
     <property name="ExportApk.SignV1" value="true" />
     <property name="ExportApk.SignV2" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="SearchEverywhereHistoryKey" value="pdf&#9;PSI&#9;JAVA://com.yuanin.aimifinance.activity.PDFActivity&#10;pa&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/utils/ParamsValues.java&#10;re&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/activity/LoginRegisterActivity.java&#10;my&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/adapter/MyInvestListAdapter.java&#10;acc&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/activity/AccountBalanceActivity.java&#10;hk&#9;PSI&#9;JAVA://com.yuanin.aimifinance.activity.HKRegisterWebActivity&#10;per&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/activity/PersonalSettingsActivity.java&#10;index&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/fragment/NewIndexFragment.java&#10;open&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/activity/OpenAccountActivity.java&#10;add&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/activity/AddBankCardActivity.java&#10;deta&#9;PSI&#9;JAVA://com.yuanin.aimifinance.activity.FinanceProductDetailActivity&#10;web&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/activity/HKRegisterWebActivity.java&#10;vi&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/activity/ViewBankCardActivity.java&#10;view&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/activity/ViewBankCardActivity.java&#10;mine&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/fragment/MineFragment.java&#10;wi&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/activity/WithdrawActivity.java&#10;op&#9;PSI&#9;JAVA://com.yuanin.aimifinance.activity.OpenAccountActivity&#10;ord&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/activity/OrderFormActivity.java&#10;we&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/activity/WebViewActivity.java&#10;gui&#9;PSI&#9;JAVA://com.yuanin.aimifinance.activity.GuidePageActivity&#10;home&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/activity/HomePageActivity.java&#10;pd&#9;PSI&#9;JAVA://com.yuanin.aimifinance.activity.PDFActivity&#10;TypedValue&#9;PSI&#9;JAVA://android.util.TypedValue&#10;new&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/fragment/NewIndexFragment.java&#10;or&#9;PSI&#9;JAVA://com.yuanin.aimifinance.activity.OrderFormActivity&#10;login&#9;PSI&#9;JAVA://com.yuanin.aimifinance.activity.LoginActivity&#10;rs&#9;PSI&#9;JAVA://com.yuanin.aimifinance.utils.RSAUtils&#10;pav&#9;PSI&#9;JAVA://com.yuanin.aimifinance.utils.ParamsValues&#10;pay&#9;PSI&#9;JAVA://com.yuanin.aimifinance.activity.PayInputMoneyActivity&#10;buy&#9;PSI&#9;JAVA://com.yuanin.aimifinance.activity.BuyRegularActivity&#10;inde&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/fragment/NewIndexFragment.java&#10;pop&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/res/layout/popupwindow_hk_register_new.xml&#10;item&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/res/layout/adapter_index_product_item.xml&#10;net&#9;PSI&#9;JAVA://com.yuanin.aimifinance.utils.NetUtils&#10;fin&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/activity/FinanceProductDetailActivity.java&#10;mo&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/activity/ModifyBindingPhoneActivity.java&#10;coun&#9;PSI&#9;JAVA://com.yuanin.aimifinance.view.CountDownTextView&#10;set&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/activity/PersonalSettingsActivity.java&#10;to&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/activity/TotalMoneyActivity.java&#10;fun&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/activity/FundsWaterActivity.java&#10;about&#9;PSI&#9;JAVA://com.yuanin.aimifinance.activity.AboutOurActivity&#10;de&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/activity/DebtProductDetailActivity.java&#10;tot&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/activity/TotalMoneyActivity.java&#10;wit&#9;PSI&#9;JAVA://com.yuanin.aimifinance.activity.WithdrawActivity&#10;account&#9;PSI&#9;JAVA://com.yuanin.aimifinance.activity.AccountBalanceActivity&#10;fund&#9;PSI&#9;JAVA://com.yuanin.aimifinance.activity.FundsWaterActivity&#10;total&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/activity/TotalMoneyActivity.java&#10;pass&#9;PSI&#9;JAVA://com.yuanin.aimifinance.activity.PasswordManagementActivity&#10;bank&#9;FILE&#9;file://C:/AndroidCode/Java/aimijinfu/app/src/main/java/com/yuanin/aimifinance/activity/ViewBankCardActivity.java&#10;myin&#9;PSI&#9;JAVA://com.yuanin.aimifinance.activity.MyInvestActivity" />
     <property name="android.profiler.active" value="true" />
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="device.picker.selection" value="CLB7N18529003281" />
+    <property name="device.picker.selection" value="Copy_of_Pixel_3_XL_API_28" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../xinwang_aimi" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/xml" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
+    <property name="settings.editor.selected.configurable" value="MarkdownNavigator.Settings.Application" />
     <property name="show.do.not.ask.upgrade.gradle.plugin" value="3.3.1" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\AndroidCode\Java\aimijinfu\app\src\main\res\mipmap-xxhdpi" />
-      <recent name="C:\AndroidCode\Java\aimijinfu\app\src\main\res\mipmap-xhdpi" />
-      <recent name="C:\AndroidCode\Java\aimijinfu" />
-      <recent name="C:\AndroidCode\Java\aimijinfu\app\src\main\assets" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.yuanin.aimifinance.fragment" />
+      <recent name="com.yuanin.aimifinance.entity" />
+      <recent name="com.yuanin.aimifinance.adapter" />
     </key>
     <key name="android.template.packageName">
       <recent name="com.yuanin.aimifinance.activity" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.yuanin.aimifinance.activity" />
       <recent name="com.yuanin.aimifinance.dialog" />
       <recent name="com.yuanin.aimifinance.utils" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.yuanin.aimifinance.fragment" />
-      <recent name="com.yuanin.aimifinance.entity" />
-      <recent name="com.yuanin.aimifinance.adapter" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\AndroidCode\Java\aimijinfu\app\src\main\res\xml" />
+      <recent name="C:\AndroidCode\Java\aimijinfu\app\src\main\res\mipmap-xxhdpi" />
+      <recent name="C:\AndroidCode\Java\aimijinfu\app\src\main\res\mipmap-xhdpi" />
+      <recent name="C:\AndroidCode\Java\aimijinfu" />
+      <recent name="C:\AndroidCode\Java\aimijinfu\app\src\main\assets" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -412,15 +405,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Android App.app">
-    <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-    </configuration>
     <configuration name="&lt;template&gt;" type="JUnit" default="true" selected="false">
       <option name="MAIN_CLASS_NAME" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -488,6 +472,12 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="FmtMicrometer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -750,7 +740,21 @@
       <option name="project" value="LOCAL" />
       <updated>1558677541647</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="1.债转提示。">
+      <created>1566455005384</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1566455005385</updated>
+    </task>
+    <task id="LOCAL-00032" summary="1.提现6.2.0">
+      <created>1568112861384</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1568112861384</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TodoView">
@@ -763,10 +767,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1035" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1035" extended-state="7" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4960894" weight="0.2027897" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4960894" visible="true" weight="0.26019314" />
       <window_info id="Structure" order="1" sideWeight="0.5008518" side_tool="true" weight="0.3299356" />
       <window_info id="Designer" order="2" />
       <window_info id="Build Variants" order="3" sideWeight="0.5039106" side_tool="true" weight="0.2414163" />
@@ -777,16 +780,16 @@
       <window_info id="Resources Explorer" order="8" sideWeight="0.49914822" weight="0.3299356" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32915717" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49839056" weight="0.32460135" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49839056" weight="0.32423207" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.48122317" weight="0.39407745" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32839224" />
       <window_info anchor="bottom" id="Android Profiler" order="7" sideWeight="0.48766094" weight="0.57289296" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.4640558" side_tool="true" weight="0.32915717" />
-      <window_info anchor="bottom" id="Logcat" order="9" sideWeight="0.80150217" weight="0.35990888" />
-      <window_info anchor="bottom" id="Build" order="10" sideWeight="0.5359442" weight="0.32309443" />
-      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.48658797" weight="0.37542662" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.514485" side_tool="true" visible="true" weight="0.37428898" />
+      <window_info anchor="bottom" id="Logcat" order="9" sideWeight="0.6325107" weight="0.57565415" />
+      <window_info anchor="bottom" id="Build" order="10" sideWeight="0.5359442" weight="0.2298066" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="11" sideWeight="0.48551503" visible="true" weight="0.37428898" />
       <window_info anchor="bottom" id="Flutter Performance" order="12" side_tool="true" weight="0.3295325" />
       <window_info anchor="bottom" id="Statistic" order="13" weight="0.32876712" />
       <window_info anchor="bottom" id="Terminal" order="14" sideWeight="0.48980686" weight="0.3265074" />
@@ -805,36 +808,43 @@
       <window_info anchor="right" id="Flutter Outline" order="11" sideWeight="0.49943116" weight="0.3299356" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2414163" />
-      <window_info id="Structure" order="1" weight="0.25" />
-      <window_info id="Build Variants" order="2" side_tool="true" />
-      <window_info id="Capture Tool" order="3" />
-      <window_info id="Designer" order="4" />
-      <window_info id="Image Layers" order="5" />
-      <window_info id="Captures" order="6" weight="0.25" />
-      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4960894" weight="0.2027897" />
+      <window_info id="Structure" order="1" sideWeight="0.5008518" side_tool="true" weight="0.3299356" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Build Variants" order="3" sideWeight="0.5039106" side_tool="true" weight="0.2414163" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Captures" order="6" side_tool="true" weight="0.25" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info id="Resources Explorer" order="8" sideWeight="0.49914822" weight="0.3299356" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32849163" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.48497853" weight="0.37765363" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32915717" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49839056" weight="0.32460135" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.48122317" weight="0.39407745" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32960895" />
-      <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.32960895" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.51502144" side_tool="true" weight="0.37807608" />
-      <window_info anchor="bottom" id="Logcat" order="9" sideWeight="0.4828326" weight="0.32849163" />
-      <window_info anchor="bottom" id="Build" order="10" sideWeight="0.47585836" weight="0.24134079" />
-      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.48766094" weight="0.32402235" />
-      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.48980686" weight="0.32960895" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32839224" />
+      <window_info anchor="bottom" id="Android Profiler" order="7" sideWeight="0.48766094" weight="0.57289296" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.36748928" side_tool="true" weight="0.4095563" />
+      <window_info active="true" anchor="bottom" id="Logcat" order="9" sideWeight="0.6325107" visible="true" weight="0.4095563" />
+      <window_info anchor="bottom" id="Build" order="10" sideWeight="0.5359442" weight="0.32195678" />
+      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.48658797" weight="0.37542662" />
+      <window_info anchor="bottom" id="Flutter Performance" order="12" side_tool="true" weight="0.3295325" />
+      <window_info anchor="bottom" id="Statistic" order="13" weight="0.32876712" />
+      <window_info anchor="bottom" id="Terminal" order="14" sideWeight="0.48980686" weight="0.3265074" />
+      <window_info anchor="bottom" id="Inspection Results" order="15" sideWeight="0.49302575" weight="0.32915717" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Preview" order="5" sideWeight="0.49415204" weight="0.30686694" />
-      <window_info anchor="right" id="Gradle" order="6" weight="0.3299356" />
-      <window_info anchor="right" id="Theme Preview" order="7" />
-      <window_info anchor="right" id="Device File Explorer" order="8" sideWeight="0.50584793" weight="0.27145922" />
+      <window_info anchor="right" id="Preview" order="5" sideWeight="0.49415204" weight="0.30203864" />
+      <window_info active="true" anchor="right" id="Assistant" order="6" visible="true" weight="0.3299356" />
+      <window_info anchor="right" id="Gradle" order="7" weight="0.3299356" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Device File Explorer" order="9" sideWeight="0.5005688" side_tool="true" weight="0.3299356" />
+      <window_info anchor="right" id="Flutter Inspector" order="10" weight="0.3299356" />
+      <window_info anchor="right" id="Flutter Outline" order="11" sideWeight="0.49943116" weight="0.3299356" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -888,8 +898,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="20180726测试版本" />
-    <MESSAGE value="20180727号下午16:00" />
     <MESSAGE value="20180729测试APP 14:00" />
     <MESSAGE value="20180802 app6.0.1上线.&#10;1.解决了从低版本直接更新安装6.0.0版本。会闪退的问题。&#10;2.部分手机产品列表和项目投资列表适配的问题。" />
     <MESSAGE value="20180810债转项目页面修改，和债转详情页面修改。" />
@@ -913,7 +921,9 @@
     <MESSAGE value="忽略文件修改" />
     <MESSAGE value="智能投资出借及底部Fragment的下拉刷新。" />
     <MESSAGE value="1.智能投标开发完成。" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.智能投标开发完成。" />
+    <MESSAGE value="1.债转提示。" />
+    <MESSAGE value="1.提现6.2.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.提现6.2.0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -944,7 +954,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/WithdrawActivity.java</url>
-          <line>303</line>
+          <line>316</line>
           <properties />
           <option name="timeStamp" value="329" />
         </line-breakpoint>
@@ -953,12 +963,6 @@
           <line>195</line>
           <properties />
           <option name="timeStamp" value="339" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/FundsWaterActivity.java</url>
-          <line>220</line>
-          <properties />
-          <option name="timeStamp" value="340" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/dialog/GeneralDialog.java</url>
@@ -975,129 +979,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/index_loginregister_button_unclick.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/selector_finger_passwrod_btn.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/selector_share_wechat.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="50" selection-start-line="3" selection-start-column="50" selection-end-line="3" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/share_wechat_select.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/about_our_phone.png" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/about_our_we.png" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/about_our_wechat.png" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/apply_withdrawal_fail.png" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/apply_withdrawal_success.png" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/find_select.png" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/view_bank_card_bg1.png" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/view_bank_card_bg2.png" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/index_safe.png" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/index_safe.png" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/certification_red.png" />
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle/3.2.1/8730f18d0e7ac739324ea8a50c1e1ac2929a86f/gradle-3.2.1-sources.jar!/com/android/build/gradle/internal/dsl/BuildType.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/WebViewActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3125">
-          <caret line="166" column="57" selection-start-line="166" selection-start-column="57" selection-end-line="166" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/DebtProductDetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8275">
-          <caret line="401" column="39" selection-start-line="399" selection-start-column="16" selection-end-line="401" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/fragment/SmartInvestProductListFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1025">
-          <caret line="77" column="36" selection-start-line="77" selection-start-column="36" selection-end-line="77" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/include_remind.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.7/bbb63ca253b483da8ee53a50374593923e3de2e2/gson-2.7-sources.jar!/com/google/gson/reflect/TypeToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/LoginOneActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="182" column="43" lean-forward="true" selection-start-line="182" selection-start-column="43" selection-end-line="182" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/SmartChoseDetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_smart_invest_product_list.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="1540">
-          <caret line="70" column="12" selection-start-line="70" selection-start-column="12" selection-end-line="70" selection-end-column="12" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/WithdrawActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2621">
-          <caret line="441" column="59" selection-start-line="441" selection-start-column="59" selection-end-line="441" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/view/CodeUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1474">
-          <caret line="73" column="4" selection-start-line="73" selection-start-column="4" selection-end-line="73" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="550">
@@ -1105,24 +986,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
           <caret line="77" column="17" selection-start-line="77" selection-start-column="17" selection-end-line="77" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/utils/ParamsValues.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="256" column="41" lean-forward="true" selection-start-line="256" selection-start-column="41" selection-end-line="256" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -1190,49 +1057,6 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/open_bank_account.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/shape_gray_click_btn.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/selector_gray_click_btn.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="43" selection-start-line="2" selection-start-column="43" selection-end-line="2" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/popupwindow_debt_zhuangrang.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
-          <folding>
-            <element signature="e#866#887#0" expanded="true" />
-            <element signature="e#1119#1139#0" expanded="true" />
-            <element signature="e#1426#1447#0" expanded="true" />
-            <element signature="e#2831#2850#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/popupwindow_hk_register_new.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/utils/AppUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-732">
-          <caret line="191" column="43" selection-start-line="191" selection-start-column="43" selection-end-line="191" selection-end-column="43" />
-          <folding>
-            <element signature="e#5704#5705#0" expanded="true" />
-            <element signature="e#5750#5751#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-fragment/26.1.0/8279b00f5194701ff18363fa2958c5a26670b0ef/support-fragment-26.1.0-sources.jar!/android/support/v4/app/Fragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="363">
@@ -1242,18 +1066,278 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/utils/StaticMembers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
+        <state relative-caret-position="1342">
           <caret line="66" column="35" selection-start-line="66" selection-start-column="35" selection-end-line="66" selection-end-column="35" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/utils/AppUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2420">
+          <caret line="191" column="43" selection-start-line="191" selection-start-column="43" selection-end-line="191" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/view/KeyEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7458">
+          <caret line="358" column="41" selection-start-line="358" selection-start-column="35" selection-end-line="358" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/popupwindow_hk_register_new.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/popupwindow_debt_zhuangrang.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1078">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/selector_gray_click_btn.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="43" selection-start-line="2" selection-start-column="43" selection-end-line="2" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/selector_dialog_cancel_button_click.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/shape_gray_click_btn.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/HomePageActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2911">
+          <caret line="275" column="38" selection-start-line="275" selection-start-column="38" selection-end-line="275" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradlew.bat">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/color.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_withd_total.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="26" column="42" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="42" />
+          <folding>
+            <element signature="e#545#567#0" expanded="true" />
+            <element signature="e#1099#1120#0" expanded="true" />
+            <element signature="e#1579#1599#0" expanded="true" />
+            <element signature="e#1784#1805#0" expanded="true" />
+            <element signature="e#1835#1856#0" expanded="true" />
+            <element signature="e#2238#2258#0" expanded="true" />
+            <element signature="e#2553#2570#0" expanded="true" />
+            <element signature="e#2950#2970#0" expanded="true" />
+            <element signature="e#3368#3389#0" expanded="true" />
+            <element signature="e#3419#3440#0" expanded="true" />
+            <element signature="e#3814#3834#0" expanded="true" />
+            <element signature="e#4121#4138#0" expanded="true" />
+            <element signature="e#4510#4530#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/entity/TotalAccountEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+          <folding>
+            <element signature="e#777#778#0" expanded="true" />
+            <element signature="e#813#814#0" expanded="true" />
+            <element signature="e#960#961#0" expanded="true" />
+            <element signature="e#995#996#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/entity/AimiCashEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/TotalMoneyActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2665">
+          <caret line="203" lean-forward="true" selection-start-line="203" selection-end-line="203" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/AccountBalanceActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="102" column="63" selection-start-line="102" selection-start-column="63" selection-end-line="102" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_mine.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="125" column="49" selection-start-line="125" selection-start-column="37" selection-end-line="125" selection-end-column="49" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/fragment/MineFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="823" column="22" selection-start-line="823" selection-start-column="22" selection-end-line="823" selection-end-column="22" />
+        <state relative-caret-position="302">
+          <caret line="546" column="55" selection-start-line="546" selection-start-column="55" selection-end-line="546" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/entity/UserAccountEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="19" lean-forward="true" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
           <folding>
-            <element signature="e#35882#35883#0" expanded="true" />
-            <element signature="e#35911#35912#0" expanded="true" />
+            <element signature="e#1354#1355#0" expanded="true" />
+            <element signature="e#1383#1384#0" expanded="true" />
+            <element signature="e#1497#1498#0" expanded="true" />
+            <element signature="e#1527#1528#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_withdraw.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="48" column="53" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="53" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/xml/provider_paths.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/FundsWaterActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9176">
+          <caret line="531" column="32" selection-start-line="531" selection-start-column="32" selection-end-line="531" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PushSDK/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="924">
+          <caret line="159" selection-start-line="159" selection-end-line="159" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="16" column="51" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/WithdTotalActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2024">
+          <caret line="120" column="22" selection-start-line="120" selection-start-column="22" selection-end-line="120" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/xml/network_security_config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/pull_scrollview_index.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_new_index.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="636">
+          <caret line="447" column="48" selection-start-line="447" selection-start-column="48" selection-end-line="447" selection-end-column="48" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/fragment/NewIndexFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="205" column="39" lean-forward="true" selection-start-line="205" selection-start-column="39" selection-end-line="205" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/view/CodeUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="69" column="17" lean-forward="true" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6688">
+          <caret line="304" selection-start-line="304" selection-end-line="304" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/HKRegisterWebActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1430">
+          <caret line="97" column="19" selection-start-line="97" selection-start-column="19" selection-end-line="97" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/WithdrawActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="571">
+          <caret line="301" selection-start-line="301" selection-end-line="301" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" selection-start-line="1" selection-end-line="11" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/utils/ParamsValues.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="52" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yuanin/aimifinance/activity/AimiWithdrawActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="357" column="48" selection-start-line="357" selection-start-column="48" selection-end-line="357" selection-end-column="48" />
+          <folding>
+            <element signature="e#3766#3814#0" expanded="true" />
           </folding>
         </state>
       </provider>

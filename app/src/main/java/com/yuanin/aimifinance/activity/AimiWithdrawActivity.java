@@ -240,7 +240,10 @@ public class AimiWithdrawActivity extends BaseActivity {
                 if (Double.parseDouble(balance) > 0) {
                     etMoney.setText(balance);
                     etMoney.setSelection(balance.length());
-                    initEdittext(balance);
+                    //根据输入金额，计算手续费和实到金额
+                    //initEdittext(s);
+                    //不收取手续费计算实到金额
+                    initNullFee(balance);
                 } else {
                     AppUtils.showToast(this, "无可用余额");
                 }
@@ -353,7 +356,7 @@ public class AimiWithdrawActivity extends BaseActivity {
         }
         fee = entity.getData().get(0).getNormalFee();
         cash_fee = entity.getData().get(0).getQuickFee();
-        tvFee.setText(fee);
+        tvFee.setText("0.00");
         tvEveryFee.setText("( " + Integer.parseInt(fee.split("\\.")[0]) + "元/次 )");
         tvCount.setText(entity.getData().get(0).getQty());
         tv_freeCount.setText(entity.getData().get(0).getQty());
@@ -378,7 +381,10 @@ public class AimiWithdrawActivity extends BaseActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                initEdittext(s);
+                //根据输入金额，计算手续费和实到金额
+                //initEdittext(s);
+                //不收取手续费计算实到金额
+                initNullFee(s);
             }
 
             @Override
@@ -386,6 +392,11 @@ public class AimiWithdrawActivity extends BaseActivity {
 
             }
         });
+    }
+
+    private void initNullFee(CharSequence s) {
+        tvFee.setText("0.00");
+        tvGetMoney.setText(s);
     }
 
     private void initEdittext(CharSequence s) {

@@ -143,5 +143,6 @@
     <orderEntry type="library" name="Gradle: com.facebook.fresco:fbcore:0.9.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.lifecycle:runtime:1.0.0@aar" level="project" />
     <orderEntry type="module" module-name="PushSDK" />
+    <orderEntry type="module" module-name="PushSDK" />
   </component>
 </module>
